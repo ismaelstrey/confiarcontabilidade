@@ -1,103 +1,258 @@
-import Image from "next/image";
+import Link from 'next/link'
+import { ArrowRight, CheckCircle, Star, TrendingUp, Users, Shield } from 'lucide-react'
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Badge } from '@/components/ui/badge'
+import { Section, Container } from '@/components/ui/container'
+import { services, testimonials, siteConfig } from '@/lib/config'
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+    <>
+      {/* Hero Section */}
+      <Section background="gradient" spacing="xl">
+        <div className="text-center">
+          <Badge variant="secondary" size="lg" className="mb-6">
+            ✨ Mais de 15 anos de experiência
+          </Badge>
+          
+          <h1 className="text-4xl md:text-6xl font-bold mb-6 font-serif">
+            Contabilidade que
+            <span className="block text-accent-400">Impulsiona seu Negócio</span>
+          </h1>
+          
+          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-90">
+            Soluções completas em contabilidade para empresas de todos os portes. 
+            Abertura de empresa, planejamento tributário e consultoria especializada.
+          </p>
+          
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <Button size="lg" variant="secondary" asChild>
+              <Link href="/contato">
+                Fale Conosco
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary-600" asChild>
+              <Link href={siteConfig.links.whatsapp} target="_blank">
+                WhatsApp Direto
+              </Link>
+            </Button>
+          </div>
+          
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-2xl mx-auto">
+            <div className="text-center">
+              <div className="text-3xl font-bold mb-2">500+</div>
+              <div className="text-sm opacity-80">Empresas Atendidas</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold mb-2">15+</div>
+              <div className="text-sm opacity-80">Anos de Experiência</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold mb-2">98%</div>
+              <div className="text-sm opacity-80">Satisfação</div>
+            </div>
+            <div className="text-center">
+              <div className="text-3xl font-bold mb-2">24h</div>
+              <div className="text-sm opacity-80">Suporte</div>
+            </div>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+      </Section>
+
+      {/* Services Section */}
+      <Section spacing="xl">
+        <Container center>
+          <div className="text-center mb-16">
+            <Badge variant="outline" size="lg" className="mb-4">
+              Nossos Serviços
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif">
+              Soluções Completas para sua Empresa
+            </h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+              Oferecemos todos os serviços que sua empresa precisa para crescer com segurança e eficiência.
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {services.slice(0, 6).map((service, index) => (
+              <Card key={service.id} variant="elevated" hover className="h-full">
+                <CardHeader>
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="p-3 rounded-lg bg-primary-100">
+                      <CheckCircle className="h-6 w-6 text-primary-600" />
+                    </div>
+                    {service.popular && (
+                      <Badge variant="secondary" size="sm">
+                        Popular
+                      </Badge>
+                    )}
+                  </div>
+                  <CardTitle className="text-xl">{service.title}</CardTitle>
+                  <CardDescription className="text-base">
+                    {service.description}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2 mb-6">
+                    {service.features.slice(0, 3).map((feature, idx) => (
+                      <li key={idx} className="flex items-center text-sm text-gray-600">
+                        <CheckCircle className="h-4 w-4 text-success-500 mr-2 flex-shrink-0" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                  
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <span className="text-2xl font-bold text-primary-600">
+                        R$ {service.price?.from}
+                      </span>
+                      <span className="text-sm text-gray-500">/{service.price?.period}</span>
+                    </div>
+                    <Button variant="outline" size="sm" asChild>
+                      <Link href="/contato">
+                        Contratar
+                      </Link>
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+          
+          <div className="text-center mt-12">
+            <Button size="lg" asChild>
+              <Link href="/servicos">
+                Ver Todos os Serviços
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Why Choose Us */}
+      <Section background="gray" spacing="xl">
+        <Container center>
+          <div className="text-center mb-16">
+            <Badge variant="outline" size="lg" className="mb-4">
+              Por que nos escolher?
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif">
+              Sua empresa merece o melhor
+            </h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center">
+              <div className="p-4 rounded-full bg-primary-100 w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                <Shield className="h-8 w-8 text-primary-600" />
+              </div>
+              <h3 className="text-xl font-semibold mb-4">Segurança Total</h3>
+              <p className="text-gray-600">
+                Certificado digital, backup em nuvem e total conformidade com as normas do CFC.
+              </p>
+            </div>
+            
+            <div className="text-center">
+              <div className="p-4 rounded-full bg-accent-100 w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                <TrendingUp className="h-8 w-8 text-accent-600" />
+              </div>
+              <h3 className="text-xl font-semibold mb-4">Economia Garantida</h3>
+              <p className="text-gray-600">
+                Planejamento tributário que pode reduzir até 40% da sua carga fiscal.
+              </p>
+            </div>
+            
+            <div className="text-center">
+              <div className="p-4 rounded-full bg-success-100 w-16 h-16 flex items-center justify-center mx-auto mb-6">
+                <Users className="h-8 w-8 text-success-600" />
+              </div>
+              <h3 className="text-xl font-semibold mb-4">Atendimento Personalizado</h3>
+              <p className="text-gray-600">
+                Cada cliente tem um contador dedicado e suporte via WhatsApp.
+              </p>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Testimonials */}
+      <Section spacing="xl">
+        <Container center>
+          <div className="text-center mb-16">
+            <Badge variant="outline" size="lg" className="mb-4">
+              Depoimentos
+            </Badge>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif">
+              O que nossos clientes dizem
+            </h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial) => (
+              <Card key={testimonial.id} variant="elevated" className="h-full">
+                <CardContent className="pt-6">
+                  <div className="flex items-center mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="h-4 w-4 text-accent-500 fill-current" />
+                    ))}
+                  </div>
+                  
+                  <p className="text-gray-600 mb-6 italic">
+                    "{testimonial.content}"
+                  </p>
+                  
+                  <div className="flex items-center">
+                    <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mr-4">
+                      <span className="font-semibold text-primary-600">
+                        {testimonial.name.charAt(0)}
+                      </span>
+                    </div>
+                    <div>
+                      <div className="font-semibold">{testimonial.name}</div>
+                      <div className="text-sm text-gray-500">
+                        {testimonial.role} - {testimonial.company}
+                      </div>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* CTA Section */}
+      <Section background="primary" spacing="lg">
+        <Container center>
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif">
+              Pronto para começar?
+            </h2>
+            <p className="text-xl mb-8 opacity-90 max-w-2xl mx-auto">
+              Entre em contato conosco hoje mesmo e descubra como podemos ajudar sua empresa a crescer.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button size="lg" variant="secondary" asChild>
+                <Link href="/contato">
+                  Solicitar Orçamento
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary-600" asChild>
+                <Link href={siteConfig.links.whatsapp} target="_blank">
+                  Falar no WhatsApp
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </Container>
+      </Section>
+    </>
+  )
 }

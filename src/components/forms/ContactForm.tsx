@@ -12,7 +12,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { useToast } from '@/components/ui/toast';
+// import { useToast } from '@/components/ui/toast';
 
 const contactSchema = z.object({
   name: z.string()
@@ -44,7 +44,7 @@ interface ContactFormProps {
 export function ContactForm({className}:{className?:string}) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
-  const { toast } = useToast();
+  // const { toast } = useToast();
 
   const {
     register,
@@ -88,19 +88,19 @@ export function ContactForm({className}:{className?:string}) {
       setIsSuccess(true);
       reset();
       
-      toast({
-        type: 'success',
-        title: 'Mensagem enviada com sucesso!',
-        description: 'Nossa equipe entrará em contato em até 24 horas.',
-        duration: 5000
-      });
+      // toast({
+      //   type: 'success',
+      //   title: 'Mensagem enviada com sucesso!',
+      //   description: 'Nossa equipe entrará em contato em até 24 horas.',
+      //   duration: 5000
+      // });
     } catch (error) {
-      toast({
-        type: 'error',
-        title: 'Erro ao enviar mensagem',
-        description: 'Tente novamente ou entre em contato via WhatsApp.',
-        duration: 5000
-      });
+      // toast({
+      //   type: 'error',
+      //   title: 'Erro ao enviar mensagem',
+      //   description: 'Tente novamente ou entre em contato via WhatsApp.',
+      //   duration: 5000
+      // });
     } finally {
       setIsSubmitting(false);
     }

@@ -22,6 +22,7 @@ import {
   TrendingUp,
   Award
 } from 'lucide-react'
+import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
@@ -234,9 +235,9 @@ export default function OrcamentoPage() {
                 </div>
                 <div className="space-y-4">
                   <Button size="lg" className="w-full" asChild>
-                    <a href="/">
+                    <Link href="/">
                       Voltar ao Início
-                    </a>
+                    </Link>
                   </Button>
                   <Button variant="outline" size="lg" className="w-full" asChild>
                     <a href="/servicos">

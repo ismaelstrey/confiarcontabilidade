@@ -66,7 +66,8 @@ const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
     ref
   ) => {
     const [charCount, setCharCount] = React.useState(0)
-    const textareaId = id || React.useId()
+    const generatedId = React.useId()
+    const textareaId = id || generatedId
 
     React.useEffect(() => {
       if (typeof value === 'string') {

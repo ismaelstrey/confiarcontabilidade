@@ -32,13 +32,14 @@ const inputVariants = cva(
 
 export interface InputProps
   extends React.InputHTMLAttributes<HTMLInputElement>,
-    VariantProps<typeof inputVariants> {
+    Omit<VariantProps<typeof inputVariants>, 'size'> {
   label?: string
   error?: string
   success?: string
   leftIcon?: React.ReactNode
   rightIcon?: React.ReactNode
   showPasswordToggle?: boolean
+  inputSize?: 'sm' | 'md' | 'lg'
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -46,7 +47,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     {
       className,
       variant,
-      size,
+      inputSize = 'md',
       type,
       label,
       error,
@@ -61,7 +62,8 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
   ) => {
     const [showPassword, setShowPassword] = React.useState(false)
     const [inputType, setInputType] = React.useState(type)
-    const inputId = id || React.useId()
+    const generatedId = React.useId()
+    const inputId = id || generatedId
 
     React.useEffect(() => {
       if (type === 'password' && showPasswordToggle) {
@@ -92,7 +94,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           <input
             type={inputType}
             className={cn(
-              inputVariants({ variant: finalVariant, size, className }),
+              inputVariants({ variant: finalVariant, size: inputSize, className }),
               leftIcon && 'pl-10',
               (rightIcon || (type === 'password' && showPasswordToggle)) && 'pr-10'
             )}

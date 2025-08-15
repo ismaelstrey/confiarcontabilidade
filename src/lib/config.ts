@@ -52,6 +52,10 @@ export const mainNav = [
     href: '/calculadora'
   },
   {
+    title: 'Orçamento',
+    href: '/orcamento'
+  },
+  {
     title: 'Equipe',
     href: '/equipe'
   },

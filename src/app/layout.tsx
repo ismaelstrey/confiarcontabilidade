@@ -4,6 +4,11 @@ import { Header } from "@/components/layout/header";
 import { Footer } from "@/components/layout/footer";
 import { ToastProvider } from "@/components/ui/toast";
 import { WhatsAppButton } from "@/components/integrations/WhatsAppButton";
+import { SchemaMarkup } from "@/components/seo/SchemaMarkup";
+import { Analytics } from "@/components/analytics/Analytics";
+import { PerformanceMonitor } from "@/components/performance/PerformanceMonitor";
+import ErrorBoundary from "@/components/error/ErrorBoundary";
+import { PWAManager } from "@/components/pwa/PWAManager";
 import { siteConfig } from "@/lib/config";
 import "./globals.css";
 
@@ -91,14 +96,35 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={`${inter.variable} ${playfair.variable}`}>
-      <body className="min-h-screen bg-background font-sans antialiased">
+      <head>
+        <SchemaMarkup type="organization" />
+        <SchemaMarkup type="website" />
+        
+        {/* PWA Meta Tags */}
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#1e40af" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="ContabilPro" />
+        <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16x16.png" />
+        <meta name="msapplication-TileColor" content="#1e40af" />
+        <meta name="msapplication-config" content="/browserconfig.xml" />
+      </head><body className="min-h-screen bg-background font-sans antialiased">
         <ToastProvider>
-          <div className="relative flex min-h-screen flex-col">
-            <Header />
-            <main className="flex-1">{children}</main>
-            <Footer />
-            <WhatsAppButton />
-          </div>
+          <ErrorBoundary>
+            <div className="relative flex min-h-screen flex-col">
+              <Header />
+              <main className="flex-1">{children}</main>
+              <Footer />
+              <WhatsAppButton />
+            </div>
+          </ErrorBoundary>
+          <Analytics />
+          <PerformanceMonitor />
+          <PWAManager />
         </ToastProvider>
       </body>
     </html>

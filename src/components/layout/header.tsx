@@ -71,7 +71,7 @@ export function Header() {
                 CP
               </div>
               <div className="hidden sm:block">
-                <h1 className="text-xl font-bold text-gray-900">ContabilPro</h1>
+                <h1 className="text-xl font-bold text-gray-900">{siteConfig.name}</h1>
                 <p className="text-xs text-gray-600">Contabilidade Empresarial</p>
               </div>
             </Link>

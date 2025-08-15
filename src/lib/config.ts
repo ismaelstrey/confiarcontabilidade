@@ -1,18 +1,18 @@
 import { SiteConfig } from '@/types'
 
 export const siteConfig: SiteConfig = {
-  name: 'ContabilPro - Contabilidade Empresarial',
+  name: 'Confiar Contabilidade',
   description: 'Soluções completas em contabilidade para empresas de todos os portes. Abertura de empresa, contabilidade mensal, planejamento tributário e consultoria especializada.',
-  url: 'https://contabilpro.com.br',
+  url: 'https://confiarcontabilidade.com.br',
   ogImage: '/images/og-image.jpg',
   contact:{
     whatsapp:"(51)9 98175-4701"
   },
   links: {
-    whatsapp: 'https://wa.me/5511999999999?text=Olá! Gostaria de saber mais sobre os serviços de contabilidade.',
-    email: 'contato@contabilpro.com.br',
-    phone: '(11) 99999-9999',
-    address: 'Rua das Empresas, 123 - Centro, São Paulo - SP',
+    whatsapp: 'https://wa.me/5551981754701?text=Olá! Gostaria de saber mais sobre os serviços de contabilidade.',
+    email: 'contato@confiarcontabilidade.com.br',
+    phone: '(51) 9 98175-4701',
+    address: 'Rua da Independência, 131 - Centro, Igrejinha - RS',
     social: {
       facebook: 'https://facebook.com/contabilpro',
       instagram: 'https://instagram.com/contabilpro',
@@ -21,14 +21,14 @@ export const siteConfig: SiteConfig = {
     }
   },
   business: {
-    cnpj: '12.345.678/0001-90',
+    cnpj: '45.128.693/0001-30',
     crc: 'CRC-SP 123456/O-7',
-    email: 'contato@contabilpro.com.br',
+    email: 'contato@confiarcontabilidade.com.br',
     address: {
-      street: 'Rua das Empresas, 123 - Sala 456',
-      city: 'São Paulo',
-      state: 'SP',
-      zip: '01234-567'
+      street: 'Rua da Independência, 131 - Centro, Igrejinha - RS',
+      city: 'Igrejinha',
+      state: 'RS',
+      zip: '95650-000'
     }
   }
 }
@@ -54,6 +54,10 @@ export const mainNav = [
   {
     title: 'Orçamento',
     href: '/orcamento'
+  },
+  {
+    title: 'FAQ',
+    href: '/faq'
   },
   {
     title: 'Equipe',

@@ -677,7 +677,7 @@ export default function OrcamentoPage() {
                     </AnimatePresence>
 
                     {/* Navigation Buttons */}
-                    <div className="flex justify-between items-center pt-8 border-t">
+                    <div className="flex justify-between items-center pt-8 border-t mt-4">
                       <Button
                         variant="outline"
                         onClick={prevStep}

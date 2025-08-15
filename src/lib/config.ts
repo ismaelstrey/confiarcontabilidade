@@ -48,6 +48,10 @@ export const mainNav = [
     href: '/servicos'
   },
   {
+    title: 'Calculadora',
+    href: '/calculadora'
+  },
+  {
     title: 'Equipe',
     href: '/equipe'
   },

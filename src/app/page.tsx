@@ -1,140 +1,27 @@
-import Link from 'next/link'
-import { ArrowRight, CheckCircle, Star, TrendingUp, Users, Shield } from 'lucide-react'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
-import { Badge } from '@/components/ui/badge'
+import HeroSection from '@/components/sections/HeroSection'
+import ServicesSection from '@/components/sections/ServicesSection'
+import StatsSection from '@/components/sections/StatsSection'
 import { Section, Container } from '@/components/ui/container'
-import { services, testimonials, siteConfig } from '@/lib/config'
+import { Card, CardContent } from '@/components/ui/card'
+import { Button } from '@/components/ui/button'
+import { Badge } from '@/components/ui/badge'
+import { siteConfig, testimonials } from '@/lib/config'
+import { ArrowRight, CheckCircle, Star, Phone, Mail, TrendingUp, Users, Shield } from 'lucide-react'
+import Link from 'next/link'
 
 export default function Home() {
   return (
-    <>
+    <main>
       {/* Hero Section */}
-      <Section background="gradient" spacing="xl">
-        <div className="text-center">
-          <Badge variant="secondary" size="lg" className="mb-6">
-            ✨ Mais de 15 anos de experiência
-          </Badge>
-          
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 font-serif">
-            Contabilidade que
-            <span className="block text-accent-400">Impulsiona seu Negócio</span>
-          </h1>
-          
-          <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto opacity-90">
-            Soluções completas em contabilidade para empresas de todos os portes. 
-            Abertura de empresa, planejamento tributário e consultoria especializada.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button size="lg" variant="secondary" asChild>
-              <Link href="/contato">
-                Fale Conosco
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary-600" asChild>
-              <Link href={siteConfig.links.whatsapp} target="_blank">
-                WhatsApp Direto
-              </Link>
-            </Button>
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-2xl mx-auto">
-            <div className="text-center">
-              <div className="text-3xl font-bold mb-2">500+</div>
-              <div className="text-sm opacity-80">Empresas Atendidas</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold mb-2">15+</div>
-              <div className="text-sm opacity-80">Anos de Experiência</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold mb-2">98%</div>
-              <div className="text-sm opacity-80">Satisfação</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold mb-2">24h</div>
-              <div className="text-sm opacity-80">Suporte</div>
-            </div>
-          </div>
-        </div>
-      </Section>
+      <HeroSection />
 
       {/* Services Section */}
-      <Section spacing="xl">
-        <Container center>
-          <div className="text-center mb-16">
-            <Badge variant="outline" size="lg" className="mb-4">
-              Nossos Serviços
-            </Badge>
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif">
-              Soluções Completas para sua Empresa
-            </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-              Oferecemos todos os serviços que sua empresa precisa para crescer com segurança e eficiência.
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.slice(0, 6).map((service, index) => (
-              <Card key={service.id} variant="elevated" hover className="h-full">
-                <CardHeader>
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="p-3 rounded-lg bg-primary-100">
-                      <CheckCircle className="h-6 w-6 text-primary-600" />
-                    </div>
-                    {service.popular && (
-                      <Badge variant="secondary" size="sm">
-                        Popular
-                      </Badge>
-                    )}
-                  </div>
-                  <CardTitle className="text-xl">{service.title}</CardTitle>
-                  <CardDescription className="text-base">
-                    {service.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2 mb-6">
-                    {service.features.slice(0, 3).map((feature, idx) => (
-                      <li key={idx} className="flex items-center text-sm text-gray-600">
-                        <CheckCircle className="h-4 w-4 text-success-500 mr-2 flex-shrink-0" />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                  
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <span className="text-2xl font-bold text-primary-600">
-                        R$ {service.price?.from}
-                      </span>
-                      <span className="text-sm text-gray-500">/{service.price?.period}</span>
-                    </div>
-                    <Button variant="outline" size="sm" asChild>
-                      <Link href="/contato">
-                        Contratar
-                      </Link>
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-          
-          <div className="text-center mt-12">
-            <Button size="lg" asChild>
-              <Link href="/servicos">
-                Ver Todos os Serviços
-                <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-          </div>
-        </Container>
-      </Section>
+      <ServicesSection />
 
-      {/* Why Choose Us */}
+      {/* Stats Section */}
+      <StatsSection />
+
+      {/* Why Choose Us Section */}
       <Section background="gray" spacing="xl">
         <Container center>
           <div className="text-center mb-16">
@@ -180,7 +67,7 @@ export default function Home() {
         </Container>
       </Section>
 
-      {/* Testimonials */}
+      {/* Testimonials Section */}
       <Section spacing="xl">
         <Container center>
           <div className="text-center mb-16">
@@ -229,7 +116,7 @@ export default function Home() {
       {/* CTA Section */}
       <Section background="primary" spacing="lg">
         <Container center>
-          <div className="text-center">
+          <div className="text-center text-white">
             <h2 className="text-3xl md:text-4xl font-bold mb-6 font-serif">
               Pronto para começar?
             </h2>
@@ -240,19 +127,21 @@ export default function Home() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" variant="secondary" asChild>
                 <Link href="/contato">
-                  Solicitar Orçamento
-                  <ArrowRight className="ml-2 h-5 w-5" />
+                  <Phone className="w-5 h-5 mr-2" />
+                  Solicitar Consultoria
+                  <ArrowRight className="w-5 h-5 ml-2" />
                 </Link>
               </Button>
-              <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-primary-600" asChild>
-                <Link href={siteConfig.links.whatsapp} target="_blank">
-                  Falar no WhatsApp
+              <Button size="lg" variant="outline" className="border-white/20 text-white hover:bg-white/10" asChild>
+                <Link href={`mailto:${siteConfig.business.email || 'contato@contabil.com'}`}>
+                  <Mail className="w-5 h-5 mr-2" />
+                  Enviar E-mail
                 </Link>
               </Button>
             </div>
           </div>
         </Container>
       </Section>
-    </>
+    </main>
   )
 }

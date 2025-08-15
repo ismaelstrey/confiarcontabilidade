@@ -129,6 +129,7 @@ export interface SiteConfig {
   business: {
     cnpj: string
     crc: string
+    email: string
     address: {
       street: string
       city: string

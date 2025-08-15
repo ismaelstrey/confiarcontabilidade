@@ -20,6 +20,7 @@ export const siteConfig: SiteConfig = {
   business: {
     cnpj: '12.345.678/0001-90',
     crc: 'CRC-SP 123456/O-7',
+    email: 'contato@contabilpro.com.br',
     address: {
       street: 'Rua das Empresas, 123 - Sala 456',
       city: 'São Paulo',

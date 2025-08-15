@@ -16,6 +16,7 @@ import {
   MessageSquare
 } from 'lucide-react';
 import { useState } from 'react';
+import { QuoteForm } from '@/components/forms/QuoteForm';
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
@@ -136,42 +137,6 @@ const processSteps = [
 ];
 
 export default function ServicosPage() {
-  const [formData, setFormData] = useState({
-    nome: '',
-    email: '',
-    telefone: '',
-    empresa: '',
-    servico: '',
-    mensagem: ''
-  });
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    
-    // Simular envio
-    await new Promise(resolve => setTimeout(resolve, 2000));
-    
-    alert('Solicitação enviada com sucesso! Entraremos em contato em breve.');
-    setFormData({
-      nome: '',
-      email: '',
-      telefone: '',
-      empresa: '',
-      servico: '',
-      mensagem: ''
-    });
-    setIsSubmitting(false);
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
-  };
 
   return (
     <div className="min-h-screen bg-white">
@@ -351,148 +316,7 @@ export default function ServicosPage() {
               </p>
             </motion.div>
             
-            <motion.form 
-              variants={fadeInUp  as any}
-              onSubmit={handleSubmit}
-              className="bg-gray-50 p-8 rounded-xl shadow-lg"
-            >
-              <div className="grid md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label htmlFor="nome" className="block text-sm font-semibold text-gray-700 mb-2">
-                    Nome Completo *
-                  </label>
-                  <div className="relative">
-                    <User className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                    <input
-                      type="text"
-                      id="nome"
-                      name="nome"
-                      value={formData.nome}
-                      onChange={handleChange}
-                      required
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors duration-300"
-                      placeholder="Seu nome completo"
-                    />
-                  </div>
-                </div>
-                
-                <div>
-                  <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
-                    Email *
-                  </label>
-                  <div className="relative">
-                    <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors duration-300"
-                      placeholder="seu@email.com"
-                    />
-                  </div>
-                </div>
-              </div>
-              
-              <div className="grid md:grid-cols-2 gap-6 mb-6">
-                <div>
-                  <label htmlFor="telefone" className="block text-sm font-semibold text-gray-700 mb-2">
-                    Telefone *
-                  </label>
-                  <div className="relative">
-                    <Phone className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                    <input
-                      type="tel"
-                      id="telefone"
-                      name="telefone"
-                      value={formData.telefone}
-                      onChange={handleChange}
-                      required
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors duration-300"
-                      placeholder="(11) 99999-9999"
-                    />
-                  </div>
-                </div>
-                
-                <div>
-                  <label htmlFor="empresa" className="block text-sm font-semibold text-gray-700 mb-2">
-                    Empresa
-                  </label>
-                  <div className="relative">
-                    <Building className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
-                    <input
-                      type="text"
-                      id="empresa"
-                      name="empresa"
-                      value={formData.empresa}
-                      onChange={handleChange}
-                      className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors duration-300"
-                      placeholder="Nome da sua empresa"
-                    />
-                  </div>
-                </div>
-              </div>
-              
-              <div className="mb-6">
-                <label htmlFor="servico" className="block text-sm font-semibold text-gray-700 mb-2">
-                  Tipo de Serviço *
-                </label>
-                <select
-                  id="servico"
-                  name="servico"
-                  value={formData.servico}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors duration-300"
-                >
-                  <option value="">Selecione um serviço</option>
-                  {services.map((service) => (
-                    <option key={service.title} value={service.title}>
-                      {service.title}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              
-              <div className="mb-8">
-                <label htmlFor="mensagem" className="block text-sm font-semibold text-gray-700 mb-2">
-                  Mensagem *
-                </label>
-                <div className="relative">
-                  <MessageSquare className="absolute left-3 top-3 w-5 h-5 text-gray-400" />
-                  <textarea
-                    id="mensagem"
-                    name="mensagem"
-                    value={formData.mensagem}
-                    onChange={handleChange}
-                    required
-                    rows={4}
-                    className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent transition-colors duration-300 resize-none"
-                    placeholder="Descreva suas necessidades ou dúvidas..."
-                  />
-                </div>
-              </div>
-              
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-primary-600 hover:bg-primary-700 text-white py-4 px-8 rounded-lg font-semibold transition-colors duration-300 flex items-center justify-center group disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isSubmitting ? (
-                  <div className="flex items-center">
-                    <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
-                    Enviando...
-                  </div>
-                ) : (
-                  <>
-                    Solicitar Orçamento
-                    <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
-                  </>
-                )}
-              </button>
-            </motion.form>
+            <QuoteForm />
           </motion.div>
         </div>
       </section>

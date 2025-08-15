@@ -5,6 +5,9 @@ export const siteConfig: SiteConfig = {
   description: 'Soluções completas em contabilidade para empresas de todos os portes. Abertura de empresa, contabilidade mensal, planejamento tributário e consultoria especializada.',
   url: 'https://contabilpro.com.br',
   ogImage: '/images/og-image.jpg',
+  contact:{
+    whatsapp:"(51)9 98175-4701"
+  },
   links: {
     whatsapp: 'https://wa.me/5511999999999?text=Olá! Gostaria de saber mais sobre os serviços de contabilidade.',
     email: 'contato@contabilpro.com.br',

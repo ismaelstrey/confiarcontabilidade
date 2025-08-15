@@ -114,6 +114,9 @@ export interface SiteConfig {
   description: string
   url: string
   ogImage: string
+  contact:{
+    whatsapp:string
+  }
   links: {
     whatsapp: string
     email: string

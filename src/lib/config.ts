@@ -37,12 +37,16 @@ export const mainNav = [
     href: '/'
   },
   {
+    title: 'Sobre',
+    href: '/sobre'
+  },
+  {
     title: 'Serviços',
     href: '/servicos'
   },
   {
-    title: 'Sobre',
-    href: '/sobre'
+    title: 'Equipe',
+    href: '/equipe'
   },
   {
     title: 'Blog',

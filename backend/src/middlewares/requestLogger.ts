@@ -22,7 +22,7 @@ export const requestLogger = (req: Request, res: Response, next: NextFunction) =
   const requestData: RequestLogData = {
     method: req.method,
     url: req.originalUrl || req.url,
-    ip: req.ip || req.connection.remoteAddress || 'unknown',
+    ip: req.ip || req.socket.remoteAddress || 'unknown',
     userAgent: req.get('User-Agent'),
     referer: req.get('Referer'),
   };

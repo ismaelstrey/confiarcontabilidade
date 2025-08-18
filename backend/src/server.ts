@@ -1,7 +1,4 @@
 import express from 'express';
-import cors from 'cors';
-import helmet from 'helmet';
-import rateLimit from 'express-rate-limit';
 import dotenv from 'dotenv';
 import { PrismaClient } from '@prisma/client';
 import swaggerUi from 'swagger-ui-express';
@@ -11,6 +8,17 @@ import swaggerJsdoc from 'swagger-jsdoc';
 import { errorHandler } from './middlewares/errorHandler';
 import { logger } from './middlewares/logger';
 import { requestLogger } from './middlewares/requestLogger';
+import {
+  corsMiddleware,
+  helmetMiddleware,
+  generalRateLimit,
+  authRateLimit,
+  apiRateLimit,
+  uploadRateLimit,
+  compressionMiddleware,
+  customSecurityHeaders,
+  securityLogger
+} from './middlewares/security';
 
 // Importar rotas
 import authRoutes from './routes/authRoutes';
@@ -71,37 +79,12 @@ const swaggerOptions = {
 const swaggerSpec = swaggerJsdoc(swaggerOptions);
 
 // Middlewares de segurança
-app.use(helmet({
-  contentSecurityPolicy: {
-    directives: {
-      defaultSrc: ["'self'"],
-      styleSrc: ["'self'", "'unsafe-inline'"],
-      scriptSrc: ["'self'"],
-      imgSrc: ["'self'", "data:", "https:"],
-    },
-  },
-}));
-
-// Configuração CORS
-app.use(cors({
-  origin: process.env.CORS_ORIGIN?.split(',') || ['http://localhost:3000'],
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
-}));
-
-// Rate limiting
-const limiter = rateLimit({
-  windowMs: parseInt(process.env.RATE_LIMIT_WINDOW_MS || '900000'), // 15 minutos
-  max: parseInt(process.env.RATE_LIMIT_MAX_REQUESTS || '100'), // máximo 100 requests por IP
-  message: {
-    error: 'Muitas tentativas de acesso. Tente novamente em alguns minutos.',
-  },
-  standardHeaders: true,
-  legacyHeaders: false,
-});
-
-app.use(limiter);
+app.use(customSecurityHeaders);
+app.use(helmetMiddleware);
+app.use(corsMiddleware);
+app.use(compressionMiddleware);
+app.use(generalRateLimit);
+app.use(securityLogger);
 
 // Middlewares de parsing
 app.use(express.json({ limit: '10mb' }));
@@ -141,15 +124,15 @@ app.get('/health', async (req, res) => {
 // Rotas da API
 const apiRouter = express.Router();
 
-// Registrar rotas
-apiRouter.use('/auth', authRoutes);
-apiRouter.use('/users', userRoutes);
-apiRouter.use('/articles', articleRoutes);
-apiRouter.use('/contact', contactRoutes);
-apiRouter.use('/calculator', calculatorRoutes);
-apiRouter.use('/newsletter', newsletterRoutes);
-apiRouter.use('/upload', uploadRoutes);
-apiRouter.use('/admin', adminRoutes);
+// Registrar rotas com rate limiting específico
+apiRouter.use('/auth', authRateLimit, authRoutes);
+apiRouter.use('/users', apiRateLimit, userRoutes);
+apiRouter.use('/articles', apiRateLimit, articleRoutes);
+apiRouter.use('/contact', apiRateLimit, contactRoutes);
+apiRouter.use('/calculator', apiRateLimit, calculatorRoutes);
+apiRouter.use('/newsletter', apiRateLimit, newsletterRoutes);
+apiRouter.use('/upload', uploadRateLimit, uploadRoutes);
+apiRouter.use('/admin', apiRateLimit, adminRoutes);
 
 // Usar o roteador da API
 app.use(`/api/${API_VERSION}`, apiRouter);

@@ -104,7 +104,7 @@ const router = Router();
  *                 description: Se a imagem é pública
  *               resize:
  *                 type: string
- *                 description: Redimensionar (ex: 800x600, 50%)
+ *                 description: Redimensionar - exemplo 800x600 ou 50%
  *               quality:
  *                 type: integer
  *                 minimum: 1

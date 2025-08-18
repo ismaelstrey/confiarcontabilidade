@@ -1,5 +1,6 @@
 import { Request, Response } from 'express';
 import { AuthService, RegisterData, LoginData } from '../services/authService';
+import { prisma } from '../server';
 import logger from '../utils/logger';
 
 // Interface para refresh token
@@ -16,99 +17,31 @@ export class AuthController {
    */
   static async register(req: Request, res: Response): Promise<void> {
     try {
-      const { name, email, password, role = 'USER' }: RegisterData = req.body;
-
-      // Validações básicas
-      if (!name || !email || !password) {
-        res.status(400).json({
-          success: false,
-          message: 'Nome, email e senha são obrigatórios'
-        });
-        return;
-      }
-
-      // Validar formato do email
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        res.status(400).json({
-          success: false,
-          message: 'Formato de email inválido'
-        });
-        return;
-      }
-
-      // Validar força da senha
-      if (password.length < 6) {
-        res.status(400).json({
-          success: false,
-          message: 'A senha deve ter pelo menos 6 caracteres'
-        });
-        return;
-      }
-
-      // Verificar se o usuário já existe
-      const existingUser = await prisma.user.findUnique({
-        where: { email }
-      });
-
-      if (existingUser) {
-        res.status(409).json({
-          success: false,
-          message: 'Usuário já existe com este email'
-        });
-        return;
-      }
-
-      // Hash da senha
-      const saltRounds = 12;
-      const hashedPassword = await bcrypt.hash(password, saltRounds);
-
-      // Criar usuário
-      const user = await prisma.user.create({
-        data: {
-          name,
-          email,
-          password: hashedPassword,
-          role: role as any,
-          isActive: true
-        },
-        select: {
-          id: true,
-          name: true,
-          email: true,
-          role: true,
-          isActive: true,
-          createdAt: true
-        }
-      });
-
-      // Gerar tokens
-      const tokens = generateTokens({
-        id: user.id,
-        email: user.email,
-        role: user.role
-      });
-
-      // Log da ação
-      logger.info('Novo usuário registrado', {
-        userId: user.id,
-        email: user.email,
-        role: user.role
-      });
+      const registerData: RegisterData = req.body;
+      
+      const result = await AuthService.register(registerData);
 
       res.status(201).json({
         success: true,
         message: 'Usuário registrado com sucesso',
-        data: {
-          user,
-          tokens
-        }
+        data: result
       });
-    } catch (error) {
-      logger.error('Erro ao registrar usuário', { error });
-      res.status(500).json({
+    } catch (error: any) {
+      logger.error('Erro ao registrar usuário', { error: error.message });
+      
+      // Determinar status code baseado no tipo de erro
+      let statusCode = 500;
+      if (error.message.includes('já existe')) {
+        statusCode = 409;
+      } else if (error.message.includes('obrigatórios') || 
+                 error.message.includes('inválido') || 
+                 error.message.includes('senha deve')) {
+        statusCode = 400;
+      }
+
+      res.status(statusCode).json({
         success: false,
-        message: 'Erro interno do servidor'
+        message: error.message || 'Erro interno do servidor'
       });
     }
   }
@@ -118,146 +51,63 @@ export class AuthController {
    */
   static async login(req: Request, res: Response): Promise<void> {
     try {
-      const { email, password }: LoginData = req.body;
-
-      // Validações básicas
-      if (!email || !password) {
-        res.status(400).json({
-          success: false,
-          message: 'Email e senha são obrigatórios'
-        });
-        return;
-      }
-
-      // Buscar usuário
-      const user = await prisma.user.findUnique({
-        where: { email }
-      });
-
-      if (!user) {
-        res.status(401).json({
-          success: false,
-          message: 'Credenciais inválidas'
-        });
-        return;
-      }
-
-      // Verificar se o usuário está ativo
-      if (!user.isActive) {
-        res.status(401).json({
-          success: false,
-          message: 'Conta desativada. Entre em contato com o administrador'
-        });
-        return;
-      }
-
-      // Verificar senha
-      const isPasswordValid = await bcrypt.compare(password, user.password);
-      if (!isPasswordValid) {
-        res.status(401).json({
-          success: false,
-          message: 'Credenciais inválidas'
-        });
-        return;
-      }
-
-      // Gerar tokens
-      const tokens = generateTokens({
-        id: user.id,
-        email: user.email,
-        role: user.role
-      });
-
-      // TODO: Implementar campo lastLoginAt no schema do Prisma se necessário
-      // await prisma.user.update({
-      //   where: { id: user.id },
-      //   data: { lastLoginAt: new Date() }
-      // });
-
-      // Log da ação
-      logger.info('Usuário fez login', {
-        userId: user.id,
-        email: user.email
-      });
+      const loginData: LoginData = req.body;
+      
+      const result = await AuthService.login(loginData);
 
       res.status(200).json({
         success: true,
         message: 'Login realizado com sucesso',
-        data: {
-          user: {
-            id: user.id,
-            name: user.name,
-            email: user.email,
-            role: user.role,
-            isActive: user.isActive
-          },
-          tokens
-        }
+        data: result
       });
-    } catch (error) {
-      logger.error('Erro ao fazer login', { error });
-      res.status(500).json({
+    } catch (error: any) {
+      logger.error('Erro ao fazer login', { error: error.message });
+      
+      // Determinar status code baseado no tipo de erro
+      let statusCode = 500;
+      if (error.message.includes('não encontrado') || 
+          error.message.includes('inválidas')) {
+        statusCode = 401;
+      } else if (error.message.includes('obrigatórios') || 
+                 error.message.includes('inválido')) {
+        statusCode = 400;
+      }
+
+      res.status(statusCode).json({
         success: false,
-        message: 'Erro interno do servidor'
+        message: error.message || 'Erro interno do servidor'
       });
     }
   }
 
   /**
-   * Renova o token de acesso usando refresh token
+   * Atualiza tokens usando refresh token
    */
   static async refreshToken(req: Request, res: Response): Promise<void> {
     try {
       const { refreshToken }: RefreshTokenData = req.body;
-
-      if (!refreshToken) {
-        res.status(400).json({
-          success: false,
-          message: 'Refresh token é obrigatório'
-        });
-        return;
-      }
-
-      // Verificar refresh token
-      const decoded = verifyRefreshToken(refreshToken);
-      if (!decoded) {
-        res.status(401).json({
-          success: false,
-          message: 'Refresh token inválido ou expirado'
-        });
-        return;
-      }
-
-      // Buscar usuário
-      const user = await prisma.user.findUnique({
-        where: { id: decoded.userId }
-      });
-
-      if (!user || !user.isActive) {
-        res.status(401).json({
-          success: false,
-          message: 'Usuário não encontrado ou inativo'
-        });
-        return;
-      }
-
-      // Gerar novos tokens
-      const tokens = generateTokens({
-        id: user.id,
-        email: user.email,
-        role: user.role
-      });
+      
+      const result = await AuthService.refreshTokens(refreshToken);
 
       res.status(200).json({
         success: true,
-        message: 'Token renovado com sucesso',
-        data: { tokens }
+        message: 'Tokens atualizados com sucesso',
+        data: result
       });
-    } catch (error) {
-      logger.error('Erro ao renovar token', { error });
-      res.status(500).json({
+    } catch (error: any) {
+      logger.error('Erro ao atualizar tokens', { error: error.message });
+      
+      // Determinar status code baseado no tipo de erro
+      let statusCode = 500;
+      if (error.message.includes('obrigatório') || 
+          error.message.includes('inválido') ||
+          error.message.includes('expirado')) {
+        statusCode = 401;
+      }
+
+      res.status(statusCode).json({
         success: false,
-        message: 'Erro interno do servidor'
+        message: error.message || 'Erro interno do servidor'
       });
     }
   }
@@ -359,6 +209,85 @@ export class AuthController {
       res.status(500).json({
         success: false,
         message: 'Erro interno do servidor'
+      });
+    }
+  }
+
+  /**
+   * Obtém informações do usuário logado
+   */
+  static async getProfile(req: Request, res: Response): Promise<void> {
+    try {
+      const userId = (req as any).user?.id;
+      
+      if (!userId) {
+        res.status(401).json({
+          success: false,
+          message: 'Token de acesso inválido'
+        });
+        return;
+      }
+
+      const user = await AuthService.getUserById(userId);
+
+      res.status(200).json({
+        success: true,
+        message: 'Perfil obtido com sucesso',
+        data: { user }
+      });
+    } catch (error: any) {
+      logger.error('Erro ao obter perfil', { error: error.message });
+      
+      let statusCode = 500;
+      if (error.message.includes('não encontrado')) {
+        statusCode = 404;
+      }
+
+      res.status(statusCode).json({
+        success: false,
+        message: error.message || 'Erro interno do servidor'
+      });
+    }
+  }
+
+  /**
+   * Altera senha do usuário
+   */
+  static async changePassword(req: Request, res: Response): Promise<void> {
+    try {
+      const userId = (req as any).user?.id;
+      const { currentPassword, newPassword } = req.body;
+      
+      if (!userId) {
+        res.status(401).json({
+          success: false,
+          message: 'Token de acesso inválido'
+        });
+        return;
+      }
+
+      await AuthService.changePassword(userId, currentPassword, newPassword);
+
+      res.status(200).json({
+        success: true,
+        message: 'Senha alterada com sucesso'
+      });
+    } catch (error: any) {
+      logger.error('Erro ao alterar senha', { error: error.message });
+      
+      let statusCode = 500;
+      if (error.message.includes('obrigatórios') || 
+          error.message.includes('senha deve')) {
+        statusCode = 400;
+      } else if (error.message.includes('atual incorreta')) {
+        statusCode = 401;
+      } else if (error.message.includes('não encontrado')) {
+        statusCode = 404;
+      }
+
+      res.status(statusCode).json({
+        success: false,
+        message: error.message || 'Erro interno do servidor'
       });
     }
   }

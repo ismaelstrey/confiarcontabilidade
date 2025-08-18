@@ -1,5 +1,6 @@
 import { Router } from 'express';
-import { authenticate } from '../middlewares/auth';
+import { AuthController } from '../controllers/authController';
+import { authenticateToken } from '../middlewares/auth';
 
 const router = Router();
 
@@ -40,14 +41,17 @@ const router = Router();
  *           type: string
  *           minLength: 6
  *           description: Senha do usuário
- *         phone:
+ *         role:
  *           type: string
- *           description: Telefone do usuário (opcional)
+ *           enum: [USER, ADMIN, MODERATOR]
+ *           description: Papel do usuário (opcional, padrão USER)
  *     AuthResponse:
  *       type: object
  *       properties:
  *         success:
  *           type: boolean
+ *         message:
+ *           type: string
  *         data:
  *           type: object
  *           properties:
@@ -60,8 +64,6 @@ const router = Router();
  *                   type: string
  *                 refreshToken:
  *                   type: string
- *         message:
- *           type: string
  *     User:
  *       type: object
  *       properties:
@@ -73,11 +75,6 @@ const router = Router();
  *           type: string
  *         role:
  *           type: string
- *           enum: [ADMIN, EDITOR, USER]
- *         avatar:
- *           type: string
- *         phone:
- *           type: string
  *         isActive:
  *           type: boolean
  *         createdAt:
@@ -86,6 +83,11 @@ const router = Router();
  *         updatedAt:
  *           type: string
  *           format: date-time
+ *   securitySchemes:
+ *     bearerAuth:
+ *       type: http
+ *       scheme: bearer
+ *       bearerFormat: JWT
  */
 
 /**
@@ -112,14 +114,7 @@ const router = Router();
  *       409:
  *         description: Email já cadastrado
  */
-router.post('/register', (req, res) => {
-  // TODO: Implementar controller de registro
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'POST /auth/register',
-  });
-});
+router.post('/register', AuthController.register);
 
 /**
  * @swagger
@@ -145,14 +140,7 @@ router.post('/register', (req, res) => {
  *       401:
  *         description: Credenciais inválidas
  */
-router.post('/login', (req, res) => {
-  // TODO: Implementar controller de login
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'POST /auth/login',
-  });
-});
+router.post('/login', AuthController.login);
 
 /**
  * @swagger
@@ -185,21 +173,17 @@ router.post('/login', (req, res) => {
  *                 data:
  *                   type: object
  *                   properties:
- *                     accessToken:
- *                       type: string
- *                     refreshToken:
- *                       type: string
+ *                     tokens:
+ *                       type: object
+ *                       properties:
+ *                         accessToken:
+ *                           type: string
+ *                         refreshToken:
+ *                           type: string
  *       401:
  *         description: Token de renovação inválido
  */
-router.post('/refresh-token', (req, res) => {
-  // TODO: Implementar controller de refresh token
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'POST /auth/refresh-token',
-  });
-});
+router.post('/refresh-token', AuthController.refreshToken);
 
 /**
  * @swagger
@@ -224,12 +208,11 @@ router.post('/refresh-token', (req, res) => {
  *       401:
  *         description: Token inválido
  */
-router.post('/logout', authenticate, (req, res) => {
-  // TODO: Implementar controller de logout
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'POST /auth/logout',
+router.post('/logout', authenticateToken, (req, res) => {
+  // TODO: Implementar blacklist de tokens para logout
+  res.status(200).json({
+    success: true,
+    message: 'Logout realizado com sucesso'
   });
 });
 
@@ -252,25 +235,23 @@ router.post('/logout', authenticate, (req, res) => {
  *                 success:
  *                   type: boolean
  *                 data:
- *                   $ref: '#/components/schemas/User'
+ *                   type: object
+ *                   properties:
+ *                     user:
+ *                       $ref: '#/components/schemas/User'
  *       401:
  *         description: Token inválido
  */
-router.get('/me', authenticate, (req, res) => {
-  // TODO: Implementar controller para obter dados do usuário
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'GET /auth/me',
-  });
-});
+router.get('/me', authenticateToken, AuthController.getProfile);
 
 /**
  * @swagger
- * /api/v1/auth/forgot-password:
+ * /api/v1/auth/change-password:
  *   post:
- *     summary: Solicitar recuperação de senha
+ *     summary: Alterar senha do usuário
  *     tags: [Autenticação]
+ *     security:
+ *       - bearerAuth: []
  *     requestBody:
  *       required: true
  *       content:
@@ -278,67 +259,33 @@ router.get('/me', authenticate, (req, res) => {
  *           schema:
  *             type: object
  *             required:
- *               - email
+ *               - currentPassword
+ *               - newPassword
  *             properties:
- *               email:
+ *               currentPassword:
  *                 type: string
- *                 format: email
- *                 description: Email para recuperação
- *     responses:
- *       200:
- *         description: Email de recuperação enviado
- *       400:
- *         description: Email inválido
- *       404:
- *         description: Email não encontrado
- */
-router.post('/forgot-password', (req, res) => {
-  // TODO: Implementar controller de recuperação de senha
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'POST /auth/forgot-password',
-  });
-});
-
-/**
- * @swagger
- * /api/v1/auth/reset-password:
- *   post:
- *     summary: Redefinir senha
- *     tags: [Autenticação]
- *     requestBody:
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             type: object
- *             required:
- *               - token
- *               - password
- *             properties:
- *               token:
- *                 type: string
- *                 description: Token de recuperação
- *               password:
+ *                 description: Senha atual
+ *               newPassword:
  *                 type: string
  *                 minLength: 6
  *                 description: Nova senha
  *     responses:
  *       200:
- *         description: Senha redefinida com sucesso
+ *         description: Senha alterada com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 message:
+ *                   type: string
  *       400:
- *         description: Token ou senha inválidos
+ *         description: Dados inválidos
  *       401:
- *         description: Token expirado
+ *         description: Senha atual incorreta ou token inválido
  */
-router.post('/reset-password', (req, res) => {
-  // TODO: Implementar controller de redefinição de senha
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'POST /auth/reset-password',
-  });
-});
+router.post('/change-password', authenticateToken, AuthController.changePassword);
 
 export default router;

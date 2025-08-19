@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { AuthService, RegisterData, LoginData } from '../services/authService';
+import { authService, RegisterData, LoginCredentials } from '../services/authService';
 import { prisma } from '../server';
 import logger from '../utils/logger';
 
@@ -19,7 +19,7 @@ export class AuthController {
     try {
       const registerData: RegisterData = req.body;
       
-      const result = await AuthService.register(registerData);
+      const result = await authService.register(registerData);
 
       res.status(201).json({
         success: true,
@@ -51,9 +51,9 @@ export class AuthController {
    */
   static async login(req: Request, res: Response): Promise<void> {
     try {
-      const loginData: LoginData = req.body;
+      const loginData: LoginCredentials = req.body;
       
-      const result = await AuthService.login(loginData);
+      const result = await authService.login(loginData);
 
       res.status(200).json({
         success: true,
@@ -87,7 +87,7 @@ export class AuthController {
     try {
       const { refreshToken }: RefreshTokenData = req.body;
       
-      const result = await AuthService.refreshTokens(refreshToken);
+      const result = await authService.refreshToken(refreshToken);
 
       res.status(200).json({
         success: true,
@@ -191,7 +191,7 @@ export class AuthController {
       });
 
       // Por segurança, sempre retornamos sucesso mesmo se o email não existir
-      if (user && user.isActive) {
+      if (user) {
         // Aqui você implementaria o envio de email com token de reset
         // Por enquanto, apenas logamos a ação
         logger.info('Solicitação de reset de senha', {
@@ -228,7 +228,7 @@ export class AuthController {
         return;
       }
 
-      const user = await AuthService.getUserById(userId);
+      const user = await authService.getUserById(userId);
 
       res.status(200).json({
         success: true,
@@ -266,7 +266,7 @@ export class AuthController {
         return;
       }
 
-      await AuthService.changePassword(userId, currentPassword, newPassword);
+      await authService.changePassword(userId, currentPassword, newPassword);
 
       res.status(200).json({
         success: true,

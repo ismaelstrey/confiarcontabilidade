@@ -1,20 +1,13 @@
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { PrismaClient } from '@prisma/client';
-import logger from '../utils/logger';
+import { logger } from '../middlewares/logger';
+import { ValidationError } from '../utils/error';
 
-const prisma = new PrismaClient();
-
-// Interfaces para tipos de dados
-export interface UserPayload {
-  id: string;
+// Interfaces para tipagem
+export interface LoginCredentials {
   email: string;
-  role: string;
-}
-
-export interface TokenPair {
-  accessToken: string;
-  refreshToken: string;
+  password: string;
 }
 
 export interface RegisterData {
@@ -24,353 +17,335 @@ export interface RegisterData {
   role?: string;
 }
 
-export interface LoginData {
+export interface TokenPayload {
+  userId: string;
   email: string;
-  password: string;
+  role: string;
 }
 
-/**
- * Serviço responsável pela autenticação e gerenciamento de tokens JWT
- */
+export interface AuthTokens {
+  accessToken: string;
+  refreshToken: string;
+}
+
+export interface UserResponse {
+  id: string;
+  name: string;
+  email: string;
+  role: string;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 export class AuthService {
-  private static readonly SALT_ROUNDS = 12;
-  private static readonly ACCESS_TOKEN_EXPIRES_IN = '15m';
-  private static readonly REFRESH_TOKEN_EXPIRES_IN = '7d';
+  private readonly JWT_SECRET: string;
+  private readonly JWT_REFRESH_SECRET: string;
+  private readonly JWT_EXPIRES_IN: string;
+  private readonly JWT_REFRESH_EXPIRES_IN: string;
+  private readonly SALT_ROUNDS: number;
+  private readonly prisma: PrismaClient;
+
+  constructor(prismaClient?: PrismaClient) {
+    this.JWT_SECRET = process.env.JWT_SECRET || 'default-secret';
+    this.JWT_REFRESH_SECRET = process.env.JWT_REFRESH_SECRET || 'default-refresh-secret';
+    this.JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || '15m';
+    this.JWT_REFRESH_EXPIRES_IN = process.env.JWT_REFRESH_EXPIRES_IN || '7d';
+    this.SALT_ROUNDS = parseInt(process.env.BCRYPT_SALT_ROUNDS || '12');
+    this.prisma = prismaClient || new PrismaClient();
+  }
 
   /**
-   * Gera um par de tokens (access e refresh) para o usuário
+   * Registra um novo usuário no sistema
    */
-  static generateTokens(payload: UserPayload): TokenPair {
-    const jwtSecret = process.env.JWT_SECRET;
-    const jwtRefreshSecret = process.env.JWT_REFRESH_SECRET;
+  async register(userData: RegisterData): Promise<{ user: UserResponse; tokens: AuthTokens }> {
+    try {
+      // Validar formato do email
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(userData.email)) {
+        throw new ValidationError('Formato de email inválido');
+      }
 
-    if (!jwtSecret || !jwtRefreshSecret) {
-      throw new Error('JWT secrets não configurados');
+      // Validar força da senha
+      if (userData.password.length < 8) {
+        throw new ValidationError('Senha deve ter pelo menos 8 caracteres');
+      }
+
+      // Verificar se o usuário já existe
+      const existingUser = await this.prisma.user.findUnique({
+        where: { email: userData.email }
+      });
+
+      if (existingUser) {
+        throw new Error('Usuário já existe com este email');
+      }
+
+      // Hash da senha
+      const hashedPassword = await bcrypt.hash(userData.password, this.SALT_ROUNDS);
+
+      // Criar usuário
+      const user = await this.prisma.user.create({
+        data: {
+          name: userData.name,
+          email: userData.email,
+          password: hashedPassword,
+          role: userData.role || 'USER'
+        }
+      });
+
+      // Gerar tokens
+      const tokens = this.generateTokens({
+        userId: user.id,
+        email: user.email,
+        role: user.role
+      });
+
+      // Salvar refresh token no banco
+      await this.saveRefreshToken(user.id, tokens.refreshToken);
+
+      logger.info(`Usuário registrado com sucesso: ${user.email}`);
+
+      return {
+        user: this.formatUserResponse(user),
+        tokens
+      };
+    } catch (error) {
+      logger.error('Erro ao registrar usuário:', error);
+      throw error;
     }
+  }
 
+  /**
+   * Autentica um usuário e retorna tokens
+   */
+  async login(credentials: LoginCredentials): Promise<{ user: UserResponse; tokens: AuthTokens }> {
+    try {
+      // Buscar usuário
+      const user = await this.prisma.user.findUnique({
+        where: { email: credentials.email }
+      });
+
+      if (!user) {
+        throw new Error('Credenciais inválidas');
+      }
+
+      // Verificar senha
+      const isPasswordValid = await bcrypt.compare(credentials.password, user.password);
+      if (!isPasswordValid) {
+        throw new Error('Credenciais inválidas');
+      }
+
+      // Gerar tokens
+      const tokens = this.generateTokens({
+        userId: user.id,
+        email: user.email,
+        role: user.role
+      });
+
+      // Salvar refresh token no banco
+      await this.saveRefreshToken(user.id, tokens.refreshToken);
+
+      logger.info(`Login realizado com sucesso: ${user.email}`);
+
+      return {
+        user: this.formatUserResponse(user),
+        tokens
+      };
+    } catch (error) {
+      logger.error('Erro ao fazer login:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Renova o access token usando o refresh token
+   */
+  async refreshToken(refreshToken: string): Promise<AuthTokens> {
+    try {
+      // Verificar refresh token
+      const payload = jwt.verify(refreshToken, this.JWT_REFRESH_SECRET) as TokenPayload;
+
+      // Verificar se o refresh token existe no banco
+      const storedToken = await this.prisma.refreshToken.findFirst({
+        where: {
+          token: refreshToken,
+          userId: payload.userId
+        }
+      });
+
+      if (!storedToken) {
+        throw new Error('Refresh token inválido');
+      }
+
+      // Buscar usuário
+      const user = await this.prisma.user.findUnique({
+        where: { id: payload.userId }
+      });
+
+      if (!user) {
+        throw new Error('Usuário não encontrado');
+      }
+
+      // Gerar novos tokens
+      const tokens = this.generateTokens({
+        userId: user.id,
+        email: user.email,
+        role: user.role
+      });
+
+      // Remover refresh token antigo e salvar o novo
+      await this.prisma.refreshToken.delete({
+        where: { id: storedToken.id }
+      });
+      await this.saveRefreshToken(user.id, tokens.refreshToken);
+
+      logger.info(`Token renovado para usuário: ${user.email}`);
+
+      return tokens;
+    } catch (error) {
+      logger.error('Erro ao renovar token:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Faz logout do usuário removendo o refresh token
+   */
+  async logout(refreshToken: string): Promise<void> {
+    try {
+      await this.prisma.refreshToken.deleteMany({
+        where: { token: refreshToken }
+      });
+
+      logger.info('Logout realizado com sucesso');
+    } catch (error) {
+      logger.error('Erro ao fazer logout:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Verifica se um access token é válido
+   */
+  async verifyAccessToken(token: string): Promise<TokenPayload> {
+    try {
+      const payload = jwt.verify(token, this.JWT_SECRET) as TokenPayload;
+      return payload;
+    } catch (error) {
+      logger.error('Token inválido:', error);
+      throw new Error('Token inválido');
+    }
+  }
+
+  /**
+   * Busca um usuário pelo ID
+   */
+  async getUserById(userId: string): Promise<UserResponse | null> {
+    try {
+      const user = await this.prisma.user.findUnique({
+        where: { id: userId }
+      });
+
+      return user ? this.formatUserResponse(user) : null;
+    } catch (error) {
+      logger.error('Erro ao buscar usuário:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Altera a senha do usuário
+   */
+  async changePassword(userId: string, currentPassword: string, newPassword: string): Promise<void> {
+    try {
+      // Buscar usuário
+      const user = await this.prisma.user.findUnique({
+        where: { id: userId }
+      });
+
+      if (!user) {
+        throw new Error('Usuário não encontrado');
+      }
+
+      // Verificar senha atual
+      const isCurrentPasswordValid = await bcrypt.compare(currentPassword, user.password);
+      if (!isCurrentPasswordValid) {
+        throw new Error('Senha atual incorreta');
+      }
+
+      // Hash da nova senha
+      const hashedNewPassword = await bcrypt.hash(newPassword, this.SALT_ROUNDS);
+
+      // Atualizar senha
+      await this.prisma.user.update({
+        where: { id: userId },
+        data: { password: hashedNewPassword }
+      });
+
+      // Remover todos os refresh tokens do usuário (forçar novo login)
+      await this.prisma.refreshToken.deleteMany({
+        where: { userId }
+      });
+
+      logger.info(`Senha alterada para usuário: ${user.email}`);
+    } catch (error) {
+      logger.error('Erro ao alterar senha:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Gera tokens de acesso e refresh
+   */
+  private generateTokens(payload: TokenPayload): AuthTokens {
     const accessToken = jwt.sign(
-      { userId: payload.id, email: payload.email, role: payload.role },
-      jwtSecret,
-      { expiresIn: this.ACCESS_TOKEN_EXPIRES_IN }
+      payload as object,
+      this.JWT_SECRET as jwt.Secret,
+      {
+        expiresIn: this.JWT_EXPIRES_IN
+      } as jwt.SignOptions
     );
 
     const refreshToken = jwt.sign(
-      { userId: payload.id, email: payload.email, role: payload.role },
-      jwtRefreshSecret,
-      { expiresIn: this.REFRESH_TOKEN_EXPIRES_IN }
+      payload as object,
+      this.JWT_REFRESH_SECRET as jwt.Secret,
+      {
+        expiresIn: this.JWT_REFRESH_EXPIRES_IN
+      } as jwt.SignOptions
     );
 
     return { accessToken, refreshToken };
   }
 
   /**
-   * Verifica e decodifica um refresh token
+   * Salva o refresh token no banco de dados
    */
-  static verifyRefreshToken(token: string): UserPayload {
-    const jwtRefreshSecret = process.env.JWT_REFRESH_SECRET;
-    
-    if (!jwtRefreshSecret) {
-      throw new Error('JWT refresh secret não configurado');
-    }
+  private async saveRefreshToken(userId: string, token: string): Promise<void> {
+    const expiresAt = new Date();
+    expiresAt.setDate(expiresAt.getDate() + 7); // 7 dias
 
-    try {
-      const decoded = jwt.verify(token, jwtRefreshSecret) as any;
-      return {
-        id: decoded.userId,
-        email: decoded.email,
-        role: decoded.role
-      };
-    } catch (error) {
-      throw new Error('Refresh token inválido');
-    }
-  }
-
-  /**
-   * Verifica e decodifica um access token
-   */
-  static verifyAccessToken(token: string): UserPayload {
-    const jwtSecret = process.env.JWT_SECRET;
-    
-    if (!jwtSecret) {
-      throw new Error('JWT secret não configurado');
-    }
-
-    try {
-      const decoded = jwt.verify(token, jwtSecret) as any;
-      return {
-        id: decoded.userId,
-        email: decoded.email,
-        role: decoded.role
-      };
-    } catch (error) {
-      throw new Error('Access token inválido');
-    }
-  }
-
-  /**
-   * Cria hash da senha
-   */
-  static async hashPassword(password: string): Promise<string> {
-    return bcrypt.hash(password, this.SALT_ROUNDS);
-  }
-
-  /**
-   * Compara senha com hash
-   */
-  static async comparePassword(password: string, hash: string): Promise<boolean> {
-    return bcrypt.compare(password, hash);
-  }
-
-  /**
-   * Valida formato do email
-   */
-  static validateEmail(email: string): boolean {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  }
-
-  /**
-   * Valida força da senha
-   */
-  static validatePassword(password: string): { isValid: boolean; message?: string } {
-    if (password.length < 8) {
-      return { isValid: false, message: 'A senha deve ter pelo menos 8 caracteres' };
-    }
-
-    if (!/(?=.*[a-z])/.test(password)) {
-      return { isValid: false, message: 'A senha deve conter pelo menos uma letra minúscula' };
-    }
-
-    if (!/(?=.*[A-Z])/.test(password)) {
-      return { isValid: false, message: 'A senha deve conter pelo menos uma letra maiúscula' };
-    }
-
-    if (!/(?=.*\d)/.test(password)) {
-      return { isValid: false, message: 'A senha deve conter pelo menos um número' };
-    }
-
-    return { isValid: true };
-  }
-
-  /**
-   * Registra um novo usuário
-   */
-  static async register(data: RegisterData) {
-    const { name, email, password, role = 'USER' } = data;
-
-    // Validações
-    if (!name || !email || !password) {
-      throw new Error('Nome, email e senha são obrigatórios');
-    }
-
-    if (!this.validateEmail(email)) {
-      throw new Error('Formato de email inválido');
-    }
-
-    const passwordValidation = this.validatePassword(password);
-    if (!passwordValidation.isValid) {
-      throw new Error(passwordValidation.message!);
-    }
-
-    // Verificar se usuário já existe
-    const existingUser = await prisma.user.findUnique({
-      where: { email }
-    });
-
-    if (existingUser) {
-      throw new Error('Usuário já existe com este email');
-    }
-
-    // Criar usuário
-    const hashedPassword = await this.hashPassword(password);
-    
-    const user = await prisma.user.create({
+    await this.prisma.refreshToken.create({
       data: {
-        name,
-        email,
-        password: hashedPassword,
-        role: role as any,
-        isActive: true
-      },
-      select: {
-        id: true,
-        name: true,
-        email: true,
-        role: true,
-        isActive: true,
-        createdAt: true
+        token,
+        userId,
+        expiresAt
       }
     });
-
-    // Gerar tokens
-    const tokens = this.generateTokens({
-      id: user.id,
-      email: user.email,
-      role: user.role
-    });
-
-    // Log da ação
-    logger.info('Novo usuário registrado', {
-      userId: user.id,
-      email: user.email,
-      role: user.role
-    });
-
-    return { user, tokens };
   }
 
   /**
-   * Realiza login do usuário
+   * Formata a resposta do usuário removendo dados sensíveis
    */
-  static async login(data: LoginData) {
-    const { email, password } = data;
-
-    // Validações
-    if (!email || !password) {
-      throw new Error('Email e senha são obrigatórios');
-    }
-
-    // Buscar usuário
-    const user = await prisma.user.findUnique({
-      where: { email }
-    });
-
-    if (!user) {
-      throw new Error('Credenciais inválidas');
-    }
-
-    if (!user.isActive) {
-      throw new Error('Conta desativada');
-    }
-
-    // Verificar senha
-    const isPasswordValid = await this.comparePassword(password, user.password);
-    if (!isPasswordValid) {
-      throw new Error('Credenciais inválidas');
-    }
-
-    // Gerar tokens
-    const tokens = this.generateTokens({
-      id: user.id,
-      email: user.email,
-      role: user.role
-    });
-
-    // Atualizar último login
-    await prisma.user.update({
-      where: { id: user.id },
-      data: { updatedAt: new Date() }
-    });
-
-    // Log da ação
-    logger.info('Login realizado', {
-      userId: user.id,
-      email: user.email
-    });
-
+  private formatUserResponse(user: any): UserResponse {
     return {
-      user: {
-        id: user.id,
-        name: user.name,
-        email: user.email,
-        role: user.role,
-        isActive: user.isActive,
-        createdAt: user.createdAt
-      },
-      tokens
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      role: user.role,
+      createdAt: user.createdAt,
+      updatedAt: user.updatedAt
     };
   }
-
-  /**
-   * Renova tokens usando refresh token
-   */
-  static async refreshTokens(refreshToken: string) {
-    try {
-      // Verificar refresh token
-      const payload = this.verifyRefreshToken(refreshToken);
-
-      // Buscar usuário
-      const user = await prisma.user.findUnique({
-        where: { id: payload.id }
-      });
-
-      if (!user || !user.isActive) {
-        throw new Error('Usuário não encontrado ou inativo');
-      }
-
-      // Gerar novos tokens
-      const tokens = this.generateTokens({
-        id: user.id,
-        email: user.email,
-        role: user.role
-      });
-
-      logger.info('Tokens renovados', { userId: user.id });
-
-      return tokens;
-    } catch (error) {
-      logger.error('Erro ao renovar tokens', { error });
-      throw new Error('Refresh token inválido');
-    }
-  }
-
-  /**
-   * Busca usuário por ID
-   */
-  static async getUserById(id: string) {
-    const user = await prisma.user.findUnique({
-      where: { id },
-      select: {
-        id: true,
-        name: true,
-        email: true,
-        role: true,
-        isActive: true,
-        createdAt: true,
-        updatedAt: true
-      }
-    });
-
-    if (!user) {
-      throw new Error('Usuário não encontrado');
-    }
-
-    return user;
-  }
-
-  /**
-   * Altera senha do usuário
-   */
-  static async changePassword(userId: string, currentPassword: string, newPassword: string) {
-    // Buscar usuário
-    const user = await prisma.user.findUnique({
-      where: { id: userId }
-    });
-
-    if (!user) {
-      throw new Error('Usuário não encontrado');
-    }
-
-    // Verificar senha atual
-    const isCurrentPasswordValid = await this.comparePassword(currentPassword, user.password);
-    if (!isCurrentPasswordValid) {
-      throw new Error('Senha atual incorreta');
-    }
-
-    // Validar nova senha
-    const passwordValidation = this.validatePassword(newPassword);
-    if (!passwordValidation.isValid) {
-      throw new Error(passwordValidation.message!);
-    }
-
-    // Atualizar senha
-    const hashedNewPassword = await this.hashPassword(newPassword);
-    
-    await prisma.user.update({
-      where: { id: userId },
-      data: { password: hashedNewPassword }
-    });
-
-    logger.info('Senha alterada', { userId });
-  }
 }
+
+// Exportar instância singleton
+export const authService = new AuthService();

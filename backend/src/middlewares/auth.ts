@@ -1,15 +1,10 @@
-import jwt from 'jsonwebtoken';
+
 import { Request, Response, NextFunction } from 'express';
-import { AuthService } from '../services/authService';
+import { authService } from '../services/authService';
 import logger from '../utils/logger';
 
 // Interface para payload do JWT
-interface JWTPayload {
-  id: string;
-  email: string;
-  role: string;
-  type: 'access' | 'refresh';
-}
+
 
 // Estender interface Request para incluir user
 declare global {
@@ -44,9 +39,9 @@ export const authenticateToken = async (
       return;
     }
 
-    // Verificar token usando AuthService
-    const decoded = AuthService.verifyAccessToken(token);
-    
+    // Verificar token usando authService
+    const decoded = await authService.verifyAccessToken(token);
+
     if (!decoded) {
       res.status(401).json({
         success: false,
@@ -56,8 +51,8 @@ export const authenticateToken = async (
     }
 
     // Buscar usuário no banco de dados
-    const user = await AuthService.getUserById(decoded.id);
-    
+    const user = await authService.getUserById(decoded.userId);
+
     if (!user) {
       res.status(401).json({
         success: false,

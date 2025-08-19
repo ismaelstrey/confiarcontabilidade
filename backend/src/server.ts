@@ -1,8 +1,8 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import { PrismaClient } from '@prisma/client';
-import swaggerUi from 'swagger-ui-express';
-import swaggerJsdoc from 'swagger-jsdoc';
+import { setupSwagger } from './docs/swagger';
+import { cacheService } from './services/cacheService';
 
 // Importar middlewares personalizados
 import { errorHandler } from './middlewares/errorHandler';
@@ -29,6 +29,7 @@ import calculatorRoutes from './routes/calculatorRoutes';
 import newsletterRoutes from './routes/newsletterRoutes';
 import uploadRoutes from './routes/uploadRoutes';
 import adminRoutes from './routes/adminRoutes';
+import cacheRoutes from './routes/cacheRoutes';
 
 // Carregar variáveis de ambiente
 dotenv.config();
@@ -43,40 +44,7 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 const API_VERSION = process.env.API_VERSION || 'v1';
 
-// Configuração do Swagger
-const swaggerOptions = {
-  definition: {
-    openapi: '3.0.0',
-    info: {
-      title: process.env.SWAGGER_TITLE || 'Contabilidade Igrejinha API',
-      version: process.env.SWAGGER_VERSION || '1.0.0',
-      description: process.env.SWAGGER_DESCRIPTION || 'API para sistema de contabilidade especializado em organizações religiosas',
-    },
-    servers: [
-      {
-        url: process.env.SWAGGER_SERVER_URL || `http://localhost:${PORT}`,
-        description: 'Servidor de desenvolvimento',
-      },
-    ],
-    components: {
-      securitySchemes: {
-        bearerAuth: {
-          type: 'http',
-          scheme: 'bearer',
-          bearerFormat: 'JWT',
-        },
-      },
-    },
-    security: [
-      {
-        bearerAuth: [],
-      },
-    ],
-  },
-  apis: ['./src/routes/*.ts', './src/controllers/*.ts'],
-};
-
-const swaggerSpec = swaggerJsdoc(swaggerOptions);
+// Configuração do Swagger será feita através do módulo dedicado
 
 // Middlewares de segurança
 app.use(customSecurityHeaders);
@@ -93,30 +61,38 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 // Middleware de logging
 app.use(requestLogger);
 
-// Documentação da API
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+// Configurar documentação da API
+setupSwagger(app);
 
-// Health check
+// Health check endpoint
 app.get('/health', async (req, res) => {
   try {
     // Verificar conexão com o banco de dados
     await prisma.$queryRaw`SELECT 1`;
     
-    res.status(200).json({
-      status: 'OK',
+    // Verificar conexão com o Redis
+    const redisStatus = cacheService.isRedisConnected() ? 'connected' : 'disconnected';
+    
+    const healthStatus = {
+      status: 'healthy',
       timestamp: new Date().toISOString(),
       uptime: process.uptime(),
-      environment: process.env.NODE_ENV,
-      version: process.env.SWAGGER_VERSION || '1.0.0',
-      database: 'Connected',
-    });
+      environment: process.env.NODE_ENV || 'development',
+      version: process.env.npm_package_version || '1.0.0',
+      database: 'connected',
+      cache: redisStatus,
+      memory: {
+        used: Math.round(process.memoryUsage().heapUsed / 1024 / 1024) + ' MB',
+        total: Math.round(process.memoryUsage().heapTotal / 1024 / 1024) + ' MB'
+      }
+    };
+    
+    res.status(200).json(healthStatus);
   } catch (error) {
-    logger.error('Health check failed:', error);
     res.status(503).json({
-      status: 'ERROR',
+      status: 'unhealthy',
       timestamp: new Date().toISOString(),
-      database: 'Disconnected',
-      error: 'Database connection failed',
+      error: 'Database connection failed'
     });
   }
 });
@@ -133,6 +109,7 @@ apiRouter.use('/calculator', apiRateLimit, calculatorRoutes);
 apiRouter.use('/newsletter', apiRateLimit, newsletterRoutes);
 apiRouter.use('/upload', uploadRateLimit, uploadRoutes);
 apiRouter.use('/admin', apiRateLimit, adminRoutes);
+apiRouter.use('/cache', apiRateLimit, cacheRoutes);
 
 // Usar o roteador da API
 app.use(`/api/${API_VERSION}`, apiRouter);
@@ -171,6 +148,14 @@ const startServer = async () => {
     await prisma.$connect();
     logger.info('Conectado ao banco de dados PostgreSQL');
 
+    // Conectar ao Redis (cache)
+    try {
+      await cacheService.connect();
+      logger.info('✅ Redis cache connected successfully');
+    } catch (error) {
+      logger.warn('⚠️ Redis cache connection failed, continuing without cache:', error);
+    }
+
     // Iniciar servidor
     app.listen(PORT, () => {
       logger.info(`🚀 Servidor rodando na porta ${PORT}`);
@@ -187,12 +172,14 @@ const startServer = async () => {
 // Tratamento de sinais de encerramento
 process.on('SIGINT', async () => {
   logger.info('Recebido SIGINT. Encerrando servidor graciosamente...');
+  await cacheService.disconnect();
   await prisma.$disconnect();
   process.exit(0);
 });
 
 process.on('SIGTERM', async () => {
   logger.info('Recebido SIGTERM. Encerrando servidor graciosamente...');
+  await cacheService.disconnect();
   await prisma.$disconnect();
   process.exit(0);
 });

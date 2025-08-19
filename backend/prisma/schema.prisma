@@ -33,3 +33,86 @@ model RefreshToken {
 
   @@map("refresh_tokens")
 }
+
+// Modelo de uploads
+model Upload {
+  id           String   @id @default(cuid())
+  originalName String
+  filename     String
+  mimetype     String
+  size         Int
+  path         String
+  url          String?
+  uploadedBy   String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  @@map("uploads")
+}
+
+// Modelo de categorias
+model Category {
+  id          String    @id @default(cuid())
+  name        String    @unique
+  slug        String    @unique
+  description String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  articles    Article[]
+
+  @@map("categories")
+}
+
+// Modelo de artigos
+model Article {
+  id          String           @id @default(cuid())
+  title       String
+  slug        String           @unique
+  content     String
+  excerpt     String?
+  published   Boolean          @default(false)
+  views       Int              @default(0)
+  authorId    String
+  categoryId  String?
+  featuredImage String?
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  category    Category?        @relation(fields: [categoryId], references: [id])
+  comments    ArticleComment[]
+
+  @@map("articles")
+}
+
+// Modelo de comentários de artigos
+model ArticleComment {
+  id        String   @id @default(cuid())
+  content   String
+  authorName String
+  authorEmail String
+  articleId String
+  approved  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  article   Article  @relation(fields: [articleId], references: [id], onDelete: Cascade)
+
+  @@map("article_comments")
+}
+
+// Modelo de contatos
+model Contact {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  subject   String
+  message   String
+  status    String   @default("PENDING") // PENDING, IN_PROGRESS, RESOLVED, CLOSED
+  priority  String   @default("MEDIUM") // LOW, MEDIUM, HIGH, URGENT
+  response  String?
+  respondedAt DateTime?
+  respondedBy String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("contacts")
+}

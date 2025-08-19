@@ -1,5 +1,10 @@
 import { Router, Request, Response } from 'express';
 import { authenticate, authorize, authorizeOwnerOrAdmin } from '../middlewares/auth';
+import {
+  userCacheMiddleware,
+  publicCacheMiddleware,
+  invalidateUserCacheMiddleware
+} from '../middlewares/cache';
 
 const router = Router();
 
@@ -137,12 +142,19 @@ const router = Router();
  *       401:
  *         description: Token inválido
  */
-router.get('/profile', authenticate, (req, res) => {
+router.get('/profile', authenticate, userCacheMiddleware(600), (req, res) => {
   // TODO: Implementar controller para obter perfil do usuário
   res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'GET /users/profile',
+    message: 'Endpoint não implementado',
+    endpoint: 'GET /api/v1/users/profile'
+  });
+});
+
+router.put('/profile', authenticate, invalidateUserCacheMiddleware((req) => (req as any).user?.id), (req, res) => {
+  // TODO: Implementar controller para atualizar perfil do usuário
+  res.status(501).json({
+    message: 'Endpoint não implementado',
+    endpoint: 'PUT /api/v1/users/profile'
   });
 });
 
@@ -444,12 +456,11 @@ router.delete('/delete-account', authenticate, (req, res) => {
  *       403:
  *         description: Sem permissão
  */
-router.get('/', authenticate, authorize('ADMIN'), (req, res) => {
+router.get('/', authenticate, authorize('ADMIN'), publicCacheMiddleware(300), (req, res) => {
   // TODO: Implementar controller para listar usuários
   res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'GET /users',
+    message: 'Endpoint não implementado',
+    endpoint: 'GET /api/v1/users'
   });
 });
 
@@ -533,12 +544,11 @@ router.post('/', authenticate, authorize('ADMIN'), (req, res) => {
  *       404:
  *         description: Usuário não encontrado
  */
-router.get('/:id', authenticate, authorizeOwnerOrAdmin, (req: Request, res: Response) => {
+router.get('/:id', authenticate, authorizeOwnerOrAdmin, userCacheMiddleware(600), (req: Request, res: Response) => {
   // TODO: Implementar controller para obter usuário por ID
   res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'GET /users/:id',
+    message: 'Endpoint não implementado',
+    endpoint: 'GET /api/v1/users/:id'
   });
 });
 
@@ -607,12 +617,11 @@ router.get('/:id', authenticate, authorizeOwnerOrAdmin, (req: Request, res: Resp
  *       409:
  *         description: Email já cadastrado
  */
-router.put('/:id', authenticate, authorize('ADMIN'), (req, res) => {
+router.put('/:id', authenticate, authorize('ADMIN'), invalidateUserCacheMiddleware((req) => req.params.id || ''), (req, res) => {
   // TODO: Implementar controller para atualizar usuário
   res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'PUT /users/:id',
+    message: 'Endpoint não implementado',
+    endpoint: 'PUT /api/v1/users/:id'
   });
 });
 
@@ -712,12 +721,11 @@ router.patch('/:id/status', authenticate, authorize('ADMIN'), (req, res) => {
  *       404:
  *         description: Usuário não encontrado
  */
-router.delete('/:id', authenticate, authorize('ADMIN'), (req, res) => {
+router.delete('/:id', authenticate, authorize('ADMIN'), invalidateUserCacheMiddleware((req) => req.params.id || ''), (req, res) => {
   // TODO: Implementar controller para excluir usuário
   res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'DELETE /users/:id',
+    message: 'Endpoint não implementado',
+    endpoint: 'DELETE /api/v1/users/:id'
   });
 });
 

@@ -1,5 +1,10 @@
 import { Router } from 'express';
 import { authenticate, authorize } from '../middlewares/auth';
+import {
+  publicCacheMiddleware,
+  articleCacheMiddleware,
+  invalidateArticleCacheMiddleware
+} from '../middlewares/cache';
 
 const router = Router();
 
@@ -222,7 +227,7 @@ const router = Router();
  *                         pages:
  *                           type: integer
  */
-router.get('/', (req, res) => {
+router.get('/', publicCacheMiddleware(1800), (req, res) => {
   // TODO: Implementar controller para listar artigos
   res.status(501).json({
     success: false,
@@ -259,7 +264,7 @@ router.get('/', (req, res) => {
  *       404:
  *         description: Artigo não encontrado
  */
-router.get('/:slug', (req, res) => {
+router.get('/:slug', articleCacheMiddleware(3600), (req, res) => {
   // TODO: Implementar controller para obter artigo por slug
   res.status(501).json({
     success: false,
@@ -303,7 +308,7 @@ router.get('/:slug', (req, res) => {
  *       403:
  *         description: Sem permissão
  */
-router.post('/', authenticate, authorize('ADMIN', 'EDITOR'), (req, res) => {
+router.post('/', authenticate, authorize('ADMIN', 'EDITOR'), invalidateArticleCacheMiddleware(), (req, res) => {
   // TODO: Implementar controller para criar artigo
   res.status(501).json({
     success: false,
@@ -356,7 +361,7 @@ router.post('/', authenticate, authorize('ADMIN', 'EDITOR'), (req, res) => {
  *       404:
  *         description: Artigo não encontrado
  */
-router.put('/:id', authenticate, authorize('ADMIN', 'EDITOR'), (req, res) => {
+router.put('/:id', authenticate, authorize('ADMIN', 'EDITOR'), invalidateArticleCacheMiddleware(), (req, res) => {
   // TODO: Implementar controller para atualizar artigo
   res.status(501).json({
     success: false,
@@ -399,7 +404,7 @@ router.put('/:id', authenticate, authorize('ADMIN', 'EDITOR'), (req, res) => {
  *       404:
  *         description: Artigo não encontrado
  */
-router.delete('/:id', authenticate, authorize('ADMIN', 'EDITOR'), (req, res) => {
+router.delete('/:id', authenticate, authorize('ADMIN', 'EDITOR'), invalidateArticleCacheMiddleware(), (req, res) => {
   // TODO: Implementar controller para excluir artigo
   res.status(501).json({
     success: false,
@@ -486,7 +491,7 @@ router.post('/:id/like', (req, res) => {
  *       404:
  *         description: Artigo não encontrado
  */
-router.get('/:id/comments', (req, res) => {
+router.get('/:id/comments', publicCacheMiddleware(600), (req, res) => {
   // TODO: Implementar controller para listar comentários
   res.status(501).json({
     success: false,

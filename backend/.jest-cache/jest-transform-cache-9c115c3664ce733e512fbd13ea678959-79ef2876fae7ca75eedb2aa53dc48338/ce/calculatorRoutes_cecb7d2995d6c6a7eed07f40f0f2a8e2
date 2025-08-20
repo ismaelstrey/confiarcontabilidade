@@ -1,0 +1,637 @@
+adc12db9c448f5f4e3b782f6802e96fe
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const calculatorController_1 = require("../controllers/calculatorController");
+const auth_1 = require("../middlewares/auth");
+const router = (0, express_1.Router)();
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     TaxCalculationRequest:
+ *       type: object
+ *       required:
+ *         - income
+ *         - deductions
+ *         - taxYear
+ *       properties:
+ *         income:
+ *           type: number
+ *           minimum: 0
+ *           description: Renda bruta anual
+ *         deductions:
+ *           type: number
+ *           minimum: 0
+ *           description: Deduções totais
+ *         taxYear:
+ *           type: integer
+ *           minimum: 2020
+ *           maximum: 2030
+ *           description: Ano fiscal
+ *         dependents:
+ *           type: integer
+ *           minimum: 0
+ *           default: 0
+ *           description: Número de dependentes
+ *         medicalExpenses:
+ *           type: number
+ *           minimum: 0
+ *           default: 0
+ *           description: Gastos médicos
+ *         educationExpenses:
+ *           type: number
+ *           minimum: 0
+ *           default: 0
+ *           description: Gastos com educação
+ *         pensionContributions:
+ *           type: number
+ *           minimum: 0
+ *           default: 0
+ *           description: Contribuições previdenciárias
+ *     TaxCalculationResult:
+ *       type: object
+ *       properties:
+ *         grossIncome:
+ *           type: number
+ *           description: Renda bruta
+ *         taxableIncome:
+ *           type: number
+ *           description: Renda tributável
+ *         totalDeductions:
+ *           type: number
+ *           description: Total de deduções
+ *         incomeTax:
+ *           type: number
+ *           description: Imposto de renda devido
+ *         netIncome:
+ *           type: number
+ *           description: Renda líquida
+ *         effectiveRate:
+ *           type: number
+ *           description: Alíquota efetiva (%)
+ *         marginalRate:
+ *           type: number
+ *           description: Alíquota marginal (%)
+ *         breakdown:
+ *           type: array
+ *           items:
+ *             type: object
+ *             properties:
+ *               bracket:
+ *                 type: string
+ *               rate:
+ *                 type: number
+ *               taxableAmount:
+ *                 type: number
+ *               tax:
+ *                 type: number
+ *         deductionsBreakdown:
+ *           type: object
+ *           properties:
+ *             standard:
+ *               type: number
+ *             dependents:
+ *               type: number
+ *             medical:
+ *               type: number
+ *             education:
+ *               type: number
+ *             pension:
+ *               type: number
+ *             other:
+ *               type: number
+ *     CompanyTaxRequest:
+ *       type: object
+ *       required:
+ *         - revenue
+ *         - expenses
+ *         - companyType
+ *       properties:
+ *         revenue:
+ *           type: number
+ *           minimum: 0
+ *           description: Receita bruta
+ *         expenses:
+ *           type: number
+ *           minimum: 0
+ *           description: Despesas operacionais
+ *         companyType:
+ *           type: string
+ *           enum: [MEI, SIMPLES, LUCRO_PRESUMIDO, LUCRO_REAL]
+ *           description: Tipo de empresa
+ *         employees:
+ *           type: integer
+ *           minimum: 0
+ *           default: 0
+ *           description: Número de funcionários
+ *         sector:
+ *           type: string
+ *           description: Setor de atividade
+ *     PayrollCalculationRequest:
+ *       type: object
+ *       required:
+ *         - grossSalary
+ *         - position
+ *       properties:
+ *         grossSalary:
+ *           type: number
+ *           minimum: 0
+ *           description: Salário bruto
+ *         position:
+ *           type: string
+ *           description: Cargo do funcionário
+ *         dependents:
+ *           type: integer
+ *           minimum: 0
+ *           default: 0
+ *           description: Número de dependentes
+ *         transportVoucher:
+ *           type: number
+ *           minimum: 0
+ *           default: 0
+ *           description: Vale transporte
+ *         mealVoucher:
+ *           type: number
+ *           minimum: 0
+ *           default: 0
+ *           description: Vale refeição
+ *         healthInsurance:
+ *           type: number
+ *           minimum: 0
+ *           default: 0
+ *           description: Plano de saúde
+ *         lifeInsurance:
+ *           type: number
+ *           minimum: 0
+ *           default: 0
+ *           description: Seguro de vida
+ */
+/**
+ * @swagger
+ * /api/v1/calculator/income-tax:
+ *   post:
+ *     summary: Calcular imposto de renda pessoa física
+ *     tags: [Calculadora]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/TaxCalculationRequest'
+ *     responses:
+ *       200:
+ *         description: Cálculo realizado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   $ref: '#/components/schemas/TaxCalculationResult'
+ *                 calculatedAt:
+ *                   type: string
+ *                   format: date-time
+ *       400:
+ *         description: Dados inválidos para cálculo
+ */
+router.post('/income-tax', (req, res) => calculatorController_1.calculatorController.calculateTaxes(req, res));
+/**
+ * @swagger
+ * /api/v1/calculator/company-tax:
+ *   post:
+ *     summary: Calcular impostos para pessoa jurídica
+ *     tags: [Calculadora]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/CompanyTaxRequest'
+ *     responses:
+ *       200:
+ *         description: Cálculo realizado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     revenue:
+ *                       type: number
+ *                     expenses:
+ *                       type: number
+ *                     profit:
+ *                       type: number
+ *                     taxes:
+ *                       type: object
+ *                       properties:
+ *                         irpj:
+ *                           type: number
+ *                         csll:
+ *                           type: number
+ *                         pis:
+ *                           type: number
+ *                         cofins:
+ *                           type: number
+ *                         iss:
+ *                           type: number
+ *                         total:
+ *                           type: number
+ *                     netProfit:
+ *                       type: number
+ *                     effectiveRate:
+ *                       type: number
+ *                 calculatedAt:
+ *                   type: string
+ *                   format: date-time
+ *       400:
+ *         description: Dados inválidos para cálculo
+ */
+router.post('/company-tax', (req, res) => calculatorController_1.calculatorController.calculateCompanyTax(req, res));
+/**
+ * @swagger
+ * /api/v1/calculator/payroll:
+ *   post:
+ *     summary: Calcular folha de pagamento
+ *     tags: [Calculadora]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/PayrollCalculationRequest'
+ *     responses:
+ *       200:
+ *         description: Cálculo realizado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     grossSalary:
+ *                       type: number
+ *                     deductions:
+ *                       type: object
+ *                       properties:
+ *                         inss:
+ *                           type: number
+ *                         irrf:
+ *                           type: number
+ *                         transportVoucher:
+ *                           type: number
+ *                         healthInsurance:
+ *                           type: number
+ *                         lifeInsurance:
+ *                           type: number
+ *                         other:
+ *                           type: number
+ *                         total:
+ *                           type: number
+ *                     benefits:
+ *                       type: object
+ *                       properties:
+ *                         mealVoucher:
+ *                           type: number
+ *                         transportVoucher:
+ *                           type: number
+ *                         familyAllowance:
+ *                           type: number
+ *                         total:
+ *                           type: number
+ *                     netSalary:
+ *                       type: number
+ *                     employerCosts:
+ *                       type: object
+ *                       properties:
+ *                         inss:
+ *                           type: number
+ *                         fgts:
+ *                           type: number
+ *                         rat:
+ *                           type: number
+ *                         salarioEducacao:
+ *                           type: number
+ *                         total:
+ *                           type: number
+ *                     totalCost:
+ *                       type: number
+ *                 calculatedAt:
+ *                   type: string
+ *                   format: date-time
+ *       400:
+ *         description: Dados inválidos para cálculo
+ */
+router.post('/payroll', (req, res) => calculatorController_1.calculatorController.calculatePayroll(req, res));
+/**
+ * @swagger
+ * /api/v1/calculator/simples-nacional:
+ *   post:
+ *     summary: Calcular impostos do Simples Nacional
+ *     tags: [Calculadora]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - revenue
+ *               - annex
+ *             properties:
+ *               revenue:
+ *                 type: number
+ *                 minimum: 0
+ *                 description: Receita bruta mensal
+ *               annex:
+ *                 type: string
+ *                 enum: [I, II, III, IV, V]
+ *                 description: Anexo do Simples Nacional
+ *               accumulatedRevenue:
+ *                 type: number
+ *                 minimum: 0
+ *                 description: Receita acumulada nos últimos 12 meses
+ *     responses:
+ *       200:
+ *         description: Cálculo realizado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     revenue:
+ *                       type: number
+ *                     annex:
+ *                       type: string
+ *                     bracket:
+ *                       type: string
+ *                     rate:
+ *                       type: number
+ *                     tax:
+ *                       type: number
+ *                     netRevenue:
+ *                       type: number
+ *                     breakdown:
+ *                       type: object
+ *                       properties:
+ *                         irpj:
+ *                           type: number
+ *                         csll:
+ *                           type: number
+ *                         pis:
+ *                           type: number
+ *                         cofins:
+ *                           type: number
+ *                         cpp:
+ *                           type: number
+ *                         icms:
+ *                           type: number
+ *                         iss:
+ *                           type: number
+ *                 calculatedAt:
+ *                   type: string
+ *                   format: date-time
+ *       400:
+ *         description: Dados inválidos para cálculo
+ */
+router.post('/simples-nacional', (req, res) => calculatorController_1.calculatorController.calculateSimplesNacional(req, res));
+/**
+ * @swagger
+ * /api/v1/calculator/depreciation:
+ *   post:
+ *     summary: Calcular depreciação de bens
+ *     tags: [Calculadora]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - assetValue
+ *               - assetType
+ *               - acquisitionDate
+ *             properties:
+ *               assetValue:
+ *                 type: number
+ *                 minimum: 0
+ *                 description: Valor do bem
+ *               assetType:
+ *                 type: string
+ *                 enum: [BUILDING, MACHINERY, VEHICLE, FURNITURE, COMPUTER, OTHER]
+ *                 description: Tipo do bem
+ *               acquisitionDate:
+ *                 type: string
+ *                 format: date
+ *                 description: Data de aquisição
+ *               residualValue:
+ *                 type: number
+ *                 minimum: 0
+ *                 default: 0
+ *                 description: Valor residual
+ *               method:
+ *                 type: string
+ *                 enum: [LINEAR, ACCELERATED, SUM_OF_YEARS]
+ *                 default: LINEAR
+ *                 description: Método de depreciação
+ *     responses:
+ *       200:
+ *         description: Cálculo realizado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     assetValue:
+ *                       type: number
+ *                     residualValue:
+ *                       type: number
+ *                     depreciableValue:
+ *                       type: number
+ *                     usefulLife:
+ *                       type: integer
+ *                     annualDepreciation:
+ *                       type: number
+ *                     monthlyDepreciation:
+ *                       type: number
+ *                     accumulatedDepreciation:
+ *                       type: number
+ *                     currentValue:
+ *                       type: number
+ *                     schedule:
+ *                       type: array
+ *                       items:
+ *                         type: object
+ *                         properties:
+ *                           year:
+ *                             type: integer
+ *                           depreciation:
+ *                             type: number
+ *                           accumulated:
+ *                             type: number
+ *                           bookValue:
+ *                             type: number
+ *                 calculatedAt:
+ *                   type: string
+ *                   format: date-time
+ *       400:
+ *         description: Dados inválidos para cálculo
+ */
+router.post('/depreciation', (req, res) => calculatorController_1.calculatorController.calculateDepreciation(req, res));
+/**
+ * @swagger
+ * /api/v1/calculator/loan:
+ *   post:
+ *     summary: Calcular financiamento/empréstimo
+ *     tags: [Calculadora]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - principal
+ *               - interestRate
+ *               - term
+ *             properties:
+ *               principal:
+ *                 type: number
+ *                 minimum: 0
+ *                 description: Valor principal
+ *               interestRate:
+ *                 type: number
+ *                 minimum: 0
+ *                 description: Taxa de juros (% ao mês)
+ *               term:
+ *                 type: integer
+ *                 minimum: 1
+ *                 description: Prazo em meses
+ *               paymentType:
+ *                 type: string
+ *                 enum: [SAC, PRICE, AMERICAN]
+ *                 default: PRICE
+ *                 description: Sistema de amortização
+ *     responses:
+ *       200:
+ *         description: Cálculo realizado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     principal:
+ *                       type: number
+ *                     interestRate:
+ *                       type: number
+ *                     term:
+ *                       type: integer
+ *                     paymentType:
+ *                       type: string
+ *                     monthlyPayment:
+ *                       type: number
+ *                     totalPayment:
+ *                       type: number
+ *                     totalInterest:
+ *                       type: number
+ *                     schedule:
+ *                       type: array
+ *                       items:
+ *                         type: object
+ *                         properties:
+ *                           month:
+ *                             type: integer
+ *                           payment:
+ *                             type: number
+ *                           principal:
+ *                             type: number
+ *                           interest:
+ *                             type: number
+ *                           balance:
+ *                             type: number
+ *                 calculatedAt:
+ *                   type: string
+ *                   format: date-time
+ *       400:
+ *         description: Dados inválidos para cálculo
+ */
+router.post('/loan', (req, res) => calculatorController_1.calculatorController.calculateLoan(req, res));
+// Rotas administrativas
+/**
+ * @swagger
+ * /api/v1/calculator/history:
+ *   get:
+ *     summary: Obter histórico de cálculos (Admin)
+ *     tags: [Calculadora]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           default: 1
+ *         description: Página
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           maximum: 100
+ *           default: 20
+ *         description: Itens por página
+ *     responses:
+ *       200:
+ *         description: Histórico obtido com sucesso
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ */
+router.get('/history', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), (req, res) => calculatorController_1.calculatorController.getCalculationHistory(req, res));
+/**
+ * @swagger
+ * /api/v1/calculator/statistics:
+ *   get:
+ *     summary: Obter estatísticas de cálculos (Admin)
+ *     tags: [Calculadora]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Estatísticas obtidas com sucesso
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ */
+router.get('/statistics', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), (req, res) => calculatorController_1.calculatorController.getCalculationStatistics(req, res));
+exports.default = router;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRDpcXGRldlxcY29udGFiaWxcXGNvbnRhYmlsLXNpdGVcXGJhY2tlbmRcXHNyY1xccm91dGVzXFxjYWxjdWxhdG9yUm91dGVzLnRzIiwibWFwcGluZ3MiOiI7O0FBQUEscUNBQWlDO0FBQ2pDLDhFQUEyRTtBQUMzRSw4Q0FBOEQ7QUFFOUQsTUFBTSxNQUFNLEdBQUcsSUFBQSxnQkFBTSxHQUFFLENBQUM7QUFFeEI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0dBaUtHO0FBRUg7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0dBNkJHO0FBQ0gsTUFBTSxDQUFDLElBQUksQ0FBQyxhQUFhLEVBQUUsQ0FBQyxHQUFHLEVBQUUsR0FBRyxFQUFFLEVBQUUsQ0FBQywyQ0FBb0IsQ0FBQyxjQUFjLENBQUMsR0FBRyxFQUFFLEdBQUcsQ0FBQyxDQUFDLENBQUM7QUFFeEY7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7R0F1REc7QUFDSCxNQUFNLENBQUMsSUFBSSxDQUFDLGNBQWMsRUFBRSxDQUFDLEdBQUcsRUFBRSxHQUFHLEVBQUUsRUFBRSxDQUFDLDJDQUFvQixDQUFDLG1CQUFtQixDQUFDLEdBQUcsRUFBRSxHQUFHLENBQUMsQ0FBQyxDQUFDO0FBRTlGOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztHQTZFRztBQUNILE1BQU0sQ0FBQyxJQUFJLENBQUMsVUFBVSxFQUFFLENBQUMsR0FBRyxFQUFFLEdBQUcsRUFBRSxFQUFFLENBQUMsMkNBQW9CLENBQUMsZ0JBQWdCLENBQUMsR0FBRyxFQUFFLEdBQUcsQ0FBQyxDQUFDLENBQUM7QUFFdkY7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztHQTJFRztBQUNILE1BQU0sQ0FBQyxJQUFJLENBQUMsbUJBQW1CLEVBQUUsQ0FBQyxHQUFHLEVBQUUsR0FBRyxFQUFFLEVBQUUsQ0FBQywyQ0FBb0IsQ0FBQyx3QkFBd0IsQ0FBQyxHQUFHLEVBQUUsR0FBRyxDQUFDLENBQUMsQ0FBQztBQUV4Rzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7R0FzRkc7QUFDSCxNQUFNLENBQUMsSUFBSSxDQUFDLGVBQWUsRUFBRSxDQUFDLEdBQUcsRUFBRSxHQUFHLEVBQUUsRUFBRSxDQUFDLDJDQUFvQixDQUFDLHFCQUFxQixDQUFDLEdBQUcsRUFBRSxHQUFHLENBQUMsQ0FBQyxDQUFDO0FBRWpHOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7R0FpRkc7QUFDSCxNQUFNLENBQUMsSUFBSSxDQUFDLE9BQU8sRUFBRSxDQUFDLEdBQUcsRUFBRSxHQUFHLEVBQUUsRUFBRSxDQUFDLDJDQUFvQixDQUFDLGFBQWEsQ0FBQyxHQUFHLEVBQUUsR0FBRyxDQUFDLENBQUMsQ0FBQztBQUVqRix3QkFBd0I7QUFFeEI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7R0ErQkc7QUFDSCxNQUFNLENBQUMsR0FBRyxDQUFDLFVBQVUsRUFBRSxtQkFBWSxFQUFFLElBQUEsZ0JBQVMsRUFBQyxPQUFPLENBQUMsRUFBRSxDQUFDLEdBQUcsRUFBRSxHQUFHLEVBQUUsRUFBRSxDQUFDLDJDQUFvQixDQUFDLHFCQUFxQixDQUFDLEdBQUcsRUFBRSxHQUFHLENBQUMsQ0FBQyxDQUFDO0FBRTdIOzs7Ozs7Ozs7Ozs7Ozs7R0FlRztBQUNILE1BQU0sQ0FBQyxHQUFHLENBQUMsYUFBYSxFQUFFLG1CQUFZLEVBQUUsSUFBQSxnQkFBUyxFQUFDLE9BQU8sQ0FBQyxFQUFFLENBQUMsR0FBRyxFQUFFLEdBQUcsRUFBRSxFQUFFLENBQUMsMkNBQW9CLENBQUMsd0JBQXdCLENBQUMsR0FBRyxFQUFFLEdBQUcsQ0FBQyxDQUFDLENBQUM7QUFFbkksa0JBQWUsTUFBTSxDQUFDIiwibmFtZXMiOltdLCJzb3VyY2VzIjpbIkQ6XFxkZXZcXGNvbnRhYmlsXFxjb250YWJpbC1zaXRlXFxiYWNrZW5kXFxzcmNcXHJvdXRlc1xcY2FsY3VsYXRvclJvdXRlcy50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBSb3V0ZXIgfSBmcm9tICdleHByZXNzJztcclxuaW1wb3J0IHsgY2FsY3VsYXRvckNvbnRyb2xsZXIgfSBmcm9tICcuLi9jb250cm9sbGVycy9jYWxjdWxhdG9yQ29udHJvbGxlcic7XHJcbmltcG9ydCB7IGF1dGhlbnRpY2F0ZSwgYXV0aG9yaXplIH0gZnJvbSAnLi4vbWlkZGxld2FyZXMvYXV0aCc7XHJcblxyXG5jb25zdCByb3V0ZXIgPSBSb3V0ZXIoKTtcclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiBjb21wb25lbnRzOlxyXG4gKiAgIHNjaGVtYXM6XHJcbiAqICAgICBUYXhDYWxjdWxhdGlvblJlcXVlc3Q6XHJcbiAqICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICByZXF1aXJlZDpcclxuICogICAgICAgICAtIGluY29tZVxyXG4gKiAgICAgICAgIC0gZGVkdWN0aW9uc1xyXG4gKiAgICAgICAgIC0gdGF4WWVhclxyXG4gKiAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgIGluY29tZTpcclxuICogICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgbWluaW11bTogMFxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IFJlbmRhIGJydXRhIGFudWFsXHJcbiAqICAgICAgICAgZGVkdWN0aW9uczpcclxuICogICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgbWluaW11bTogMFxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IERlZHXDp8O1ZXMgdG90YWlzXHJcbiAqICAgICAgICAgdGF4WWVhcjpcclxuICogICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgIG1pbmltdW06IDIwMjBcclxuICogICAgICAgICAgIG1heGltdW06IDIwMzBcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBBbm8gZmlzY2FsXHJcbiAqICAgICAgICAgZGVwZW5kZW50czpcclxuICogICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgIG1pbmltdW06IDBcclxuICogICAgICAgICAgIGRlZmF1bHQ6IDBcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBOw7ptZXJvIGRlIGRlcGVuZGVudGVzXHJcbiAqICAgICAgICAgbWVkaWNhbEV4cGVuc2VzOlxyXG4gKiAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICBtaW5pbXVtOiAwXHJcbiAqICAgICAgICAgICBkZWZhdWx0OiAwXHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogR2FzdG9zIG3DqWRpY29zXHJcbiAqICAgICAgICAgZWR1Y2F0aW9uRXhwZW5zZXM6XHJcbiAqICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgIG1pbmltdW06IDBcclxuICogICAgICAgICAgIGRlZmF1bHQ6IDBcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBHYXN0b3MgY29tIGVkdWNhw6fDo29cclxuICogICAgICAgICBwZW5zaW9uQ29udHJpYnV0aW9uczpcclxuICogICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgbWluaW11bTogMFxyXG4gKiAgICAgICAgICAgZGVmYXVsdDogMFxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IENvbnRyaWJ1acOnw7VlcyBwcmV2aWRlbmNpw6FyaWFzXHJcbiAqICAgICBUYXhDYWxjdWxhdGlvblJlc3VsdDpcclxuICogICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgZ3Jvc3NJbmNvbWU6XHJcbiAqICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBSZW5kYSBicnV0YVxyXG4gKiAgICAgICAgIHRheGFibGVJbmNvbWU6XHJcbiAqICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBSZW5kYSB0cmlidXTDoXZlbFxyXG4gKiAgICAgICAgIHRvdGFsRGVkdWN0aW9uczpcclxuICogICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IFRvdGFsIGRlIGRlZHXDp8O1ZXNcclxuICogICAgICAgICBpbmNvbWVUYXg6XHJcbiAqICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBJbXBvc3RvIGRlIHJlbmRhIGRldmlkb1xyXG4gKiAgICAgICAgIG5ldEluY29tZTpcclxuICogICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IFJlbmRhIGzDrXF1aWRhXHJcbiAqICAgICAgICAgZWZmZWN0aXZlUmF0ZTpcclxuICogICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IEFsw61xdW90YSBlZmV0aXZhICglKVxyXG4gKiAgICAgICAgIG1hcmdpbmFsUmF0ZTpcclxuICogICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IEFsw61xdW90YSBtYXJnaW5hbCAoJSlcclxuICogICAgICAgICBicmVha2Rvd246XHJcbiAqICAgICAgICAgICB0eXBlOiBhcnJheVxyXG4gKiAgICAgICAgICAgaXRlbXM6XHJcbiAqICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgIGJyYWNrZXQ6XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICByYXRlOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgdGF4YWJsZUFtb3VudDpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgIHRheDpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgIGRlZHVjdGlvbnNCcmVha2Rvd246XHJcbiAqICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgIHN0YW5kYXJkOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICBkZXBlbmRlbnRzOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICBtZWRpY2FsOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICBlZHVjYXRpb246XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgIHBlbnNpb246XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgIG90aGVyOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgQ29tcGFueVRheFJlcXVlc3Q6XHJcbiAqICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICByZXF1aXJlZDpcclxuICogICAgICAgICAtIHJldmVudWVcclxuICogICAgICAgICAtIGV4cGVuc2VzXHJcbiAqICAgICAgICAgLSBjb21wYW55VHlwZVxyXG4gKiAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgIHJldmVudWU6XHJcbiAqICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgIG1pbmltdW06IDBcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBSZWNlaXRhIGJydXRhXHJcbiAqICAgICAgICAgZXhwZW5zZXM6XHJcbiAqICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgIG1pbmltdW06IDBcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBEZXNwZXNhcyBvcGVyYWNpb25haXNcclxuICogICAgICAgICBjb21wYW55VHlwZTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZW51bTogW01FSSwgU0lNUExFUywgTFVDUk9fUFJFU1VNSURPLCBMVUNST19SRUFMXVxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IFRpcG8gZGUgZW1wcmVzYVxyXG4gKiAgICAgICAgIGVtcGxveWVlczpcclxuICogICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgIG1pbmltdW06IDBcclxuICogICAgICAgICAgIGRlZmF1bHQ6IDBcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBOw7ptZXJvIGRlIGZ1bmNpb27DoXJpb3NcclxuICogICAgICAgICBzZWN0b3I6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBTZXRvciBkZSBhdGl2aWRhZGVcclxuICogICAgIFBheXJvbGxDYWxjdWxhdGlvblJlcXVlc3Q6XHJcbiAqICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICByZXF1aXJlZDpcclxuICogICAgICAgICAtIGdyb3NzU2FsYXJ5XHJcbiAqICAgICAgICAgLSBwb3NpdGlvblxyXG4gKiAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgIGdyb3NzU2FsYXJ5OlxyXG4gKiAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICBtaW5pbXVtOiAwXHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogU2Fsw6FyaW8gYnJ1dG9cclxuICogICAgICAgICBwb3NpdGlvbjpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IENhcmdvIGRvIGZ1bmNpb27DoXJpb1xyXG4gKiAgICAgICAgIGRlcGVuZGVudHM6XHJcbiAqICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICBtaW5pbXVtOiAwXHJcbiAqICAgICAgICAgICBkZWZhdWx0OiAwXHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogTsO6bWVybyBkZSBkZXBlbmRlbnRlc1xyXG4gKiAgICAgICAgIHRyYW5zcG9ydFZvdWNoZXI6XHJcbiAqICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgIG1pbmltdW06IDBcclxuICogICAgICAgICAgIGRlZmF1bHQ6IDBcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBWYWxlIHRyYW5zcG9ydGVcclxuICogICAgICAgICBtZWFsVm91Y2hlcjpcclxuICogICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgbWluaW11bTogMFxyXG4gKiAgICAgICAgICAgZGVmYXVsdDogMFxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IFZhbGUgcmVmZWnDp8Ojb1xyXG4gKiAgICAgICAgIGhlYWx0aEluc3VyYW5jZTpcclxuICogICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgbWluaW11bTogMFxyXG4gKiAgICAgICAgICAgZGVmYXVsdDogMFxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IFBsYW5vIGRlIHNhw7pkZVxyXG4gKiAgICAgICAgIGxpZmVJbnN1cmFuY2U6XHJcbiAqICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgIG1pbmltdW06IDBcclxuICogICAgICAgICAgIGRlZmF1bHQ6IDBcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBTZWd1cm8gZGUgdmlkYVxyXG4gKi9cclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL2NhbGN1bGF0b3IvaW5jb21lLXRheDpcclxuICogICBwb3N0OlxyXG4gKiAgICAgc3VtbWFyeTogQ2FsY3VsYXIgaW1wb3N0byBkZSByZW5kYSBwZXNzb2EgZsOtc2ljYVxyXG4gKiAgICAgdGFnczogW0NhbGN1bGFkb3JhXVxyXG4gKiAgICAgcmVxdWVzdEJvZHk6XHJcbiAqICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgJHJlZjogJyMvY29tcG9uZW50cy9zY2hlbWFzL1RheENhbGN1bGF0aW9uUmVxdWVzdCdcclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBDw6FsY3VsbyByZWFsaXphZG8gY29tIHN1Y2Vzc29cclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICBzdWNjZXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBkYXRhOlxyXG4gKiAgICAgICAgICAgICAgICAgICAkcmVmOiAnIy9jb21wb25lbnRzL3NjaGVtYXMvVGF4Q2FsY3VsYXRpb25SZXN1bHQnXHJcbiAqICAgICAgICAgICAgICAgICBjYWxjdWxhdGVkQXQ6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgICBmb3JtYXQ6IGRhdGUtdGltZVxyXG4gKiAgICAgICA0MDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IERhZG9zIGludsOhbGlkb3MgcGFyYSBjw6FsY3Vsb1xyXG4gKi9cclxucm91dGVyLnBvc3QoJy9pbmNvbWUtdGF4JywgKHJlcSwgcmVzKSA9PiBjYWxjdWxhdG9yQ29udHJvbGxlci5jYWxjdWxhdGVUYXhlcyhyZXEsIHJlcykpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvY2FsY3VsYXRvci9jb21wYW55LXRheDpcclxuICogICBwb3N0OlxyXG4gKiAgICAgc3VtbWFyeTogQ2FsY3VsYXIgaW1wb3N0b3MgcGFyYSBwZXNzb2EganVyw61kaWNhXHJcbiAqICAgICB0YWdzOiBbQ2FsY3VsYWRvcmFdXHJcbiAqICAgICByZXF1ZXN0Qm9keTpcclxuICogICAgICAgcmVxdWlyZWQ6IHRydWVcclxuICogICAgICAgY29udGVudDpcclxuICogICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAkcmVmOiAnIy9jb21wb25lbnRzL3NjaGVtYXMvQ29tcGFueVRheFJlcXVlc3QnXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogQ8OhbGN1bG8gcmVhbGl6YWRvIGNvbSBzdWNlc3NvXHJcbiAqICAgICAgICAgY29udGVudDpcclxuICogICAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgc3VjY2VzczpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgZGF0YTpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgcmV2ZW51ZTpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgIGV4cGVuc2VzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgcHJvZml0OlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgdGF4ZXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIGlycGo6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIGNzbGw6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIHBpczpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgY29maW5zOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICBpc3M6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIHRvdGFsOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgIG5ldFByb2ZpdDpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgIGVmZmVjdGl2ZVJhdGU6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgIGNhbGN1bGF0ZWRBdDpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICAgIGZvcm1hdDogZGF0ZS10aW1lXHJcbiAqICAgICAgIDQwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRGFkb3MgaW52w6FsaWRvcyBwYXJhIGPDoWxjdWxvXHJcbiAqL1xyXG5yb3V0ZXIucG9zdCgnL2NvbXBhbnktdGF4JywgKHJlcSwgcmVzKSA9PiBjYWxjdWxhdG9yQ29udHJvbGxlci5jYWxjdWxhdGVDb21wYW55VGF4KHJlcSwgcmVzKSk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS9jYWxjdWxhdG9yL3BheXJvbGw6XHJcbiAqICAgcG9zdDpcclxuICogICAgIHN1bW1hcnk6IENhbGN1bGFyIGZvbGhhIGRlIHBhZ2FtZW50b1xyXG4gKiAgICAgdGFnczogW0NhbGN1bGFkb3JhXVxyXG4gKiAgICAgcmVxdWVzdEJvZHk6XHJcbiAqICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgJHJlZjogJyMvY29tcG9uZW50cy9zY2hlbWFzL1BheXJvbGxDYWxjdWxhdGlvblJlcXVlc3QnXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogQ8OhbGN1bG8gcmVhbGl6YWRvIGNvbSBzdWNlc3NvXHJcbiAqICAgICAgICAgY29udGVudDpcclxuICogICAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgc3VjY2VzczpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgZGF0YTpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgZ3Jvc3NTYWxhcnk6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICBkZWR1Y3Rpb25zOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICBpbnNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICBpcnJmOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICB0cmFuc3BvcnRWb3VjaGVyOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICBoZWFsdGhJbnN1cmFuY2U6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIGxpZmVJbnN1cmFuY2U6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIG90aGVyOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICB0b3RhbDpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICBiZW5lZml0czpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgbWVhbFZvdWNoZXI6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIHRyYW5zcG9ydFZvdWNoZXI6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIGZhbWlseUFsbG93YW5jZTpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgdG90YWw6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgbmV0U2FsYXJ5OlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgZW1wbG95ZXJDb3N0czpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgaW5zczpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgZmd0czpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgcmF0OlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICBzYWxhcmlvRWR1Y2FjYW86XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIHRvdGFsOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgIHRvdGFsQ29zdDpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgY2FsY3VsYXRlZEF0OlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgICAgZm9ybWF0OiBkYXRlLXRpbWVcclxuICogICAgICAgNDAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBEYWRvcyBpbnbDoWxpZG9zIHBhcmEgY8OhbGN1bG9cclxuICovXHJcbnJvdXRlci5wb3N0KCcvcGF5cm9sbCcsIChyZXEsIHJlcykgPT4gY2FsY3VsYXRvckNvbnRyb2xsZXIuY2FsY3VsYXRlUGF5cm9sbChyZXEsIHJlcykpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvY2FsY3VsYXRvci9zaW1wbGVzLW5hY2lvbmFsOlxyXG4gKiAgIHBvc3Q6XHJcbiAqICAgICBzdW1tYXJ5OiBDYWxjdWxhciBpbXBvc3RvcyBkbyBTaW1wbGVzIE5hY2lvbmFsXHJcbiAqICAgICB0YWdzOiBbQ2FsY3VsYWRvcmFdXHJcbiAqICAgICByZXF1ZXN0Qm9keTpcclxuICogICAgICAgcmVxdWlyZWQ6IHRydWVcclxuICogICAgICAgY29udGVudDpcclxuICogICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgcmVxdWlyZWQ6XHJcbiAqICAgICAgICAgICAgICAgLSByZXZlbnVlXHJcbiAqICAgICAgICAgICAgICAgLSBhbm5leFxyXG4gKiAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgIHJldmVudWU6XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgIG1pbmltdW06IDBcclxuICogICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBSZWNlaXRhIGJydXRhIG1lbnNhbFxyXG4gKiAgICAgICAgICAgICAgIGFubmV4OlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICBlbnVtOiBbSSwgSUksIElJSSwgSVYsIFZdXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogQW5leG8gZG8gU2ltcGxlcyBOYWNpb25hbFxyXG4gKiAgICAgICAgICAgICAgIGFjY3VtdWxhdGVkUmV2ZW51ZTpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgbWluaW11bTogMFxyXG4gKiAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IFJlY2VpdGEgYWN1bXVsYWRhIG5vcyDDumx0aW1vcyAxMiBtZXNlc1xyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEPDoWxjdWxvIHJlYWxpemFkbyBjb20gc3VjZXNzb1xyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgIHN1Y2Nlc3M6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgIGRhdGE6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgIHJldmVudWU6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICBhbm5leDpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgICAgIGJyYWNrZXQ6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgICAgICByYXRlOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgdGF4OlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgbmV0UmV2ZW51ZTpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgIGJyZWFrZG93bjpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgaXJwajpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgY3NsbDpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgcGlzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICBjb2ZpbnM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIGNwcDpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgaWNtczpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgaXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgY2FsY3VsYXRlZEF0OlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgICAgZm9ybWF0OiBkYXRlLXRpbWVcclxuICogICAgICAgNDAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBEYWRvcyBpbnbDoWxpZG9zIHBhcmEgY8OhbGN1bG9cclxuICovXHJcbnJvdXRlci5wb3N0KCcvc2ltcGxlcy1uYWNpb25hbCcsIChyZXEsIHJlcykgPT4gY2FsY3VsYXRvckNvbnRyb2xsZXIuY2FsY3VsYXRlU2ltcGxlc05hY2lvbmFsKHJlcSwgcmVzKSk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS9jYWxjdWxhdG9yL2RlcHJlY2lhdGlvbjpcclxuICogICBwb3N0OlxyXG4gKiAgICAgc3VtbWFyeTogQ2FsY3VsYXIgZGVwcmVjaWHDp8OjbyBkZSBiZW5zXHJcbiAqICAgICB0YWdzOiBbQ2FsY3VsYWRvcmFdXHJcbiAqICAgICByZXF1ZXN0Qm9keTpcclxuICogICAgICAgcmVxdWlyZWQ6IHRydWVcclxuICogICAgICAgY29udGVudDpcclxuICogICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgcmVxdWlyZWQ6XHJcbiAqICAgICAgICAgICAgICAgLSBhc3NldFZhbHVlXHJcbiAqICAgICAgICAgICAgICAgLSBhc3NldFR5cGVcclxuICogICAgICAgICAgICAgICAtIGFjcXVpc2l0aW9uRGF0ZVxyXG4gKiAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgIGFzc2V0VmFsdWU6XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgIG1pbmltdW06IDBcclxuICogICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBWYWxvciBkbyBiZW1cclxuICogICAgICAgICAgICAgICBhc3NldFR5cGU6XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgIGVudW06IFtCVUlMRElORywgTUFDSElORVJZLCBWRUhJQ0xFLCBGVVJOSVRVUkUsIENPTVBVVEVSLCBPVEhFUl1cclxuICogICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBUaXBvIGRvIGJlbVxyXG4gKiAgICAgICAgICAgICAgIGFjcXVpc2l0aW9uRGF0ZTpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgZm9ybWF0OiBkYXRlXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogRGF0YSBkZSBhcXVpc2nDp8Ojb1xyXG4gKiAgICAgICAgICAgICAgIHJlc2lkdWFsVmFsdWU6XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgIG1pbmltdW06IDBcclxuICogICAgICAgICAgICAgICAgIGRlZmF1bHQ6IDBcclxuICogICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBWYWxvciByZXNpZHVhbFxyXG4gKiAgICAgICAgICAgICAgIG1ldGhvZDpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgZW51bTogW0xJTkVBUiwgQUNDRUxFUkFURUQsIFNVTV9PRl9ZRUFSU11cclxuICogICAgICAgICAgICAgICAgIGRlZmF1bHQ6IExJTkVBUlxyXG4gKiAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IE3DqXRvZG8gZGUgZGVwcmVjaWHDp8Ojb1xyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEPDoWxjdWxvIHJlYWxpemFkbyBjb20gc3VjZXNzb1xyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgIHN1Y2Nlc3M6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgIGRhdGE6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgIGFzc2V0VmFsdWU6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICByZXNpZHVhbFZhbHVlOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgZGVwcmVjaWFibGVWYWx1ZTpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgIHVzZWZ1bExpZmU6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgYW5udWFsRGVwcmVjaWF0aW9uOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgbW9udGhseURlcHJlY2lhdGlvbjpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgIGFjY3VtdWxhdGVkRGVwcmVjaWF0aW9uOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgY3VycmVudFZhbHVlOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgc2NoZWR1bGU6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBhcnJheVxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgaXRlbXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHllYXI6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgZGVwcmVjaWF0aW9uOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgYWNjdW11bGF0ZWQ6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICBib29rVmFsdWU6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgIGNhbGN1bGF0ZWRBdDpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICAgIGZvcm1hdDogZGF0ZS10aW1lXHJcbiAqICAgICAgIDQwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRGFkb3MgaW52w6FsaWRvcyBwYXJhIGPDoWxjdWxvXHJcbiAqL1xyXG5yb3V0ZXIucG9zdCgnL2RlcHJlY2lhdGlvbicsIChyZXEsIHJlcykgPT4gY2FsY3VsYXRvckNvbnRyb2xsZXIuY2FsY3VsYXRlRGVwcmVjaWF0aW9uKHJlcSwgcmVzKSk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS9jYWxjdWxhdG9yL2xvYW46XHJcbiAqICAgcG9zdDpcclxuICogICAgIHN1bW1hcnk6IENhbGN1bGFyIGZpbmFuY2lhbWVudG8vZW1wcsOpc3RpbW9cclxuICogICAgIHRhZ3M6IFtDYWxjdWxhZG9yYV1cclxuICogICAgIHJlcXVlc3RCb2R5OlxyXG4gKiAgICAgICByZXF1aXJlZDogdHJ1ZVxyXG4gKiAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICByZXF1aXJlZDpcclxuICogICAgICAgICAgICAgICAtIHByaW5jaXBhbFxyXG4gKiAgICAgICAgICAgICAgIC0gaW50ZXJlc3RSYXRlXHJcbiAqICAgICAgICAgICAgICAgLSB0ZXJtXHJcbiAqICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgcHJpbmNpcGFsOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICBtaW5pbXVtOiAwXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogVmFsb3IgcHJpbmNpcGFsXHJcbiAqICAgICAgICAgICAgICAgaW50ZXJlc3RSYXRlOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICBtaW5pbXVtOiAwXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogVGF4YSBkZSBqdXJvcyAoJSBhbyBtw6pzKVxyXG4gKiAgICAgICAgICAgICAgIHRlcm06XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgICAgICBtaW5pbXVtOiAxXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogUHJhem8gZW0gbWVzZXNcclxuICogICAgICAgICAgICAgICBwYXltZW50VHlwZTpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgZW51bTogW1NBQywgUFJJQ0UsIEFNRVJJQ0FOXVxyXG4gKiAgICAgICAgICAgICAgICAgZGVmYXVsdDogUFJJQ0VcclxuICogICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBTaXN0ZW1hIGRlIGFtb3J0aXphw6fDo29cclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBDw6FsY3VsbyByZWFsaXphZG8gY29tIHN1Y2Vzc29cclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICBzdWNjZXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBkYXRhOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgICBwcmluY2lwYWw6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICBpbnRlcmVzdFJhdGU6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICB0ZXJtOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgIHBheW1lbnRUeXBlOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICAgICAgbW9udGhseVBheW1lbnQ6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICB0b3RhbFBheW1lbnQ6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICB0b3RhbEludGVyZXN0OlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgc2NoZWR1bGU6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBhcnJheVxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgaXRlbXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIG1vbnRoOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHBheW1lbnQ6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICBwcmluY2lwYWw6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICBpbnRlcmVzdDpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIGJhbGFuY2U6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgIGNhbGN1bGF0ZWRBdDpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICAgIGZvcm1hdDogZGF0ZS10aW1lXHJcbiAqICAgICAgIDQwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRGFkb3MgaW52w6FsaWRvcyBwYXJhIGPDoWxjdWxvXHJcbiAqL1xyXG5yb3V0ZXIucG9zdCgnL2xvYW4nLCAocmVxLCByZXMpID0+IGNhbGN1bGF0b3JDb250cm9sbGVyLmNhbGN1bGF0ZUxvYW4ocmVxLCByZXMpKTtcclxuXHJcbi8vIFJvdGFzIGFkbWluaXN0cmF0aXZhc1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvY2FsY3VsYXRvci9oaXN0b3J5OlxyXG4gKiAgIGdldDpcclxuICogICAgIHN1bW1hcnk6IE9idGVyIGhpc3TDs3JpY28gZGUgY8OhbGN1bG9zIChBZG1pbilcclxuICogICAgIHRhZ3M6IFtDYWxjdWxhZG9yYV1cclxuICogICAgIHNlY3VyaXR5OlxyXG4gKiAgICAgICAtIGJlYXJlckF1dGg6IFtdXHJcbiAqICAgICBwYXJhbWV0ZXJzOlxyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IHBhZ2VcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICBtaW5pbXVtOiAxXHJcbiAqICAgICAgICAgICBkZWZhdWx0OiAxXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFDDoWdpbmFcclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiBsaW1pdFxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgIG1pbmltdW06IDFcclxuICogICAgICAgICAgIG1heGltdW06IDEwMFxyXG4gKiAgICAgICAgICAgZGVmYXVsdDogMjBcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogSXRlbnMgcG9yIHDDoWdpbmFcclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBIaXN0w7NyaWNvIG9idGlkbyBjb20gc3VjZXNzb1xyXG4gKiAgICAgICA0MDE6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGludsOhbGlkb1xyXG4gKiAgICAgICA0MDM6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFNlbSBwZXJtaXNzw6NvXHJcbiAqL1xyXG5yb3V0ZXIuZ2V0KCcvaGlzdG9yeScsIGF1dGhlbnRpY2F0ZSwgYXV0aG9yaXplKCdBRE1JTicpLCAocmVxLCByZXMpID0+IGNhbGN1bGF0b3JDb250cm9sbGVyLmdldENhbGN1bGF0aW9uSGlzdG9yeShyZXEsIHJlcykpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvY2FsY3VsYXRvci9zdGF0aXN0aWNzOlxyXG4gKiAgIGdldDpcclxuICogICAgIHN1bW1hcnk6IE9idGVyIGVzdGF0w61zdGljYXMgZGUgY8OhbGN1bG9zIChBZG1pbilcclxuICogICAgIHRhZ3M6IFtDYWxjdWxhZG9yYV1cclxuICogICAgIHNlY3VyaXR5OlxyXG4gKiAgICAgICAtIGJlYXJlckF1dGg6IFtdXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRXN0YXTDrXN0aWNhcyBvYnRpZGFzIGNvbSBzdWNlc3NvXHJcbiAqICAgICAgIDQwMTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gaW52w6FsaWRvXHJcbiAqICAgICAgIDQwMzpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogU2VtIHBlcm1pc3PDo29cclxuICovXHJcbnJvdXRlci5nZXQoJy9zdGF0aXN0aWNzJywgYXV0aGVudGljYXRlLCBhdXRob3JpemUoJ0FETUlOJyksIChyZXEsIHJlcykgPT4gY2FsY3VsYXRvckNvbnRyb2xsZXIuZ2V0Q2FsY3VsYXRpb25TdGF0aXN0aWNzKHJlcSwgcmVzKSk7XHJcblxyXG5leHBvcnQgZGVmYXVsdCByb3V0ZXI7Il0sInZlcnNpb24iOjN9

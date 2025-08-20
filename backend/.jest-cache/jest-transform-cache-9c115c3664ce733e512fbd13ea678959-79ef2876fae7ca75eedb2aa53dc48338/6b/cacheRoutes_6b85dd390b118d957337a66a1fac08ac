@@ -1,0 +1,625 @@
+e8d33be4fc3e51c0e30b23c6f4fc8957
+"use strict";
+
+/* istanbul ignore next */
+function cov_14lrtiewn1() {
+  var path = "D:\\dev\\contabil\\contabil-site\\backend\\src\\routes\\cacheRoutes.ts";
+  var hash = "4e1851efd4b094fd1c989ad596804e5d80e6d662";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "D:\\dev\\contabil\\contabil-site\\backend\\src\\routes\\cacheRoutes.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 18
+        },
+        end: {
+          line: 3,
+          column: 36
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 15
+        },
+        end: {
+          line: 4,
+          column: 45
+        }
+      },
+      "3": {
+        start: {
+          line: 5,
+          column: 33
+        },
+        end: {
+          line: 5,
+          column: 81
+        }
+      },
+      "4": {
+        start: {
+          line: 6,
+          column: 16
+        },
+        end: {
+          line: 6,
+          column: 47
+        }
+      },
+      "5": {
+        start: {
+          line: 7,
+          column: 15
+        },
+        end: {
+          line: 7,
+          column: 38
+        }
+      },
+      "6": {
+        start: {
+          line: 57,
+          column: 0
+        },
+        end: {
+          line: 57,
+          column: 93
+        }
+      },
+      "7": {
+        start: {
+          line: 97,
+          column: 0
+        },
+        end: {
+          line: 97,
+          column: 126
+        }
+      },
+      "8": {
+        start: {
+          line: 135,
+          column: 0
+        },
+        end: {
+          line: 135,
+          column: 104
+        }
+      },
+      "9": {
+        start: {
+          line: 182,
+          column: 0
+        },
+        end: {
+          line: 182,
+          column: 129
+        }
+      },
+      "10": {
+        start: {
+          line: 235,
+          column: 0
+        },
+        end: {
+          line: 235,
+          column: 153
+        }
+      },
+      "11": {
+        start: {
+          line: 265,
+          column: 0
+        },
+        end: {
+          line: 276,
+          column: 3
+        }
+      },
+      "12": {
+        start: {
+          line: 267,
+          column: 4
+        },
+        end: {
+          line: 275,
+          column: 7
+        }
+      },
+      "13": {
+        start: {
+          line: 306,
+          column: 0
+        },
+        end: {
+          line: 317,
+          column: 3
+        }
+      },
+      "14": {
+        start: {
+          line: 308,
+          column: 4
+        },
+        end: {
+          line: 316,
+          column: 7
+        }
+      },
+      "15": {
+        start: {
+          line: 318,
+          column: 0
+        },
+        end: {
+          line: 318,
+          column: 25
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 265,
+            column: 75
+          },
+          end: {
+            line: 265,
+            column: 76
+          }
+        },
+        loc: {
+          start: {
+            line: 265,
+            column: 89
+          },
+          end: {
+            line: 276,
+            column: 1
+          }
+        },
+        line: 265
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 306,
+            column: 32
+          },
+          end: {
+            line: 306,
+            column: 33
+          }
+        },
+        loc: {
+          start: {
+            line: 306,
+            column: 46
+          },
+          end: {
+            line: 317,
+            column: 1
+          }
+        },
+        line: 306
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0,
+      "15": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0
+    },
+    b: {},
+    inputSourceMap: {
+      file: "D:\\dev\\contabil\\contabil-site\\backend\\src\\routes\\cacheRoutes.ts",
+      mappings: ";;AAAA,qCAAiC;AACjC,8CAA8D;AAC9D,kFAA+E;AAC/E,gDAA6D;AAE7D,MAAM,MAAM,GAAG,IAAA,gBAAM,GAAE,CAAC;AAExB;;;;;;;;;;;;;;;;;;;;;;;;GAwBG;AAEH;;;;;;;;;;;;;;;;;;;;;;;GAuBG;AACH,MAAM,CAAC,GAAG,CAAC,cAAc,EAAE,+CAAsB,CAAC,gBAAgB,CAAC,CAAC;AAEpE;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAsCG;AACH,MAAM,CAAC,GAAG,CAAC,cAAc,EAAE,mBAAY,EAAE,+CAAsB,CAAC,4BAA4B,CAAC,CAAC;AAE9F;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAoCG;AACH,MAAM,CAAC,GAAG,CAAC,oBAAoB,EAAE,+CAAsB,CAAC,qBAAqB,CAAC,CAAC;AAE/E;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GA6CG;AACH,MAAM,CAAC,GAAG,CAAC,kBAAkB,EAAE,mBAAY,EAAE,+CAAsB,CAAC,2BAA2B,CAAC,CAAC;AAEjG;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAmDG;AACH,MAAM,CAAC,IAAI,CAAC,iBAAiB,EAAE,mBAAY,EAAE,IAAA,gBAAS,EAAC,OAAO,CAAC,EAAE,+CAAsB,CAAC,mBAAmB,CAAC,CAAC;AAE7G;;;;;;;;;;;;;;;;;;;;;;;;;;;;GA4BG;AACH,MAAM,CAAC,GAAG,CAAC,qBAAqB,EAAE,IAAA,6BAAqB,EAAC,GAAG,CAAC,EAAE,CAAC,GAAG,EAAE,GAAG,EAAE,EAAE;IACzE,8DAA8D;IAC9D,GAAG,CAAC,IAAI,CAAC;QACP,OAAO,EAAE,IAAI;QACb,IAAI,EAAE;YACJ,OAAO,EAAE,kDAAkD;YAC3D,SAAS,EAAE,IAAI,IAAI,EAAE,CAAC,WAAW,EAAE;YACnC,MAAM,EAAE,KAAK,CAAC,iCAAiC;SAChD;QACD,OAAO,EAAE,2BAA2B;KACrC,CAAC,CAAC;AACL,CAAC,CAAC,CAAC;AAEH;;;;;;;;;;;;;;;;;;;;;;;;;;;;GA4BG;AACH,MAAM,CAAC,GAAG,CAAC,mBAAmB,EAAE,CAAC,GAAG,EAAE,GAAG,EAAE,EAAE;IAC3C,gCAAgC;IAChC,GAAG,CAAC,IAAI,CAAC;QACP,OAAO,EAAE,IAAI;QACb,IAAI,EAAE;YACJ,OAAO,EAAE,+BAA+B;YACxC,SAAS,EAAE,IAAI,IAAI,EAAE,CAAC,WAAW,EAAE;YACnC,MAAM,EAAE,KAAK;SACd;QACD,OAAO,EAAE,sBAAsB;KAChC,CAAC,CAAC;AACL,CAAC,CAAC,CAAC;AAEH,kBAAe,MAAM,CAAC",
+      names: [],
+      sources: ["D:\\dev\\contabil\\contabil-site\\backend\\src\\routes\\cacheRoutes.ts"],
+      sourcesContent: ["import { Router } from 'express';\r\nimport { authenticate, authorize } from '../middlewares/auth';\r\nimport { CacheExampleController } from '../controllers/cacheExampleController';\r\nimport { publicCacheMiddleware } from '../middlewares/cache';\r\n\r\nconst router = Router();\r\n\r\n/**\r\n * @swagger\r\n * components:\r\n *   schemas:\r\n *     CacheResponse:\r\n *       type: object\r\n *       properties:\r\n *         success:\r\n *           type: boolean\r\n *         data:\r\n *           type: object\r\n *         cached:\r\n *           type: boolean\r\n *         message:\r\n *           type: string\r\n *     CacheManagement:\r\n *       type: object\r\n *       properties:\r\n *         pattern:\r\n *           type: string\r\n *           description: Padrao para limpeza de cache\r\n *         key:\r\n *           type: string\r\n *           description: Chave espec\xEDfica para opera\xE7\xF5es de cache\r\n */\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/cache/example/{id}:\r\n *   get:\r\n *     summary: Exemplo de uso de cache manual\r\n *     description: Demonstra como usar cache diretamente no controller\r\n *     tags: [Cache Examples]\r\n *     parameters:\r\n *       - in: path\r\n *         name: id\r\n *         required: true\r\n *         schema:\r\n *           type: string\r\n *         description: ID do item a ser buscado\r\n *     responses:\r\n *       200:\r\n *         description: Dados obtidos com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               $ref: '#/components/schemas/CacheResponse'\r\n *       500:\r\n *         description: Erro interno do servidor\r\n */\r\nrouter.get('/example/:id', CacheExampleController.getDataWithCache);\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/cache/example/{id}:\r\n *   put:\r\n *     summary: Exemplo de atualiza\xE7\xE3o com invalida\xE7\xE3o de cache\r\n *     description: Demonstra como invalidar cache ap\xF3s opera\xE7\xF5es de escrita\r\n *     tags: [Cache Examples]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     parameters:\r\n *       - in: path\r\n *         name: id\r\n *         required: true\r\n *         schema:\r\n *           type: string\r\n *         description: ID do item a ser atualizado\r\n *     requestBody:\r\n *       required: true\r\n *       content:\r\n *         application/json:\r\n *           schema:\r\n *             type: object\r\n *             properties:\r\n *               name:\r\n *                 type: string\r\n *               description:\r\n *                 type: string\r\n *     responses:\r\n *       200:\r\n *         description: Dados atualizados com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               $ref: '#/components/schemas/CacheResponse'\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       500:\r\n *         description: Erro interno do servidor\r\n */\r\nrouter.put('/example/:id', authenticate, CacheExampleController.updateDataAndInvalidateCache);\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/cache/dynamic/{type}/{id}:\r\n *   get:\r\n *     summary: Exemplo de cache com TTL din\xE2mico\r\n *     description: Demonstra como definir TTL baseado no tipo de dados\r\n *     tags: [Cache Examples]\r\n *     parameters:\r\n *       - in: path\r\n *         name: type\r\n *         required: true\r\n *         schema:\r\n *           type: string\r\n *           enum: [static, dynamic, realtime]\r\n *         description: Tipo de dados (define o TTL)\r\n *       - in: path\r\n *         name: id\r\n *         required: true\r\n *         schema:\r\n *           type: string\r\n *         description: ID do item\r\n *     responses:\r\n *       200:\r\n *         description: Dados obtidos com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               allOf:\r\n *                 - $ref: '#/components/schemas/CacheResponse'\r\n *                 - type: object\r\n *                   properties:\r\n *                     ttl:\r\n *                       type: integer\r\n *                       description: Tempo de vida do cache em segundos\r\n *       500:\r\n *         description: Erro interno do servidor\r\n */\r\nrouter.get('/dynamic/:type/:id', CacheExampleController.getDataWithDynamicTTL);\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/cache/conditional/{id}:\r\n *   get:\r\n *     summary: Exemplo de cache condicional\r\n *     description: Demonstra como cachear baseado em condi\xE7\xF5es espec\xEDficas\r\n *     tags: [Cache Examples]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     parameters:\r\n *       - in: path\r\n *         name: id\r\n *         required: true\r\n *         schema:\r\n *           type: string\r\n *         description: ID do item\r\n *       - in: query\r\n *         name: useCache\r\n *         schema:\r\n *           type: string\r\n *           enum: [true, false]\r\n *           default: true\r\n *         description: Se deve usar cache ou n\xE3o\r\n *       - in: header\r\n *         name: Cache-Control\r\n *         schema:\r\n *           type: string\r\n *         description: Controle de cache HTTP\r\n *     responses:\r\n *       200:\r\n *         description: Dados obtidos com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               allOf:\r\n *                 - $ref: '#/components/schemas/CacheResponse'\r\n *                 - type: object\r\n *                   properties:\r\n *                     cacheUsed:\r\n *                       type: boolean\r\n *                       description: Se o cache foi utilizado\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       500:\r\n *         description: Erro interno do servidor\r\n */\r\nrouter.get('/conditional/:id', authenticate, CacheExampleController.getDataWithConditionalCache);\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/cache/manage/{action}:\r\n *   post:\r\n *     summary: Gerenciar cache\r\n *     description: Permite limpar cache, verificar status, etc.\r\n *     tags: [Cache Management]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     parameters:\r\n *       - in: path\r\n *         name: action\r\n *         required: true\r\n *         schema:\r\n *           type: string\r\n *           enum: [clear, status, check]\r\n *         description: A\xE7\xE3o a ser executada\r\n *     requestBody:\r\n *       content:\r\n *         application/json:\r\n *           schema:\r\n *             $ref: '#/components/schemas/CacheManagement'\r\n *     responses:\r\n *       200:\r\n *         description: Opera\xE7\xE3o executada com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 message:\r\n *                   type: string\r\n *                 connected:\r\n *                   type: boolean\r\n *                   description: Status da conex\xE3o Redis (apenas para action=status)\r\n *                 exists:\r\n *                   type: boolean\r\n *                   description: Se a chave existe (apenas para action=check)\r\n *                 ttl:\r\n *                   type: integer\r\n *                   description: TTL da chave em segundos (apenas para action=check)\r\n *       400:\r\n *         description: Par\xE2metros inv\xE1lidos\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       403:\r\n *         description: Sem permiss\xE3o\r\n *       500:\r\n *         description: Erro interno do servidor\r\n */\r\nrouter.post('/manage/:action', authenticate, authorize('ADMIN'), CacheExampleController.manageCacheEndpoint);\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/cache/middleware-example:\r\n *   get:\r\n *     summary: Exemplo de uso do middleware de cache\r\n *     description: Demonstra como o middleware de cache funciona automaticamente\r\n *     tags: [Cache Examples]\r\n *     responses:\r\n *       200:\r\n *         description: Dados obtidos com sucesso (pode vir do cache)\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 data:\r\n *                   type: object\r\n *                   properties:\r\n *                     message:\r\n *                       type: string\r\n *                     timestamp:\r\n *                       type: string\r\n *                     cached:\r\n *                       type: boolean\r\n *                 message:\r\n *                   type: string\r\n */\r\nrouter.get('/middleware-example', publicCacheMiddleware(300), (req, res) => {\r\n  // Este endpoint ser\xE1 automaticamente cacheado pelo middleware\r\n  res.json({\r\n    success: true,\r\n    data: {\r\n      message: 'Este endpoint usa middleware de cache autom\xE1tico',\r\n      timestamp: new Date().toISOString(),\r\n      cached: false // Ser\xE1 true quando vier do cache\r\n    },\r\n    message: 'Dados obtidos com sucesso'\r\n  });\r\n});\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/cache/no-cache-example:\r\n *   get:\r\n *     summary: Exemplo sem cache\r\n *     description: Endpoint que nunca usa cache para compara\xE7\xE3o\r\n *     tags: [Cache Examples]\r\n *     responses:\r\n *       200:\r\n *         description: Dados sempre frescos\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 data:\r\n *                   type: object\r\n *                   properties:\r\n *                     message:\r\n *                       type: string\r\n *                     timestamp:\r\n *                       type: string\r\n *                     cached:\r\n *                       type: boolean\r\n *                 message:\r\n *                   type: string\r\n */\r\nrouter.get('/no-cache-example', (req, res) => {\r\n  // Este endpoint nunca usa cache\r\n  res.json({\r\n    success: true,\r\n    data: {\r\n      message: 'Este endpoint nunca usa cache',\r\n      timestamp: new Date().toISOString(),\r\n      cached: false\r\n    },\r\n    message: 'Dados sempre frescos'\r\n  });\r\n});\r\n\r\nexport default router;"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "4e1851efd4b094fd1c989ad596804e5d80e6d662"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_14lrtiewn1 = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_14lrtiewn1();
+cov_14lrtiewn1().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const express_1 =
+/* istanbul ignore next */
+(cov_14lrtiewn1().s[1]++, require("express"));
+const auth_1 =
+/* istanbul ignore next */
+(cov_14lrtiewn1().s[2]++, require("../middlewares/auth"));
+const cacheExampleController_1 =
+/* istanbul ignore next */
+(cov_14lrtiewn1().s[3]++, require("../controllers/cacheExampleController"));
+const cache_1 =
+/* istanbul ignore next */
+(cov_14lrtiewn1().s[4]++, require("../middlewares/cache"));
+const router =
+/* istanbul ignore next */
+(cov_14lrtiewn1().s[5]++, (0, express_1.Router)());
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     CacheResponse:
+ *       type: object
+ *       properties:
+ *         success:
+ *           type: boolean
+ *         data:
+ *           type: object
+ *         cached:
+ *           type: boolean
+ *         message:
+ *           type: string
+ *     CacheManagement:
+ *       type: object
+ *       properties:
+ *         pattern:
+ *           type: string
+ *           description: Padrao para limpeza de cache
+ *         key:
+ *           type: string
+ *           description: Chave específica para operações de cache
+ */
+/**
+ * @swagger
+ * /api/v1/cache/example/{id}:
+ *   get:
+ *     summary: Exemplo de uso de cache manual
+ *     description: Demonstra como usar cache diretamente no controller
+ *     tags: [Cache Examples]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID do item a ser buscado
+ *     responses:
+ *       200:
+ *         description: Dados obtidos com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/CacheResponse'
+ *       500:
+ *         description: Erro interno do servidor
+ */
+/* istanbul ignore next */
+cov_14lrtiewn1().s[6]++;
+router.get('/example/:id', cacheExampleController_1.CacheExampleController.getDataWithCache);
+/**
+ * @swagger
+ * /api/v1/cache/example/{id}:
+ *   put:
+ *     summary: Exemplo de atualização com invalidação de cache
+ *     description: Demonstra como invalidar cache após operações de escrita
+ *     tags: [Cache Examples]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID do item a ser atualizado
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               description:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Dados atualizados com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/CacheResponse'
+ *       401:
+ *         description: Token inválido
+ *       500:
+ *         description: Erro interno do servidor
+ */
+/* istanbul ignore next */
+cov_14lrtiewn1().s[7]++;
+router.put('/example/:id', auth_1.authenticate, cacheExampleController_1.CacheExampleController.updateDataAndInvalidateCache);
+/**
+ * @swagger
+ * /api/v1/cache/dynamic/{type}/{id}:
+ *   get:
+ *     summary: Exemplo de cache com TTL dinâmico
+ *     description: Demonstra como definir TTL baseado no tipo de dados
+ *     tags: [Cache Examples]
+ *     parameters:
+ *       - in: path
+ *         name: type
+ *         required: true
+ *         schema:
+ *           type: string
+ *           enum: [static, dynamic, realtime]
+ *         description: Tipo de dados (define o TTL)
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID do item
+ *     responses:
+ *       200:
+ *         description: Dados obtidos com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               allOf:
+ *                 - $ref: '#/components/schemas/CacheResponse'
+ *                 - type: object
+ *                   properties:
+ *                     ttl:
+ *                       type: integer
+ *                       description: Tempo de vida do cache em segundos
+ *       500:
+ *         description: Erro interno do servidor
+ */
+/* istanbul ignore next */
+cov_14lrtiewn1().s[8]++;
+router.get('/dynamic/:type/:id', cacheExampleController_1.CacheExampleController.getDataWithDynamicTTL);
+/**
+ * @swagger
+ * /api/v1/cache/conditional/{id}:
+ *   get:
+ *     summary: Exemplo de cache condicional
+ *     description: Demonstra como cachear baseado em condições específicas
+ *     tags: [Cache Examples]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID do item
+ *       - in: query
+ *         name: useCache
+ *         schema:
+ *           type: string
+ *           enum: [true, false]
+ *           default: true
+ *         description: Se deve usar cache ou não
+ *       - in: header
+ *         name: Cache-Control
+ *         schema:
+ *           type: string
+ *         description: Controle de cache HTTP
+ *     responses:
+ *       200:
+ *         description: Dados obtidos com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               allOf:
+ *                 - $ref: '#/components/schemas/CacheResponse'
+ *                 - type: object
+ *                   properties:
+ *                     cacheUsed:
+ *                       type: boolean
+ *                       description: Se o cache foi utilizado
+ *       401:
+ *         description: Token inválido
+ *       500:
+ *         description: Erro interno do servidor
+ */
+/* istanbul ignore next */
+cov_14lrtiewn1().s[9]++;
+router.get('/conditional/:id', auth_1.authenticate, cacheExampleController_1.CacheExampleController.getDataWithConditionalCache);
+/**
+ * @swagger
+ * /api/v1/cache/manage/{action}:
+ *   post:
+ *     summary: Gerenciar cache
+ *     description: Permite limpar cache, verificar status, etc.
+ *     tags: [Cache Management]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: action
+ *         required: true
+ *         schema:
+ *           type: string
+ *           enum: [clear, status, check]
+ *         description: Ação a ser executada
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/CacheManagement'
+ *     responses:
+ *       200:
+ *         description: Operação executada com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 message:
+ *                   type: string
+ *                 connected:
+ *                   type: boolean
+ *                   description: Status da conexão Redis (apenas para action=status)
+ *                 exists:
+ *                   type: boolean
+ *                   description: Se a chave existe (apenas para action=check)
+ *                 ttl:
+ *                   type: integer
+ *                   description: TTL da chave em segundos (apenas para action=check)
+ *       400:
+ *         description: Parâmetros inválidos
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ *       500:
+ *         description: Erro interno do servidor
+ */
+/* istanbul ignore next */
+cov_14lrtiewn1().s[10]++;
+router.post('/manage/:action', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), cacheExampleController_1.CacheExampleController.manageCacheEndpoint);
+/**
+ * @swagger
+ * /api/v1/cache/middleware-example:
+ *   get:
+ *     summary: Exemplo de uso do middleware de cache
+ *     description: Demonstra como o middleware de cache funciona automaticamente
+ *     tags: [Cache Examples]
+ *     responses:
+ *       200:
+ *         description: Dados obtidos com sucesso (pode vir do cache)
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     message:
+ *                       type: string
+ *                     timestamp:
+ *                       type: string
+ *                     cached:
+ *                       type: boolean
+ *                 message:
+ *                   type: string
+ */
+/* istanbul ignore next */
+cov_14lrtiewn1().s[11]++;
+router.get('/middleware-example', (0, cache_1.publicCacheMiddleware)(300), (req, res) => {
+  /* istanbul ignore next */
+  cov_14lrtiewn1().f[0]++;
+  cov_14lrtiewn1().s[12]++;
+  // Este endpoint será automaticamente cacheado pelo middleware
+  res.json({
+    success: true,
+    data: {
+      message: 'Este endpoint usa middleware de cache automático',
+      timestamp: new Date().toISOString(),
+      cached: false // Será true quando vier do cache
+    },
+    message: 'Dados obtidos com sucesso'
+  });
+});
+/**
+ * @swagger
+ * /api/v1/cache/no-cache-example:
+ *   get:
+ *     summary: Exemplo sem cache
+ *     description: Endpoint que nunca usa cache para comparação
+ *     tags: [Cache Examples]
+ *     responses:
+ *       200:
+ *         description: Dados sempre frescos
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     message:
+ *                       type: string
+ *                     timestamp:
+ *                       type: string
+ *                     cached:
+ *                       type: boolean
+ *                 message:
+ *                   type: string
+ */
+/* istanbul ignore next */
+cov_14lrtiewn1().s[13]++;
+router.get('/no-cache-example', (req, res) => {
+  /* istanbul ignore next */
+  cov_14lrtiewn1().f[1]++;
+  cov_14lrtiewn1().s[14]++;
+  // Este endpoint nunca usa cache
+  res.json({
+    success: true,
+    data: {
+      message: 'Este endpoint nunca usa cache',
+      timestamp: new Date().toISOString(),
+      cached: false
+    },
+    message: 'Dados sempre frescos'
+  });
+});
+/* istanbul ignore next */
+cov_14lrtiewn1().s[15]++;
+exports.default = router;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJleHByZXNzXzEiLCJjb3ZfMTRscnRpZXduMSIsInMiLCJyZXF1aXJlIiwiYXV0aF8xIiwiY2FjaGVFeGFtcGxlQ29udHJvbGxlcl8xIiwiY2FjaGVfMSIsInJvdXRlciIsIlJvdXRlciIsImdldCIsIkNhY2hlRXhhbXBsZUNvbnRyb2xsZXIiLCJnZXREYXRhV2l0aENhY2hlIiwicHV0IiwiYXV0aGVudGljYXRlIiwidXBkYXRlRGF0YUFuZEludmFsaWRhdGVDYWNoZSIsImdldERhdGFXaXRoRHluYW1pY1RUTCIsImdldERhdGFXaXRoQ29uZGl0aW9uYWxDYWNoZSIsInBvc3QiLCJhdXRob3JpemUiLCJtYW5hZ2VDYWNoZUVuZHBvaW50IiwicHVibGljQ2FjaGVNaWRkbGV3YXJlIiwicmVxIiwicmVzIiwiZiIsImpzb24iLCJzdWNjZXNzIiwiZGF0YSIsIm1lc3NhZ2UiLCJ0aW1lc3RhbXAiLCJEYXRlIiwidG9JU09TdHJpbmciLCJjYWNoZWQiLCJleHBvcnRzIiwiZGVmYXVsdCJdLCJzb3VyY2VzIjpbIkQ6XFxkZXZcXGNvbnRhYmlsXFxjb250YWJpbC1zaXRlXFxiYWNrZW5kXFxzcmNcXHJvdXRlc1xcY2FjaGVSb3V0ZXMudHMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgUm91dGVyIH0gZnJvbSAnZXhwcmVzcyc7XHJcbmltcG9ydCB7IGF1dGhlbnRpY2F0ZSwgYXV0aG9yaXplIH0gZnJvbSAnLi4vbWlkZGxld2FyZXMvYXV0aCc7XHJcbmltcG9ydCB7IENhY2hlRXhhbXBsZUNvbnRyb2xsZXIgfSBmcm9tICcuLi9jb250cm9sbGVycy9jYWNoZUV4YW1wbGVDb250cm9sbGVyJztcclxuaW1wb3J0IHsgcHVibGljQ2FjaGVNaWRkbGV3YXJlIH0gZnJvbSAnLi4vbWlkZGxld2FyZXMvY2FjaGUnO1xyXG5cclxuY29uc3Qgcm91dGVyID0gUm91dGVyKCk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogY29tcG9uZW50czpcclxuICogICBzY2hlbWFzOlxyXG4gKiAgICAgQ2FjaGVSZXNwb25zZTpcclxuICogICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgc3VjY2VzczpcclxuICogICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICBkYXRhOlxyXG4gKiAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgY2FjaGVkOlxyXG4gKiAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgIG1lc3NhZ2U6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgIENhY2hlTWFuYWdlbWVudDpcclxuICogICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgcGF0dGVybjpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IFBhZHJhbyBwYXJhIGxpbXBlemEgZGUgY2FjaGVcclxuICogICAgICAgICBrZXk6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBDaGF2ZSBlc3BlY8OtZmljYSBwYXJhIG9wZXJhw6fDtWVzIGRlIGNhY2hlXHJcbiAqL1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvY2FjaGUvZXhhbXBsZS97aWR9OlxyXG4gKiAgIGdldDpcclxuICogICAgIHN1bW1hcnk6IEV4ZW1wbG8gZGUgdXNvIGRlIGNhY2hlIG1hbnVhbFxyXG4gKiAgICAgZGVzY3JpcHRpb246IERlbW9uc3RyYSBjb21vIHVzYXIgY2FjaGUgZGlyZXRhbWVudGUgbm8gY29udHJvbGxlclxyXG4gKiAgICAgdGFnczogW0NhY2hlIEV4YW1wbGVzXVxyXG4gKiAgICAgcGFyYW1ldGVyczpcclxuICogICAgICAgLSBpbjogcGF0aFxyXG4gKiAgICAgICAgIG5hbWU6IGlkXHJcbiAqICAgICAgICAgcmVxdWlyZWQ6IHRydWVcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogSUQgZG8gaXRlbSBhIHNlciBidXNjYWRvXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRGFkb3Mgb2J0aWRvcyBjb20gc3VjZXNzb1xyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgJHJlZjogJyMvY29tcG9uZW50cy9zY2hlbWFzL0NhY2hlUmVzcG9uc2UnXHJcbiAqICAgICAgIDUwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRXJybyBpbnRlcm5vIGRvIHNlcnZpZG9yXHJcbiAqL1xyXG5yb3V0ZXIuZ2V0KCcvZXhhbXBsZS86aWQnLCBDYWNoZUV4YW1wbGVDb250cm9sbGVyLmdldERhdGFXaXRoQ2FjaGUpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvY2FjaGUvZXhhbXBsZS97aWR9OlxyXG4gKiAgIHB1dDpcclxuICogICAgIHN1bW1hcnk6IEV4ZW1wbG8gZGUgYXR1YWxpemHDp8OjbyBjb20gaW52YWxpZGHDp8OjbyBkZSBjYWNoZVxyXG4gKiAgICAgZGVzY3JpcHRpb246IERlbW9uc3RyYSBjb21vIGludmFsaWRhciBjYWNoZSBhcMOzcyBvcGVyYcOnw7VlcyBkZSBlc2NyaXRhXHJcbiAqICAgICB0YWdzOiBbQ2FjaGUgRXhhbXBsZXNdXHJcbiAqICAgICBzZWN1cml0eTpcclxuICogICAgICAgLSBiZWFyZXJBdXRoOiBbXVxyXG4gKiAgICAgcGFyYW1ldGVyczpcclxuICogICAgICAgLSBpbjogcGF0aFxyXG4gKiAgICAgICAgIG5hbWU6IGlkXHJcbiAqICAgICAgICAgcmVxdWlyZWQ6IHRydWVcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogSUQgZG8gaXRlbSBhIHNlciBhdHVhbGl6YWRvXHJcbiAqICAgICByZXF1ZXN0Qm9keTpcclxuICogICAgICAgcmVxdWlyZWQ6IHRydWVcclxuICogICAgICAgY29udGVudDpcclxuICogICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICBuYW1lOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgZGVzY3JpcHRpb246XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBEYWRvcyBhdHVhbGl6YWRvcyBjb20gc3VjZXNzb1xyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgJHJlZjogJyMvY29tcG9uZW50cy9zY2hlbWFzL0NhY2hlUmVzcG9uc2UnXHJcbiAqICAgICAgIDQwMTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gaW52w6FsaWRvXHJcbiAqICAgICAgIDUwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRXJybyBpbnRlcm5vIGRvIHNlcnZpZG9yXHJcbiAqL1xyXG5yb3V0ZXIucHV0KCcvZXhhbXBsZS86aWQnLCBhdXRoZW50aWNhdGUsIENhY2hlRXhhbXBsZUNvbnRyb2xsZXIudXBkYXRlRGF0YUFuZEludmFsaWRhdGVDYWNoZSk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS9jYWNoZS9keW5hbWljL3t0eXBlfS97aWR9OlxyXG4gKiAgIGdldDpcclxuICogICAgIHN1bW1hcnk6IEV4ZW1wbG8gZGUgY2FjaGUgY29tIFRUTCBkaW7Dom1pY29cclxuICogICAgIGRlc2NyaXB0aW9uOiBEZW1vbnN0cmEgY29tbyBkZWZpbmlyIFRUTCBiYXNlYWRvIG5vIHRpcG8gZGUgZGFkb3NcclxuICogICAgIHRhZ3M6IFtDYWNoZSBFeGFtcGxlc11cclxuICogICAgIHBhcmFtZXRlcnM6XHJcbiAqICAgICAgIC0gaW46IHBhdGhcclxuICogICAgICAgICBuYW1lOiB0eXBlXHJcbiAqICAgICAgICAgcmVxdWlyZWQ6IHRydWVcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGVudW06IFtzdGF0aWMsIGR5bmFtaWMsIHJlYWx0aW1lXVxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBUaXBvIGRlIGRhZG9zIChkZWZpbmUgbyBUVEwpXHJcbiAqICAgICAgIC0gaW46IHBhdGhcclxuICogICAgICAgICBuYW1lOiBpZFxyXG4gKiAgICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IElEIGRvIGl0ZW1cclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBEYWRvcyBvYnRpZG9zIGNvbSBzdWNlc3NvXHJcbiAqICAgICAgICAgY29udGVudDpcclxuICogICAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgICBhbGxPZjpcclxuICogICAgICAgICAgICAgICAgIC0gJHJlZjogJyMvY29tcG9uZW50cy9zY2hlbWFzL0NhY2hlUmVzcG9uc2UnXHJcbiAqICAgICAgICAgICAgICAgICAtIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgIHR0bDpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBUZW1wbyBkZSB2aWRhIGRvIGNhY2hlIGVtIHNlZ3VuZG9zXHJcbiAqICAgICAgIDUwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRXJybyBpbnRlcm5vIGRvIHNlcnZpZG9yXHJcbiAqL1xyXG5yb3V0ZXIuZ2V0KCcvZHluYW1pYy86dHlwZS86aWQnLCBDYWNoZUV4YW1wbGVDb250cm9sbGVyLmdldERhdGFXaXRoRHluYW1pY1RUTCk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS9jYWNoZS9jb25kaXRpb25hbC97aWR9OlxyXG4gKiAgIGdldDpcclxuICogICAgIHN1bW1hcnk6IEV4ZW1wbG8gZGUgY2FjaGUgY29uZGljaW9uYWxcclxuICogICAgIGRlc2NyaXB0aW9uOiBEZW1vbnN0cmEgY29tbyBjYWNoZWFyIGJhc2VhZG8gZW0gY29uZGnDp8O1ZXMgZXNwZWPDrWZpY2FzXHJcbiAqICAgICB0YWdzOiBbQ2FjaGUgRXhhbXBsZXNdXHJcbiAqICAgICBzZWN1cml0eTpcclxuICogICAgICAgLSBiZWFyZXJBdXRoOiBbXVxyXG4gKiAgICAgcGFyYW1ldGVyczpcclxuICogICAgICAgLSBpbjogcGF0aFxyXG4gKiAgICAgICAgIG5hbWU6IGlkXHJcbiAqICAgICAgICAgcmVxdWlyZWQ6IHRydWVcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogSUQgZG8gaXRlbVxyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IHVzZUNhY2hlXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBlbnVtOiBbdHJ1ZSwgZmFsc2VdXHJcbiAqICAgICAgICAgICBkZWZhdWx0OiB0cnVlXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFNlIGRldmUgdXNhciBjYWNoZSBvdSBuw6NvXHJcbiAqICAgICAgIC0gaW46IGhlYWRlclxyXG4gKiAgICAgICAgIG5hbWU6IENhY2hlLUNvbnRyb2xcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogQ29udHJvbGUgZGUgY2FjaGUgSFRUUFxyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IERhZG9zIG9idGlkb3MgY29tIHN1Y2Vzc29cclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIGFsbE9mOlxyXG4gKiAgICAgICAgICAgICAgICAgLSAkcmVmOiAnIy9jb21wb25lbnRzL3NjaGVtYXMvQ2FjaGVSZXNwb25zZSdcclxuICogICAgICAgICAgICAgICAgIC0gdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgY2FjaGVVc2VkOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IFNlIG8gY2FjaGUgZm9pIHV0aWxpemFkb1xyXG4gKiAgICAgICA0MDE6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGludsOhbGlkb1xyXG4gKiAgICAgICA1MDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEVycm8gaW50ZXJubyBkbyBzZXJ2aWRvclxyXG4gKi9cclxucm91dGVyLmdldCgnL2NvbmRpdGlvbmFsLzppZCcsIGF1dGhlbnRpY2F0ZSwgQ2FjaGVFeGFtcGxlQ29udHJvbGxlci5nZXREYXRhV2l0aENvbmRpdGlvbmFsQ2FjaGUpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvY2FjaGUvbWFuYWdlL3thY3Rpb259OlxyXG4gKiAgIHBvc3Q6XHJcbiAqICAgICBzdW1tYXJ5OiBHZXJlbmNpYXIgY2FjaGVcclxuICogICAgIGRlc2NyaXB0aW9uOiBQZXJtaXRlIGxpbXBhciBjYWNoZSwgdmVyaWZpY2FyIHN0YXR1cywgZXRjLlxyXG4gKiAgICAgdGFnczogW0NhY2hlIE1hbmFnZW1lbnRdXHJcbiAqICAgICBzZWN1cml0eTpcclxuICogICAgICAgLSBiZWFyZXJBdXRoOiBbXVxyXG4gKiAgICAgcGFyYW1ldGVyczpcclxuICogICAgICAgLSBpbjogcGF0aFxyXG4gKiAgICAgICAgIG5hbWU6IGFjdGlvblxyXG4gKiAgICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBlbnVtOiBbY2xlYXIsIHN0YXR1cywgY2hlY2tdXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEHDp8OjbyBhIHNlciBleGVjdXRhZGFcclxuICogICAgIHJlcXVlc3RCb2R5OlxyXG4gKiAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICRyZWY6ICcjL2NvbXBvbmVudHMvc2NoZW1hcy9DYWNoZU1hbmFnZW1lbnQnXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogT3BlcmHDp8OjbyBleGVjdXRhZGEgY29tIHN1Y2Vzc29cclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICBzdWNjZXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBtZXNzYWdlOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgIGNvbm5lY3RlZDpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogU3RhdHVzIGRhIGNvbmV4w6NvIFJlZGlzIChhcGVuYXMgcGFyYSBhY3Rpb249c3RhdHVzKVxyXG4gKiAgICAgICAgICAgICAgICAgZXhpc3RzOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBTZSBhIGNoYXZlIGV4aXN0ZSAoYXBlbmFzIHBhcmEgYWN0aW9uPWNoZWNrKVxyXG4gKiAgICAgICAgICAgICAgICAgdHRsOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBUVEwgZGEgY2hhdmUgZW0gc2VndW5kb3MgKGFwZW5hcyBwYXJhIGFjdGlvbj1jaGVjaylcclxuICogICAgICAgNDAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBQYXLDom1ldHJvcyBpbnbDoWxpZG9zXHJcbiAqICAgICAgIDQwMTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gaW52w6FsaWRvXHJcbiAqICAgICAgIDQwMzpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogU2VtIHBlcm1pc3PDo29cclxuICogICAgICAgNTAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBFcnJvIGludGVybm8gZG8gc2Vydmlkb3JcclxuICovXHJcbnJvdXRlci5wb3N0KCcvbWFuYWdlLzphY3Rpb24nLCBhdXRoZW50aWNhdGUsIGF1dGhvcml6ZSgnQURNSU4nKSwgQ2FjaGVFeGFtcGxlQ29udHJvbGxlci5tYW5hZ2VDYWNoZUVuZHBvaW50KTtcclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL2NhY2hlL21pZGRsZXdhcmUtZXhhbXBsZTpcclxuICogICBnZXQ6XHJcbiAqICAgICBzdW1tYXJ5OiBFeGVtcGxvIGRlIHVzbyBkbyBtaWRkbGV3YXJlIGRlIGNhY2hlXHJcbiAqICAgICBkZXNjcmlwdGlvbjogRGVtb25zdHJhIGNvbW8gbyBtaWRkbGV3YXJlIGRlIGNhY2hlIGZ1bmNpb25hIGF1dG9tYXRpY2FtZW50ZVxyXG4gKiAgICAgdGFnczogW0NhY2hlIEV4YW1wbGVzXVxyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IERhZG9zIG9idGlkb3MgY29tIHN1Y2Vzc28gKHBvZGUgdmlyIGRvIGNhY2hlKVxyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgIHN1Y2Nlc3M6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgIGRhdGE6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgIG1lc3NhZ2U6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgICAgICB0aW1lc3RhbXA6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgICAgICBjYWNoZWQ6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBtZXNzYWdlOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICovXHJcbnJvdXRlci5nZXQoJy9taWRkbGV3YXJlLWV4YW1wbGUnLCBwdWJsaWNDYWNoZU1pZGRsZXdhcmUoMzAwKSwgKHJlcSwgcmVzKSA9PiB7XHJcbiAgLy8gRXN0ZSBlbmRwb2ludCBzZXLDoSBhdXRvbWF0aWNhbWVudGUgY2FjaGVhZG8gcGVsbyBtaWRkbGV3YXJlXHJcbiAgcmVzLmpzb24oe1xyXG4gICAgc3VjY2VzczogdHJ1ZSxcclxuICAgIGRhdGE6IHtcclxuICAgICAgbWVzc2FnZTogJ0VzdGUgZW5kcG9pbnQgdXNhIG1pZGRsZXdhcmUgZGUgY2FjaGUgYXV0b23DoXRpY28nLFxyXG4gICAgICB0aW1lc3RhbXA6IG5ldyBEYXRlKCkudG9JU09TdHJpbmcoKSxcclxuICAgICAgY2FjaGVkOiBmYWxzZSAvLyBTZXLDoSB0cnVlIHF1YW5kbyB2aWVyIGRvIGNhY2hlXHJcbiAgICB9LFxyXG4gICAgbWVzc2FnZTogJ0RhZG9zIG9idGlkb3MgY29tIHN1Y2Vzc28nXHJcbiAgfSk7XHJcbn0pO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvY2FjaGUvbm8tY2FjaGUtZXhhbXBsZTpcclxuICogICBnZXQ6XHJcbiAqICAgICBzdW1tYXJ5OiBFeGVtcGxvIHNlbSBjYWNoZVxyXG4gKiAgICAgZGVzY3JpcHRpb246IEVuZHBvaW50IHF1ZSBudW5jYSB1c2EgY2FjaGUgcGFyYSBjb21wYXJhw6fDo29cclxuICogICAgIHRhZ3M6IFtDYWNoZSBFeGFtcGxlc11cclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBEYWRvcyBzZW1wcmUgZnJlc2Nvc1xyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgIHN1Y2Nlc3M6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgIGRhdGE6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgIG1lc3NhZ2U6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgICAgICB0aW1lc3RhbXA6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgICAgICBjYWNoZWQ6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBtZXNzYWdlOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICovXHJcbnJvdXRlci5nZXQoJy9uby1jYWNoZS1leGFtcGxlJywgKHJlcSwgcmVzKSA9PiB7XHJcbiAgLy8gRXN0ZSBlbmRwb2ludCBudW5jYSB1c2EgY2FjaGVcclxuICByZXMuanNvbih7XHJcbiAgICBzdWNjZXNzOiB0cnVlLFxyXG4gICAgZGF0YToge1xyXG4gICAgICBtZXNzYWdlOiAnRXN0ZSBlbmRwb2ludCBudW5jYSB1c2EgY2FjaGUnLFxyXG4gICAgICB0aW1lc3RhbXA6IG5ldyBEYXRlKCkudG9JU09TdHJpbmcoKSxcclxuICAgICAgY2FjaGVkOiBmYWxzZVxyXG4gICAgfSxcclxuICAgIG1lc3NhZ2U6ICdEYWRvcyBzZW1wcmUgZnJlc2NvcydcclxuICB9KTtcclxufSk7XHJcblxyXG5leHBvcnQgZGVmYXVsdCByb3V0ZXI7Il0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBLE1BQUFBLFNBQUE7QUFBQTtBQUFBLENBQUFDLGNBQUEsR0FBQUMsQ0FBQSxPQUFBQyxPQUFBO0FBQ0EsTUFBQUMsTUFBQTtBQUFBO0FBQUEsQ0FBQUgsY0FBQSxHQUFBQyxDQUFBLE9BQUFDLE9BQUE7QUFDQSxNQUFBRSx3QkFBQTtBQUFBO0FBQUEsQ0FBQUosY0FBQSxHQUFBQyxDQUFBLE9BQUFDLE9BQUE7QUFDQSxNQUFBRyxPQUFBO0FBQUE7QUFBQSxDQUFBTCxjQUFBLEdBQUFDLENBQUEsT0FBQUMsT0FBQTtBQUVBLE1BQU1JLE1BQU07QUFBQTtBQUFBLENBQUFOLGNBQUEsR0FBQUMs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

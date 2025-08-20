@@ -5,6 +5,7 @@ import {
   publicCacheMiddleware,
   invalidateUserCacheMiddleware
 } from '../middlewares/cache';
+import UserController from '../controllers/userController';
 
 const router = Router();
 
@@ -142,21 +143,9 @@ const router = Router();
  *       401:
  *         description: Token inválido
  */
-router.get('/profile', authenticate, userCacheMiddleware(600), (req, res) => {
-  // TODO: Implementar controller para obter perfil do usuário
-  res.status(501).json({
-    message: 'Endpoint não implementado',
-    endpoint: 'GET /api/v1/users/profile'
-  });
-});
+router.get('/profile', authenticate, userCacheMiddleware(600), UserController.getProfile);
 
-router.put('/profile', authenticate, invalidateUserCacheMiddleware((req) => (req as any).user?.id), (req, res) => {
-  // TODO: Implementar controller para atualizar perfil do usuário
-  res.status(501).json({
-    message: 'Endpoint não implementado',
-    endpoint: 'PUT /api/v1/users/profile'
-  });
-});
+router.put('/profile', authenticate, invalidateUserCacheMiddleware((req) => (req as any).user?.id), UserController.updateProfile);
 
 /**
  * @swagger
@@ -191,14 +180,7 @@ router.put('/profile', authenticate, invalidateUserCacheMiddleware((req) => (req
  *       401:
  *         description: Token inválido
  */
-router.put('/profile', authenticate, (req, res) => {
-  // TODO: Implementar controller para atualizar perfil
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'PUT /users/profile',
-  });
-});
+router.put('/profile', authenticate, UserController.updateProfile);
 
 /**
  * @swagger
@@ -231,14 +213,7 @@ router.put('/profile', authenticate, (req, res) => {
  *       401:
  *         description: Token inválido
  */
-router.put('/change-password', authenticate, (req, res) => {
-  // TODO: Implementar controller para alterar senha
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'PUT /users/change-password',
-  });
-});
+router.put('/change-password', authenticate, UserController.changePassword);
 
 /**
  * @swagger
@@ -283,14 +258,7 @@ router.put('/change-password', authenticate, (req, res) => {
  *       413:
  *         description: Arquivo muito grande
  */
-router.post('/avatar', authenticate, (req, res) => {
-  // TODO: Implementar controller para upload de avatar
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'POST /users/avatar',
-  });
-});
+router.post('/avatar', authenticate, UserController.uploadAvatar);
 
 /**
  * @swagger
@@ -334,14 +302,7 @@ router.post('/avatar', authenticate, (req, res) => {
  *       401:
  *         description: Token inválido
  */
-router.delete('/delete-account', authenticate, (req, res) => {
-  // TODO: Implementar controller para excluir conta
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'DELETE /users/delete-account',
-  });
-});
+router.delete('/delete-account', authenticate, UserController.deleteAccount);
 
 // Rotas administrativas
 
@@ -456,13 +417,7 @@ router.delete('/delete-account', authenticate, (req, res) => {
  *       403:
  *         description: Sem permissão
  */
-router.get('/', authenticate, authorize('ADMIN'), publicCacheMiddleware(300), (req, res) => {
-  // TODO: Implementar controller para listar usuários
-  res.status(501).json({
-    message: 'Endpoint não implementado',
-    endpoint: 'GET /api/v1/users'
-  });
-});
+router.get('/', authenticate, authorize('ADMIN'), publicCacheMiddleware(300), UserController.getUsers);
 
 /**
  * @swagger
@@ -501,14 +456,7 @@ router.get('/', authenticate, authorize('ADMIN'), publicCacheMiddleware(300), (r
  *       409:
  *         description: Email já cadastrado
  */
-router.post('/', authenticate, authorize('ADMIN'), (req, res) => {
-  // TODO: Implementar controller para criar usuário
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'POST /users',
-  });
-});
+router.post('/', authenticate, authorize('ADMIN'), UserController.createUser);
 
 /**
  * @swagger
@@ -544,13 +492,7 @@ router.post('/', authenticate, authorize('ADMIN'), (req, res) => {
  *       404:
  *         description: Usuário não encontrado
  */
-router.get('/:id', authenticate, authorizeOwnerOrAdmin, userCacheMiddleware(600), (req: Request, res: Response) => {
-  // TODO: Implementar controller para obter usuário por ID
-  res.status(501).json({
-    message: 'Endpoint não implementado',
-    endpoint: 'GET /api/v1/users/:id'
-  });
-});
+router.get('/:id', authenticate, authorizeOwnerOrAdmin, userCacheMiddleware(600), UserController.getUserById);
 
 /**
  * @swagger
@@ -617,13 +559,7 @@ router.get('/:id', authenticate, authorizeOwnerOrAdmin, userCacheMiddleware(600)
  *       409:
  *         description: Email já cadastrado
  */
-router.put('/:id', authenticate, authorize('ADMIN'), invalidateUserCacheMiddleware((req) => req.params.id || ''), (req, res) => {
-  // TODO: Implementar controller para atualizar usuário
-  res.status(501).json({
-    message: 'Endpoint não implementado',
-    endpoint: 'PUT /api/v1/users/:id'
-  });
-});
+router.put('/:id', authenticate, authorize('ADMIN'), invalidateUserCacheMiddleware((req) => req.params.id || ''), UserController.updateUser);
 
 /**
  * @swagger
@@ -678,14 +614,7 @@ router.put('/:id', authenticate, authorize('ADMIN'), invalidateUserCacheMiddlewa
  *       404:
  *         description: Usuário não encontrado
  */
-router.patch('/:id/status', authenticate, authorize('ADMIN'), (req, res) => {
-  // TODO: Implementar controller para alterar status do usuário
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'PATCH /users/:id/status',
-  });
-});
+router.patch('/:id/status', authenticate, authorize('ADMIN'), UserController.updateUserStatus);
 
 /**
  * @swagger
@@ -721,12 +650,6 @@ router.patch('/:id/status', authenticate, authorize('ADMIN'), (req, res) => {
  *       404:
  *         description: Usuário não encontrado
  */
-router.delete('/:id', authenticate, authorize('ADMIN'), invalidateUserCacheMiddleware((req) => req.params.id || ''), (req, res) => {
-  // TODO: Implementar controller para excluir usuário
-  res.status(501).json({
-    message: 'Endpoint não implementado',
-    endpoint: 'DELETE /api/v1/users/:id'
-  });
-});
+router.delete('/:id', authenticate, authorize('ADMIN'), invalidateUserCacheMiddleware((req) => req.params.id || ''), UserController.deleteUser);
 
 export default router;

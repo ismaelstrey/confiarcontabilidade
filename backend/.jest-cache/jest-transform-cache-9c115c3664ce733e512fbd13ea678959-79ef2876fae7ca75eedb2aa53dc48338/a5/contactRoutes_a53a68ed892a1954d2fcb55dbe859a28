@@ -1,0 +1,428 @@
+691a3676e2adea2bf0ea6b13ff97b95a
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_1 = require("../middlewares/auth");
+const contactController_1 = __importDefault(require("../controllers/contactController"));
+const router = (0, express_1.Router)();
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Contact:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: string
+ *         name:
+ *           type: string
+ *         email:
+ *           type: string
+ *         phone:
+ *           type: string
+ *         subject:
+ *           type: string
+ *         message:
+ *           type: string
+ *         status:
+ *           type: string
+ *           enum: [PENDING, IN_PROGRESS, RESOLVED, CLOSED]
+ *         priority:
+ *           type: string
+ *           enum: [LOW, MEDIUM, HIGH, URGENT]
+ *         assignedTo:
+ *           type: string
+ *         notes:
+ *           type: string
+ *         createdAt:
+ *           type: string
+ *           format: date-time
+ *         updatedAt:
+ *           type: string
+ *           format: date-time
+ *         resolvedAt:
+ *           type: string
+ *           format: date-time
+ *     ContactRequest:
+ *       type: object
+ *       required:
+ *         - name
+ *         - email
+ *         - subject
+ *         - message
+ *       properties:
+ *         name:
+ *           type: string
+ *           minLength: 2
+ *           description: Nome completo
+ *         email:
+ *           type: string
+ *           format: email
+ *           description: Email para contato
+ *         phone:
+ *           type: string
+ *           description: Telefone (opcional)
+ *         subject:
+ *           type: string
+ *           minLength: 5
+ *           description: Assunto da mensagem
+ *         message:
+ *           type: string
+ *           minLength: 10
+ *           description: Mensagem detalhada
+ *         company:
+ *           type: string
+ *           description: Empresa (opcional)
+ *         website:
+ *           type: string
+ *           description: Website (opcional)
+ */
+/**
+ * @swagger
+ * /api/v1/contact:
+ *   post:
+ *     summary: Enviar mensagem de contato
+ *     tags: [Contato]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/ContactRequest'
+ *     responses:
+ *       201:
+ *         description: Mensagem enviada com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     id:
+ *                       type: string
+ *                     ticketNumber:
+ *                       type: string
+ *                 message:
+ *                   type: string
+ *       400:
+ *         description: Dados inválidos
+ *       429:
+ *         description: Muitas tentativas - tente novamente mais tarde
+ */
+router.post('/', (req, res) => contactController_1.default.createContact(req, res));
+/**
+ * @swagger
+ * /api/v1/contact:
+ *   get:
+ *     summary: Listar mensagens de contato (Admin)
+ *     tags: [Contato]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           default: 1
+ *         description: Número da página
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           maximum: 100
+ *           default: 20
+ *         description: Itens por página
+ *       - in: query
+ *         name: status
+ *         schema:
+ *           type: string
+ *           enum: [PENDING, IN_PROGRESS, RESOLVED, CLOSED]
+ *         description: Filtrar por status
+ *       - in: query
+ *         name: priority
+ *         schema:
+ *           type: string
+ *           enum: [LOW, MEDIUM, HIGH, URGENT]
+ *         description: Filtrar por prioridade
+ *       - in: query
+ *         name: assignedTo
+ *         schema:
+ *           type: string
+ *         description: Filtrar por responsável
+ *       - in: query
+ *         name: search
+ *         schema:
+ *           type: string
+ *         description: Buscar por nome, email ou assunto
+ *       - in: query
+ *         name: dateFrom
+ *         schema:
+ *           type: string
+ *           format: date
+ *         description: Data inicial (YYYY-MM-DD)
+ *       - in: query
+ *         name: dateTo
+ *         schema:
+ *           type: string
+ *           format: date
+ *         description: Data final (YYYY-MM-DD)
+ *       - in: query
+ *         name: sortBy
+ *         schema:
+ *           type: string
+ *           enum: [createdAt, updatedAt, priority, status]
+ *           default: createdAt
+ *         description: Campo para ordenação
+ *       - in: query
+ *         name: sortOrder
+ *         schema:
+ *           type: string
+ *           enum: [asc, desc]
+ *           default: desc
+ *         description: Ordem da classificação
+ *     responses:
+ *       200:
+ *         description: Lista de mensagens de contato
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     contacts:
+ *                       type: array
+ *                       items:
+ *                         $ref: '#/components/schemas/Contact'
+ *                     pagination:
+ *                       type: object
+ *                       properties:
+ *                         page:
+ *                           type: integer
+ *                         limit:
+ *                           type: integer
+ *                         total:
+ *                           type: integer
+ *                         pages:
+ *                           type: integer
+ *                     stats:
+ *                       type: object
+ *                       properties:
+ *                         pending:
+ *                           type: integer
+ *                         inProgress:
+ *                           type: integer
+ *                         resolved:
+ *                           type: integer
+ *                         closed:
+ *                           type: integer
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ */
+router.get('/', auth_1.authenticate, (0, auth_1.authorize)('ADMIN', 'EDITOR'), contactController_1.default.getContacts);
+/**
+ * @swagger
+ * /api/v1/contact/{id}:
+ *   get:
+ *     summary: Obter mensagem de contato por ID (Admin)
+ *     tags: [Contato]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID da mensagem
+ *     responses:
+ *       200:
+ *         description: Dados da mensagem de contato
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   $ref: '#/components/schemas/Contact'
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ *       404:
+ *         description: Mensagem não encontrada
+ */
+router.get('/:id', auth_1.authenticate, (0, auth_1.authorize)('ADMIN', 'EDITOR'), contactController_1.default.getContactById);
+/**
+ * @swagger
+ * /api/v1/contact/{id}/status:
+ *   patch:
+ *     summary: Atualizar status da mensagem (Admin)
+ *     tags: [Contato]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID da mensagem
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - status
+ *             properties:
+ *               status:
+ *                 type: string
+ *                 enum: [PENDING, IN_PROGRESS, RESOLVED, CLOSED]
+ *                 description: Novo status
+ *               priority:
+ *                 type: string
+ *                 enum: [LOW, MEDIUM, HIGH, URGENT]
+ *                 description: Nova prioridade (opcional)
+ *               assignedTo:
+ *                 type: string
+ *                 description: ID do usuário responsável (opcional)
+ *               notes:
+ *                 type: string
+ *                 description: Notas internas (opcional)
+ *     responses:
+ *       200:
+ *         description: Status atualizado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   $ref: '#/components/schemas/Contact'
+ *                 message:
+ *                   type: string
+ *       400:
+ *         description: Dados inválidos
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ *       404:
+ *         description: Mensagem não encontrada
+ */
+router.patch('/:id/status', auth_1.authenticate, (0, auth_1.authorize)('ADMIN', 'EDITOR'), (req, res) => contactController_1.default.updateContactStatus(req, res));
+/**
+ * @swagger
+ * /api/v1/contact/{id}/reply:
+ *   post:
+ *     summary: Responder mensagem de contato (Admin)
+ *     tags: [Contato]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID da mensagem
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - subject
+ *               - message
+ *             properties:
+ *               subject:
+ *                 type: string
+ *                 minLength: 5
+ *                 description: Assunto da resposta
+ *               message:
+ *                 type: string
+ *                 minLength: 10
+ *                 description: Mensagem de resposta
+ *               template:
+ *                 type: string
+ *                 description: Template de email (opcional)
+ *     responses:
+ *       200:
+ *         description: Resposta enviada com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 message:
+ *                   type: string
+ *       400:
+ *         description: Dados inválidos
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ *       404:
+ *         description: Mensagem não encontrada
+ */
+router.post('/:id/reply', auth_1.authenticate, (0, auth_1.authorize)('ADMIN', 'EDITOR'), contactController_1.default.replyToContact);
+/**
+ * @swagger
+ * /api/v1/contact/{id}:
+ *   delete:
+ *     summary: Excluir mensagem de contato (Admin)
+ *     tags: [Contato]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID da mensagem
+ *     responses:
+ *       200:
+ *         description: Mensagem excluída com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 message:
+ *                   type: string
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ *       404:
+ *         description: Mensagem não encontrada
+ */
+router.delete('/:id', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), contactController_1.default.deleteContact);
+exports.default = router;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRDpcXGRldlxcY29udGFiaWxcXGNvbnRhYmlsLXNpdGVcXGJhY2tlbmRcXHNyY1xccm91dGVzXFxjb250YWN0Um91dGVzLnRzIiwibWFwcGluZ3MiOiI7Ozs7O0FBQUEscUNBQWlDO0FBQ2pDLDhDQUE4RDtBQUM5RCx5RkFBaUU7QUFFakUsTUFBTSxNQUFNLEdBQUcsSUFBQSxnQkFBTSxHQUFFLENBQUM7QUFFeEI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0dBdUVHO0FBRUg7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0dBbUNHO0FBQ0gsTUFBTSxDQUFDLElBQUksQ0FBQyxHQUFHLEVBQUUsQ0FBQyxHQUFHLEVBQUUsR0FBRyxFQUFFLEVBQUUsQ0FBQywyQkFBaUIsQ0FBQyxhQUFhLENBQUMsR0FBRyxFQUFFLEdBQUcsQ0FBQyxDQUFDLENBQUM7QUFFMUU7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7R0FtSEc7QUFDSCxNQUFNLENBQUMsR0FBRyxDQUFDLEdBQUcsRUFBRSxtQkFBWSxFQUFFLElBQUEsZ0JBQVMsRUFBQyxPQUFPLEVBQUUsUUFBUSxDQUFDLEVBQUUsMkJBQWlCLENBQUMsV0FBVyxDQUFDLENBQUM7QUFFM0Y7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztHQWlDRztBQUNILE1BQU0sQ0FBQyxHQUFHLENBQUMsTUFBTSxFQUFFLG1CQUFZLEVBQUUsSUFBQSxnQkFBUyxFQUFDLE9BQU8sRUFBRSxRQUFRLENBQUMsRUFBRSwyQkFBaUIsQ0FBQyxjQUFjLENBQUMsQ0FBQztBQUVqRzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0dBNERHO0FBQ0gsTUFBTSxDQUFDLEtBQUssQ0FBQyxhQUFhLEVBQUUsbUJBQVksRUFBRSxJQUFBLGdCQUFTLEVBQUMsT0FBTyxFQUFFLFFBQVEsQ0FBQyxFQUFFLENBQUMsR0FBRyxFQUFFLEdBQUcsRUFBRSxFQUFFLENBQUMsMkJBQWlCLENBQUMsbUJBQW1CLENBQUMsR0FBRyxFQUFFLEdBQUcsQ0FBQyxDQUFDLENBQUM7QUFFdkk7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0dBd0RHO0FBQ0gsTUFBTSxDQUFDLElBQUksQ0FBQyxZQUFZLEVBQUUsbUJBQVksRUFBRSxJQUFBLGdCQUFTLEVBQUMsT0FBTyxFQUFFLFFBQVEsQ0FBQyxFQUFFLDJCQUFpQixDQUFDLGNBQWMsQ0FBQyxDQUFDO0FBRXhHOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7R0FpQ0c7QUFDSCxNQUFNLENBQUMsTUFBTSxDQUFDLE1BQU0sRUFBRSxtQkFBWSxFQUFFLElBQUEsZ0JBQVMsRUFBQyxPQUFPLENBQUMsRUFBRSwyQkFBaUIsQ0FBQyxhQUFhLENBQUMsQ0FBQztBQUV6RixrQkFBZSxNQUFNLENBQUMiLCJuYW1lcyI6W10sInNvdXJjZXMiOlsiRDpcXGRldlxcY29udGFiaWxcXGNvbnRhYmlsLXNpdGVcXGJhY2tlbmRcXHNyY1xccm91dGVzXFxjb250YWN0Um91dGVzLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IFJvdXRlciB9IGZyb20gJ2V4cHJlc3MnO1xyXG5pbXBvcnQgeyBhdXRoZW50aWNhdGUsIGF1dGhvcml6ZSB9IGZyb20gJy4uL21pZGRsZXdhcmVzL2F1dGgnO1xyXG5pbXBvcnQgQ29udGFjdENvbnRyb2xsZXIgZnJvbSAnLi4vY29udHJvbGxlcnMvY29udGFjdENvbnRyb2xsZXInO1xyXG5cclxuY29uc3Qgcm91dGVyID0gUm91dGVyKCk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogY29tcG9uZW50czpcclxuICogICBzY2hlbWFzOlxyXG4gKiAgICAgQ29udGFjdDpcclxuICogICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgaWQ6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBuYW1lOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZW1haWw6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBwaG9uZTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIHN1YmplY3Q6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBtZXNzYWdlOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgc3RhdHVzOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBlbnVtOiBbUEVORElORywgSU5fUFJPR1JFU1MsIFJFU09MVkVELCBDTE9TRURdXHJcbiAqICAgICAgICAgcHJpb3JpdHk6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGVudW06IFtMT1csIE1FRElVTSwgSElHSCwgVVJHRU5UXVxyXG4gKiAgICAgICAgIGFzc2lnbmVkVG86XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBub3RlczpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGNyZWF0ZWRBdDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZm9ybWF0OiBkYXRlLXRpbWVcclxuICogICAgICAgICB1cGRhdGVkQXQ6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGZvcm1hdDogZGF0ZS10aW1lXHJcbiAqICAgICAgICAgcmVzb2x2ZWRBdDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZm9ybWF0OiBkYXRlLXRpbWVcclxuICogICAgIENvbnRhY3RSZXF1ZXN0OlxyXG4gKiAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgcmVxdWlyZWQ6XHJcbiAqICAgICAgICAgLSBuYW1lXHJcbiAqICAgICAgICAgLSBlbWFpbFxyXG4gKiAgICAgICAgIC0gc3ViamVjdFxyXG4gKiAgICAgICAgIC0gbWVzc2FnZVxyXG4gKiAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgIG5hbWU6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIG1pbkxlbmd0aDogMlxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IE5vbWUgY29tcGxldG9cclxuICogICAgICAgICBlbWFpbDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZm9ybWF0OiBlbWFpbFxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IEVtYWlsIHBhcmEgY29udGF0b1xyXG4gKiAgICAgICAgIHBob25lOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogVGVsZWZvbmUgKG9wY2lvbmFsKVxyXG4gKiAgICAgICAgIHN1YmplY3Q6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIG1pbkxlbmd0aDogNVxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IEFzc3VudG8gZGEgbWVuc2FnZW1cclxuICogICAgICAgICBtZXNzYWdlOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBtaW5MZW5ndGg6IDEwXHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogTWVuc2FnZW0gZGV0YWxoYWRhXHJcbiAqICAgICAgICAgY29tcGFueTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IEVtcHJlc2EgKG9wY2lvbmFsKVxyXG4gKiAgICAgICAgIHdlYnNpdGU6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBXZWJzaXRlIChvcGNpb25hbClcclxuICovXHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS9jb250YWN0OlxyXG4gKiAgIHBvc3Q6XHJcbiAqICAgICBzdW1tYXJ5OiBFbnZpYXIgbWVuc2FnZW0gZGUgY29udGF0b1xyXG4gKiAgICAgdGFnczogW0NvbnRhdG9dXHJcbiAqICAgICByZXF1ZXN0Qm9keTpcclxuICogICAgICAgcmVxdWlyZWQ6IHRydWVcclxuICogICAgICAgY29udGVudDpcclxuICogICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAkcmVmOiAnIy9jb21wb25lbnRzL3NjaGVtYXMvQ29udGFjdFJlcXVlc3QnXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogTWVuc2FnZW0gZW52aWFkYSBjb20gc3VjZXNzb1xyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgIHN1Y2Nlc3M6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgIGRhdGE6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgIGlkOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICAgICAgdGlja2V0TnVtYmVyOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICBtZXNzYWdlOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgNDAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBEYWRvcyBpbnbDoWxpZG9zXHJcbiAqICAgICAgIDQyOTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogTXVpdGFzIHRlbnRhdGl2YXMgLSB0ZW50ZSBub3ZhbWVudGUgbWFpcyB0YXJkZVxyXG4gKi9cclxucm91dGVyLnBvc3QoJy8nLCAocmVxLCByZXMpID0+IENvbnRhY3RDb250cm9sbGVyLmNyZWF0ZUNvbnRhY3QocmVxLCByZXMpKTtcclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL2NvbnRhY3Q6XHJcbiAqICAgZ2V0OlxyXG4gKiAgICAgc3VtbWFyeTogTGlzdGFyIG1lbnNhZ2VucyBkZSBjb250YXRvIChBZG1pbilcclxuICogICAgIHRhZ3M6IFtDb250YXRvXVxyXG4gKiAgICAgc2VjdXJpdHk6XHJcbiAqICAgICAgIC0gYmVhcmVyQXV0aDogW11cclxuICogICAgIHBhcmFtZXRlcnM6XHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogcGFnZVxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgIG1pbmltdW06IDFcclxuICogICAgICAgICAgIGRlZmF1bHQ6IDFcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogTsO6bWVybyBkYSBww6FnaW5hXHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogbGltaXRcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICBtaW5pbXVtOiAxXHJcbiAqICAgICAgICAgICBtYXhpbXVtOiAxMDBcclxuICogICAgICAgICAgIGRlZmF1bHQ6IDIwXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEl0ZW5zIHBvciBww6FnaW5hXHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogc3RhdHVzXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBlbnVtOiBbUEVORElORywgSU5fUFJPR1JFU1MsIFJFU09MVkVELCBDTE9TRURdXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEZpbHRyYXIgcG9yIHN0YXR1c1xyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IHByaW9yaXR5XHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBlbnVtOiBbTE9XLCBNRURJVU0sIEhJR0gsIFVSR0VOVF1cclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRmlsdHJhciBwb3IgcHJpb3JpZGFkZVxyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IGFzc2lnbmVkVG9cclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRmlsdHJhciBwb3IgcmVzcG9uc8OhdmVsXHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogc2VhcmNoXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEJ1c2NhciBwb3Igbm9tZSwgZW1haWwgb3UgYXNzdW50b1xyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IGRhdGVGcm9tXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBmb3JtYXQ6IGRhdGVcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRGF0YSBpbmljaWFsIChZWVlZLU1NLUREKVxyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IGRhdGVUb1xyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZm9ybWF0OiBkYXRlXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IERhdGEgZmluYWwgKFlZWVktTU0tREQpXHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogc29ydEJ5XHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBlbnVtOiBbY3JlYXRlZEF0LCB1cGRhdGVkQXQsIHByaW9yaXR5LCBzdGF0dXNdXHJcbiAqICAgICAgICAgICBkZWZhdWx0OiBjcmVhdGVkQXRcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogQ2FtcG8gcGFyYSBvcmRlbmHDp8Ojb1xyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IHNvcnRPcmRlclxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZW51bTogW2FzYywgZGVzY11cclxuICogICAgICAgICAgIGRlZmF1bHQ6IGRlc2NcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogT3JkZW0gZGEgY2xhc3NpZmljYcOnw6NvXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogTGlzdGEgZGUgbWVuc2FnZW5zIGRlIGNvbnRhdG9cclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICBzdWNjZXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBkYXRhOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgICBjb250YWN0czpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGFycmF5XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICBpdGVtczpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgJHJlZjogJyMvY29tcG9uZW50cy9zY2hlbWFzL0NvbnRhY3QnXHJcbiAqICAgICAgICAgICAgICAgICAgICAgcGFnaW5hdGlvbjpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgcGFnZTpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIGxpbWl0OlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgdG90YWw6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICBwYWdlczpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgc3RhdHM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIHBlbmRpbmc6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICBpblByb2dyZXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgcmVzb2x2ZWQ6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICBjbG9zZWQ6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICA0MDE6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGludsOhbGlkb1xyXG4gKiAgICAgICA0MDM6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFNlbSBwZXJtaXNzw6NvXHJcbiAqL1xyXG5yb3V0ZXIuZ2V0KCcvJywgYXV0aGVudGljYXRlLCBhdXRob3JpemUoJ0FETUlOJywgJ0VESVRPUicpLCBDb250YWN0Q29udHJvbGxlci5nZXRDb250YWN0cyk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS9jb250YWN0L3tpZH06XHJcbiAqICAgZ2V0OlxyXG4gKiAgICAgc3VtbWFyeTogT2J0ZXIgbWVuc2FnZW0gZGUgY29udGF0byBwb3IgSUQgKEFkbWluKVxyXG4gKiAgICAgdGFnczogW0NvbnRhdG9dXHJcbiAqICAgICBzZWN1cml0eTpcclxuICogICAgICAgLSBiZWFyZXJBdXRoOiBbXVxyXG4gKiAgICAgcGFyYW1ldGVyczpcclxuICogICAgICAgLSBpbjogcGF0aFxyXG4gKiAgICAgICAgIG5hbWU6IGlkXHJcbiAqICAgICAgICAgcmVxdWlyZWQ6IHRydWVcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogSUQgZGEgbWVuc2FnZW1cclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBEYWRvcyBkYSBtZW5zYWdlbSBkZSBjb250YXRvXHJcbiAqICAgICAgICAgY29udGVudDpcclxuICogICAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgc3VjY2VzczpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgZGF0YTpcclxuICogICAgICAgICAgICAgICAgICAgJHJlZjogJyMvY29tcG9uZW50cy9zY2hlbWFzL0NvbnRhY3QnXHJcbiAqICAgICAgIDQwMTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gaW52w6FsaWRvXHJcbiAqICAgICAgIDQwMzpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogU2VtIHBlcm1pc3PDo29cclxuICogICAgICAgNDA0OlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBNZW5zYWdlbSBuw6NvIGVuY29udHJhZGFcclxuICovXHJcbnJvdXRlci5nZXQoJy86aWQnLCBhdXRoZW50aWNhdGUsIGF1dGhvcml6ZSgnQURNSU4nLCAnRURJVE9SJyksIENvbnRhY3RDb250cm9sbGVyLmdldENvbnRhY3RCeUlkKTtcclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL2NvbnRhY3Qve2lkfS9zdGF0dXM6XHJcbiAqICAgcGF0Y2g6XHJcbiAqICAgICBzdW1tYXJ5OiBBdHVhbGl6YXIgc3RhdHVzIGRhIG1lbnNhZ2VtIChBZG1pbilcclxuICogICAgIHRhZ3M6IFtDb250YXRvXVxyXG4gKiAgICAgc2VjdXJpdHk6XHJcbiAqICAgICAgIC0gYmVhcmVyQXV0aDogW11cclxuICogICAgIHBhcmFtZXRlcnM6XHJcbiAqICAgICAgIC0gaW46IHBhdGhcclxuICogICAgICAgICBuYW1lOiBpZFxyXG4gKiAgICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IElEIGRhIG1lbnNhZ2VtXHJcbiAqICAgICByZXF1ZXN0Qm9keTpcclxuICogICAgICAgcmVxdWlyZWQ6IHRydWVcclxuICogICAgICAgY29udGVudDpcclxuICogICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgcmVxdWlyZWQ6XHJcbiAqICAgICAgICAgICAgICAgLSBzdGF0dXNcclxuICogICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICBzdGF0dXM6XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgIGVudW06IFtQRU5ESU5HLCBJTl9QUk9HUkVTUywgUkVTT0xWRUQsIENMT1NFRF1cclxuICogICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBOb3ZvIHN0YXR1c1xyXG4gKiAgICAgICAgICAgICAgIHByaW9yaXR5OlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICBlbnVtOiBbTE9XLCBNRURJVU0sIEhJR0gsIFVSR0VOVF1cclxuICogICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBOb3ZhIHByaW9yaWRhZGUgKG9wY2lvbmFsKVxyXG4gKiAgICAgICAgICAgICAgIGFzc2lnbmVkVG86XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBJRCBkbyB1c3XDoXJpbyByZXNwb25zw6F2ZWwgKG9wY2lvbmFsKVxyXG4gKiAgICAgICAgICAgICAgIG5vdGVzOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogTm90YXMgaW50ZXJuYXMgKG9wY2lvbmFsKVxyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFN0YXR1cyBhdHVhbGl6YWRvIGNvbSBzdWNlc3NvXHJcbiAqICAgICAgICAgY29udGVudDpcclxuICogICAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgc3VjY2VzczpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgZGF0YTpcclxuICogICAgICAgICAgICAgICAgICAgJHJlZjogJyMvY29tcG9uZW50cy9zY2hlbWFzL0NvbnRhY3QnXHJcbiAqICAgICAgICAgICAgICAgICBtZXNzYWdlOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgNDAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBEYWRvcyBpbnbDoWxpZG9zXHJcbiAqICAgICAgIDQwMTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gaW52w6FsaWRvXHJcbiAqICAgICAgIDQwMzpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogU2VtIHBlcm1pc3PDo29cclxuICogICAgICAgNDA0OlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBNZW5zYWdlbSBuw6NvIGVuY29udHJhZGFcclxuICovXHJcbnJvdXRlci5wYXRjaCgnLzppZC9zdGF0dXMnLCBhdXRoZW50aWNhdGUsIGF1dGhvcml6ZSgnQURNSU4nLCAnRURJVE9SJyksIChyZXEsIHJlcykgPT4gQ29udGFjdENvbnRyb2xsZXIudXBkYXRlQ29udGFjdFN0YXR1cyhyZXEsIHJlcykpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvY29udGFjdC97aWR9L3JlcGx5OlxyXG4gKiAgIHBvc3Q6XHJcbiAqICAgICBzdW1tYXJ5OiBSZXNwb25kZXIgbWVuc2FnZW0gZGUgY29udGF0byAoQWRtaW4pXHJcbiAqICAgICB0YWdzOiBbQ29udGF0b11cclxuICogICAgIHNlY3VyaXR5OlxyXG4gKiAgICAgICAtIGJlYXJlckF1dGg6IFtdXHJcbiAqICAgICBwYXJhbWV0ZXJzOlxyXG4gKiAgICAgICAtIGluOiBwYXRoXHJcbiAqICAgICAgICAgbmFtZTogaWRcclxuICogICAgICAgICByZXF1aXJlZDogdHJ1ZVxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBJRCBkYSBtZW5zYWdlbVxyXG4gKiAgICAgcmVxdWVzdEJvZHk6XHJcbiAqICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgIHJlcXVpcmVkOlxyXG4gKiAgICAgICAgICAgICAgIC0gc3ViamVjdFxyXG4gKiAgICAgICAgICAgICAgIC0gbWVzc2FnZVxyXG4gKiAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgIHN1YmplY3Q6XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgIG1pbkxlbmd0aDogNVxyXG4gKiAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IEFzc3VudG8gZGEgcmVzcG9zdGFcclxuICogICAgICAgICAgICAgICBtZXNzYWdlOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICBtaW5MZW5ndGg6IDEwXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogTWVuc2FnZW0gZGUgcmVzcG9zdGFcclxuICogICAgICAgICAgICAgICB0ZW1wbGF0ZTpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IFRlbXBsYXRlIGRlIGVtYWlsIChvcGNpb25hbClcclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBSZXNwb3N0YSBlbnZpYWRhIGNvbSBzdWNlc3NvXHJcbiAqICAgICAgICAgY29udGVudDpcclxuICogICAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgc3VjY2VzczpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgbWVzc2FnZTpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgIDQwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRGFkb3MgaW52w6FsaWRvc1xyXG4gKiAgICAgICA0MDE6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGludsOhbGlkb1xyXG4gKiAgICAgICA0MDM6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFNlbSBwZXJtaXNzw6NvXHJcbiAqICAgICAgIDQwNDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogTWVuc2FnZW0gbsOjbyBlbmNvbnRyYWRhXHJcbiAqL1xyXG5yb3V0ZXIucG9zdCgnLzppZC9yZXBseScsIGF1dGhlbnRpY2F0ZSwgYXV0aG9yaXplKCdBRE1JTicsICdFRElUT1InKSwgQ29udGFjdENvbnRyb2xsZXIucmVwbHlUb0NvbnRhY3QpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvY29udGFjdC97aWR9OlxyXG4gKiAgIGRlbGV0ZTpcclxuICogICAgIHN1bW1hcnk6IEV4Y2x1aXIgbWVuc2FnZW0gZGUgY29udGF0byAoQWRtaW4pXHJcbiAqICAgICB0YWdzOiBbQ29udGF0b11cclxuICogICAgIHNlY3VyaXR5OlxyXG4gKiAgICAgICAtIGJlYXJlckF1dGg6IFtdXHJcbiAqICAgICBwYXJhbWV0ZXJzOlxyXG4gKiAgICAgICAtIGluOiBwYXRoXHJcbiAqICAgICAgICAgbmFtZTogaWRcclxuICogICAgICAgICByZXF1aXJlZDogdHJ1ZVxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBJRCBkYSBtZW5zYWdlbVxyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IE1lbnNhZ2VtIGV4Y2x1w61kYSBjb20gc3VjZXNzb1xyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgIHN1Y2Nlc3M6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgIG1lc3NhZ2U6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICA0MDE6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGludsOhbGlkb1xyXG4gKiAgICAgICA0MDM6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFNlbSBwZXJtaXNzw6NvXHJcbiAqICAgICAgIDQwNDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogTWVuc2FnZW0gbsOjbyBlbmNvbnRyYWRhXHJcbiAqL1xyXG5yb3V0ZXIuZGVsZXRlKCcvOmlkJywgYXV0aGVudGljYXRlLCBhdXRob3JpemUoJ0FETUlOJyksIENvbnRhY3RDb250cm9sbGVyLmRlbGV0ZUNvbnRhY3QpO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgcm91dGVyOyJdLCJ2ZXJzaW9uIjozfQ==

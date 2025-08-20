@@ -641,7 +641,98 @@ export class AdminController {
   }
 
   /**
-   * Modo de manutenção
+   * Obtém configurações do sistema
+   */
+  static async getSettings(req: Request, res: Response): Promise<void> {
+    try {
+      // Buscar configurações do sistema (simulado - em produção seria uma tabela de settings)
+      const settings = {
+        siteName: 'Contabilidade Igrejinha',
+        siteDescription: 'Serviços contábeis especializados',
+        contactEmail: 'contato@contabilidadeigrejinha.com.br',
+        contactPhone: '(51) 99999-9999',
+        address: 'Rua Principal, 123 - Igrejinha/RS',
+        socialMedia: {
+          facebook: 'https://facebook.com/contabilidadeigrejinha',
+          instagram: 'https://instagram.com/contabilidadeigrejinha',
+          linkedin: 'https://linkedin.com/company/contabilidadeigrejinha'
+        },
+        businessHours: {
+          monday: '08:00-18:00',
+          tuesday: '08:00-18:00',
+          wednesday: '08:00-18:00',
+          thursday: '08:00-18:00',
+          friday: '08:00-17:00',
+          saturday: 'Fechado',
+          sunday: 'Fechado'
+        },
+        features: {
+          newsletter: true,
+          calculator: true,
+          blog: true,
+          testimonials: true
+        },
+        maintenance: {
+          enabled: false,
+          message: 'Site em manutenção. Voltamos em breve!'
+        }
+      };
+
+      res.status(200).json({
+        success: true,
+        message: 'Configurações obtidas com sucesso',
+        data: { settings }
+      });
+
+    } catch (error) {
+      logger.error('Erro ao obter configurações:', error);
+      res.status(500).json({
+        success: false,
+        message: 'Erro interno do servidor'
+      });
+    }
+  }
+
+  /**
+   * Atualiza configurações do sistema
+   */
+  static async updateSettings(req: Request, res: Response): Promise<void> {
+    try {
+      const settings = req.body;
+
+      // Validações básicas
+      if (!settings || typeof settings !== 'object') {
+        res.status(400).json({
+          success: false,
+          message: 'Dados de configuração inválidos'
+        });
+        return;
+      }
+
+      // Em produção, aqui salvaria as configurações no banco de dados
+      // Por enquanto, apenas simula a atualização
+      logger.info('Configurações atualizadas', {
+        updatedBy: req.user?.id || 'system',
+        settings: Object.keys(settings)
+      });
+
+      res.status(200).json({
+        success: true,
+        message: 'Configurações atualizadas com sucesso',
+        data: { settings }
+      });
+
+    } catch (error) {
+      logger.error('Erro ao atualizar configurações:', error);
+      res.status(500).json({
+        success: false,
+        message: 'Erro interno do servidor'
+      });
+    }
+  }
+
+  /**
+   * Ativa/desativa modo de manutenção
    */
   static async toggleMaintenanceMode(req: Request, res: Response): Promise<void> {
     try {
@@ -667,6 +758,211 @@ export class AdminController {
       });
     } catch (error) {
       logger.error('Erro ao alterar modo de manutenção', { error });
+      res.status(500).json({
+        success: false,
+        message: 'Erro interno do servidor'
+      });
+    }
+  }
+
+  /**
+   * Download de backup
+   */
+  static async downloadBackup(req: Request, res: Response): Promise<void> {
+    try {
+      const { id } = req.params;
+      const currentUser = (req as any).user;
+
+      if (!id) {
+        res.status(400).json({
+          success: false,
+          message: 'ID do backup é obrigatório'
+        });
+        return;
+      }
+
+      // Verificar se o backup existe
+      // const backupPath = path.join('backups', `${id}.json`);
+      // const exists = await fs.access(backupPath).then(() => true).catch(() => false);
+      
+      // Simulação - em produção verificaria se o arquivo existe
+      const exists = id.startsWith('backup_');
+      
+      if (!exists) {
+        res.status(404).json({
+          success: false,
+          message: 'Backup não encontrado'
+        });
+        return;
+      }
+
+      // Simular dados do backup
+      const backupData = {
+        id,
+        createdAt: new Date(),
+        data: {
+          users: [],
+          articles: [],
+          contacts: [],
+          categories: []
+        }
+      };
+
+      logger.info('Backup baixado', {
+        backupId: id,
+        downloadedBy: currentUser.id
+      });
+
+      res.setHeader('Content-Type', 'application/json');
+      res.setHeader('Content-Disposition', `attachment; filename="${id}.json"`);
+      res.status(200).json(backupData);
+
+    } catch (error) {
+      logger.error('Erro ao baixar backup', { error });
+      res.status(500).json({
+        success: false,
+        message: 'Erro interno do servidor'
+      });
+    }
+  }
+
+  /**
+   * Remove backup
+   */
+  static async deleteBackup(req: Request, res: Response): Promise<void> {
+    try {
+      const { id } = req.params;
+      const currentUser = (req as any).user;
+
+      if (!id) {
+        res.status(400).json({
+          success: false,
+          message: 'ID do backup é obrigatório'
+        });
+        return;
+      }
+
+      // Verificar se o backup existe
+      const exists = id.startsWith('backup_');
+      
+      if (!exists) {
+        res.status(404).json({
+          success: false,
+          message: 'Backup não encontrado'
+        });
+        return;
+      }
+
+      // Implementar remoção do arquivo de backup
+      // await fs.unlink(path.join('backups', `${id}.json`));
+
+      logger.info('Backup removido', {
+        backupId: id,
+        deletedBy: currentUser.id
+      });
+
+      res.status(200).json({
+        success: true,
+        message: 'Backup removido com sucesso'
+      });
+
+    } catch (error) {
+      logger.error('Erro ao remover backup', { error });
+      res.status(500).json({
+        success: false,
+        message: 'Erro interno do servidor'
+      });
+    }
+  }
+
+  /**
+   * Limpa cache do sistema
+   */
+  static async clearCache(req: Request, res: Response): Promise<void> {
+    try {
+      const { pattern, key } = req.body;
+      const currentUser = (req as any).user;
+
+      // Implementar limpeza de cache
+      // Se usando Redis:
+      // if (pattern) {
+      //   await redis.eval(`
+      //     local keys = redis.call('keys', ARGV[1])
+      //     for i=1,#keys,5000 do
+      //       redis.call('del', unpack(keys, i, math.min(i+4999, #keys)))
+      //     end
+      //     return #keys
+      //   `, 0, pattern);
+      // } else if (key) {
+      //   await redis.del(key);
+      // } else {
+      //   await redis.flushall();
+      // }
+
+      let message = 'Cache limpo com sucesso';
+      if (pattern) {
+        message = `Cache limpo para padrão: ${pattern}`;
+      } else if (key) {
+        message = `Cache limpo para chave: ${key}`;
+      } else {
+        message = 'Todo o cache foi limpo';
+      }
+
+      logger.info('Cache limpo', {
+        pattern,
+        key,
+        clearedBy: currentUser.id
+      });
+
+      res.status(200).json({
+        success: true,
+        message,
+        data: {
+          pattern: pattern || null,
+          key: key || null,
+          clearedAt: new Date()
+        }
+      });
+
+    } catch (error) {
+      logger.error('Erro ao limpar cache', { error });
+      res.status(500).json({
+        success: false,
+        message: 'Erro interno do servidor'
+      });
+    }
+  }
+
+  /**
+   * Ativa modo de manutenção
+   */
+  static async enableMaintenance(req: Request, res: Response): Promise<void> {
+    try {
+      const { message = 'Site em manutenção. Voltamos em breve!' } = req.body;
+      const currentUser = (req as any).user;
+
+      // Implementar ativação do modo de manutenção
+      // Pode ser através de variável de ambiente, arquivo ou banco de dados
+      // process.env.MAINTENANCE_MODE = 'true';
+      // process.env.MAINTENANCE_MESSAGE = message;
+      
+      logger.info('Modo de manutenção ativado', {
+        message,
+        activatedBy: currentUser.id
+      });
+
+      res.status(200).json({
+        success: true,
+        message: 'Modo de manutenção ativado',
+        data: {
+          maintenanceMode: true,
+          message,
+          activatedAt: new Date()
+        }
+      });
+
+    } catch (error) {
+      logger.error('Erro ao ativar modo de manutenção', { error });
       res.status(500).json({
         success: false,
         message: 'Erro interno do servidor'

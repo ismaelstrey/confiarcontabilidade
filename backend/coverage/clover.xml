@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1755633964732" clover="3.2.0">
-  <project timestamp="1755633964732" name="All files">
-    <metrics statements="1124" coveredstatements="264" conditionals="341" coveredconditionals="73" methods="213" coveredmethods="45" elements="1678" coveredelements="382" complexity="0" loc="1124" ncloc="1124" packages="7" files="25" classes="25"/>
+<coverage generated="1755641336852" clover="3.2.0">
+  <project timestamp="1755641336852" name="All files">
+    <metrics statements="1309" coveredstatements="248" conditionals="403" coveredconditionals="87" methods="247" coveredmethods="41" elements="1959" coveredelements="376" complexity="0" loc="1309" ncloc="1309" packages="8" files="28" classes="28"/>
     <package name="controllers">
-      <metrics statements="271" coveredstatements="0" conditionals="111" coveredconditionals="0" methods="29" coveredmethods="0"/>
-      <file name="authController.ts" path="D:\DEV\contabilidadeigrejinha\backend\src\controllers\authController.ts">
+      <metrics statements="368" coveredstatements="0" conditionals="149" coveredconditionals="0" methods="38" coveredmethods="0"/>
+      <file name="authController.ts" path="D:\dev\contabil\contabil-site\backend\src\controllers\authController.ts">
         <metrics statements="91" coveredstatements="0" conditionals="41" coveredconditionals="0" methods="8" coveredmethods="0"/>
         <line num="2" count="0" type="stmt"/>
         <line num="3" count="0" type="stmt"/>
@@ -98,7 +98,107 @@
         <line num="288" count="0" type="stmt"/>
         <line num="296" count="0" type="stmt"/>
       </file>
-      <file name="contactController.ts" path="D:\DEV\contabilidadeigrejinha\backend\src\controllers\contactController.ts">
+      <file name="cacheExampleController.ts" path="D:\dev\contabil\contabil-site\backend\src\controllers\cacheExampleController.ts">
+        <metrics statements="97" coveredstatements="0" conditionals="38" coveredconditionals="0" methods="9" coveredmethods="0"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="17" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="28" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+        <line num="45" count="0" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="65" count="0" type="stmt"/>
+        <line num="66" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="69" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="70" count="0" type="stmt"/>
+        <line num="77" count="0" type="stmt"/>
+        <line num="80" count="0" type="stmt"/>
+        <line num="87" count="0" type="stmt"/>
+        <line num="90" count="0" type="stmt"/>
+        <line num="92" count="0" type="stmt"/>
+        <line num="94" count="0" type="stmt"/>
+        <line num="100" count="0" type="stmt"/>
+        <line num="101" count="0" type="stmt"/>
+        <line num="113" count="0" type="stmt"/>
+        <line num="114" count="0" type="stmt"/>
+        <line num="116" count="0" type="cond" truecount="0" falsecount="3"/>
+        <line num="117" count="0" type="stmt"/>
+        <line num="123" count="0" type="stmt"/>
+        <line num="127" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="129" count="0" type="stmt"/>
+        <line num="130" count="0" type="stmt"/>
+        <line num="132" count="0" type="stmt"/>
+        <line num="133" count="0" type="stmt"/>
+        <line num="135" count="0" type="stmt"/>
+        <line num="136" count="0" type="stmt"/>
+        <line num="138" count="0" type="stmt"/>
+        <line num="141" count="0" type="stmt"/>
+        <line num="142" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="143" count="0" type="stmt"/>
+        <line num="152" count="0" type="stmt"/>
+        <line num="153" count="0" type="stmt"/>
+        <line num="155" count="0" type="stmt"/>
+        <line num="163" count="0" type="stmt"/>
+        <line num="164" count="0" type="stmt"/>
+        <line num="176" count="0" type="stmt"/>
+        <line num="177" count="0" type="stmt"/>
+        <line num="178" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="179" count="0" type="stmt"/>
+        <line num="181" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="182" count="0" type="stmt"/>
+        <line num="190" count="0" type="cond" truecount="0" falsecount="3"/>
+        <line num="194" count="0" type="stmt"/>
+        <line num="196" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="197" count="0" type="stmt"/>
+        <line num="198" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="199" count="0" type="stmt"/>
+        <line num="208" count="0" type="stmt"/>
+        <line num="211" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="212" count="0" type="stmt"/>
+        <line num="215" count="0" type="stmt"/>
+        <line num="225" count="0" type="stmt"/>
+        <line num="226" count="0" type="stmt"/>
+        <line num="238" count="0" type="stmt"/>
+        <line num="239" count="0" type="stmt"/>
+        <line num="240" count="0" type="stmt"/>
+        <line num="242" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="244" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="245" count="0" type="stmt"/>
+        <line num="246" count="0" type="stmt"/>
+        <line num="247" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="248" count="0" type="stmt"/>
+        <line num="249" count="0" type="stmt"/>
+        <line num="251" count="0" type="stmt"/>
+        <line num="252" count="0" type="stmt"/>
+        <line num="256" count="0" type="stmt"/>
+        <line num="257" count="0" type="stmt"/>
+        <line num="258" count="0" type="stmt"/>
+        <line num="266" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="267" count="0" type="stmt"/>
+        <line num="272" count="0" type="stmt"/>
+        <line num="273" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="274" count="0" type="stmt"/>
+        <line num="284" count="0" type="stmt"/>
+        <line num="290" count="0" type="stmt"/>
+        <line num="291" count="0" type="stmt"/>
+        <line num="303" count="0" type="stmt"/>
+        <line num="305" count="0" type="stmt"/>
+        <line num="319" count="0" type="stmt"/>
+        <line num="321" count="0" type="stmt"/>
+      </file>
+      <file name="contactController.ts" path="D:\dev\contabil\contabil-site\backend\src\controllers\contactController.ts">
         <metrics statements="180" coveredstatements="0" conditionals="70" coveredconditionals="0" methods="21" coveredmethods="0"/>
         <line num="2" count="0" type="stmt"/>
         <line num="3" count="0" type="stmt"/>
@@ -283,8 +383,8 @@
       </file>
     </package>
     <package name="middlewares">
-      <metrics statements="298" coveredstatements="84" conditionals="151" coveredconditionals="38" methods="61" coveredmethods="20"/>
-      <file name="auth.ts" path="D:\DEV\contabilidadeigrejinha\backend\src\middlewares\auth.ts">
+      <metrics statements="371" coveredstatements="84" conditionals="175" coveredconditionals="47" methods="74" coveredmethods="20"/>
+      <file name="auth.ts" path="D:\dev\contabil\contabil-site\backend\src\middlewares\auth.ts">
         <metrics statements="46" coveredstatements="0" conditionals="13" coveredconditionals="0" methods="5" coveredmethods="0"/>
         <line num="3" count="0" type="stmt"/>
         <line num="4" count="0" type="stmt"/>
@@ -333,7 +433,7 @@
         <line num="140" count="0" type="stmt"/>
         <line num="143" count="0" type="stmt"/>
       </file>
-      <file name="cache.ts" path="D:\DEV\contabilidadeigrejinha\backend\src\middlewares\cache.ts">
+      <file name="cache.ts" path="D:\dev\contabil\contabil-site\backend\src\middlewares\cache.ts">
         <metrics statements="69" coveredstatements="59" conditionals="30" coveredconditionals="25" methods="23" coveredmethods="19"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -405,7 +505,7 @@
         <line num="189" count="1" type="stmt"/>
         <line num="190" count="1" type="stmt"/>
       </file>
-      <file name="errorHandler.ts" path="D:\DEV\contabilidadeigrejinha\backend\src\middlewares\errorHandler.ts">
+      <file name="errorHandler.ts" path="D:\dev\contabil\contabil-site\backend\src\middlewares\errorHandler.ts">
         <metrics statements="54" coveredstatements="0" conditionals="25" coveredconditionals="0" methods="11" coveredmethods="0"/>
         <line num="2" count="0" type="stmt"/>
         <line num="12" count="0" type="stmt"/>
@@ -462,12 +562,12 @@
         <line num="149" count="0" type="cond" truecount="0" falsecount="1"/>
         <line num="150" count="0" type="stmt"/>
       </file>
-      <file name="logger.ts" path="D:\DEV\contabilidadeigrejinha\backend\src\middlewares\logger.ts">
-        <metrics statements="38" coveredstatements="25" conditionals="31" coveredconditionals="13" methods="8" coveredmethods="1"/>
+      <file name="logger.ts" path="D:\dev\contabil\contabil-site\backend\src\middlewares\logger.ts">
+        <metrics statements="38" coveredstatements="25" conditionals="31" coveredconditionals="22" methods="8" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="6" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="6" count="1" type="cond" truecount="2" falsecount="0"/>
         <line num="7" count="1" type="cond" truecount="0" falsecount="1"/>
         <line num="8" count="0" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
@@ -503,7 +603,7 @@
         <line num="168" count="0" type="stmt"/>
         <line num="177" count="1" type="stmt"/>
       </file>
-      <file name="requestLogger.ts" path="D:\DEV\contabilidadeigrejinha\backend\src\middlewares\requestLogger.ts">
+      <file name="requestLogger.ts" path="D:\dev\contabil\contabil-site\backend\src\middlewares\requestLogger.ts">
         <metrics statements="48" coveredstatements="0" conditionals="31" coveredconditionals="0" methods="7" coveredmethods="0"/>
         <line num="2" count="0" type="stmt"/>
         <line num="18" count="0" type="stmt"/>
@@ -554,7 +654,7 @@
         <line num="158" count="0" type="stmt"/>
         <line num="161" count="0" type="stmt"/>
       </file>
-      <file name="security.ts" path="D:\DEV\contabilidadeigrejinha\backend\src\middlewares\security.ts">
+      <file name="security.ts" path="D:\dev\contabil\contabil-site\backend\src\middlewares\security.ts">
         <metrics statements="43" coveredstatements="0" conditionals="21" coveredconditionals="0" methods="7" coveredmethods="0"/>
         <line num="2" count="0" type="stmt"/>
         <line num="3" count="0" type="stmt"/>
@@ -600,10 +700,107 @@
         <line num="197" count="0" type="stmt"/>
         <line num="200" count="0" type="stmt"/>
       </file>
+      <file name="upload.ts" path="D:\dev\contabil\contabil-site\backend\src\middlewares\upload.ts">
+        <metrics statements="73" coveredstatements="0" conditionals="24" coveredconditionals="0" methods="13" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="26" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="53" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="54" count="0" type="stmt"/>
+        <line num="56" count="0" type="stmt"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="83" count="0" type="stmt"/>
+        <line num="84" count="0" type="stmt"/>
+        <line num="85" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="86" count="0" type="stmt"/>
+        <line num="89" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="90" count="0" type="stmt"/>
+        <line num="92" count="0" type="stmt"/>
+        <line num="93" count="0" type="stmt"/>
+        <line num="95" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="97" count="0" type="stmt"/>
+        <line num="98" count="0" type="stmt"/>
+        <line num="101" count="0" type="stmt"/>
+        <line num="102" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="103" count="0" type="stmt"/>
+        <line num="108" count="0" type="stmt"/>
+        <line num="114" count="0" type="stmt"/>
+        <line num="120" count="0" type="stmt"/>
+        <line num="122" count="0" type="stmt"/>
+        <line num="134" count="0" type="stmt"/>
+        <line num="135" count="0" type="stmt"/>
+        <line num="137" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="138" count="0" type="stmt"/>
+        <line num="141" count="0" type="stmt"/>
+        <line num="143" count="0" type="stmt"/>
+        <line num="156" count="0" type="stmt"/>
+        <line num="158" count="0" type="stmt"/>
+        <line num="160" count="0" type="stmt"/>
+        <line num="163" count="0" type="stmt"/>
+        <line num="165" count="0" type="stmt"/>
+        <line num="168" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="169" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="170" count="0" type="stmt"/>
+        <line num="171" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="172" count="0" type="stmt"/>
+        <line num="177" count="0" type="stmt"/>
+        <line num="186" count="0" type="stmt"/>
+        <line num="187" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="188" count="0" type="stmt"/>
+        <line num="195" count="0" type="stmt"/>
+        <line num="199" count="0" type="stmt"/>
+        <line num="200" count="0" type="stmt"/>
+        <line num="201" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="202" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="203" count="0" type="stmt"/>
+        <line num="204" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="205" count="0" type="stmt"/>
+        <line num="210" count="0" type="stmt"/>
+        <line num="214" count="0" type="stmt"/>
+        <line num="215" count="0" type="stmt"/>
+        <line num="216" count="0" type="stmt"/>
+        <line num="221" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="repositories">
+      <metrics statements="15" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="12" coveredmethods="0"/>
+      <file name="userRepository.ts" path="D:\dev\contabil\contabil-site\backend\src\repositories\userRepository.ts">
+        <metrics statements="15" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="12" coveredmethods="0"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="4" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="58" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="72" count="0" type="stmt"/>
+        <line num="76" count="0" type="stmt"/>
+        <line num="83" count="0" type="stmt"/>
+        <line num="84" count="0" type="stmt"/>
+        <line num="85" count="0" type="stmt"/>
+      </file>
     </package>
     <package name="routes">
       <metrics statements="191" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="58" coveredmethods="0"/>
-      <file name="adminRoutes.ts" path="D:\DEV\contabilidadeigrejinha\backend\src\routes\adminRoutes.ts">
+      <file name="adminRoutes.ts" path="D:\dev\contabil\contabil-site\backend\src\routes\adminRoutes.ts">
         <metrics statements="26" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="11" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="2" count="0" type="stmt"/>
@@ -632,7 +829,7 @@
         <line num="833" count="0" type="stmt"/>
         <line num="840" count="0" type="stmt"/>
       </file>
-      <file name="articleRoutes.ts" path="D:\DEV\contabilidadeigrejinha\backend\src\routes\articleRoutes.ts">
+      <file name="articleRoutes.ts" path="D:\dev\contabil\contabil-site\backend\src\routes\articleRoutes.ts">
         <metrics statements="21" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="8" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="2" count="0" type="stmt"/>
@@ -656,7 +853,7 @@
         <line num="552" count="0" type="stmt"/>
         <line num="559" count="0" type="stmt"/>
       </file>
-      <file name="authRoutes.ts" path="D:\DEV\contabilidadeigrejinha\backend\src\routes\authRoutes.ts">
+      <file name="authRoutes.ts" path="D:\dev\contabil\contabil-site\backend\src\routes\authRoutes.ts">
         <metrics statements="12" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="2" count="0" type="stmt"/>
@@ -671,7 +868,7 @@
         <line num="289" count="0" type="stmt"/>
         <line num="291" count="0" type="stmt"/>
       </file>
-      <file name="cacheRoutes.ts" path="D:\DEV\contabilidadeigrejinha\backend\src\routes\cacheRoutes.ts">
+      <file name="cacheRoutes.ts" path="D:\dev\contabil\contabil-site\backend\src\routes\cacheRoutes.ts">
         <metrics statements="15" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="2" count="0" type="stmt"/>
@@ -689,7 +886,7 @@
         <line num="315" count="0" type="stmt"/>
         <line num="326" count="0" type="stmt"/>
       </file>
-      <file name="calculatorRoutes.ts" path="D:\DEV\contabilidadeigrejinha\backend\src\routes\calculatorRoutes.ts">
+      <file name="calculatorRoutes.ts" path="D:\dev\contabil\contabil-site\backend\src\routes\calculatorRoutes.ts">
         <metrics statements="15" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="3" count="0" type="stmt"/>
@@ -707,7 +904,7 @@
         <line num="624" count="0" type="stmt"/>
         <line num="631" count="0" type="stmt"/>
       </file>
-      <file name="contactRoutes.ts" path="D:\DEV\contabilidadeigrejinha\backend\src\routes\contactRoutes.ts">
+      <file name="contactRoutes.ts" path="D:\dev\contabil\contabil-site\backend\src\routes\contactRoutes.ts">
         <metrics statements="16" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="2" count="0" type="stmt"/>
@@ -726,7 +923,7 @@
         <line num="464" count="0" type="stmt"/>
         <line num="471" count="0" type="stmt"/>
       </file>
-      <file name="index.ts" path="D:\DEV\contabilidadeigrejinha\backend\src\routes\index.ts">
+      <file name="index.ts" path="D:\dev\contabil\contabil-site\backend\src\routes\index.ts">
         <metrics statements="21" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="2" count="0" type="stmt"/>
@@ -750,7 +947,7 @@
         <line num="23" count="0" type="stmt"/>
         <line num="25" count="0" type="stmt"/>
       </file>
-      <file name="newsletterRoutes.ts" path="D:\DEV\contabilidadeigrejinha\backend\src\routes\newsletterRoutes.ts">
+      <file name="newsletterRoutes.ts" path="D:\dev\contabil\contabil-site\backend\src\routes\newsletterRoutes.ts">
         <metrics statements="22" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="9" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="2" count="0" type="stmt"/>
@@ -775,7 +972,7 @@
         <line num="622" count="0" type="stmt"/>
         <line num="629" count="0" type="stmt"/>
       </file>
-      <file name="uploadRoutes.ts" path="D:\DEV\contabilidadeigrejinha\backend\src\routes\uploadRoutes.ts">
+      <file name="uploadRoutes.ts" path="D:\dev\contabil\contabil-site\backend\src\routes\uploadRoutes.ts">
         <metrics statements="14" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="2" count="0" type="stmt"/>
@@ -792,7 +989,7 @@
         <line num="545" count="0" type="stmt"/>
         <line num="547" count="0" type="stmt"/>
       </file>
-      <file name="userRoutes.ts" path="D:\DEV\contabilidadeigrejinha\backend\src\routes\userRoutes.ts">
+      <file name="userRoutes.ts" path="D:\dev\contabil\contabil-site\backend\src\routes\userRoutes.ts">
         <metrics statements="29" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="15" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="2" count="0" type="stmt"/>
@@ -826,9 +1023,9 @@
       </file>
     </package>
     <package name="services">
-      <metrics statements="195" coveredstatements="133" conditionals="45" coveredconditionals="30" methods="30" coveredmethods="19"/>
-      <file name="authService.ts" path="D:\DEV\contabilidadeigrejinha\backend\src\services\authService.ts">
-        <metrics statements="93" coveredstatements="64" conditionals="25" coveredconditionals="14" methods="11" coveredmethods="7"/>
+      <metrics statements="195" coveredstatements="133" conditionals="45" coveredconditionals="33" methods="30" coveredmethods="19"/>
+      <file name="authService.ts" path="D:\dev\contabil\contabil-site\backend\src\services\authService.ts">
+        <metrics statements="93" coveredstatements="64" conditionals="25" coveredconditionals="17" methods="11" coveredmethods="7"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -836,10 +1033,10 @@
         <line num="5" count="1" type="stmt"/>
         <line num="40" count="1" type="stmt"/>
         <line num="49" count="11" type="cond" truecount="1" falsecount="1"/>
-        <line num="50" count="11" type="cond" truecount="1" falsecount="1"/>
+        <line num="50" count="11" type="cond" truecount="2" falsecount="0"/>
         <line num="51" count="11" type="cond" truecount="1" falsecount="1"/>
-        <line num="52" count="11" type="cond" truecount="1" falsecount="1"/>
-        <line num="53" count="11" type="cond" truecount="1" falsecount="1"/>
+        <line num="52" count="11" type="cond" truecount="2" falsecount="0"/>
+        <line num="53" count="11" type="cond" truecount="2" falsecount="0"/>
         <line num="54" count="11" type="cond" truecount="2" falsecount="0"/>
         <line num="61" count="4" type="stmt"/>
         <line num="63" count="4" type="stmt"/>
@@ -923,7 +1120,7 @@
         <line num="339" count="2" type="stmt"/>
         <line num="351" count="1" type="stmt"/>
       </file>
-      <file name="cacheService.ts" path="D:\DEV\contabilidadeigrejinha\backend\src\services\cacheService.ts">
+      <file name="cacheService.ts" path="D:\dev\contabil\contabil-site\backend\src\services\cacheService.ts">
         <metrics statements="102" coveredstatements="69" conditionals="20" coveredconditionals="16" methods="19" coveredmethods="12"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -1031,7 +1228,7 @@
     </package>
     <package name="tests.helpers">
       <metrics statements="34" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="4" coveredmethods="0"/>
-      <file name="testServer.ts" path="D:\DEV\contabilidadeigrejinha\backend\src\tests\helpers\testServer.ts">
+      <file name="testServer.ts" path="D:\dev\contabil\contabil-site\backend\src\tests\helpers\testServer.ts">
         <metrics statements="34" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="4" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="2" count="0" type="stmt"/>
@@ -1071,7 +1268,7 @@
     </package>
     <package name="tests.scripts">
       <metrics statements="62" coveredstatements="0" conditionals="3" coveredconditionals="0" methods="9" coveredmethods="0"/>
-      <file name="setupTestDb.ts" path="D:\DEV\contabilidadeigrejinha\backend\src\tests\scripts\setupTestDb.ts">
+      <file name="setupTestDb.ts" path="D:\dev\contabil\contabil-site\backend\src\tests\scripts\setupTestDb.ts">
         <metrics statements="62" coveredstatements="0" conditionals="3" coveredconditionals="0" methods="9" coveredmethods="0"/>
         <line num="1" count="0" type="stmt"/>
         <line num="2" count="0" type="stmt"/>
@@ -1138,33 +1335,33 @@
       </file>
     </package>
     <package name="utils">
-      <metrics statements="73" coveredstatements="47" conditionals="19" coveredconditionals="5" methods="22" coveredmethods="6"/>
-      <file name="auth.ts" path="D:\DEV\contabilidadeigrejinha\backend\src\utils\auth.ts">
-        <metrics statements="22" coveredstatements="16" conditionals="1" coveredconditionals="1" methods="8" coveredmethods="4"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="3" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="4" type="stmt"/>
-        <line num="12" count="4" type="stmt"/>
-        <line num="21" count="1" type="stmt"/>
-        <line num="22" count="3" type="stmt"/>
-        <line num="31" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="32" count="4" type="stmt"/>
-        <line num="40" count="1" type="stmt"/>
-        <line num="41" count="5" type="stmt"/>
-        <line num="49" count="1" type="stmt"/>
+      <metrics statements="73" coveredstatements="31" conditionals="19" coveredconditionals="7" methods="22" coveredmethods="2"/>
+      <file name="auth.ts" path="D:\dev\contabil\contabil-site\backend\src\utils\auth.ts">
+        <metrics statements="22" coveredstatements="0" conditionals="1" coveredconditionals="0" methods="8" coveredmethods="0"/>
+        <line num="1" count="0" type="stmt"/>
+        <line num="2" count="0" type="stmt"/>
+        <line num="3" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="31" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="49" count="0" type="stmt"/>
         <line num="50" count="0" type="stmt"/>
-        <line num="58" count="1" type="stmt"/>
+        <line num="58" count="0" type="stmt"/>
         <line num="59" count="0" type="stmt"/>
-        <line num="67" count="1" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
         <line num="69" count="0" type="stmt"/>
         <line num="70" count="0" type="stmt"/>
-        <line num="78" count="1" type="stmt"/>
+        <line num="78" count="0" type="stmt"/>
         <line num="79" count="0" type="stmt"/>
         <line num="80" count="0" type="stmt"/>
       </file>
-      <file name="error.ts" path="D:\DEV\contabilidadeigrejinha\backend\src\utils\error.ts">
+      <file name="error.ts" path="D:\dev\contabil\contabil-site\backend\src\utils\error.ts">
         <metrics statements="25" coveredstatements="14" conditionals="9" coveredconditionals="0" methods="9" coveredmethods="2"/>
         <line num="4" count="1" type="stmt"/>
         <line num="9" count="2" type="stmt"/>
@@ -1192,12 +1389,12 @@
         <line num="86" count="0" type="stmt"/>
         <line num="94" count="0" type="stmt"/>
       </file>
-      <file name="logger.ts" path="D:\DEV\contabilidadeigrejinha\backend\src\utils\logger.ts">
-        <metrics statements="26" coveredstatements="17" conditionals="9" coveredconditionals="4" methods="5" coveredmethods="0"/>
+      <file name="logger.ts" path="D:\dev\contabil\contabil-site\backend\src\utils\logger.ts">
+        <metrics statements="26" coveredstatements="17" conditionals="9" coveredconditionals="7" methods="5" coveredmethods="0"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
-        <line num="6" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="6" count="1" type="cond" truecount="2" falsecount="0"/>
         <line num="7" count="1" type="cond" truecount="0" falsecount="1"/>
         <line num="8" count="0" type="stmt"/>
         <line num="12" count="1" type="stmt"/>

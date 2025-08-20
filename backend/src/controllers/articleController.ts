@@ -589,70 +589,70 @@ export class ArticleController {
   /**
    * Remove um artigo
    */
-  static async deleteArticle(req: Request, res: Response): Promise<void> {
-    try {
-      const { id } = req.params;
-      const currentUser = (req as any).user;
+  // static async deleteArticle(req: Request, res: Response): Promise<void> {
+  //   try {
+  //     const { id } = req.params;
+  //     const currentUser = (req as any).user;
 
-      if (!id) {
-        res.status(400).json({
-          success: false,
-          message: 'ID do artigo é obrigatório'
-        });
-        return;
-      }
+  //     if (!id) {
+  //       res.status(400).json({
+  //         success: false,
+  //         message: 'ID do artigo é obrigatório'
+  //       });
+  //       return;
+  //     }
 
-      // Verificar se o artigo existe
-      const existingArticle = await prisma.article.findUnique({
-        where: { id }
-      });
+  //     // Verificar se o artigo existe
+  //     const existingArticle = await prisma.article.findUnique({
+  //       where: { id }
+  //     });
 
-      if (!existingArticle) {
-        res.status(404).json({
-          success: false,
-          message: 'Artigo não encontrado'
-        });
-        return;
-      }
+  //     if (!existingArticle) {
+  //       res.status(404).json({
+  //         success: false,
+  //         message: 'Artigo não encontrado'
+  //       });
+  //       return;
+  //     }
 
-      // Verificar permissões (autor ou admin)
-      if (currentUser.role !== 'ADMIN' && existingArticle.authorId !== currentUser.id) {
-        res.status(403).json({
-          success: false,
-          message: 'Sem permissão para deletar este artigo'
-        });
-        return;
-      }
+  //     // Verificar permissões (autor ou admin)
+  //     if (currentUser.role !== 'ADMIN' && existingArticle.authorId !== currentUser.id) {
+  //       res.status(403).json({
+  //         success: false,
+  //         message: 'Sem permissão para deletar este artigo'
+  //       });
+  //       return;
+  //     }
 
-      // Deletar artigo e comentários relacionados
-      await prisma.$transaction([
-        prisma.articleComment.deleteMany({
-          where: { articleId: id }
-        }),
-        prisma.article.delete({
-          where: { id }
-        })
-      ]);
+  //     // Deletar artigo e comentários relacionados
+  //     await prisma.$transaction([
+  //       prisma.articleComment.deleteMany({
+  //         where: { articleId: id }
+  //       }),
+  //       prisma.article.delete({
+  //         where: { id }
+  //       })
+  //     ]);
 
-      // Log da ação
-      logger.info('Artigo deletado', {
-        articleId: id,
-        title: existingArticle.title,
-        deletedBy: currentUser.id
-      });
+  //     // Log da ação
+  //     logger.info('Artigo deletado', {
+  //       articleId: id,
+  //       title: existingArticle.title,
+  //       deletedBy: currentUser.id
+  //     });
 
-      res.status(200).json({
-        success: true,
-        message: 'Artigo deletado com sucesso'
-      });
-    } catch (error) {
-      logger.error('Erro ao deletar artigo', { error, articleId: req.params.id });
-      res.status(500).json({
-        success: false,
-        message: 'Erro interno do servidor'
-      });
-    }
-  }
+  //     res.status(200).json({
+  //       success: true,
+  //       message: 'Artigo deletado com sucesso'
+  //     });
+  //   } catch (error) {
+  //     logger.error('Erro ao deletar artigo', { error, articleId: req.params.id });
+  //     res.status(500).json({
+  //       success: false,
+  //       message: 'Erro interno do servidor'
+  //     });
+  //   }
+  // }
 
   /**
    * Busca artigos relacionados
@@ -835,6 +835,315 @@ export class ArticleController {
       });
     } catch (error) {
       logger.error('Erro ao buscar artigos populares', { error });
+      res.status(500).json({
+        success: false,
+        message: 'Erro interno do servidor'
+      });
+    }
+  }
+
+  /**
+   * Deleta um artigo
+   */
+  static async deleteArticle(req: Request, res: Response): Promise<void> {
+    try {
+      const { id } = req.params;
+      const currentUser = (req as any).user;
+
+      if (!id) {
+        res.status(400).json({
+          success: false,
+          message: 'ID do artigo é obrigatório'
+        });
+        return;
+      }
+
+      // Verificar se o artigo existe
+      const existingArticle = await prisma.article.findUnique({
+        where: { id }
+      });
+
+      if (!existingArticle) {
+        res.status(404).json({
+          success: false,
+          message: 'Artigo não encontrado'
+        });
+        return;
+      }
+
+      // Verificar permissões (autor ou admin)
+      if (currentUser.role !== 'ADMIN' && existingArticle.authorId !== currentUser.id) {
+        res.status(403).json({
+          success: false,
+          message: 'Sem permissão para deletar este artigo'
+        });
+        return;
+      }
+
+      // Deletar artigo (cascade irá deletar relacionamentos)
+      await prisma.article.delete({
+        where: { id }
+      });
+
+      // Log da ação
+      logger.info('Artigo deletado', {
+        articleId: id,
+        title: existingArticle.title,
+        authorId: currentUser.id
+      });
+
+      res.status(200).json({
+        success: true,
+        message: 'Artigo deletado com sucesso'
+      });
+    } catch (error) {
+      logger.error('Erro ao deletar artigo', { error, articleId: req.params.id });
+      res.status(500).json({
+        success: false,
+        message: 'Erro interno do servidor'
+      });
+    }
+  }
+
+  /**
+   * Curtir/descurtir um artigo
+   */
+  static async likeArticle(req: Request, res: Response): Promise<void> {
+    try {
+      const { id } = req.params;
+      const currentUser = (req as any).user;
+
+      if (!id) {
+        res.status(400).json({
+          success: false,
+          message: 'ID do artigo é obrigatório'
+        });
+        return;
+      }
+
+      // Verificar se o artigo existe
+      const article = await prisma.article.findUnique({
+        where: { id }
+      });
+
+      if (!article) {
+        res.status(404).json({
+          success: false,
+          message: 'Artigo não encontrado'
+        });
+        return;
+      }
+
+      // Verificar se já curtiu
+      const existingLike = await prisma.articleLike.findUnique({
+        where: {
+          userId_articleId: {
+            userId: currentUser.id,
+            articleId: id
+          }
+        }
+      });
+
+      let liked = false;
+      if (existingLike) {
+        // Remover curtida
+        await prisma.articleLike.delete({
+          where: {
+            userId_articleId: {
+              userId: currentUser.id,
+              articleId: id
+            }
+          }
+        });
+        liked = false;
+      } else {
+        // Adicionar curtida
+        await prisma.articleLike.create({
+          data: {
+            userId: currentUser.id,
+            articleId: id
+          }
+        });
+        liked = true;
+      }
+
+      // Contar total de curtidas
+      const likesCount = await prisma.articleLike.count({
+        where: { articleId: id }
+      });
+
+      res.status(200).json({
+        success: true,
+        message: liked ? 'Artigo curtido' : 'Curtida removida',
+        data: {
+          liked,
+          likesCount
+        }
+      });
+    } catch (error) {
+      logger.error('Erro ao curtir artigo', { error, articleId: req.params.id });
+      res.status(500).json({
+        success: false,
+        message: 'Erro interno do servidor'
+      });
+    }
+  }
+
+  /**
+   * Buscar comentários de um artigo
+   */
+  static async getArticleComments(req: Request, res: Response): Promise<void> {
+    try {
+      const { id } = req.params;
+      const { page = 1, limit = 10, sortOrder = 'desc' } = req.query;
+
+      if (!id) {
+        res.status(400).json({
+          success: false,
+          message: 'ID do artigo é obrigatório'
+        });
+        return;
+      }
+
+      // Verificar se o artigo existe
+      const article = await prisma.article.findUnique({
+        where: { id }
+      });
+
+      if (!article) {
+        res.status(404).json({
+          success: false,
+          message: 'Artigo não encontrado'
+        });
+        return;
+      }
+
+      const skip = (Number(page) - 1) * Number(limit);
+      const take = Number(limit);
+
+      // Buscar comentários aprovados
+      const [comments, total] = await Promise.all([
+        prisma.comment.findMany({
+          where: {
+            articleId: id,
+            isApproved: true
+          },
+          include: {
+            author: {
+              select: {
+                id: true,
+                name: true
+              }
+            }
+          },
+          skip,
+          take,
+          orderBy: { createdAt: sortOrder as 'asc' | 'desc' }
+        }),
+        prisma.comment.count({
+          where: {
+            articleId: id,
+            isApproved: true
+          }
+        })
+      ]);
+
+      const totalPages = Math.ceil(total / take);
+
+      res.status(200).json({
+        success: true,
+        message: 'Comentários encontrados',
+        data: {
+          comments,
+          pagination: {
+            page: Number(page),
+            limit: take,
+            total,
+            totalPages,
+            hasNext: Number(page) < totalPages,
+            hasPrev: Number(page) > 1
+          }
+        }
+      });
+    } catch (error) {
+      logger.error('Erro ao buscar comentários', { error, articleId: req.params.id });
+      res.status(500).json({
+        success: false,
+        message: 'Erro interno do servidor'
+      });
+    }
+  }
+
+  /**
+   * Criar comentário em um artigo
+   */
+  static async createComment(req: Request, res: Response): Promise<void> {
+    try {
+      const { id } = req.params;
+      const { content } = req.body;
+      const currentUser = (req as any).user;
+
+      if (!id) {
+        res.status(400).json({
+          success: false,
+          message: 'ID do artigo é obrigatório'
+        });
+        return;
+      }
+
+      if (!content || content.trim().length === 0) {
+        res.status(400).json({
+          success: false,
+          message: 'Conteúdo do comentário é obrigatório'
+        });
+        return;
+      }
+
+      // Verificar se o artigo existe
+      const article = await prisma.article.findUnique({
+        where: { id }
+      });
+
+      if (!article) {
+        res.status(404).json({
+          success: false,
+          message: 'Artigo não encontrado'
+        });
+        return;
+      }
+
+      // Criar comentário
+      const comment = await prisma.comment.create({
+        data: {
+          content: content.trim(),
+          articleId: id,
+          authorId: currentUser.id,
+          isApproved: false // Comentários precisam de aprovação
+        },
+        include: {
+          author: {
+            select: {
+              id: true,
+              name: true
+            }
+          }
+        }
+      });
+
+      // Log da ação
+      logger.info('Comentário criado', {
+        commentId: comment.id,
+        articleId: id,
+        authorId: currentUser.id
+      });
+
+      res.status(201).json({
+        success: true,
+        message: 'Comentário criado com sucesso. Aguardando aprovação.',
+        data: { comment }
+      });
+    } catch (error) {
+      logger.error('Erro ao criar comentário', { error, articleId: req.params.id });
       res.status(500).json({
         success: false,
         message: 'Erro interno do servidor'

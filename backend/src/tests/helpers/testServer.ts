@@ -1,12 +1,29 @@
 import express from 'express';
-import cors from 'cors';
-import helmet from 'helmet';
-import compression from 'compression';
-import rateLimit from 'express-rate-limit';
 import { setupSwagger } from '../../docs/swagger';
-import routes from '../../routes';
 import { requestLogger } from '../../middlewares/requestLogger';
 import { errorHandler } from '../../middlewares/errorHandler';
+import {
+  corsMiddleware,
+  helmetMiddleware,
+  generalRateLimit,
+  authRateLimit,
+  apiRateLimit,
+  uploadRateLimit,
+  compressionMiddleware,
+  customSecurityHeaders,
+  securityLogger
+} from '../../middlewares/security';
+
+// Importar rotas individuais
+import authRoutes from '../../routes/authRoutes';
+import userRoutes from '../../routes/userRoutes';
+import articleRoutes from '../../routes/articleRoutes';
+import contactRoutes from '../../routes/contactRoutes';
+import calculatorRoutes from '../../routes/calculatorRoutes';
+import newsletterRoutes from '../../routes/newsletterRoutes';
+import uploadRoutes from '../../routes/uploadRoutes';
+import adminRoutes from '../../routes/adminRoutes';
+import cacheRoutes from '../../routes/cacheRoutes';
 
 /**
  * Cria uma instância do aplicativo Express para testes
@@ -15,21 +32,13 @@ import { errorHandler } from '../../middlewares/errorHandler';
 export const createTestServer = () => {
   const app = express();
 
-  // Middlewares básicos
-  app.use(helmet());
-  app.use(compression());
-  app.use(cors({
-    origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
-    credentials: true,
-  }));
-
-  // Rate limiting mais permissivo para testes
-  const limiter = rateLimit({
-    windowMs: 15 * 60 * 1000, // 15 minutos
-    max: 1000, // Limite alto para testes
-    message: 'Muitas requisições deste IP, tente novamente em alguns minutos.',
-  });
-  app.use(limiter);
+  // Middlewares de segurança
+  app.use(customSecurityHeaders);
+  app.use(helmetMiddleware);
+  app.use(corsMiddleware);
+  app.use(compressionMiddleware);
+  app.use(generalRateLimit);
+  app.use(securityLogger);
 
   // Parsing de JSON e URL encoded
   app.use(express.json({ limit: '10mb' }));
@@ -54,8 +63,20 @@ export const createTestServer = () => {
     setupSwagger(app);
   }
 
-  // Rotas da API
-  app.use('/api', routes);
+  // Configurar rotas da API com middlewares específicos
+  const apiRouter = express.Router();
+  
+  apiRouter.use('/auth', authRateLimit, authRoutes);
+  apiRouter.use('/users', apiRateLimit, userRoutes);
+  apiRouter.use('/articles', apiRateLimit, articleRoutes);
+  apiRouter.use('/contact', apiRateLimit, contactRoutes);
+  apiRouter.use('/calculator', apiRateLimit, calculatorRoutes);
+  apiRouter.use('/newsletter', apiRateLimit, newsletterRoutes);
+  apiRouter.use('/upload', uploadRateLimit, uploadRoutes);
+  apiRouter.use('/admin', apiRateLimit, adminRoutes);
+  apiRouter.use('/cache', apiRateLimit, cacheRoutes);
+  
+  app.use('/api', apiRouter);
 
   // Middleware de tratamento de erros
   app.use(errorHandler);

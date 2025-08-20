@@ -1,0 +1,1654 @@
+8bc4ed0e6a34c9e445d8a498a842b6f4
+"use strict";
+
+/* istanbul ignore next */
+function cov_2asxumotdg() {
+  var path = "D:\\dev\\contabil\\contabil-site\\backend\\src\\routes\\adminRoutes.ts";
+  var hash = "9fb368cfbea670a4f365c57ae54158bcb50f7052";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "D:\\dev\\contabil\\contabil-site\\backend\\src\\routes\\adminRoutes.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 22
+        },
+        end: {
+          line: 4,
+          column: 1
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 4
+        },
+        end: {
+          line: 3,
+          column: 62
+        }
+      },
+      "2": {
+        start: {
+          line: 5,
+          column: 0
+        },
+        end: {
+          line: 5,
+          column: 62
+        }
+      },
+      "3": {
+        start: {
+          line: 6,
+          column: 18
+        },
+        end: {
+          line: 6,
+          column: 36
+        }
+      },
+      "4": {
+        start: {
+          line: 7,
+          column: 15
+        },
+        end: {
+          line: 7,
+          column: 45
+        }
+      },
+      "5": {
+        start: {
+          line: 8,
+          column: 26
+        },
+        end: {
+          line: 8,
+          column: 84
+        }
+      },
+      "6": {
+        start: {
+          line: 9,
+          column: 15
+        },
+        end: {
+          line: 9,
+          column: 38
+        }
+      },
+      "7": {
+        start: {
+          line: 234,
+          column: 0
+        },
+        end: {
+          line: 234,
+          column: 142
+        }
+      },
+      "8": {
+        start: {
+          line: 234,
+          column: 92
+        },
+        end: {
+          line: 234,
+          column: 140
+        }
+      },
+      "9": {
+        start: {
+          line: 260,
+          column: 0
+        },
+        end: {
+          line: 260,
+          column: 145
+        }
+      },
+      "10": {
+        start: {
+          line: 260,
+          column: 94
+        },
+        end: {
+          line: 260,
+          column: 143
+        }
+      },
+      "11": {
+        start: {
+          line: 359,
+          column: 0
+        },
+        end: {
+          line: 359,
+          column: 147
+        }
+      },
+      "12": {
+        start: {
+          line: 359,
+          column: 96
+        },
+        end: {
+          line: 359,
+          column: 145
+        }
+      },
+      "13": {
+        start: {
+          line: 429,
+          column: 0
+        },
+        end: {
+          line: 429,
+          column: 138
+        }
+      },
+      "14": {
+        start: {
+          line: 429,
+          column: 90
+        },
+        end: {
+          line: 429,
+          column: 136
+        }
+      },
+      "15": {
+        start: {
+          line: 481,
+          column: 0
+        },
+        end: {
+          line: 481,
+          column: 141
+        }
+      },
+      "16": {
+        start: {
+          line: 481,
+          column: 91
+        },
+        end: {
+          line: 481,
+          column: 139
+        }
+      },
+      "17": {
+        start: {
+          line: 512,
+          column: 0
+        },
+        end: {
+          line: 512,
+          column: 155
+        }
+      },
+      "18": {
+        start: {
+          line: 512,
+          column: 103
+        },
+        end: {
+          line: 512,
+          column: 153
+        }
+      },
+      "19": {
+        start: {
+          line: 547,
+          column: 0
+        },
+        end: {
+          line: 547,
+          column: 147
+        }
+      },
+      "20": {
+        start: {
+          line: 547,
+          column: 97
+        },
+        end: {
+          line: 547,
+          column: 145
+        }
+      },
+      "21": {
+        start: {
+          line: 586,
+          column: 0
+        },
+        end: {
+          line: 586,
+          column: 140
+        }
+      },
+      "22": {
+        start: {
+          line: 586,
+          column: 91
+        },
+        end: {
+          line: 586,
+          column: 138
+        }
+      },
+      "23": {
+        start: {
+          line: 649,
+          column: 0
+        },
+        end: {
+          line: 649,
+          column: 143
+        }
+      },
+      "24": {
+        start: {
+          line: 649,
+          column: 91
+        },
+        end: {
+          line: 649,
+          column: 141
+        }
+      },
+      "25": {
+        start: {
+          line: 699,
+          column: 0
+        },
+        end: {
+          line: 699,
+          column: 143
+        }
+      },
+      "26": {
+        start: {
+          line: 699,
+          column: 95
+        },
+        end: {
+          line: 699,
+          column: 141
+        }
+      },
+      "27": {
+        start: {
+          line: 754,
+          column: 0
+        },
+        end: {
+          line: 754,
+          column: 150
+        }
+      },
+      "28": {
+        start: {
+          line: 754,
+          column: 95
+        },
+        end: {
+          line: 754,
+          column: 148
+        }
+      },
+      "29": {
+        start: {
+          line: 755,
+          column: 0
+        },
+        end: {
+          line: 755,
+          column: 25
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 2,
+            column: 56
+          },
+          end: {
+            line: 2,
+            column: 57
+          }
+        },
+        loc: {
+          start: {
+            line: 2,
+            column: 71
+          },
+          end: {
+            line: 4,
+            column: 1
+          }
+        },
+        line: 2
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 234,
+            column: 78
+          },
+          end: {
+            line: 234,
+            column: 79
+          }
+        },
+        loc: {
+          start: {
+            line: 234,
+            column: 92
+          },
+          end: {
+            line: 234,
+            column: 140
+          }
+        },
+        line: 234
+      },
+      "2": {
+        name: "(anonymous_2)",
+        decl: {
+          start: {
+            line: 260,
+            column: 80
+          },
+          end: {
+            line: 260,
+            column: 81
+          }
+        },
+        loc: {
+          start: {
+            line: 260,
+            column: 94
+          },
+          end: {
+            line: 260,
+            column: 143
+          }
+        },
+        line: 260
+      },
+      "3": {
+        name: "(anonymous_3)",
+        decl: {
+          start: {
+            line: 359,
+            column: 82
+          },
+          end: {
+            line: 359,
+            column: 83
+          }
+        },
+        loc: {
+          start: {
+            line: 359,
+            column: 96
+          },
+          end: {
+            line: 359,
+            column: 145
+          }
+        },
+        line: 359
+      },
+      "4": {
+        name: "(anonymous_4)",
+        decl: {
+          start: {
+            line: 429,
+            column: 76
+          },
+          end: {
+            line: 429,
+            column: 77
+          }
+        },
+        loc: {
+          start: {
+            line: 429,
+            column: 90
+          },
+          end: {
+            line: 429,
+            column: 136
+          }
+        },
+        line: 429
+      },
+      "5": {
+        name: "(anonymous_5)",
+        decl: {
+          start: {
+            line: 481,
+            column: 77
+          },
+          end: {
+            line: 481,
+            column: 78
+          }
+        },
+        loc: {
+          start: {
+            line: 481,
+            column: 91
+          },
+          end: {
+            line: 481,
+            column: 139
+          }
+        },
+        line: 481
+      },
+      "6": {
+        name: "(anonymous_6)",
+        decl: {
+          start: {
+            line: 512,
+            column: 89
+          },
+          end: {
+            line: 512,
+            column: 90
+          }
+        },
+        loc: {
+          start: {
+            line: 512,
+            column: 103
+          },
+          end: {
+            line: 512,
+            column: 153
+          }
+        },
+        line: 512
+      },
+      "7": {
+        name: "(anonymous_7)",
+        decl: {
+          start: {
+            line: 547,
+            column: 83
+          },
+          end: {
+            line: 547,
+            column: 84
+          }
+        },
+        loc: {
+          start: {
+            line: 547,
+            column: 97
+          },
+          end: {
+            line: 547,
+            column: 145
+          }
+        },
+        line: 547
+      },
+      "8": {
+        name: "(anonymous_8)",
+        decl: {
+          start: {
+            line: 586,
+            column: 77
+          },
+          end: {
+            line: 586,
+            column: 78
+          }
+        },
+        loc: {
+          start: {
+            line: 586,
+            column: 91
+          },
+          end: {
+            line: 586,
+            column: 138
+          }
+        },
+        line: 586
+      },
+      "9": {
+        name: "(anonymous_9)",
+        decl: {
+          start: {
+            line: 649,
+            column: 77
+          },
+          end: {
+            line: 649,
+            column: 78
+          }
+        },
+        loc: {
+          start: {
+            line: 649,
+            column: 91
+          },
+          end: {
+            line: 649,
+            column: 141
+          }
+        },
+        line: 649
+      },
+      "10": {
+        name: "(anonymous_10)",
+        decl: {
+          start: {
+            line: 699,
+            column: 81
+          },
+          end: {
+            line: 699,
+            column: 82
+          }
+        },
+        loc: {
+          start: {
+            line: 699,
+            column: 95
+          },
+          end: {
+            line: 699,
+            column: 141
+          }
+        },
+        line: 699
+      },
+      "11": {
+        name: "(anonymous_11)",
+        decl: {
+          start: {
+            line: 754,
+            column: 81
+          },
+          end: {
+            line: 754,
+            column: 82
+          }
+        },
+        loc: {
+          start: {
+            line: 754,
+            column: 95
+          },
+          end: {
+            line: 754,
+            column: 148
+          }
+        },
+        line: 754
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 2,
+            column: 22
+          },
+          end: {
+            line: 4,
+            column: 1
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 2,
+            column: 23
+          },
+          end: {
+            line: 2,
+            column: 27
+          }
+        }, {
+          start: {
+            line: 2,
+            column: 31
+          },
+          end: {
+            line: 2,
+            column: 51
+          }
+        }, {
+          start: {
+            line: 2,
+            column: 56
+          },
+          end: {
+            line: 4,
+            column: 1
+          }
+        }],
+        line: 2
+      },
+      "1": {
+        loc: {
+          start: {
+            line: 3,
+            column: 11
+          },
+          end: {
+            line: 3,
+            column: 61
+          }
+        },
+        type: "cond-expr",
+        locations: [{
+          start: {
+            line: 3,
+            column: 37
+          },
+          end: {
+            line: 3,
+            column: 40
+          }
+        }, {
+          start: {
+            line: 3,
+            column: 43
+          },
+          end: {
+            line: 3,
+            column: 61
+          }
+        }],
+        line: 3
+      },
+      "2": {
+        loc: {
+          start: {
+            line: 3,
+            column: 12
+          },
+          end: {
+            line: 3,
+            column: 33
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 3,
+            column: 12
+          },
+          end: {
+            line: 3,
+            column: 15
+          }
+        }, {
+          start: {
+            line: 3,
+            column: 19
+          },
+          end: {
+            line: 3,
+            column: 33
+          }
+        }],
+        line: 3
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0,
+      "15": 0,
+      "16": 0,
+      "17": 0,
+      "18": 0,
+      "19": 0,
+      "20": 0,
+      "21": 0,
+      "22": 0,
+      "23": 0,
+      "24": 0,
+      "25": 0,
+      "26": 0,
+      "27": 0,
+      "28": 0,
+      "29": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0
+    },
+    b: {
+      "0": [0, 0, 0],
+      "1": [0, 0],
+      "2": [0, 0]
+    },
+    inputSourceMap: {
+      file: "D:\\dev\\contabil\\contabil-site\\backend\\src\\routes\\adminRoutes.ts",
+      mappings: "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",
+      names: [],
+      sources: ["D:\\dev\\contabil\\contabil-site\\backend\\src\\routes\\adminRoutes.ts"],
+      sourcesContent: ["import { Router } from 'express';\r\nimport { authenticate, authorize } from '../middlewares/auth';\r\nimport AdminController from '../controllers/adminController';\r\n\r\nconst router = Router();\r\n\r\n/**\r\n * @swagger\r\n * components:\r\n *   schemas:\r\n *     DashboardStats:\r\n *       type: object\r\n *       properties:\r\n *         users:\r\n *           type: object\r\n *           properties:\r\n *             total:\r\n *               type: integer\r\n *             active:\r\n *               type: integer\r\n *             newThisMonth:\r\n *               type: integer\r\n *             byRole:\r\n *               type: object\r\n *               properties:\r\n *                 admin:\r\n *                   type: integer\r\n *                 editor:\r\n *                   type: integer\r\n *                 user:\r\n *                   type: integer\r\n *         articles:\r\n *           type: object\r\n *           properties:\r\n *             total:\r\n *               type: integer\r\n *             published:\r\n *               type: integer\r\n *             draft:\r\n *               type: integer\r\n *             thisMonth:\r\n *               type: integer\r\n *             totalViews:\r\n *               type: integer\r\n *             totalLikes:\r\n *               type: integer\r\n *         contacts:\r\n *           type: object\r\n *           properties:\r\n *             total:\r\n *               type: integer\r\n *             pending:\r\n *               type: integer\r\n *             replied:\r\n *               type: integer\r\n *             thisMonth:\r\n *               type: integer\r\n *         newsletter:\r\n *           type: object\r\n *           properties:\r\n *             subscribers:\r\n *               type: integer\r\n *             activeSubscribers:\r\n *               type: integer\r\n *             campaigns:\r\n *               type: integer\r\n *             thisMonth:\r\n *               type: integer\r\n *         uploads:\r\n *           type: object\r\n *           properties:\r\n *             total:\r\n *               type: integer\r\n *             totalSize:\r\n *               type: string\r\n *             thisMonth:\r\n *               type: integer\r\n *             byType:\r\n *               type: object\r\n *         system:\r\n *           type: object\r\n *           properties:\r\n *             uptime:\r\n *               type: string\r\n *             version:\r\n *               type: string\r\n *             environment:\r\n *               type: string\r\n *             lastBackup:\r\n *               type: string\r\n *               format: date-time\r\n *     SystemInfo:\r\n *       type: object\r\n *       properties:\r\n *         server:\r\n *           type: object\r\n *           properties:\r\n *             platform:\r\n *               type: string\r\n *             nodeVersion:\r\n *               type: string\r\n *             memory:\r\n *               type: object\r\n *               properties:\r\n *                 used:\r\n *                   type: string\r\n *                 total:\r\n *                   type: string\r\n *                 percentage:\r\n *                   type: number\r\n *             cpu:\r\n *               type: object\r\n *               properties:\r\n *                 usage:\r\n *                   type: number\r\n *                 cores:\r\n *                   type: integer\r\n *             uptime:\r\n *               type: string\r\n *         database:\r\n *           type: object\r\n *           properties:\r\n *             status:\r\n *               type: string\r\n *             version:\r\n *               type: string\r\n *             size:\r\n *               type: string\r\n *             connections:\r\n *               type: integer\r\n *         cache:\r\n *           type: object\r\n *           properties:\r\n *             status:\r\n *               type: string\r\n *             memory:\r\n *               type: string\r\n *             keys:\r\n *               type: integer\r\n *             hitRate:\r\n *               type: number\r\n *     ActivityLog:\r\n *       type: object\r\n *       properties:\r\n *         id:\r\n *           type: string\r\n *         userId:\r\n *           type: string\r\n *         userName:\r\n *           type: string\r\n *         action:\r\n *           type: string\r\n *         resource:\r\n *           type: string\r\n *         resourceId:\r\n *           type: string\r\n *         details:\r\n *           type: object\r\n *         ipAddress:\r\n *           type: string\r\n *         userAgent:\r\n *           type: string\r\n *         timestamp:\r\n *           type: string\r\n *           format: date-time\r\n *     BackupInfo:\r\n *       type: object\r\n *       properties:\r\n *         id:\r\n *           type: string\r\n *         filename:\r\n *           type: string\r\n *         size:\r\n *           type: string\r\n *         type:\r\n *           type: string\r\n *           enum: [full, incremental]\r\n *         status:\r\n *           type: string\r\n *           enum: [completed, failed, in_progress]\r\n *         createdAt:\r\n *           type: string\r\n *           format: date-time\r\n *         duration:\r\n *           type: string\r\n *     SettingItem:\r\n *       type: object\r\n *       properties:\r\n *         key:\r\n *           type: string\r\n *         value:\r\n *           type: string\r\n *         type:\r\n *           type: string\r\n *           enum: [string, number, boolean, json]\r\n *         category:\r\n *           type: string\r\n *         description:\r\n *           type: string\r\n *         isPublic:\r\n *           type: boolean\r\n *         updatedAt:\r\n *           type: string\r\n *           format: date-time\r\n */\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/admin/dashboard:\r\n *   get:\r\n *     summary: Obter estat\xEDsticas do dashboard administrativo\r\n *     tags: [Admin]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     responses:\r\n *       200:\r\n *         description: Estat\xEDsticas do dashboard\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 data:\r\n *                   $ref: '#/components/schemas/DashboardStats'\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       403:\r\n *         description: Sem permiss\xE3o de administrador\r\n */\r\nrouter.get('/dashboard', authenticate, authorize('ADMIN'), (req, res) => AdminController.getDashboard(req, res));\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/admin/system-info:\r\n *   get:\r\n *     summary: Obter informa\xE7\xF5es do sistema\r\n *     tags: [Admin]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     responses:\r\n *       200:\r\n *         description: Informa\xE7\xF5es do sistema\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 data:\r\n *                   $ref: '#/components/schemas/SystemInfo'\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       403:\r\n *         description: Sem permiss\xE3o de administrador\r\n */\r\nrouter.get('/system-info', authenticate, authorize('ADMIN'), (req, res) => AdminController.getSystemInfo(req, res));\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/admin/activity-logs:\r\n *   get:\r\n *     summary: Listar logs de atividade\r\n *     tags: [Admin]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     parameters:\r\n *       - in: query\r\n *         name: page\r\n *         schema:\r\n *           type: integer\r\n *           minimum: 1\r\n *           default: 1\r\n *         description: N\xFAmero da p\xE1gina\r\n *       - in: query\r\n *         name: limit\r\n *         schema:\r\n *           type: integer\r\n *           minimum: 1\r\n *           maximum: 100\r\n *           default: 50\r\n *         description: Itens por p\xE1gina\r\n *       - in: query\r\n *         name: userId\r\n *         schema:\r\n *           type: string\r\n *         description: Filtrar por usu\xE1rio\r\n *       - in: query\r\n *         name: action\r\n *         schema:\r\n *           type: string\r\n *         description: Filtrar por a\xE7\xE3o\r\n *       - in: query\r\n *         name: resource\r\n *         schema:\r\n *           type: string\r\n *         description: Filtrar por recurso\r\n *       - in: query\r\n *         name: dateFrom\r\n *         schema:\r\n *           type: string\r\n *           format: date\r\n *         description: Data inicial (YYYY-MM-DD)\r\n *       - in: query\r\n *         name: dateTo\r\n *         schema:\r\n *           type: string\r\n *           format: date\r\n *         description: Data final (YYYY-MM-DD)\r\n *       - in: query\r\n *         name: sortBy\r\n *         schema:\r\n *           type: string\r\n *           enum: [timestamp, action, resource]\r\n *           default: timestamp\r\n *         description: Campo para ordena\xE7\xE3o\r\n *       - in: query\r\n *         name: sortOrder\r\n *         schema:\r\n *           type: string\r\n *           enum: [asc, desc]\r\n *           default: desc\r\n *         description: Ordem da classifica\xE7\xE3o\r\n *     responses:\r\n *       200:\r\n *         description: Lista de logs de atividade\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 data:\r\n *                   type: object\r\n *                   properties:\r\n *                     logs:\r\n *                       type: array\r\n *                       items:\r\n *                         $ref: '#/components/schemas/ActivityLog'\r\n *                     pagination:\r\n *                       type: object\r\n *                       properties:\r\n *                         page:\r\n *                           type: integer\r\n *                         limit:\r\n *                           type: integer\r\n *                         total:\r\n *                           type: integer\r\n *                         pages:\r\n *                           type: integer\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       403:\r\n *         description: Sem permiss\xE3o de administrador\r\n */\r\nrouter.get('/activity-logs', authenticate, authorize('ADMIN'), (req, res) => AdminController.getSystemLogs(req, res));\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/admin/backups:\r\n *   get:\r\n *     summary: Listar backups do sistema\r\n *     tags: [Admin]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     parameters:\r\n *       - in: query\r\n *         name: page\r\n *         schema:\r\n *           type: integer\r\n *           minimum: 1\r\n *           default: 1\r\n *         description: N\xFAmero da p\xE1gina\r\n *       - in: query\r\n *         name: limit\r\n *         schema:\r\n *           type: integer\r\n *           minimum: 1\r\n *           maximum: 50\r\n *           default: 20\r\n *         description: Itens por p\xE1gina\r\n *       - in: query\r\n *         name: type\r\n *         schema:\r\n *           type: string\r\n *           enum: [full, incremental]\r\n *         description: Filtrar por tipo de backup\r\n *       - in: query\r\n *         name: status\r\n *         schema:\r\n *           type: string\r\n *           enum: [completed, failed, in_progress]\r\n *         description: Filtrar por status\r\n *     responses:\r\n *       200:\r\n *         description: Lista de backups\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 data:\r\n *                   type: object\r\n *                   properties:\r\n *                     backups:\r\n *                       type: array\r\n *                       items:\r\n *                         $ref: '#/components/schemas/BackupInfo'\r\n *                     pagination:\r\n *                       type: object\r\n *                       properties:\r\n *                         page:\r\n *                           type: integer\r\n *                         limit:\r\n *                           type: integer\r\n *                         total:\r\n *                           type: integer\r\n *                         pages:\r\n *                           type: integer\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       403:\r\n *         description: Sem permiss\xE3o de administrador\r\n */\r\nrouter.get('/backups', authenticate, authorize('ADMIN'), (req, res) => AdminController.getBackups(req, res));\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/admin/backups:\r\n *   post:\r\n *     summary: Criar novo backup\r\n *     tags: [Admin]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     requestBody:\r\n *       required: true\r\n *       content:\r\n *         application/json:\r\n *           schema:\r\n *             type: object\r\n *             properties:\r\n *               type:\r\n *                 type: string\r\n *                 enum: [full, incremental]\r\n *                 default: full\r\n *                 description: Tipo de backup\r\n *               description:\r\n *                 type: string\r\n *                 description: Descri\xE7\xE3o do backup (opcional)\r\n *     responses:\r\n *       202:\r\n *         description: Backup iniciado com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 data:\r\n *                   type: object\r\n *                   properties:\r\n *                     backupId:\r\n *                       type: string\r\n *                     status:\r\n *                       type: string\r\n *                 message:\r\n *                   type: string\r\n *       400:\r\n *         description: Dados inv\xE1lidos\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       403:\r\n *         description: Sem permiss\xE3o de administrador\r\n *       409:\r\n *         description: Backup j\xE1 em andamento\r\n */\r\nrouter.post('/backups', authenticate, authorize('ADMIN'), (req, res) => AdminController.createBackup(req, res));\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/admin/backups/{id}/download:\r\n *   get:\r\n *     summary: Download de backup\r\n *     tags: [Admin]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     parameters:\r\n *       - in: path\r\n *         name: id\r\n *         required: true\r\n *         schema:\r\n *           type: string\r\n *         description: ID do backup\r\n *     responses:\r\n *       200:\r\n *         description: Arquivo de backup\r\n *         content:\r\n *           application/octet-stream:\r\n *             schema:\r\n *               type: string\r\n *               format: binary\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       403:\r\n *         description: Sem permiss\xE3o de administrador\r\n *       404:\r\n *         description: Backup n\xE3o encontrado\r\n */\r\nrouter.get('/backups/:id/download', authenticate, authorize('ADMIN'), (req, res) => AdminController.downloadBackup(req, res));\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/admin/backups/{id}:\r\n *   delete:\r\n *     summary: Excluir backup\r\n *     tags: [Admin]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     parameters:\r\n *       - in: path\r\n *         name: id\r\n *         required: true\r\n *         schema:\r\n *           type: string\r\n *         description: ID do backup\r\n *     responses:\r\n *       200:\r\n *         description: Backup exclu\xEDdo com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 message:\r\n *                   type: string\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       403:\r\n *         description: Sem permiss\xE3o de administrador\r\n *       404:\r\n *         description: Backup n\xE3o encontrado\r\n */\r\nrouter.delete('/backups/:id', authenticate, authorize('ADMIN'), (req, res) => AdminController.deleteBackup(req, res));\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/admin/settings:\r\n *   get:\r\n *     summary: Listar configura\xE7\xF5es do sistema\r\n *     tags: [Admin]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     parameters:\r\n *       - in: query\r\n *         name: category\r\n *         schema:\r\n *           type: string\r\n *         description: Filtrar por categoria\r\n *       - in: query\r\n *         name: search\r\n *         schema:\r\n *           type: string\r\n *         description: Buscar por chave ou descri\xE7\xE3o\r\n *     responses:\r\n *       200:\r\n *         description: Lista de configura\xE7\xF5es\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 data:\r\n *                   type: array\r\n *                   items:\r\n *                     $ref: '#/components/schemas/SettingItem'\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       403:\r\n *         description: Sem permiss\xE3o de administrador\r\n */\r\nrouter.get('/settings', authenticate, authorize('ADMIN'), (req, res) => AdminController.getSettings(req, res));\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/admin/settings:\r\n *   put:\r\n *     summary: Atualizar configura\xE7\xF5es do sistema\r\n *     tags: [Admin]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     requestBody:\r\n *       required: true\r\n *       content:\r\n *         application/json:\r\n *           schema:\r\n *             type: object\r\n *             properties:\r\n *               settings:\r\n *                 type: array\r\n *                 items:\r\n *                   type: object\r\n *                   required:\r\n *                     - key\r\n *                     - value\r\n *                   properties:\r\n *                     key:\r\n *                       type: string\r\n *                       description: Chave da configura\xE7\xE3o\r\n *                     value:\r\n *                       type: string\r\n *                       description: Valor da configura\xE7\xE3o\r\n *     responses:\r\n *       200:\r\n *         description: Configura\xE7\xF5es atualizadas com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 data:\r\n *                   type: object\r\n *                   properties:\r\n *                     updated:\r\n *                       type: integer\r\n *                     failed:\r\n *                       type: array\r\n *                       items:\r\n *                         type: object\r\n *                         properties:\r\n *                           key:\r\n *                             type: string\r\n *                           error:\r\n *                             type: string\r\n *                 message:\r\n *                   type: string\r\n *       400:\r\n *         description: Dados inv\xE1lidos\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       403:\r\n *         description: Sem permiss\xE3o de administrador\r\n */\r\nrouter.put('/settings', authenticate, authorize('ADMIN'), (req, res) => AdminController.updateSettings(req, res));\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/admin/cache/clear:\r\n *   post:\r\n *     summary: Limpar cache do sistema\r\n *     tags: [Admin]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     requestBody:\r\n *       required: false\r\n *       content:\r\n *         application/json:\r\n *           schema:\r\n *             type: object\r\n *             properties:\r\n *               pattern:\r\n *                 type: string\r\n *                 description: Padr\xE3o de chaves para limpar (opcional)\r\n *               category:\r\n *                 type: string\r\n *                 enum: [all, articles, users, settings, uploads]\r\n *                 default: all\r\n *                 description: Categoria de cache para limpar\r\n *     responses:\r\n *       200:\r\n *         description: Cache limpo com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 data:\r\n *                   type: object\r\n *                   properties:\r\n *                     keysCleared:\r\n *                       type: integer\r\n *                     category:\r\n *                       type: string\r\n *                 message:\r\n *                   type: string\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       403:\r\n *         description: Sem permiss\xE3o de administrador\r\n *       500:\r\n *         description: Erro interno do servidor\r\n */\r\nrouter.post('/cache/clear', authenticate, authorize('ADMIN'), (req, res) => AdminController.clearCache(req, res));\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/admin/maintenance:\r\n *   post:\r\n *     summary: Ativar/desativar modo de manuten\xE7\xE3o\r\n *     tags: [Admin]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     requestBody:\r\n *       required: true\r\n *       content:\r\n *         application/json:\r\n *           schema:\r\n *             type: object\r\n *             required:\r\n *               - enabled\r\n *             properties:\r\n *               enabled:\r\n *                 type: boolean\r\n *                 description: Ativar ou desativar modo de manuten\xE7\xE3o\r\n *               message:\r\n *                 type: string\r\n *                 description: Mensagem personalizada (opcional)\r\n *               estimatedDuration:\r\n *                 type: string\r\n *                 description: Dura\xE7\xE3o estimada (opcional)\r\n *     responses:\r\n *       200:\r\n *         description: Modo de manuten\xE7\xE3o alterado com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 data:\r\n *                   type: object\r\n *                   properties:\r\n *                     maintenanceMode:\r\n *                       type: boolean\r\n *                     message:\r\n *                       type: string\r\n *                     estimatedDuration:\r\n *                       type: string\r\n *                 message:\r\n *                   type: string\r\n *       400:\r\n *         description: Dados inv\xE1lidos\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       403:\r\n *         description: Sem permiss\xE3o de administrador\r\n */\r\nrouter.post('/maintenance', authenticate, authorize('ADMIN'), (req, res) => AdminController.enableMaintenance(req, res));\r\n\r\nexport default router;"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "9fb368cfbea670a4f365c57ae54158bcb50f7052"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_2asxumotdg = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_2asxumotdg();
+var __importDefault =
+/* istanbul ignore next */
+(cov_2asxumotdg().s[0]++,
+/* istanbul ignore next */
+(cov_2asxumotdg().b[0][0]++, this) &&
+/* istanbul ignore next */
+(cov_2asxumotdg().b[0][1]++, this.__importDefault) ||
+/* istanbul ignore next */
+(cov_2asxumotdg().b[0][2]++, function (mod) {
+  /* istanbul ignore next */
+  cov_2asxumotdg().f[0]++;
+  cov_2asxumotdg().s[1]++;
+  return /* istanbul ignore next */(cov_2asxumotdg().b[2][0]++, mod) &&
+  /* istanbul ignore next */
+  (cov_2asxumotdg().b[2][1]++, mod.__esModule) ?
+  /* istanbul ignore next */
+  (cov_2asxumotdg().b[1][0]++, mod) :
+  /* istanbul ignore next */
+  (cov_2asxumotdg().b[1][1]++, {
+    "default": mod
+  });
+}));
+/* istanbul ignore next */
+cov_2asxumotdg().s[2]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const express_1 =
+/* istanbul ignore next */
+(cov_2asxumotdg().s[3]++, require("express"));
+const auth_1 =
+/* istanbul ignore next */
+(cov_2asxumotdg().s[4]++, require("../middlewares/auth"));
+const adminController_1 =
+/* istanbul ignore next */
+(cov_2asxumotdg().s[5]++, __importDefault(require("../controllers/adminController")));
+const router =
+/* istanbul ignore next */
+(cov_2asxumotdg().s[6]++, (0, express_1.Router)());
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     DashboardStats:
+ *       type: object
+ *       properties:
+ *         users:
+ *           type: object
+ *           properties:
+ *             total:
+ *               type: integer
+ *             active:
+ *               type: integer
+ *             newThisMonth:
+ *               type: integer
+ *             byRole:
+ *               type: object
+ *               properties:
+ *                 admin:
+ *                   type: integer
+ *                 editor:
+ *                   type: integer
+ *                 user:
+ *                   type: integer
+ *         articles:
+ *           type: object
+ *           properties:
+ *             total:
+ *               type: integer
+ *             published:
+ *               type: integer
+ *             draft:
+ *               type: integer
+ *             thisMonth:
+ *               type: integer
+ *             totalViews:
+ *               type: integer
+ *             totalLikes:
+ *               type: integer
+ *         contacts:
+ *           type: object
+ *           properties:
+ *             total:
+ *               type: integer
+ *             pending:
+ *               type: integer
+ *             replied:
+ *               type: integer
+ *             thisMonth:
+ *               type: integer
+ *         newsletter:
+ *           type: object
+ *           properties:
+ *             subscribers:
+ *               type: integer
+ *             activeSubscribers:
+ *               type: integer
+ *             campaigns:
+ *               type: integer
+ *             thisMonth:
+ *               type: integer
+ *         uploads:
+ *           type: object
+ *           properties:
+ *             total:
+ *               type: integer
+ *             totalSize:
+ *               type: string
+ *             thisMonth:
+ *               type: integer
+ *             byType:
+ *               type: object
+ *         system:
+ *           type: object
+ *           properties:
+ *             uptime:
+ *               type: string
+ *             version:
+ *               type: string
+ *             environment:
+ *               type: string
+ *             lastBackup:
+ *               type: string
+ *               format: date-time
+ *     SystemInfo:
+ *       type: object
+ *       properties:
+ *         server:
+ *           type: object
+ *           properties:
+ *             platform:
+ *               type: string
+ *             nodeVersion:
+ *               type: string
+ *             memory:
+ *               type: object
+ *               properties:
+ *                 used:
+ *                   type: string
+ *                 total:
+ *                   type: string
+ *                 percentage:
+ *                   type: number
+ *             cpu:
+ *               type: object
+ *               properties:
+ *                 usage:
+ *                   type: number
+ *                 cores:
+ *                   type: integer
+ *             uptime:
+ *               type: string
+ *         database:
+ *           type: object
+ *           properties:
+ *             status:
+ *               type: string
+ *             version:
+ *               type: string
+ *             size:
+ *               type: string
+ *             connections:
+ *               type: integer
+ *         cache:
+ *           type: object
+ *           properties:
+ *             status:
+ *               type: string
+ *             memory:
+ *               type: string
+ *             keys:
+ *               type: integer
+ *             hitRate:
+ *               type: number
+ *     ActivityLog:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: string
+ *         userId:
+ *           type: string
+ *         userName:
+ *           type: string
+ *         action:
+ *           type: string
+ *         resource:
+ *           type: string
+ *         resourceId:
+ *           type: string
+ *         details:
+ *           type: object
+ *         ipAddress:
+ *           type: string
+ *         userAgent:
+ *           type: string
+ *         timestamp:
+ *           type: string
+ *           format: date-time
+ *     BackupInfo:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: string
+ *         filename:
+ *           type: string
+ *         size:
+ *           type: string
+ *         type:
+ *           type: string
+ *           enum: [full, incremental]
+ *         status:
+ *           type: string
+ *           enum: [completed, failed, in_progress]
+ *         createdAt:
+ *           type: string
+ *           format: date-time
+ *         duration:
+ *           type: string
+ *     SettingItem:
+ *       type: object
+ *       properties:
+ *         key:
+ *           type: string
+ *         value:
+ *           type: string
+ *         type:
+ *           type: string
+ *           enum: [string, number, boolean, json]
+ *         category:
+ *           type: string
+ *         description:
+ *           type: string
+ *         isPublic:
+ *           type: boolean
+ *         updatedAt:
+ *           type: string
+ *           format: date-time
+ */
+/**
+ * @swagger
+ * /api/v1/admin/dashboard:
+ *   get:
+ *     summary: Obter estatísticas do dashboard administrativo
+ *     tags: [Admin]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Estatísticas do dashboard
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   $ref: '#/components/schemas/DashboardStats'
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão de administrador
+ */
+/* istanbul ignore next */
+cov_2asxumotdg().s[7]++;
+router.get('/dashboard', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), (req, res) => {
+  /* istanbul ignore next */
+  cov_2asxumotdg().f[1]++;
+  cov_2asxumotdg().s[8]++;
+  return adminController_1.default.getDashboard(req, res);
+});
+/**
+ * @swagger
+ * /api/v1/admin/system-info:
+ *   get:
+ *     summary: Obter informações do sistema
+ *     tags: [Admin]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Informações do sistema
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   $ref: '#/components/schemas/SystemInfo'
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão de administrador
+ */
+/* istanbul ignore next */
+cov_2asxumotdg().s[9]++;
+router.get('/system-info', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), (req, res) => {
+  /* istanbul ignore next */
+  cov_2asxumotdg().f[2]++;
+  cov_2asxumotdg().s[10]++;
+  return adminController_1.default.getSystemInfo(req, res);
+});
+/**
+ * @swagger
+ * /api/v1/admin/activity-logs:
+ *   get:
+ *     summary: Listar logs de atividade
+ *     tags: [Admin]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           default: 1
+ *         description: Número da página
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           maximum: 100
+ *           default: 50
+ *         description: Itens por página
+ *       - in: query
+ *         name: userId
+ *         schema:
+ *           type: string
+ *         description: Filtrar por usuário
+ *       - in: query
+ *         name: action
+ *         schema:
+ *           type: string
+ *         description: Filtrar por ação
+ *       - in: query
+ *         name: resource
+ *         schema:
+ *           type: string
+ *         description: Filtrar por recurso
+ *       - in: query
+ *         name: dateFrom
+ *         schema:
+ *           type: string
+ *           format: date
+ *         description: Data inicial (YYYY-MM-DD)
+ *       - in: query
+ *         name: dateTo
+ *         schema:
+ *           type: string
+ *           format: date
+ *         description: Data final (YYYY-MM-DD)
+ *       - in: query
+ *         name: sortBy
+ *         schema:
+ *           type: string
+ *           enum: [timestamp, action, resource]
+ *           default: timestamp
+ *         description: Campo para ordenação
+ *       - in: query
+ *         name: sortOrder
+ *         schema:
+ *           type: string
+ *           enum: [asc, desc]
+ *           default: desc
+ *         description: Ordem da classificação
+ *     responses:
+ *       200:
+ *         description: Lista de logs de atividade
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     logs:
+ *                       type: array
+ *                       items:
+ *                         $ref: '#/components/schemas/ActivityLog'
+ *                     pagination:
+ *                       type: object
+ *                       properties:
+ *                         page:
+ *                           type: integer
+ *                         limit:
+ *                           type: integer
+ *                         total:
+ *                           type: integer
+ *                         pages:
+ *                           type: integer
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão de administrador
+ */
+/* istanbul ignore next */
+cov_2asxumotdg().s[11]++;
+router.get('/activity-logs', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), (req, res) => {
+  /* istanbul ignore next */
+  cov_2asxumotdg().f[3]++;
+  cov_2asxumotdg().s[12]++;
+  return adminController_1.default.getSystemLogs(req, res);
+});
+/**
+ * @swagger
+ * /api/v1/admin/backups:
+ *   get:
+ *     summary: Listar backups do sistema
+ *     tags: [Admin]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           default: 1
+ *         description: Número da página
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           maximum: 50
+ *           default: 20
+ *         description: Itens por página
+ *       - in: query
+ *         name: type
+ *         schema:
+ *           type: string
+ *           enum: [full, incremental]
+ *         description: Filtrar por tipo de backup
+ *       - in: query
+ *         name: status
+ *         schema:
+ *           type: string
+ *           enum: [completed, failed, in_progress]
+ *         description: Filtrar por status
+ *     responses:
+ *       200:
+ *         description: Lista de backups
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     backups:
+ *                       type: array
+ *                       items:
+ *                         $ref: '#/components/schemas/BackupInfo'
+ *                     pagination:
+ *                       type: object
+ *                       properties:
+ *                         page:
+ *                           type: integer
+ *                         limit:
+ *                           type: integer
+ *                         total:
+ *                           type: integer
+ *                         pages:
+ *                           type: integer
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão de administrador
+ */
+/* istanbul ignore next */
+cov_2asxumotdg().s[13]++;
+router.get('/backups', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), (req, res) => {
+  /* istanbul ignore next */
+  cov_2asxumotdg().f[4]++;
+  cov_2asxumotdg().s[14]++;
+  return adminController_1.default.getBackups(req, res);
+});
+/**
+ * @swagger
+ * /api/v1/admin/backups:
+ *   post:
+ *     summary: Criar novo backup
+ *     tags: [Admin]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               type:
+ *                 type: string
+ *                 enum: [full, incremental]
+ *                 default: full
+ *                 description: Tipo de backup
+ *               description:
+ *                 type: string
+ *                 description: Descrição do backup (opcional)
+ *     responses:
+ *       202:
+ *         description: Backup iniciado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     backupId:
+ *                       type: string
+ *                     status:
+ *                       type: string
+ *                 message:
+ *                   type: string
+ *       400:
+ *         description: Dados inválidos
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão de administrador
+ *       409:
+ *         description: Backup já em andamento
+ */
+/* istanbul ignore next */
+cov_2asxumotdg().s[15]++;
+router.post('/backups', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), (req, res) => {
+  /* istanbul ignore next */
+  cov_2asxumotdg().f[5]++;
+  cov_2asxumotdg().s[16]++;
+  return adminController_1.default.createBackup(req, res);
+});
+/**
+ * @swagger
+ * /api/v1/admin/backups/{id}/download:
+ *   get:
+ *     summary: Download de backup
+ *     tags: [Admin]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID do backup
+ *     responses:
+ *       200:
+ *         description: Arquivo de backup
+ *         content:
+ *           application/octet-stream:
+ *             schema:
+ *               type: string
+ *               format: binary
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão de administrador
+ *       404:
+ *         description: Backup não encontrado
+ */
+/* istanbul ignore next */
+cov_2asxumotdg().s[17]++;
+router.get('/backups/:id/download', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), (req, res) => {
+  /* istanbul ignore next */
+  cov_2asxumotdg().f[6]++;
+  cov_2asxumotdg().s[18]++;
+  return adminController_1.default.downloadBackup(req, res);
+});
+/**
+ * @swagger
+ * /api/v1/admin/backups/{id}:
+ *   delete:
+ *     summary: Excluir backup
+ *     tags: [Admin]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID do backup
+ *     responses:
+ *       200:
+ *         description: Backup excluído com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 message:
+ *                   type: string
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão de administrador
+ *       404:
+ *         description: Backup não encontrado
+ */
+/* istanbul ignore next */
+cov_2asxumotdg().s[19]++;
+router.delete('/backups/:id', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), (req, res) => {
+  /* istanbul ignore next */
+  cov_2asxumotdg().f[7]++;
+  cov_2asxumotdg().s[20]++;
+  return adminController_1.default.deleteBackup(req, res);
+});
+/**
+ * @swagger
+ * /api/v1/admin/settings:
+ *   get:
+ *     summary: Listar configurações do sistema
+ *     tags: [Admin]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: category
+ *         schema:
+ *           type: string
+ *         description: Filtrar por categoria
+ *       - in: query
+ *         name: search
+ *         schema:
+ *           type: string
+ *         description: Buscar por chave ou descrição
+ *     responses:
+ *       200:
+ *         description: Lista de configurações
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/SettingItem'
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão de administrador
+ */
+/* istanbul ignore next */
+cov_2asxumotdg().s[21]++;
+router.get('/settings', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), (req, res) => {
+  /* istanbul ignore next */
+  cov_2asxumotdg().f[8]++;
+  cov_2asxumotdg().s[22]++;
+  return adminController_1.default.getSettings(req, res);
+});
+/**
+ * @swagger
+ * /api/v1/admin/settings:
+ *   put:
+ *     summary: Atualizar configurações do sistema
+ *     tags: [Admin]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               settings:
+ *                 type: array
+ *                 items:
+ *                   type: object
+ *                   required:
+ *                     - key
+ *                     - value
+ *                   properties:
+ *                     key:
+ *                       type: string
+ *                       description: Chave da configuração
+ *                     value:
+ *                       type: string
+ *                       description: Valor da configuração
+ *     responses:
+ *       200:
+ *         description: Configurações atualizadas com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     updated:
+ *                       type: integer
+ *                     failed:
+ *                       type: array
+ *                       items:
+ *                         type: object
+ *                         properties:
+ *                           key:
+ *                             type: string
+ *                           error:
+ *                             type: string
+ *                 message:
+ *                   type: string
+ *       400:
+ *         description: Dados inválidos
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão de administrador
+ */
+/* istanbul ignore next */
+cov_2asxumotdg().s[23]++;
+router.put('/settings', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), (req, res) => {
+  /* istanbul ignore next */
+  cov_2asxumotdg().f[9]++;
+  cov_2asxumotdg().s[24]++;
+  return adminController_1.default.updateSettings(req, res);
+});
+/**
+ * @swagger
+ * /api/v1/admin/cache/clear:
+ *   post:
+ *     summary: Limpar cache do sistema
+ *     tags: [Admin]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: false
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               pattern:
+ *                 type: string
+ *                 description: Padrão de chaves para limpar (opcional)
+ *               category:
+ *                 type: string
+ *                 enum: [all, articles, users, settings, uploads]
+ *                 default: all
+ *                 description: Categoria de cache para limpar
+ *     responses:
+ *       200:
+ *         description: Cache limpo com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     keysCleared:
+ *                       type: integer
+ *                     category:
+ *                       type: string
+ *                 message:
+ *                   type: string
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão de administrador
+ *       500:
+ *         description: Erro interno do servidor
+ */
+/* istanbul ignore next */
+cov_2asxumotdg().s[25]++;
+router.post('/cache/clear', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), (req, res) => {
+  /* istanbul ignore next */
+  cov_2asxumotdg().f[10]++;
+  cov_2asxumotdg().s[26]++;
+  return adminController_1.default.clearCache(req, res);
+});
+/**
+ * @swagger
+ * /api/v1/admin/maintenance:
+ *   post:
+ *     summary: Ativar/desativar modo de manutenção
+ *     tags: [Admin]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - enabled
+ *             properties:
+ *               enabled:
+ *                 type: boolean
+ *                 description: Ativar ou desativar modo de manutenção
+ *               message:
+ *                 type: string
+ *                 description: Mensagem personalizada (opcional)
+ *               estimatedDuration:
+ *                 type: string
+ *                 description: Duração estimada (opcional)
+ *     responses:
+ *       200:
+ *         description: Modo de manutenção alterado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     maintenanceMode:
+ *                       type: boolean
+ *                     message:
+ *                       type: string
+ *                     estimatedDuration:
+ *                       type: string
+ *                 message:
+ *                   type: string
+ *       400:
+ *         description: Dados inválidos
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão de administrador
+ */
+/* istanbul ignore next */
+cov_2asxumotdg().s[27]++;
+router.post('/maintenance', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), (req, res) => {
+  /* istanbul ignore next */
+  cov_2asxumotdg().f[11]++;
+  cov_2asxumotdg().s[28]++;
+  return adminController_1.default.enableMaintenance(req, res);
+});
+/* istanbul ignore next */
+cov_2asxumotdg().s[29]++;
+exports.default = router;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJleHByZXNzXzEiLCJjb3ZfMmFzeHVtb3RkZyIsInMiLCJyZXF1aXJlIiwiYXV0aF8xIiwiYWRtaW5Db250cm9sbGVyXzEiLCJfX2ltcG9ydERlZmF1bHQiLCJyb3V0ZXIiLCJSb3V0ZXIiLCJnZXQiLCJhdXRoZW50aWNhdGUiLCJhdXRob3JpemUiLCJyZXEiLCJyZXMiLCJmIiwiZGVmYXVsdCIsImdldERhc2hib2FyZCIsImdldFN5c3RlbUluZm8iLCJnZXRTeXN0ZW1Mb2dzIiwiZ2V0QmFja3VwcyIsInBvc3QiLCJjcmVhdGVCYWNrdXAiLCJkb3dubG9hZEJhY2t1cCIsImRlbGV0ZSIsImRlbGV0ZUJhY2t1cCIsImdldFNldHRpbmdzIiwicHV0IiwidXBkYXRlU2V0dGluZ3MiLCJjbGVhckNhY2hlIiwiZW5hYmxlTWFpbnRlbmFuY2UiLCJleHBvcnRzIl0sInNvdXJjZXMiOlsiRDpcXGRldlxcY29udGFiaWxcXGNvbnRhYmlsLXNpdGVcXGJhY2tlbmRcXHNyY1xccm91dGVzXFxhZG1pblJvdXRlcy50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBSb3V0ZXIgfSBmcm9tICdleHByZXNzJztcclxuaW1wb3J0IHsgYXV0aGVudGljYXRlLCBhdXRob3JpemUgfSBmcm9tICcuLi9taWRkbGV3YXJlcy9hdXRoJztcclxuaW1wb3J0IEFkbWluQ29udHJvbGxlciBmcm9tICcuLi9jb250cm9sbGVycy9hZG1pbkNvbnRyb2xsZXInO1xyXG5cclxuY29uc3Qgcm91dGVyID0gUm91dGVyKCk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogY29tcG9uZW50czpcclxuICogICBzY2hlbWFzOlxyXG4gKiAgICAgRGFzaGJvYXJkU3RhdHM6XHJcbiAqICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgIHVzZXJzOlxyXG4gKiAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICB0b3RhbDpcclxuICogICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgIGFjdGl2ZTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgIG5ld1RoaXNNb250aDpcclxuICogICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgIGJ5Um9sZTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgYWRtaW46XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgICAgIGVkaXRvcjpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICAgICAgdXNlcjpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgIGFydGljbGVzOlxyXG4gKiAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICB0b3RhbDpcclxuICogICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgIHB1Ymxpc2hlZDpcclxuICogICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgIGRyYWZ0OlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgdGhpc01vbnRoOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgdG90YWxWaWV3czpcclxuICogICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgIHRvdGFsTGlrZXM6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgIGNvbnRhY3RzOlxyXG4gKiAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICB0b3RhbDpcclxuICogICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgIHBlbmRpbmc6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICByZXBsaWVkOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgdGhpc01vbnRoOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICBuZXdzbGV0dGVyOlxyXG4gKiAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICBzdWJzY3JpYmVyczpcclxuICogICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgIGFjdGl2ZVN1YnNjcmliZXJzOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgY2FtcGFpZ25zOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgdGhpc01vbnRoOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICB1cGxvYWRzOlxyXG4gKiAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICB0b3RhbDpcclxuICogICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgIHRvdGFsU2l6ZTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgdGhpc01vbnRoOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgYnlUeXBlOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgIHN5c3RlbTpcclxuICogICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgdXB0aW1lOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICB2ZXJzaW9uOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICBlbnZpcm9ubWVudDpcclxuICogICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgbGFzdEJhY2t1cDpcclxuICogICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICBmb3JtYXQ6IGRhdGUtdGltZVxyXG4gKiAgICAgU3lzdGVtSW5mbzpcclxuICogICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgc2VydmVyOlxyXG4gKiAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICBwbGF0Zm9ybTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgbm9kZVZlcnNpb246XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgIG1lbW9yeTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgdXNlZDpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICB0b3RhbDpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICBwZXJjZW50YWdlOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgY3B1OlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICB1c2FnZTpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICBjb3JlczpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICB1cHRpbWU6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZGF0YWJhc2U6XHJcbiAqICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgIHN0YXR1czpcclxuICogICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgdmVyc2lvbjpcclxuICogICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgc2l6ZTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgY29ubmVjdGlvbnM6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgIGNhY2hlOlxyXG4gKiAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICBzdGF0dXM6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgIG1lbW9yeTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAga2V5czpcclxuICogICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgIGhpdFJhdGU6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICBBY3Rpdml0eUxvZzpcclxuICogICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgaWQ6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICB1c2VySWQ6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICB1c2VyTmFtZTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGFjdGlvbjpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIHJlc291cmNlOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgcmVzb3VyY2VJZDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGRldGFpbHM6XHJcbiAqICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICBpcEFkZHJlc3M6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICB1c2VyQWdlbnQ6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICB0aW1lc3RhbXA6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGZvcm1hdDogZGF0ZS10aW1lXHJcbiAqICAgICBCYWNrdXBJbmZvOlxyXG4gKiAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICBpZDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGZpbGVuYW1lOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgc2l6ZTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIHR5cGU6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGVudW06IFtmdWxsLCBpbmNyZW1lbnRhbF1cclxuICogICAgICAgICBzdGF0dXM6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGVudW06IFtjb21wbGV0ZWQsIGZhaWxlZCwgaW5fcHJvZ3Jlc3NdXHJcbiAqICAgICAgICAgY3JlYXRlZEF0OlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBmb3JtYXQ6IGRhdGUtdGltZVxyXG4gKiAgICAgICAgIGR1cmF0aW9uOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICBTZXR0aW5nSXRlbTpcclxuICogICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAga2V5OlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgdmFsdWU6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICB0eXBlOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBlbnVtOiBbc3RyaW5nLCBudW1iZXIsIGJvb2xlYW4sIGpzb25dXHJcbiAqICAgICAgICAgY2F0ZWdvcnk6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBkZXNjcmlwdGlvbjpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGlzUHVibGljOlxyXG4gKiAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgIHVwZGF0ZWRBdDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZm9ybWF0OiBkYXRlLXRpbWVcclxuICovXHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS9hZG1pbi9kYXNoYm9hcmQ6XHJcbiAqICAgZ2V0OlxyXG4gKiAgICAgc3VtbWFyeTogT2J0ZXIgZXN0YXTDrXN0aWNhcyBkbyBkYXNoYm9hcmQgYWRtaW5pc3RyYXRpdm9cclxuICogICAgIHRhZ3M6IFtBZG1pbl1cclxuICogICAgIHNlY3VyaXR5OlxyXG4gKiAgICAgICAtIGJlYXJlckF1dGg6IFtdXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRXN0YXTDrXN0aWNhcyBkbyBkYXNoYm9hcmRcclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICBzdWNjZXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBkYXRhOlxyXG4gKiAgICAgICAgICAgICAgICAgICAkcmVmOiAnIy9jb21wb25lbnRzL3NjaGVtYXMvRGFzaGJvYXJkU3RhdHMnXHJcbiAqICAgICAgIDQwMTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gaW52w6FsaWRvXHJcbiAqICAgICAgIDQwMzpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogU2VtIHBlcm1pc3PDo28gZGUgYWRtaW5pc3RyYWRvclxyXG4gKi9cclxucm91dGVyLmdldCgnL2Rhc2hib2FyZCcsIGF1dGhlbnRpY2F0ZSwgYXV0aG9yaXplKCdBRE1JTicpLCAocmVxLCByZXMpID0+IEFkbWluQ29udHJvbGxlci5nZXREYXNoYm9hcmQocmVxLCByZXMpKTtcclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL2FkbWluL3N5c3RlbS1pbmZvOlxyXG4gKiAgIGdldDpcclxuICogICAgIHN1bW1hcnk6IE9idGVyIGluZm9ybWHDp8O1ZXMgZG8gc2lzdGVtYVxyXG4gKiAgICAgdGFnczogW0FkbWluXVxyXG4gKiAgICAgc2VjdXJpdHk6XHJcbiAqICAgICAgIC0gYmVhcmVyQXV0aDogW11cclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBJbmZvcm1hw6fDtWVzIGRvIHNpc3RlbWFcclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICBzdWNjZXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBkYXRhOlxyXG4gKiAgICAgICAgICAgICAgICAgICAkcmVmOiAnIy9jb21wb25lbnRzL3NjaGVtYXMvU3lzdGVtSW5mbydcclxuICogICAgICAgNDAxOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBUb2tlbiBpbnbDoWxpZG9cclxuICogICAgICAgNDAzOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBTZW0gcGVybWlzc8OjbyBkZSBhZG1pbmlzdHJhZG9yXHJcbiAqL1xyXG5yb3V0ZXIuZ2V0KCcvc3lzdGVtLWluZm8nLCBhdXRoZW50aWNhdGUsIGF1dGhvcml6ZSgnQURNSU4nKSwgKHJlcSwgcmVzKSA9PiBBZG1pbkNvbnRyb2xsZXIuZ2V0U3lzdGVtSW5mbyhyZXEsIHJlcykpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvYWRtaW4vYWN0aXZpdHktbG9nczpcclxuICogICBnZXQ6XHJcbiAqICAgICBzdW1tYXJ5OiBMaXN0YXIgbG9ncyBkZSBhdGl2aWRhZGVcclxuICogICAgIHRhZ3M6IFtBZG1pbl1cclxuICogICAgIHNlY3VyaXR5OlxyXG4gKiAgICAgICAtIGJlYXJlckF1dGg6IFtdXHJcbiAqICAgICBwYXJhbWV0ZXJzOlxyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IHBhZ2VcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICBtaW5pbXVtOiAxXHJcbiAqICAgICAgICAgICBkZWZhdWx0OiAxXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IE7Dum1lcm8gZGEgcMOhZ2luYVxyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IGxpbWl0XHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgbWluaW11bTogMVxyXG4gKiAgICAgICAgICAgbWF4aW11bTogMTAwXHJcbiAqICAgICAgICAgICBkZWZhdWx0OiA1MFxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBJdGVucyBwb3IgcMOhZ2luYVxyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IHVzZXJJZFxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBGaWx0cmFyIHBvciB1c3XDoXJpb1xyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IGFjdGlvblxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBGaWx0cmFyIHBvciBhw6fDo29cclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiByZXNvdXJjZVxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBGaWx0cmFyIHBvciByZWN1cnNvXHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogZGF0ZUZyb21cclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGZvcm1hdDogZGF0ZVxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBEYXRhIGluaWNpYWwgKFlZWVktTU0tREQpXHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogZGF0ZVRvXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBmb3JtYXQ6IGRhdGVcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRGF0YSBmaW5hbCAoWVlZWS1NTS1ERClcclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiBzb3J0QnlcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGVudW06IFt0aW1lc3RhbXAsIGFjdGlvbiwgcmVzb3VyY2VdXHJcbiAqICAgICAgICAgICBkZWZhdWx0OiB0aW1lc3RhbXBcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogQ2FtcG8gcGFyYSBvcmRlbmHDp8Ojb1xyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IHNvcnRPcmRlclxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZW51bTogW2FzYywgZGVzY11cclxuICogICAgICAgICAgIGRlZmF1bHQ6IGRlc2NcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogT3JkZW0gZGEgY2xhc3NpZmljYcOnw6NvXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogTGlzdGEgZGUgbG9ncyBkZSBhdGl2aWRhZGVcclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICBzdWNjZXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBkYXRhOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgICBsb2dzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogYXJyYXlcclxuICogICAgICAgICAgICAgICAgICAgICAgIGl0ZW1zOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAkcmVmOiAnIy9jb21wb25lbnRzL3NjaGVtYXMvQWN0aXZpdHlMb2cnXHJcbiAqICAgICAgICAgICAgICAgICAgICAgcGFnaW5hdGlvbjpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgcGFnZTpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIGxpbWl0OlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgdG90YWw6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICBwYWdlczpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgIDQwMTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gaW52w6FsaWRvXHJcbiAqICAgICAgIDQwMzpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogU2VtIHBlcm1pc3PDo28gZGUgYWRtaW5pc3RyYWRvclxyXG4gKi9cclxucm91dGVyLmdldCgnL2FjdGl2aXR5LWxvZ3MnLCBhdXRoZW50aWNhdGUsIGF1dGhvcml6ZSgnQURNSU4nKSwgKHJlcSwgcmVzKSA9PiBBZG1pbkNvbnRyb2xsZXIuZ2V0U3lzdGVtTG9ncyhyZXEsIHJlcykpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvYWRtaW4vYmFja3VwczpcclxuICogICBnZXQ6XHJcbiAqICAgICBzdW1tYXJ5OiBMaXN0YXIgYmFja3VwcyBkbyBzaXN0ZW1hXHJcbiAqICAgICB0YWdzOiBbQWRtaW5dXHJcbiAqICAgICBzZWN1cml0eTpcclxuICogICAgICAgLSBiZWFyZXJBdXRoOiBbXVxyXG4gKiAgICAgcGFyYW1ldGVyczpcclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiBwYWdlXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgbWluaW11bTogMVxyXG4gKiAgICAgICAgICAgZGVmYXVsdDogMVxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBOw7ptZXJvIGRhIHDDoWdpbmFcclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiBsaW1pdFxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgIG1pbmltdW06IDFcclxuICogICAgICAgICAgIG1heGltdW06IDUwXHJcbiAqICAgICAgICAgICBkZWZhdWx0OiAyMFxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBJdGVucyBwb3IgcMOhZ2luYVxyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IHR5cGVcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGVudW06IFtmdWxsLCBpbmNyZW1lbnRhbF1cclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRmlsdHJhciBwb3IgdGlwbyBkZSBiYWNrdXBcclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiBzdGF0dXNcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGVudW06IFtjb21wbGV0ZWQsIGZhaWxlZCwgaW5fcHJvZ3Jlc3NdXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEZpbHRyYXIgcG9yIHN0YXR1c1xyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IExpc3RhIGRlIGJhY2t1cHNcclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICBzdWNjZXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBkYXRhOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgICBiYWNrdXBzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogYXJyYXlcclxuICogICAgICAgICAgICAgICAgICAgICAgIGl0ZW1zOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAkcmVmOiAnIy9jb21wb25lbnRzL3NjaGVtYXMvQmFja3VwSW5mbydcclxuICogICAgICAgICAgICAgICAgICAgICBwYWdpbmF0aW9uOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICBwYWdlOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgbGltaXQ6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICB0b3RhbDpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIHBhZ2VzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgNDAxOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBUb2tlbiBpbnbDoWxpZG9cclxuICogICAgICAgNDAzOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBTZW0gcGVybWlzc8OjbyBkZSBhZG1pbmlzdHJhZG9yXHJcbiAqL1xyXG5yb3V0ZXIuZ2V0KCcvYmFja3VwcycsIGF1dGhlbnRpY2F0ZSwgYXV0aG9yaXplKCdBRE1JTicpLCAocmVxLCByZXMpID0+IEFkbWluQ29udHJvbGxlci5nZXRCYWNrdXBzKHJlcSwgcmVzKSk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS9hZG1pbi9iYWNrdXBzOlxyXG4gKiAgIHBvc3Q6XHJcbiAqICAgICBzdW1tYXJ5OiBDcmlhciBub3ZvIGJhY2t1cFxyXG4gKiAgICAgdGFnczogW0FkbWluXVxyXG4gKiAgICAgc2VjdXJpdHk6XHJcbiAqICAgICAgIC0gYmVhcmVyQXV0aDogW11cclxuICogICAgIHJlcXVlc3RCb2R5OlxyXG4gKiAgICAgICByZXF1aXJlZDogdHJ1ZVxyXG4gKiAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgIGVudW06IFtmdWxsLCBpbmNyZW1lbnRhbF1cclxuICogICAgICAgICAgICAgICAgIGRlZmF1bHQ6IGZ1bGxcclxuICogICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBUaXBvIGRlIGJhY2t1cFxyXG4gKiAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogRGVzY3Jpw6fDo28gZG8gYmFja3VwIChvcGNpb25hbClcclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAyOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBCYWNrdXAgaW5pY2lhZG8gY29tIHN1Y2Vzc29cclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICBzdWNjZXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBkYXRhOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgICBiYWNrdXBJZDpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgICAgIHN0YXR1czpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgbWVzc2FnZTpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgIDQwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRGFkb3MgaW52w6FsaWRvc1xyXG4gKiAgICAgICA0MDE6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGludsOhbGlkb1xyXG4gKiAgICAgICA0MDM6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFNlbSBwZXJtaXNzw6NvIGRlIGFkbWluaXN0cmFkb3JcclxuICogICAgICAgNDA5OlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBCYWNrdXAgasOhIGVtIGFuZGFtZW50b1xyXG4gKi9cclxucm91dGVyLnBvc3QoJy9iYWNrdXBzJywgYXV0aGVudGljYXRlLCBhdXRob3JpemUoJ0FETUlOJyksIChyZXEsIHJlcykgPT4gQWRtaW5Db250cm9sbGVyLmNyZWF0ZUJhY2t1cChyZXEsIHJlcykpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvYWRtaW4vYmFja3Vwcy97aWR9L2Rvd25sb2FkOlxyXG4gKiAgIGdldDpcclxuICogICAgIHN1bW1hcnk6IERvd25sb2FkIGRlIGJhY2t1cFxyXG4gKiAgICAgdGFnczogW0FkbWluXVxyXG4gKiAgICAgc2VjdXJpdHk6XHJcbiAqICAgICAgIC0gYmVhcmVyQXV0aDogW11cclxuICogICAgIHBhcmFtZXRlcnM6XHJcbiAqICAgICAgIC0gaW46IHBhdGhcclxuICogICAgICAgICBuYW1lOiBpZFxyXG4gKiAgICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IElEIGRvIGJhY2t1cFxyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEFycXVpdm8gZGUgYmFja3VwXHJcbiAqICAgICAgICAgY29udGVudDpcclxuICogICAgICAgICAgIGFwcGxpY2F0aW9uL29jdGV0LXN0cmVhbTpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgIGZvcm1hdDogYmluYXJ5XHJcbiAqICAgICAgIDQwMTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gaW52w6FsaWRvXHJcbiAqICAgICAgIDQwMzpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogU2VtIHBlcm1pc3PDo28gZGUgYWRtaW5pc3RyYWRvclxyXG4gKiAgICAgICA0MDQ6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEJhY2t1cCBuw6NvIGVuY29udHJhZG9cclxuICovXHJcbnJvdXRlci5nZXQoJy9iYWNrdXBzLzppZC9kb3dubG9hZCcsIGF1dGhlbnRpY2F0ZSwgYXV0aG9yaXplKCdBRE1JTicpLCAocmVxLCByZXMpID0+IEFkbWluQ29udHJvbGxlci5kb3dubG9hZEJhY2t1cChyZXEsIHJlcykpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvYWRtaW4vYmFja3Vwcy97aWR9OlxyXG4gKiAgIGRlbGV0ZTpcclxuICogICAgIHN1bW1hcnk6IEV4Y2x1aXIgYmFja3VwXHJcbiAqICAgICB0YWdzOiBbQWRtaW5dXHJcbiAqICAgICBzZWN1cml0eTpcclxuICogICAgICAgLSBiZWFyZXJBdXRoOiBbXVxyXG4gKiAgICAgcGFyYW1ldGVyczpcclxuICogICAgICAgLSBpbjogcGF0aFxyXG4gKiAgICAgICAgIG5hbWU6IGlkXHJcbiAqICAgICAgICAgcmVxdWlyZWQ6IHRydWVcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogSUQgZG8gYmFja3VwXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogQmFja3VwIGV4Y2x1w61kbyBjb20gc3VjZXNzb1xyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgIHN1Y2Nlc3M6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgIG1lc3NhZ2U6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICA0MDE6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGludsOhbGlkb1xyXG4gKiAgICAgICA0MDM6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFNlbSBwZXJtaXNzw6NvIGRlIGFkbWluaXN0cmFkb3JcclxuICogICAgICAgNDA0OlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBCYWNrdXAgbsOjbyBlbmNvbnRyYWRvXHJcbiAqL1xyXG5yb3V0ZXIuZGVsZXRlKCcvYmFja3Vwcy86aWQnLCBhdXRoZW50aWNhdGUsIGF1dGhvcml6ZSgnQURNSU4nKSwgKHJlcSwgcmVzKSA9PiBBZG1pbkNvbnRyb2xsZXIuZGVsZXRlQmFja3VwKHJlcSwgcmVzKSk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS9hZG1pbi9zZXR0aW5nczpcclxuICogICBnZXQ6XHJcbiAqICAgICBzdW1tYXJ5OiBMaXN0YXIgY29uZmlndXJhw6fDtWVzIGRvIHNpc3RlbWFcclxuICogICAgIHRhZ3M6IFtBZG1pbl1cclxuICogICAgIHNlY3VyaXR5OlxyXG4gKiAgICAgICAtIGJlYXJlckF1dGg6IFtdXHJcbiAqICAgICBwYXJhbWV0ZXJzOlxyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IGNhdGVnb3J5XHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEZpbHRyYXIgcG9yIGNhdGVnb3JpYVxyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IHNlYXJjaFxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBCdXNjYXIgcG9yIGNoYXZlIG91IGRlc2NyacOnw6NvXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogTGlzdGEgZGUgY29uZmlndXJhw6fDtWVzXHJcbiAqICAgICAgICAgY29udGVudDpcclxuICogICAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgc3VjY2VzczpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgZGF0YTpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogYXJyYXlcclxuICogICAgICAgICAgICAgICAgICAgaXRlbXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgJHJlZjogJyMvY29tcG9uZW50cy9zY2hlbWFzL1NldHRpbmdJdGVtJ1xyXG4gKiAgICAgICA0MDE6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGludsOhbGlkb1xyXG4gKiAgICAgICA0MDM6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFNlbSBwZXJtaXNzw6NvIGRlIGFkbWluaXN0cmFkb3JcclxuICovXHJcbnJvdXRlci5nZXQoJy9zZXR0aW5ncycsIGF1dGhlbnRpY2F0ZSwgYXV0aG9yaXplKCdBRE1JTicpLCAocmVxLCByZXMpID0+IEFkbWluQ29udHJvbGxlci5nZXRTZXR0aW5ncyhyZXEsIHJlcykpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvYWRtaW4vc2V0dGluZ3M6XHJcbiAqICAgcHV0OlxyXG4gKiAgICAgc3VtbWFyeTogQXR1YWxpemFyIGNvbmZpZ3VyYcOnw7VlcyBkbyBzaXN0ZW1hXHJcbiAqICAgICB0YWdzOiBbQWRtaW5dXHJcbiAqICAgICBzZWN1cml0eTpcclxuICogICAgICAgLSBiZWFyZXJBdXRoOiBbXVxyXG4gKiAgICAgcmVxdWVzdEJvZHk6XHJcbiAqICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgc2V0dGluZ3M6XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBhcnJheVxyXG4gKiAgICAgICAgICAgICAgICAgaXRlbXM6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgICAgICByZXF1aXJlZDpcclxuICogICAgICAgICAgICAgICAgICAgICAtIGtleVxyXG4gKiAgICAgICAgICAgICAgICAgICAgIC0gdmFsdWVcclxuICogICAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgICBrZXk6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBDaGF2ZSBkYSBjb25maWd1cmHDp8Ojb1xyXG4gKiAgICAgICAgICAgICAgICAgICAgIHZhbHVlOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogVmFsb3IgZGEgY29uZmlndXJhw6fDo29cclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBDb25maWd1cmHDp8O1ZXMgYXR1YWxpemFkYXMgY29tIHN1Y2Vzc29cclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICBzdWNjZXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBkYXRhOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgICB1cGRhdGVkOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgIGZhaWxlZDpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGFycmF5XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICBpdGVtczpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAga2V5OlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgZXJyb3I6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgIG1lc3NhZ2U6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICA0MDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IERhZG9zIGludsOhbGlkb3NcclxuICogICAgICAgNDAxOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBUb2tlbiBpbnbDoWxpZG9cclxuICogICAgICAgNDAzOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBTZW0gcGVybWlzc8OjbyBkZSBhZG1pbmlzdHJhZG9yXHJcbiAqL1xyXG5yb3V0ZXIucHV0KCcvc2V0dGluZ3MnLCBhdXRoZW50aWNhdGUsIGF1dGhvcml6ZSgnQURNSU4nKSwgKHJlcSwgcmVzKSA9PiBBZG1pbkNvbnRyb2xsZXIudXBkYXRlU2V0dGluZ3MocmVxLCByZXMpKTtcclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL2FkbWluL2NhY2hlL2NsZWFyOlxyXG4gKiAgIHBvc3Q6XHJcbiAqICAgICBzdW1tYXJ5OiBMaW1wYXIgY2FjaGUgZG8gc2lzdGVtYVxyXG4gKiAgICAgdGFnczogW0FkbWluXVxyXG4gKiAgICAgc2VjdXJpdHk6XHJcbiAqICAgICAgIC0gYmVhcmVyQXV0aDogW11cclxuICogICAgIHJlcXVlc3RCb2R5OlxyXG4gKiAgICAgICByZXF1aXJlZDogZmFsc2VcclxuICogICAgICAgY29udGVudDpcclxuICogICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICBwYXR0ZXJuOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogUGFkcsOjbyBkZSBjaGF2ZXMgcGFyYSBsaW1wYXIgKG9wY2lvbmFsKVxyXG4gKiAgICAgICAgICAgICAgIGNhdGVnb3J5OlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICBlbnVtOiBbYWxsLCBhcnRpY2xlcywgdXNlcnMsIHNldHRpbmdzLCB1cGxvYWRzXVxyXG4gKiAgICAgICAgICAgICAgICAgZGVmYXVsdDogYWxsXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogQ2F0ZWdvcmlhIGRlIGNhY2hlIHBhcmEgbGltcGFyXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogQ2FjaGUgbGltcG8gY29tIHN1Y2Vzc29cclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICBzdWNjZXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBkYXRhOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgICBrZXlzQ2xlYXJlZDpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgICAgICAgICBjYXRlZ29yeTpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgbWVzc2FnZTpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgIDQwMTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gaW52w6FsaWRvXHJcbiAqICAgICAgIDQwMzpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogU2VtIHBlcm1pc3PDo28gZGUgYWRtaW5pc3RyYWRvclxyXG4gKiAgICAgICA1MDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEVycm8gaW50ZXJubyBkbyBzZXJ2aWRvclxyXG4gKi9cclxucm91dGVyLnBvc3QoJy9jYWNoZS9jbGVhcicsIGF1dGhlbnRpY2F0ZSwgYXV0aG9yaXplKCdBRE1JTicpLCAocmVxLCByZXMpID0+IEFkbWluQ29udHJvbGxlci5jbGVhckNhY2hlKHJlcSwgcmVzKSk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS9hZG1pbi9tYWludGVuYW5jZTpcclxuICogICBwb3N0OlxyXG4gKiAgICAgc3VtbWFyeTogQXRpdmFyL2Rlc2F0aXZhciBtb2RvIGRlIG1hbnV0ZW7Dp8Ojb1xyXG4gKiAgICAgdGFnczogW0FkbWluXVxyXG4gKiAgICAgc2VjdXJpdHk6XHJcbiAqICAgICAgIC0gYmVhcmVyQXV0aDogW11cclxuICogICAgIHJlcXVlc3RCb2R5OlxyXG4gKiAgICAgICByZXF1aXJlZDogdHJ1ZVxyXG4gKiAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICByZXF1aXJlZDpcclxuICogICAgICAgICAgICAgICAtIGVuYWJsZWRcclxuICogICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICBlbmFibGVkOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IEF0aXZhciBvdSBkZXNhdGl2YXIgbW9kbyBkZSBtYW51dGVuw6fDo29cclxuICogICAgICAgICAgICAgICBtZXNzYWdlOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogTWVuc2FnZW0gcGVyc29uYWxpemFkYSAob3BjaW9uYWwpXHJcbiAqICAgICAgICAgICAgICAgZXN0aW1hdGVkRHVyYXRpb246XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBEdXJhw6fDo28gZXN0aW1hZGEgKG9wY2lvbmFsKVxyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IE1vZG8gZGUgbWFudXRlbsOnw6NvIGFsdGVyYWRvIGNvbSBzdWNlc3NvXHJcbiAqICAgICAgICAgY29udGVudDpcclxuICogICAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgc3VjY2VzczpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgZGF0YTpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgbWFpbnRlbmFuY2VNb2RlOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgICAgIG1lc3NhZ2U6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgICAgICBlc3RpbWF0ZWREdXJhdGlvbjpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgbWVzc2FnZTpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgIDQwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRGFkb3MgaW52w6FsaWRvc1xyXG4gKiAgICAgICA0MDE6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGludsOhbGlkb1xyXG4gKiAgICAgICA0MDM6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFNlbSBwZXJtaXNzw6NvIGRlIGFkbWluaXN0cmFkb3JcclxuICovXHJcbnJvdXRlci5wb3N0KCcvbWFpbnRlbmFuY2UnLCBhdXRoZW50aWNhdGUsIGF1dGhvcml6ZSgnQURNSU4nKSwgKHJlcSwgcmVzKSA9PiBBZG1pbkNvbnRyb2xsZXIuZW5hYmxlTWFpbnRlbmFuY2UocmVxLCByZXMpKTtcclxuXHJcbmV4cG9ydCBkZWZhdWx0IHJvdXRlcjsiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7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

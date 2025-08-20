@@ -1,0 +1,642 @@
+b92e1f51f56246e2e446bde605ce4f10
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_1 = require("../middlewares/auth");
+const cache_1 = require("../middlewares/cache");
+const userController_1 = __importDefault(require("../controllers/userController"));
+const router = (0, express_1.Router)();
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     UserProfile:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: string
+ *         name:
+ *           type: string
+ *         email:
+ *           type: string
+ *         role:
+ *           type: string
+ *           enum: [ADMIN, EDITOR, USER]
+ *         avatar:
+ *           type: string
+ *         phone:
+ *           type: string
+ *         bio:
+ *           type: string
+ *         website:
+ *           type: string
+ *         location:
+ *           type: string
+ *         isActive:
+ *           type: boolean
+ *         emailVerified:
+ *           type: boolean
+ *         lastLoginAt:
+ *           type: string
+ *           format: date-time
+ *         createdAt:
+ *           type: string
+ *           format: date-time
+ *         updatedAt:
+ *           type: string
+ *           format: date-time
+ *     UpdateProfileRequest:
+ *       type: object
+ *       properties:
+ *         name:
+ *           type: string
+ *           minLength: 2
+ *           description: Nome completo
+ *         phone:
+ *           type: string
+ *           description: Telefone
+ *         bio:
+ *           type: string
+ *           maxLength: 500
+ *           description: Biografia
+ *         website:
+ *           type: string
+ *           description: Website pessoal
+ *         location:
+ *           type: string
+ *           description: Localização
+ *         avatar:
+ *           type: string
+ *           description: URL do avatar
+ *     ChangePasswordRequest:
+ *       type: object
+ *       required:
+ *         - currentPassword
+ *         - newPassword
+ *       properties:
+ *         currentPassword:
+ *           type: string
+ *           description: Senha atual
+ *         newPassword:
+ *           type: string
+ *           minLength: 6
+ *           description: Nova senha
+ *         confirmPassword:
+ *           type: string
+ *           description: Confirmação da nova senha
+ *     CreateUserRequest:
+ *       type: object
+ *       required:
+ *         - name
+ *         - email
+ *         - password
+ *         - role
+ *       properties:
+ *         name:
+ *           type: string
+ *           minLength: 2
+ *           description: Nome completo
+ *         email:
+ *           type: string
+ *           format: email
+ *           description: Email do usuário
+ *         password:
+ *           type: string
+ *           minLength: 6
+ *           description: Senha do usuário
+ *         role:
+ *           type: string
+ *           enum: [ADMIN, EDITOR, USER]
+ *           description: Papel do usuário
+ *         phone:
+ *           type: string
+ *           description: Telefone (opcional)
+ *         isActive:
+ *           type: boolean
+ *           default: true
+ *           description: Status ativo
+ */
+/**
+ * @swagger
+ * /api/v1/users/profile:
+ *   get:
+ *     summary: Obter perfil do usuário logado
+ *     tags: [Usuários]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Dados do perfil
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   $ref: '#/components/schemas/UserProfile'
+ *       401:
+ *         description: Token inválido
+ */
+router.get('/profile', auth_1.authenticate, (0, cache_1.userCacheMiddleware)(600), userController_1.default.getProfile);
+router.put('/profile', auth_1.authenticate, (0, cache_1.invalidateUserCacheMiddleware)((req) => req.user?.id), userController_1.default.updateProfile);
+/**
+ * @swagger
+ * /api/v1/users/profile:
+ *   put:
+ *     summary: Atualizar perfil do usuário logado
+ *     tags: [Usuários]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/UpdateProfileRequest'
+ *     responses:
+ *       200:
+ *         description: Perfil atualizado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   $ref: '#/components/schemas/UserProfile'
+ *                 message:
+ *                   type: string
+ *       400:
+ *         description: Dados inválidos
+ *       401:
+ *         description: Token inválido
+ */
+router.put('/profile', auth_1.authenticate, userController_1.default.updateProfile);
+/**
+ * @swagger
+ * /api/v1/users/change-password:
+ *   put:
+ *     summary: Alterar senha do usuário logado
+ *     tags: [Usuários]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/ChangePasswordRequest'
+ *     responses:
+ *       200:
+ *         description: Senha alterada com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 message:
+ *                   type: string
+ *       400:
+ *         description: Dados inválidos ou senha atual incorreta
+ *       401:
+ *         description: Token inválido
+ */
+router.put('/change-password', auth_1.authenticate, userController_1.default.changePassword);
+/**
+ * @swagger
+ * /api/v1/users/avatar:
+ *   post:
+ *     summary: Upload de avatar do usuário
+ *     tags: [Usuários]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               avatar:
+ *                 type: string
+ *                 format: binary
+ *                 description: Imagem do avatar (JPG, PNG, GIF)
+ *     responses:
+ *       200:
+ *         description: Avatar atualizado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     avatarUrl:
+ *                       type: string
+ *                 message:
+ *                   type: string
+ *       400:
+ *         description: Arquivo inválido
+ *       401:
+ *         description: Token inválido
+ *       413:
+ *         description: Arquivo muito grande
+ */
+router.post('/avatar', auth_1.authenticate, userController_1.default.uploadAvatar);
+/**
+ * @swagger
+ * /api/v1/users/delete-account:
+ *   delete:
+ *     summary: Excluir conta do usuário logado
+ *     tags: [Usuários]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - password
+ *               - confirmation
+ *             properties:
+ *               password:
+ *                 type: string
+ *                 description: Senha atual para confirmação
+ *               confirmation:
+ *                 type: string
+ *                 enum: [DELETE_MY_ACCOUNT]
+ *                 description: Texto de confirmação
+ *     responses:
+ *       200:
+ *         description: Conta excluída com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 message:
+ *                   type: string
+ *       400:
+ *         description: Dados inválidos ou senha incorreta
+ *       401:
+ *         description: Token inválido
+ */
+router.delete('/delete-account', auth_1.authenticate, userController_1.default.deleteAccount);
+// Rotas administrativas
+/**
+ * @swagger
+ * /api/v1/users:
+ *   get:
+ *     summary: Listar usuários (Admin)
+ *     tags: [Usuários]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           default: 1
+ *         description: Número da página
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           maximum: 100
+ *           default: 20
+ *         description: Itens por página
+ *       - in: query
+ *         name: role
+ *         schema:
+ *           type: string
+ *           enum: [ADMIN, EDITOR, USER]
+ *         description: Filtrar por papel
+ *       - in: query
+ *         name: status
+ *         schema:
+ *           type: string
+ *           enum: [active, inactive]
+ *         description: Filtrar por status
+ *       - in: query
+ *         name: search
+ *         schema:
+ *           type: string
+ *         description: Buscar por nome ou email
+ *       - in: query
+ *         name: dateFrom
+ *         schema:
+ *           type: string
+ *           format: date
+ *         description: Data inicial (YYYY-MM-DD)
+ *       - in: query
+ *         name: dateTo
+ *         schema:
+ *           type: string
+ *           format: date
+ *         description: Data final (YYYY-MM-DD)
+ *       - in: query
+ *         name: sortBy
+ *         schema:
+ *           type: string
+ *           enum: [createdAt, name, email, lastLoginAt]
+ *           default: createdAt
+ *         description: Campo para ordenação
+ *       - in: query
+ *         name: sortOrder
+ *         schema:
+ *           type: string
+ *           enum: [asc, desc]
+ *           default: desc
+ *         description: Ordem da classificação
+ *     responses:
+ *       200:
+ *         description: Lista de usuários
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     users:
+ *                       type: array
+ *                       items:
+ *                         $ref: '#/components/schemas/UserProfile'
+ *                     pagination:
+ *                       type: object
+ *                       properties:
+ *                         page:
+ *                           type: integer
+ *                         limit:
+ *                           type: integer
+ *                         total:
+ *                           type: integer
+ *                         pages:
+ *                           type: integer
+ *                     stats:
+ *                       type: object
+ *                       properties:
+ *                         total:
+ *                           type: integer
+ *                         active:
+ *                           type: integer
+ *                         inactive:
+ *                           type: integer
+ *                         byRole:
+ *                           type: object
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ */
+router.get('/', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), (0, cache_1.publicCacheMiddleware)(300), userController_1.default.getUsers);
+/**
+ * @swagger
+ * /api/v1/users:
+ *   post:
+ *     summary: Criar novo usuário (Admin)
+ *     tags: [Usuários]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/CreateUserRequest'
+ *     responses:
+ *       201:
+ *         description: Usuário criado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   $ref: '#/components/schemas/UserProfile'
+ *                 message:
+ *                   type: string
+ *       400:
+ *         description: Dados inválidos
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ *       409:
+ *         description: Email já cadastrado
+ */
+router.post('/', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), userController_1.default.createUser);
+/**
+ * @swagger
+ * /api/v1/users/{id}:
+ *   get:
+ *     summary: Obter usuário por ID
+ *     tags: [Usuários]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID do usuário
+ *     responses:
+ *       200:
+ *         description: Dados do usuário
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   $ref: '#/components/schemas/UserProfile'
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ *       404:
+ *         description: Usuário não encontrado
+ */
+router.get('/:id', auth_1.authenticate, auth_1.authorizeOwnerOrAdmin, (0, cache_1.userCacheMiddleware)(600), userController_1.default.getUserById);
+/**
+ * @swagger
+ * /api/v1/users/{id}:
+ *   put:
+ *     summary: Atualizar usuário (Admin)
+ *     tags: [Usuários]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID do usuário
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *                 format: email
+ *               role:
+ *                 type: string
+ *                 enum: [ADMIN, EDITOR, USER]
+ *               phone:
+ *                 type: string
+ *               isActive:
+ *                 type: boolean
+ *               bio:
+ *                 type: string
+ *               website:
+ *                 type: string
+ *               location:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Usuário atualizado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   $ref: '#/components/schemas/UserProfile'
+ *                 message:
+ *                   type: string
+ *       400:
+ *         description: Dados inválidos
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ *       404:
+ *         description: Usuário não encontrado
+ *       409:
+ *         description: Email já cadastrado
+ */
+router.put('/:id', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), (0, cache_1.invalidateUserCacheMiddleware)((req) => req.params.id || ''), userController_1.default.updateUser);
+/**
+ * @swagger
+ * /api/v1/users/{id}/status:
+ *   patch:
+ *     summary: Alterar status do usuário (Admin)
+ *     tags: [Usuários]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID do usuário
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - isActive
+ *             properties:
+ *               isActive:
+ *                 type: boolean
+ *                 description: Novo status ativo
+ *               reason:
+ *                 type: string
+ *                 description: Motivo da alteração (opcional)
+ *     responses:
+ *       200:
+ *         description: Status alterado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   $ref: '#/components/schemas/UserProfile'
+ *                 message:
+ *                   type: string
+ *       400:
+ *         description: Dados inválidos
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ *       404:
+ *         description: Usuário não encontrado
+ */
+router.patch('/:id/status', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), userController_1.default.updateUserStatus);
+/**
+ * @swagger
+ * /api/v1/users/{id}:
+ *   delete:
+ *     summary: Excluir usuário (Admin)
+ *     tags: [Usuários]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID do usuário
+ *     responses:
+ *       200:
+ *         description: Usuário excluído com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 message:
+ *                   type: string
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ *       404:
+ *         description: Usuário não encontrado
+ */
+router.delete('/:id', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), (0, cache_1.invalidateUserCacheMiddleware)((req) => req.params.id || ''), userController_1.default.deleteUser);
+exports.default = router;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRDpcXGRldlxcY29udGFiaWxcXGNvbnRhYmlsLXNpdGVcXGJhY2tlbmRcXHNyY1xccm91dGVzXFx1c2VyUm91dGVzLnRzIiwibWFwcGluZ3MiOiI7Ozs7O0FBQUEscUNBQW9EO0FBQ3BELDhDQUFxRjtBQUNyRixnREFJOEI7QUFDOUIsbUZBQTJEO0FBRTNELE1BQU0sTUFBTSxHQUFHLElBQUEsZ0JBQU0sR0FBRSxDQUFDO0FBRXhCOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0dBNkdHO0FBRUg7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7R0FzQkc7QUFDSCxNQUFNLENBQUMsR0FBRyxDQUFDLFVBQVUsRUFBRSxtQkFBWSxFQUFFLElBQUEsMkJBQW1CLEVBQUMsR0FBRyxDQUFDLEVBQUUsd0JBQWMsQ0FBQyxVQUFVLENBQUMsQ0FBQztBQUUxRixNQUFNLENBQUMsR0FBRyxDQUFDLFVBQVUsRUFBRSxtQkFBWSxFQUFFLElBQUEscUNBQTZCLEVBQUMsQ0FBQyxHQUFHLEVBQUUsRUFBRSxDQUFFLEdBQVcsQ0FBQyxJQUFJLEVBQUUsRUFBRSxDQUFDLEVBQUUsd0JBQWMsQ0FBQyxhQUFhLENBQUMsQ0FBQztBQUVsSTs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7R0FnQ0c7QUFDSCxNQUFNLENBQUMsR0FBRyxDQUFDLFVBQVUsRUFBRSxtQkFBWSxFQUFFLHdCQUFjLENBQUMsYUFBYSxDQUFDLENBQUM7QUFFbkU7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztHQThCRztBQUNILE1BQU0sQ0FBQyxHQUFHLENBQUMsa0JBQWtCLEVBQUUsbUJBQVksRUFBRSx3QkFBYyxDQUFDLGNBQWMsQ0FBQyxDQUFDO0FBRTVFOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7R0EwQ0c7QUFDSCxNQUFNLENBQUMsSUFBSSxDQUFDLFNBQVMsRUFBRSxtQkFBWSxFQUFFLHdCQUFjLENBQUMsWUFBWSxDQUFDLENBQUM7QUFFbEU7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0dBeUNHO0FBQ0gsTUFBTSxDQUFDLE1BQU0sQ0FBQyxpQkFBaUIsRUFBRSxtQkFBWSxFQUFFLHdCQUFjLENBQUMsYUFBYSxDQUFDLENBQUM7QUFFN0Usd0JBQXdCO0FBRXhCOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztHQThHRztBQUNILE1BQU0sQ0FBQyxHQUFHLENBQUMsR0FBRyxFQUFFLG1CQUFZLEVBQUUsSUFBQSxnQkFBUyxFQUFDLE9BQU8sQ0FBQyxFQUFFLElBQUEsNkJBQXFCLEVBQUMsR0FBRyxDQUFDLEVBQUUsd0JBQWMsQ0FBQyxRQUFRLENBQUMsQ0FBQztBQUV2Rzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0dBb0NHO0FBQ0gsTUFBTSxDQUFDLElBQUksQ0FBQyxHQUFHLEVBQUUsbUJBQVksRUFBRSxJQUFBLGdCQUFTLEVBQUMsT0FBTyxDQUFDLEVBQUUsd0JBQWMsQ0FBQyxVQUFVLENBQUMsQ0FBQztBQUU5RTs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0dBaUNHO0FBQ0gsTUFBTSxDQUFDLEdBQUcsQ0FBQyxNQUFNLEVBQUUsbUJBQVksRUFBRSw0QkFBcUIsRUFBRSxJQUFBLDJCQUFtQixFQUFDLEdBQUcsQ0FBQyxFQUFFLHdCQUFjLENBQUMsV0FBVyxDQUFDLENBQUM7QUFFOUc7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7R0FnRUc7QUFDSCxNQUFNLENBQUMsR0FBRyxDQUFDLE1BQU0sRUFBRSxtQkFBWSxFQUFFLElBQUEsZ0JBQVMsRUFBQyxPQUFPLENBQUMsRUFBRSxJQUFBLHFDQUE2QixFQUFDLENBQUMsR0FBRyxFQUFFLEVBQUUsQ0FBQyxHQUFHLENBQUMsTUFBTSxDQUFDLEVBQUUsSUFBSSxFQUFFLENBQUMsRUFBRSx3QkFBYyxDQUFDLFVBQVUsQ0FBQyxDQUFDO0FBRTdJOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0dBb0RHO0FBQ0gsTUFBTSxDQUFDLEtBQUssQ0FBQyxhQUFhLEVBQUUsbUJBQVksRUFBRSxJQUFBLGdCQUFTLEVBQUMsT0FBTyxDQUFDLEVBQUUsd0JBQWMsQ0FBQyxnQkFBZ0IsQ0FBQyxDQUFDO0FBRS9GOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7R0FpQ0c7QUFDSCxNQUFNLENBQUMsTUFBTSxDQUFDLE1BQU0sRUFBRSxtQkFBWSxFQUFFLElBQUEsZ0JBQVMsRUFBQyxPQUFPLENBQUMsRUFBRSxJQUFBLHFDQUE2QixFQUFDLENBQUMsR0FBRyxFQUFFLEVBQUUsQ0FBQyxHQUFHLENBQUMsTUFBTSxDQUFDLEVBQUUsSUFBSSxFQUFFLENBQUMsRUFBRSx3QkFBYyxDQUFDLFVBQVUsQ0FBQyxDQUFDO0FBRWhKLGtCQUFlLE1BQU0sQ0FBQyIsIm5hbWVzIjpbXSwic291cmNlcyI6WyJEOlxcZGV2XFxjb250YWJpbFxcY29udGFiaWwtc2l0ZVxcYmFja2VuZFxcc3JjXFxyb3V0ZXNcXHVzZXJSb3V0ZXMudHMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgUm91dGVyLCBSZXF1ZXN0LCBSZXNwb25zZSB9IGZyb20gJ2V4cHJlc3MnO1xyXG5pbXBvcnQgeyBhdXRoZW50aWNhdGUsIGF1dGhvcml6ZSwgYXV0aG9yaXplT3duZXJPckFkbWluIH0gZnJvbSAnLi4vbWlkZGxld2FyZXMvYXV0aCc7XHJcbmltcG9ydCB7XHJcbiAgdXNlckNhY2hlTWlkZGxld2FyZSxcclxuICBwdWJsaWNDYWNoZU1pZGRsZXdhcmUsXHJcbiAgaW52YWxpZGF0ZVVzZXJDYWNoZU1pZGRsZXdhcmVcclxufSBmcm9tICcuLi9taWRkbGV3YXJlcy9jYWNoZSc7XHJcbmltcG9ydCBVc2VyQ29udHJvbGxlciBmcm9tICcuLi9jb250cm9sbGVycy91c2VyQ29udHJvbGxlcic7XHJcblxyXG5jb25zdCByb3V0ZXIgPSBSb3V0ZXIoKTtcclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiBjb21wb25lbnRzOlxyXG4gKiAgIHNjaGVtYXM6XHJcbiAqICAgICBVc2VyUHJvZmlsZTpcclxuICogICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgaWQ6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBuYW1lOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZW1haWw6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICByb2xlOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBlbnVtOiBbQURNSU4sIEVESVRPUiwgVVNFUl1cclxuICogICAgICAgICBhdmF0YXI6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBwaG9uZTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGJpbzpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIHdlYnNpdGU6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBsb2NhdGlvbjpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGlzQWN0aXZlOlxyXG4gKiAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgIGVtYWlsVmVyaWZpZWQ6XHJcbiAqICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgbGFzdExvZ2luQXQ6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGZvcm1hdDogZGF0ZS10aW1lXHJcbiAqICAgICAgICAgY3JlYXRlZEF0OlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBmb3JtYXQ6IGRhdGUtdGltZVxyXG4gKiAgICAgICAgIHVwZGF0ZWRBdDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZm9ybWF0OiBkYXRlLXRpbWVcclxuICogICAgIFVwZGF0ZVByb2ZpbGVSZXF1ZXN0OlxyXG4gKiAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICBuYW1lOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBtaW5MZW5ndGg6IDJcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBOb21lIGNvbXBsZXRvXHJcbiAqICAgICAgICAgcGhvbmU6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBUZWxlZm9uZVxyXG4gKiAgICAgICAgIGJpbzpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgbWF4TGVuZ3RoOiA1MDBcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBCaW9ncmFmaWFcclxuICogICAgICAgICB3ZWJzaXRlOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogV2Vic2l0ZSBwZXNzb2FsXHJcbiAqICAgICAgICAgbG9jYXRpb246XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBMb2NhbGl6YcOnw6NvXHJcbiAqICAgICAgICAgYXZhdGFyOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogVVJMIGRvIGF2YXRhclxyXG4gKiAgICAgQ2hhbmdlUGFzc3dvcmRSZXF1ZXN0OlxyXG4gKiAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgcmVxdWlyZWQ6XHJcbiAqICAgICAgICAgLSBjdXJyZW50UGFzc3dvcmRcclxuICogICAgICAgICAtIG5ld1Bhc3N3b3JkXHJcbiAqICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgY3VycmVudFBhc3N3b3JkOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogU2VuaGEgYXR1YWxcclxuICogICAgICAgICBuZXdQYXNzd29yZDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgbWluTGVuZ3RoOiA2XHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogTm92YSBzZW5oYVxyXG4gKiAgICAgICAgIGNvbmZpcm1QYXNzd29yZDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IENvbmZpcm1hw6fDo28gZGEgbm92YSBzZW5oYVxyXG4gKiAgICAgQ3JlYXRlVXNlclJlcXVlc3Q6XHJcbiAqICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICByZXF1aXJlZDpcclxuICogICAgICAgICAtIG5hbWVcclxuICogICAgICAgICAtIGVtYWlsXHJcbiAqICAgICAgICAgLSBwYXNzd29yZFxyXG4gKiAgICAgICAgIC0gcm9sZVxyXG4gKiAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgIG5hbWU6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIG1pbkxlbmd0aDogMlxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IE5vbWUgY29tcGxldG9cclxuICogICAgICAgICBlbWFpbDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZm9ybWF0OiBlbWFpbFxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IEVtYWlsIGRvIHVzdcOhcmlvXHJcbiAqICAgICAgICAgcGFzc3dvcmQ6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIG1pbkxlbmd0aDogNlxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IFNlbmhhIGRvIHVzdcOhcmlvXHJcbiAqICAgICAgICAgcm9sZTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZW51bTogW0FETUlOLCBFRElUT1IsIFVTRVJdXHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogUGFwZWwgZG8gdXN1w6FyaW9cclxuICogICAgICAgICBwaG9uZTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IFRlbGVmb25lIChvcGNpb25hbClcclxuICogICAgICAgICBpc0FjdGl2ZTpcclxuICogICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgIGRlZmF1bHQ6IHRydWVcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBTdGF0dXMgYXRpdm9cclxuICovXHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS91c2Vycy9wcm9maWxlOlxyXG4gKiAgIGdldDpcclxuICogICAgIHN1bW1hcnk6IE9idGVyIHBlcmZpbCBkbyB1c3XDoXJpbyBsb2dhZG9cclxuICogICAgIHRhZ3M6IFtVc3XDoXJpb3NdXHJcbiAqICAgICBzZWN1cml0eTpcclxuICogICAgICAgLSBiZWFyZXJBdXRoOiBbXVxyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IERhZG9zIGRvIHBlcmZpbFxyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgIHN1Y2Nlc3M6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgIGRhdGE6XHJcbiAqICAgICAgICAgICAgICAgICAgICRyZWY6ICcjL2NvbXBvbmVudHMvc2NoZW1hcy9Vc2VyUHJvZmlsZSdcclxuICogICAgICAgNDAxOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBUb2tlbiBpbnbDoWxpZG9cclxuICovXHJcbnJvdXRlci5nZXQoJy9wcm9maWxlJywgYXV0aGVudGljYXRlLCB1c2VyQ2FjaGVNaWRkbGV3YXJlKDYwMCksIFVzZXJDb250cm9sbGVyLmdldFByb2ZpbGUpO1xyXG5cclxucm91dGVyLnB1dCgnL3Byb2ZpbGUnLCBhdXRoZW50aWNhdGUsIGludmFsaWRhdGVVc2VyQ2FjaGVNaWRkbGV3YXJlKChyZXEpID0+IChyZXEgYXMgYW55KS51c2VyPy5pZCksIFVzZXJDb250cm9sbGVyLnVwZGF0ZVByb2ZpbGUpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvdXNlcnMvcHJvZmlsZTpcclxuICogICBwdXQ6XHJcbiAqICAgICBzdW1tYXJ5OiBBdHVhbGl6YXIgcGVyZmlsIGRvIHVzdcOhcmlvIGxvZ2Fkb1xyXG4gKiAgICAgdGFnczogW1VzdcOhcmlvc11cclxuICogICAgIHNlY3VyaXR5OlxyXG4gKiAgICAgICAtIGJlYXJlckF1dGg6IFtdXHJcbiAqICAgICByZXF1ZXN0Qm9keTpcclxuICogICAgICAgcmVxdWlyZWQ6IHRydWVcclxuICogICAgICAgY29udGVudDpcclxuICogICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAkcmVmOiAnIy9jb21wb25lbnRzL3NjaGVtYXMvVXBkYXRlUHJvZmlsZVJlcXVlc3QnXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogUGVyZmlsIGF0dWFsaXphZG8gY29tIHN1Y2Vzc29cclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICBzdWNjZXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBkYXRhOlxyXG4gKiAgICAgICAgICAgICAgICAgICAkcmVmOiAnIy9jb21wb25lbnRzL3NjaGVtYXMvVXNlclByb2ZpbGUnXHJcbiAqICAgICAgICAgICAgICAgICBtZXNzYWdlOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgNDAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBEYWRvcyBpbnbDoWxpZG9zXHJcbiAqICAgICAgIDQwMTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gaW52w6FsaWRvXHJcbiAqL1xyXG5yb3V0ZXIucHV0KCcvcHJvZmlsZScsIGF1dGhlbnRpY2F0ZSwgVXNlckNvbnRyb2xsZXIudXBkYXRlUHJvZmlsZSk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS91c2Vycy9jaGFuZ2UtcGFzc3dvcmQ6XHJcbiAqICAgcHV0OlxyXG4gKiAgICAgc3VtbWFyeTogQWx0ZXJhciBzZW5oYSBkbyB1c3XDoXJpbyBsb2dhZG9cclxuICogICAgIHRhZ3M6IFtVc3XDoXJpb3NdXHJcbiAqICAgICBzZWN1cml0eTpcclxuICogICAgICAgLSBiZWFyZXJBdXRoOiBbXVxyXG4gKiAgICAgcmVxdWVzdEJvZHk6XHJcbiAqICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgJHJlZjogJyMvY29tcG9uZW50cy9zY2hlbWFzL0NoYW5nZVBhc3N3b3JkUmVxdWVzdCdcclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBTZW5oYSBhbHRlcmFkYSBjb20gc3VjZXNzb1xyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgIHN1Y2Nlc3M6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgIG1lc3NhZ2U6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICA0MDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IERhZG9zIGludsOhbGlkb3Mgb3Ugc2VuaGEgYXR1YWwgaW5jb3JyZXRhXHJcbiAqICAgICAgIDQwMTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gaW52w6FsaWRvXHJcbiAqL1xyXG5yb3V0ZXIucHV0KCcvY2hhbmdlLXBhc3N3b3JkJywgYXV0aGVudGljYXRlLCBVc2VyQ29udHJvbGxlci5jaGFuZ2VQYXNzd29yZCk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS91c2Vycy9hdmF0YXI6XHJcbiAqICAgcG9zdDpcclxuICogICAgIHN1bW1hcnk6IFVwbG9hZCBkZSBhdmF0YXIgZG8gdXN1w6FyaW9cclxuICogICAgIHRhZ3M6IFtVc3XDoXJpb3NdXHJcbiAqICAgICBzZWN1cml0eTpcclxuICogICAgICAgLSBiZWFyZXJBdXRoOiBbXVxyXG4gKiAgICAgcmVxdWVzdEJvZHk6XHJcbiAqICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgbXVsdGlwYXJ0L2Zvcm0tZGF0YTpcclxuICogICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgYXZhdGFyOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICBmb3JtYXQ6IGJpbmFyeVxyXG4gKiAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IEltYWdlbSBkbyBhdmF0YXIgKEpQRywgUE5HLCBHSUYpXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogQXZhdGFyIGF0dWFsaXphZG8gY29tIHN1Y2Vzc29cclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICBzdWNjZXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBkYXRhOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgICBhdmF0YXJVcmw6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgIG1lc3NhZ2U6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICA0MDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEFycXVpdm8gaW52w6FsaWRvXHJcbiAqICAgICAgIDQwMTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gaW52w6FsaWRvXHJcbiAqICAgICAgIDQxMzpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogQXJxdWl2byBtdWl0byBncmFuZGVcclxuICovXHJcbnJvdXRlci5wb3N0KCcvYXZhdGFyJywgYXV0aGVudGljYXRlLCBVc2VyQ29udHJvbGxlci51cGxvYWRBdmF0YXIpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvdXNlcnMvZGVsZXRlLWFjY291bnQ6XHJcbiAqICAgZGVsZXRlOlxyXG4gKiAgICAgc3VtbWFyeTogRXhjbHVpciBjb250YSBkbyB1c3XDoXJpbyBsb2dhZG9cclxuICogICAgIHRhZ3M6IFtVc3XDoXJpb3NdXHJcbiAqICAgICBzZWN1cml0eTpcclxuICogICAgICAgLSBiZWFyZXJBdXRoOiBbXVxyXG4gKiAgICAgcmVxdWVzdEJvZHk6XHJcbiAqICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgIHJlcXVpcmVkOlxyXG4gKiAgICAgICAgICAgICAgIC0gcGFzc3dvcmRcclxuICogICAgICAgICAgICAgICAtIGNvbmZpcm1hdGlvblxyXG4gKiAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgIHBhc3N3b3JkOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogU2VuaGEgYXR1YWwgcGFyYSBjb25maXJtYcOnw6NvXHJcbiAqICAgICAgICAgICAgICAgY29uZmlybWF0aW9uOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICBlbnVtOiBbREVMRVRFX01ZX0FDQ09VTlRdXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogVGV4dG8gZGUgY29uZmlybWHDp8Ojb1xyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IENvbnRhIGV4Y2x1w61kYSBjb20gc3VjZXNzb1xyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgIHN1Y2Nlc3M6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgIG1lc3NhZ2U6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICA0MDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IERhZG9zIGludsOhbGlkb3Mgb3Ugc2VuaGEgaW5jb3JyZXRhXHJcbiAqICAgICAgIDQwMTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gaW52w6FsaWRvXHJcbiAqL1xyXG5yb3V0ZXIuZGVsZXRlKCcvZGVsZXRlLWFjY291bnQnLCBhdXRoZW50aWNhdGUsIFVzZXJDb250cm9sbGVyLmRlbGV0ZUFjY291bnQpO1xyXG5cclxuLy8gUm90YXMgYWRtaW5pc3RyYXRpdmFzXHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS91c2VyczpcclxuICogICBnZXQ6XHJcbiAqICAgICBzdW1tYXJ5OiBMaXN0YXIgdXN1w6FyaW9zIChBZG1pbilcclxuICogICAgIHRhZ3M6IFtVc3XDoXJpb3NdXHJcbiAqICAgICBzZWN1cml0eTpcclxuICogICAgICAgLSBiZWFyZXJBdXRoOiBbXVxyXG4gKiAgICAgcGFyYW1ldGVyczpcclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiBwYWdlXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgbWluaW11bTogMVxyXG4gKiAgICAgICAgICAgZGVmYXVsdDogMVxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBOw7ptZXJvIGRhIHDDoWdpbmFcclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiBsaW1pdFxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgIG1pbmltdW06IDFcclxuICogICAgICAgICAgIG1heGltdW06IDEwMFxyXG4gKiAgICAgICAgICAgZGVmYXVsdDogMjBcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogSXRlbnMgcG9yIHDDoWdpbmFcclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiByb2xlXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBlbnVtOiBbQURNSU4sIEVESVRPUiwgVVNFUl1cclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRmlsdHJhciBwb3IgcGFwZWxcclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiBzdGF0dXNcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGVudW06IFthY3RpdmUsIGluYWN0aXZlXVxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBGaWx0cmFyIHBvciBzdGF0dXNcclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiBzZWFyY2hcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogQnVzY2FyIHBvciBub21lIG91IGVtYWlsXHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogZGF0ZUZyb21cclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGZvcm1hdDogZGF0ZVxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBEYXRhIGluaWNpYWwgKFlZWVktTU0tREQpXHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogZGF0ZVRvXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBmb3JtYXQ6IGRhdGVcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRGF0YSBmaW5hbCAoWVlZWS1NTS1ERClcclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiBzb3J0QnlcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGVudW06IFtjcmVhdGVkQXQsIG5hbWUsIGVtYWlsLCBsYXN0TG9naW5BdF1cclxuICogICAgICAgICAgIGRlZmF1bHQ6IGNyZWF0ZWRBdFxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBDYW1wbyBwYXJhIG9yZGVuYcOnw6NvXHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogc29ydE9yZGVyXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBlbnVtOiBbYXNjLCBkZXNjXVxyXG4gKiAgICAgICAgICAgZGVmYXVsdDogZGVzY1xyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBPcmRlbSBkYSBjbGFzc2lmaWNhw6fDo29cclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBMaXN0YSBkZSB1c3XDoXJpb3NcclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICBzdWNjZXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBkYXRhOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgICB1c2VyczpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGFycmF5XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICBpdGVtczpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgJHJlZjogJyMvY29tcG9uZW50cy9zY2hlbWFzL1VzZXJQcm9maWxlJ1xyXG4gKiAgICAgICAgICAgICAgICAgICAgIHBhZ2luYXRpb246XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIHBhZ2U6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICBsaW1pdDpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIHRvdGFsOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgcGFnZXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgIHN0YXRzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICB0b3RhbDpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIGFjdGl2ZTpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIGluYWN0aXZlOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgYnlSb2xlOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICA0MDE6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGludsOhbGlkb1xyXG4gKiAgICAgICA0MDM6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFNlbSBwZXJtaXNzw6NvXHJcbiAqL1xyXG5yb3V0ZXIuZ2V0KCcvJywgYXV0aGVudGljYXRlLCBhdXRob3JpemUoJ0FETUlOJyksIHB1YmxpY0NhY2hlTWlkZGxld2FyZSgzMDApLCBVc2VyQ29udHJvbGxlci5nZXRVc2Vycyk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS91c2VyczpcclxuICogICBwb3N0OlxyXG4gKiAgICAgc3VtbWFyeTogQ3JpYXIgbm92byB1c3XDoXJpbyAoQWRtaW4pXHJcbiAqICAgICB0YWdzOiBbVXN1w6FyaW9zXVxyXG4gKiAgICAgc2VjdXJpdHk6XHJcbiAqICAgICAgIC0gYmVhcmVyQXV0aDogW11cclxuICogICAgIHJlcXVlc3RCb2R5OlxyXG4gKiAgICAgICByZXF1aXJlZDogdHJ1ZVxyXG4gKiAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICRyZWY6ICcjL2NvbXBvbmVudHMvc2NoZW1hcy9DcmVhdGVVc2VyUmVxdWVzdCdcclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAxOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBVc3XDoXJpbyBjcmlhZG8gY29tIHN1Y2Vzc29cclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICBzdWNjZXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBkYXRhOlxyXG4gKiAgICAgICAgICAgICAgICAgICAkcmVmOiAnIy9jb21wb25lbnRzL3NjaGVtYXMvVXNlclByb2ZpbGUnXHJcbiAqICAgICAgICAgICAgICAgICBtZXNzYWdlOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgNDAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBEYWRvcyBpbnbDoWxpZG9zXHJcbiAqICAgICAgIDQwMTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gaW52w6FsaWRvXHJcbiAqICAgICAgIDQwMzpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogU2VtIHBlcm1pc3PDo29cclxuICogICAgICAgNDA5OlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBFbWFpbCBqw6EgY2FkYXN0cmFkb1xyXG4gKi9cclxucm91dGVyLnBvc3QoJy8nLCBhdXRoZW50aWNhdGUsIGF1dGhvcml6ZSgnQURNSU4nKSwgVXNlckNvbnRyb2xsZXIuY3JlYXRlVXNlcik7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS91c2Vycy97aWR9OlxyXG4gKiAgIGdldDpcclxuICogICAgIHN1bW1hcnk6IE9idGVyIHVzdcOhcmlvIHBvciBJRFxyXG4gKiAgICAgdGFnczogW1VzdcOhcmlvc11cclxuICogICAgIHNlY3VyaXR5OlxyXG4gKiAgICAgICAtIGJlYXJlckF1dGg6IFtdXHJcbiAqICAgICBwYXJhbWV0ZXJzOlxyXG4gKiAgICAgICAtIGluOiBwYXRoXHJcbiAqICAgICAgICAgbmFtZTogaWRcclxuICogICAgICAgICByZXF1aXJlZDogdHJ1ZVxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBJRCBkbyB1c3XDoXJpb1xyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IERhZG9zIGRvIHVzdcOhcmlvXHJcbiAqICAgICAgICAgY29udGVudDpcclxuICogICAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgc3VjY2VzczpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgZGF0YTpcclxuICogICAgICAgICAgICAgICAgICAgJHJlZjogJyMvY29tcG9uZW50cy9zY2hlbWFzL1VzZXJQcm9maWxlJ1xyXG4gKiAgICAgICA0MDE6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGludsOhbGlkb1xyXG4gKiAgICAgICA0MDM6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFNlbSBwZXJtaXNzw6NvXHJcbiAqICAgICAgIDQwNDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVXN1w6FyaW8gbsOjbyBlbmNvbnRyYWRvXHJcbiAqL1xyXG5yb3V0ZXIuZ2V0KCcvOmlkJywgYXV0aGVudGljYXRlLCBhdXRob3JpemVPd25lck9yQWRtaW4sIHVzZXJDYWNoZU1pZGRsZXdhcmUoNjAwKSwgVXNlckNvbnRyb2xsZXIuZ2V0VXNlckJ5SWQpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvdXNlcnMve2lkfTpcclxuICogICBwdXQ6XHJcbiAqICAgICBzdW1tYXJ5OiBBdHVhbGl6YXIgdXN1w6FyaW8gKEFkbWluKVxyXG4gKiAgICAgdGFnczogW1VzdcOhcmlvc11cclxuICogICAgIHNlY3VyaXR5OlxyXG4gKiAgICAgICAtIGJlYXJlckF1dGg6IFtdXHJcbiAqICAgICBwYXJhbWV0ZXJzOlxyXG4gKiAgICAgICAtIGluOiBwYXRoXHJcbiAqICAgICAgICAgbmFtZTogaWRcclxuICogICAgICAgICByZXF1aXJlZDogdHJ1ZVxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBJRCBkbyB1c3XDoXJpb1xyXG4gKiAgICAgcmVxdWVzdEJvZHk6XHJcbiAqICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgbmFtZTpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgIGVtYWlsOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICBmb3JtYXQ6IGVtYWlsXHJcbiAqICAgICAgICAgICAgICAgcm9sZTpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgZW51bTogW0FETUlOLCBFRElUT1IsIFVTRVJdXHJcbiAqICAgICAgICAgICAgICAgcGhvbmU6XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICBpc0FjdGl2ZTpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICBiaW86XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICB3ZWJzaXRlOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgbG9jYXRpb246XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBVc3XDoXJpbyBhdHVhbGl6YWRvIGNvbSBzdWNlc3NvXHJcbiAqICAgICAgICAgY29udGVudDpcclxuICogICAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgc3VjY2VzczpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgZGF0YTpcclxuICogICAgICAgICAgICAgICAgICAgJHJlZjogJyMvY29tcG9uZW50cy9zY2hlbWFzL1VzZXJQcm9maWxlJ1xyXG4gKiAgICAgICAgICAgICAgICAgbWVzc2FnZTpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgIDQwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRGFkb3MgaW52w6FsaWRvc1xyXG4gKiAgICAgICA0MDE6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGludsOhbGlkb1xyXG4gKiAgICAgICA0MDM6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFNlbSBwZXJtaXNzw6NvXHJcbiAqICAgICAgIDQwNDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVXN1w6FyaW8gbsOjbyBlbmNvbnRyYWRvXHJcbiAqICAgICAgIDQwOTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRW1haWwgasOhIGNhZGFzdHJhZG9cclxuICovXHJcbnJvdXRlci5wdXQoJy86aWQnLCBhdXRoZW50aWNhdGUsIGF1dGhvcml6ZSgnQURNSU4nKSwgaW52YWxpZGF0ZVVzZXJDYWNoZU1pZGRsZXdhcmUoKHJlcSkgPT4gcmVxLnBhcmFtcy5pZCB8fCAnJyksIFVzZXJDb250cm9sbGVyLnVwZGF0ZVVzZXIpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvdXNlcnMve2lkfS9zdGF0dXM6XHJcbiAqICAgcGF0Y2g6XHJcbiAqICAgICBzdW1tYXJ5OiBBbHRlcmFyIHN0YXR1cyBkbyB1c3XDoXJpbyAoQWRtaW4pXHJcbiAqICAgICB0YWdzOiBbVXN1w6FyaW9zXVxyXG4gKiAgICAgc2VjdXJpdHk6XHJcbiAqICAgICAgIC0gYmVhcmVyQXV0aDogW11cclxuICogICAgIHBhcmFtZXRlcnM6XHJcbiAqICAgICAgIC0gaW46IHBhdGhcclxuICogICAgICAgICBuYW1lOiBpZFxyXG4gKiAgICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IElEIGRvIHVzdcOhcmlvXHJcbiAqICAgICByZXF1ZXN0Qm9keTpcclxuICogICAgICAgcmVxdWlyZWQ6IHRydWVcclxuICogICAgICAgY29udGVudDpcclxuICogICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgcmVxdWlyZWQ6XHJcbiAqICAgICAgICAgICAgICAgLSBpc0FjdGl2ZVxyXG4gKiAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgIGlzQWN0aXZlOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IE5vdm8gc3RhdHVzIGF0aXZvXHJcbiAqICAgICAgICAgICAgICAgcmVhc29uOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogTW90aXZvIGRhIGFsdGVyYcOnw6NvIChvcGNpb25hbClcclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBTdGF0dXMgYWx0ZXJhZG8gY29tIHN1Y2Vzc29cclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICBzdWNjZXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBkYXRhOlxyXG4gKiAgICAgICAgICAgICAgICAgICAkcmVmOiAnIy9jb21wb25lbnRzL3NjaGVtYXMvVXNlclByb2ZpbGUnXHJcbiAqICAgICAgICAgICAgICAgICBtZXNzYWdlOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgNDAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBEYWRvcyBpbnbDoWxpZG9zXHJcbiAqICAgICAgIDQwMTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gaW52w6FsaWRvXHJcbiAqICAgICAgIDQwMzpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogU2VtIHBlcm1pc3PDo29cclxuICogICAgICAgNDA0OlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBVc3XDoXJpbyBuw6NvIGVuY29udHJhZG9cclxuICovXHJcbnJvdXRlci5wYXRjaCgnLzppZC9zdGF0dXMnLCBhdXRoZW50aWNhdGUsIGF1dGhvcml6ZSgnQURNSU4nKSwgVXNlckNvbnRyb2xsZXIudXBkYXRlVXNlclN0YXR1cyk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS91c2Vycy97aWR9OlxyXG4gKiAgIGRlbGV0ZTpcclxuICogICAgIHN1bW1hcnk6IEV4Y2x1aXIgdXN1w6FyaW8gKEFkbWluKVxyXG4gKiAgICAgdGFnczogW1VzdcOhcmlvc11cclxuICogICAgIHNlY3VyaXR5OlxyXG4gKiAgICAgICAtIGJlYXJlckF1dGg6IFtdXHJcbiAqICAgICBwYXJhbWV0ZXJzOlxyXG4gKiAgICAgICAtIGluOiBwYXRoXHJcbiAqICAgICAgICAgbmFtZTogaWRcclxuICogICAgICAgICByZXF1aXJlZDogdHJ1ZVxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBJRCBkbyB1c3XDoXJpb1xyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFVzdcOhcmlvIGV4Y2x1w61kbyBjb20gc3VjZXNzb1xyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgIHN1Y2Nlc3M6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgIG1lc3NhZ2U6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICA0MDE6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGludsOhbGlkb1xyXG4gKiAgICAgICA0MDM6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFNlbSBwZXJtaXNzw6NvXHJcbiAqICAgICAgIDQwNDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVXN1w6FyaW8gbsOjbyBlbmNvbnRyYWRvXHJcbiAqL1xyXG5yb3V0ZXIuZGVsZXRlKCcvOmlkJywgYXV0aGVudGljYXRlLCBhdXRob3JpemUoJ0FETUlOJyksIGludmFsaWRhdGVVc2VyQ2FjaGVNaWRkbGV3YXJlKChyZXEpID0+IHJlcS5wYXJhbXMuaWQgfHwgJycpLCBVc2VyQ29udHJvbGxlci5kZWxldGVVc2VyKTtcclxuXHJcbmV4cG9ydCBkZWZhdWx0IHJvdXRlcjsiXSwidmVyc2lvbiI6M30=

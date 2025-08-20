@@ -1,0 +1,237 @@
+5138a8aa4cf893ea99727dd72a0f0ae6
+"use strict";
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     FileUpload:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: string
+ *           example: clm123abc456
+ *           description: ID único do arquivo
+ *         filename:
+ *           type: string
+ *           example: documento.pdf
+ *           description: Nome original do arquivo
+ *         originalName:
+ *           type: string
+ *           example: Relatório Financeiro 2024.pdf
+ *           description: Nome original fornecido pelo usuário
+ *         mimetype:
+ *           type: string
+ *           example: application/pdf
+ *           description: Tipo MIME do arquivo
+ *         size:
+ *           type: integer
+ *           example: 1048576
+ *           description: Tamanho do arquivo em bytes
+ *         path:
+ *           type: string
+ *           example: uploads/documents/2024/01/documento.pdf
+ *           description: Caminho relativo do arquivo
+ *         url:
+ *           type: string
+ *           example: /api/v1/upload/file/clm123abc456
+ *           description: URL para acesso ao arquivo
+ *         category:
+ *           type: string
+ *           enum: [image, document, temp]
+ *           example: document
+ *           description: Categoria do arquivo
+ *         uploadedBy:
+ *           type: string
+ *           example: clm456def789
+ *           description: ID do usuário que fez o upload
+ *         isPublic:
+ *           type: boolean
+ *           example: false
+ *           description: Se o arquivo é público ou privado
+ *         createdAt:
+ *           type: string
+ *           format: date-time
+ *           example: 2024-01-15T10:30:00Z
+ *           description: Data do upload
+ *         updatedAt:
+ *           type: string
+ *           format: date-time
+ *           example: 2024-01-15T10:30:00Z
+ *           description: Data da última atualização
+ *
+ *     UploadResponse:
+ *       type: object
+ *       properties:
+ *         status:
+ *           type: string
+ *           example: success
+ *         message:
+ *           type: string
+ *           example: Arquivo enviado com sucesso
+ *         data:
+ *           $ref: '#/components/schemas/FileUpload'
+ *
+ *     MultipleUploadResponse:
+ *       type: object
+ *       properties:
+ *         status:
+ *           type: string
+ *           example: success
+ *         message:
+ *           type: string
+ *           example: Arquivos enviados com sucesso
+ *         data:
+ *           type: object
+ *           properties:
+ *             uploaded:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/FileUpload'
+ *               description: Arquivos enviados com sucesso
+ *             failed:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   filename:
+ *                     type: string
+ *                     example: arquivo_invalido.exe
+ *                   error:
+ *                     type: string
+ *                     example: Tipo de arquivo não permitido
+ *               description: Arquivos que falharam no upload
+ *             summary:
+ *               type: object
+ *               properties:
+ *                 total:
+ *                   type: integer
+ *                   example: 5
+ *                 success:
+ *                   type: integer
+ *                   example: 4
+ *                 failed:
+ *                   type: integer
+ *                   example: 1
+ *
+ *     FileListResponse:
+ *       type: object
+ *       properties:
+ *         status:
+ *           type: string
+ *           example: success
+ *         message:
+ *           type: string
+ *           example: Arquivos recuperados com sucesso
+ *         data:
+ *           type: array
+ *           items:
+ *             $ref: '#/components/schemas/FileUpload'
+ *         pagination:
+ *           $ref: '#/components/schemas/Pagination'
+ *
+ *     FileUpdateRequest:
+ *       type: object
+ *       properties:
+ *         filename:
+ *           type: string
+ *           example: novo_nome.pdf
+ *           description: Novo nome para o arquivo
+ *         isPublic:
+ *           type: boolean
+ *           example: true
+ *           description: Alterar visibilidade do arquivo
+ *         category:
+ *           type: string
+ *           enum: [image, document, temp]
+ *           example: document
+ *           description: Nova categoria do arquivo
+ *
+ *     CleanupResponse:
+ *       type: object
+ *       properties:
+ *         status:
+ *           type: string
+ *           example: success
+ *         message:
+ *           type: string
+ *           example: Limpeza de arquivos órfãos concluída
+ *         data:
+ *           type: object
+ *           properties:
+ *             deletedFiles:
+ *               type: integer
+ *               example: 15
+ *               description: Número de arquivos removidos
+ *             freedSpace:
+ *               type: string
+ *               example: 25.6 MB
+ *               description: Espaço liberado
+ *             categories:
+ *               type: object
+ *               properties:
+ *                 temp:
+ *                   type: integer
+ *                   example: 10
+ *                 orphaned:
+ *                   type: integer
+ *                   example: 5
+ *               description: Arquivos removidos por categoria
+ */
+/* istanbul ignore next */
+function cov_1r4aj1ujez() {
+  var path = "D:\\dev\\contabil\\contabil-site\\backend\\src\\docs\\schemas\\upload.ts";
+  var hash = "7316f3e5f60ba283827b2e724071abf61e187779";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "D:\\dev\\contabil\\contabil-site\\backend\\src\\docs\\schemas\\upload.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 179,
+          column: 0
+        },
+        end: {
+          line: 179,
+          column: 62
+        }
+      }
+    },
+    fnMap: {},
+    branchMap: {},
+    s: {
+      "0": 0
+    },
+    f: {},
+    b: {},
+    inputSourceMap: {
+      file: "D:\\dev\\contabil\\contabil-site\\backend\\src\\docs\\schemas\\upload.ts",
+      mappings: ";AAAA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAgLG",
+      names: [],
+      sources: ["D:\\dev\\contabil\\contabil-site\\backend\\src\\docs\\schemas\\upload.ts"],
+      sourcesContent: ["/**\r\n * @swagger\r\n * components:\r\n *   schemas:\r\n *     FileUpload:\r\n *       type: object\r\n *       properties:\r\n *         id:\r\n *           type: string\r\n *           example: clm123abc456\r\n *           description: ID \xFAnico do arquivo\r\n *         filename:\r\n *           type: string\r\n *           example: documento.pdf\r\n *           description: Nome original do arquivo\r\n *         originalName:\r\n *           type: string\r\n *           example: Relat\xF3rio Financeiro 2024.pdf\r\n *           description: Nome original fornecido pelo usu\xE1rio\r\n *         mimetype:\r\n *           type: string\r\n *           example: application/pdf\r\n *           description: Tipo MIME do arquivo\r\n *         size:\r\n *           type: integer\r\n *           example: 1048576\r\n *           description: Tamanho do arquivo em bytes\r\n *         path:\r\n *           type: string\r\n *           example: uploads/documents/2024/01/documento.pdf\r\n *           description: Caminho relativo do arquivo\r\n *         url:\r\n *           type: string\r\n *           example: /api/v1/upload/file/clm123abc456\r\n *           description: URL para acesso ao arquivo\r\n *         category:\r\n *           type: string\r\n *           enum: [image, document, temp]\r\n *           example: document\r\n *           description: Categoria do arquivo\r\n *         uploadedBy:\r\n *           type: string\r\n *           example: clm456def789\r\n *           description: ID do usu\xE1rio que fez o upload\r\n *         isPublic:\r\n *           type: boolean\r\n *           example: false\r\n *           description: Se o arquivo \xE9 p\xFAblico ou privado\r\n *         createdAt:\r\n *           type: string\r\n *           format: date-time\r\n *           example: 2024-01-15T10:30:00Z\r\n *           description: Data do upload\r\n *         updatedAt:\r\n *           type: string\r\n *           format: date-time\r\n *           example: 2024-01-15T10:30:00Z\r\n *           description: Data da \xFAltima atualiza\xE7\xE3o\r\n *     \r\n *     UploadResponse:\r\n *       type: object\r\n *       properties:\r\n *         status:\r\n *           type: string\r\n *           example: success\r\n *         message:\r\n *           type: string\r\n *           example: Arquivo enviado com sucesso\r\n *         data:\r\n *           $ref: '#/components/schemas/FileUpload'\r\n *     \r\n *     MultipleUploadResponse:\r\n *       type: object\r\n *       properties:\r\n *         status:\r\n *           type: string\r\n *           example: success\r\n *         message:\r\n *           type: string\r\n *           example: Arquivos enviados com sucesso\r\n *         data:\r\n *           type: object\r\n *           properties:\r\n *             uploaded:\r\n *               type: array\r\n *               items:\r\n *                 $ref: '#/components/schemas/FileUpload'\r\n *               description: Arquivos enviados com sucesso\r\n *             failed:\r\n *               type: array\r\n *               items:\r\n *                 type: object\r\n *                 properties:\r\n *                   filename:\r\n *                     type: string\r\n *                     example: arquivo_invalido.exe\r\n *                   error:\r\n *                     type: string\r\n *                     example: Tipo de arquivo n\xE3o permitido\r\n *               description: Arquivos que falharam no upload\r\n *             summary:\r\n *               type: object\r\n *               properties:\r\n *                 total:\r\n *                   type: integer\r\n *                   example: 5\r\n *                 success:\r\n *                   type: integer\r\n *                   example: 4\r\n *                 failed:\r\n *                   type: integer\r\n *                   example: 1\r\n *     \r\n *     FileListResponse:\r\n *       type: object\r\n *       properties:\r\n *         status:\r\n *           type: string\r\n *           example: success\r\n *         message:\r\n *           type: string\r\n *           example: Arquivos recuperados com sucesso\r\n *         data:\r\n *           type: array\r\n *           items:\r\n *             $ref: '#/components/schemas/FileUpload'\r\n *         pagination:\r\n *           $ref: '#/components/schemas/Pagination'\r\n *     \r\n *     FileUpdateRequest:\r\n *       type: object\r\n *       properties:\r\n *         filename:\r\n *           type: string\r\n *           example: novo_nome.pdf\r\n *           description: Novo nome para o arquivo\r\n *         isPublic:\r\n *           type: boolean\r\n *           example: true\r\n *           description: Alterar visibilidade do arquivo\r\n *         category:\r\n *           type: string\r\n *           enum: [image, document, temp]\r\n *           example: document\r\n *           description: Nova categoria do arquivo\r\n *     \r\n *     CleanupResponse:\r\n *       type: object\r\n *       properties:\r\n *         status:\r\n *           type: string\r\n *           example: success\r\n *         message:\r\n *           type: string\r\n *           example: Limpeza de arquivos \xF3rf\xE3os conclu\xEDda\r\n *         data:\r\n *           type: object\r\n *           properties:\r\n *             deletedFiles:\r\n *               type: integer\r\n *               example: 15\r\n *               description: N\xFAmero de arquivos removidos\r\n *             freedSpace:\r\n *               type: string\r\n *               example: 25.6 MB\r\n *               description: Espa\xE7o liberado\r\n *             categories:\r\n *               type: object\r\n *               properties:\r\n *                 temp:\r\n *                   type: integer\r\n *                   example: 10\r\n *                 orphaned:\r\n *                   type: integer\r\n *                   example: 5\r\n *               description: Arquivos removidos por categoria\r\n */\r\n\r\n// Este arquivo cont\xE9m apenas defini\xE7\xF5es de esquemas Swagger\r\n// N\xE3o h\xE1 c\xF3digo TypeScript execut\xE1vel aqui\r\nexport {};"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "7316f3e5f60ba283827b2e724071abf61e187779"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_1r4aj1ujez = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_1r4aj1ujez();
+cov_1r4aj1ujez().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfMXI0YWoxdWpleiIsInBhdGgiLCJoYXNoIiwiZ2xvYmFsIiwiRnVuY3Rpb24iLCJnY3YiLCJjb3ZlcmFnZURhdGEiLCJzdGF0ZW1lbnRNYXAiLCJzdGFydCIsImxpbmUiLCJjb2x1bW4iLCJlbmQiLCJmbk1hcCIsImJyYW5jaE1hcCIsInMiLCJmIiwiYiIsImlucHV0U291cmNlTWFwIiwiZmlsZSIsIm1hcHBpbmdzIiwibmFtZXMiLCJzb3VyY2VzIiwic291cmNlc0NvbnRlbnQiLCJ2ZXJzaW9uIiwiX2NvdmVyYWdlU2NoZW1hIiwiY292ZXJhZ2UiLCJhY3R1YWxDb3ZlcmFnZSJdLCJzb3VyY2VzIjpbIkQ6XFxkZXZcXGNvbnRhYmlsXFxjb250YWJpbC1zaXRlXFxiYWNrZW5kXFxzcmNcXGRvY3NcXHNjaGVtYXNcXHVwbG9hZC50cyJdLCJzb3VyY2VzQ29udGVudCI6WyIvKipcclxuICogQHN3YWdnZXJcclxuICogY29tcG9uZW50czpcclxuICogICBzY2hlbWFzOlxyXG4gKiAgICAgRmlsZVVwbG9hZDpcclxuICogICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgaWQ6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGV4YW1wbGU6IGNsbTEyM2FiYzQ1NlxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IElEIMO6bmljbyBkbyBhcnF1aXZvXHJcbiAqICAgICAgICAgZmlsZW5hbWU6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGV4YW1wbGU6IGRvY3VtZW50by5wZGZcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBOb21lIG9yaWdpbmFsIGRvIGFycXVpdm9cclxuICogICAgICAgICBvcmlnaW5hbE5hbWU6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGV4YW1wbGU6IFJlbGF0w7NyaW8gRmluYW5jZWlybyAyMDI0LnBkZlxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IE5vbWUgb3JpZ2luYWwgZm9ybmVjaWRvIHBlbG8gdXN1w6FyaW9cclxuICogICAgICAgICBtaW1ldHlwZTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZXhhbXBsZTogYXBwbGljYXRpb24vcGRmXHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogVGlwbyBNSU1FIGRvIGFycXVpdm9cclxuICogICAgICAgICBzaXplOlxyXG4gKiAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgZXhhbXBsZTogMTA0ODU3NlxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IFRhbWFuaG8gZG8gYXJxdWl2byBlbSBieXRlc1xyXG4gKiAgICAgICAgIHBhdGg6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGV4YW1wbGU6IHVwbG9hZHMvZG9jdW1lbnRzLzIwMjQvMDEvZG9jdW1lbnRvLnBkZlxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IENhbWluaG8gcmVsYXRpdm8gZG8gYXJxdWl2b1xyXG4gKiAgICAgICAgIHVybDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZXhhbXBsZTogL2FwaS92MS91cGxvYWQvZmlsZS9jbG0xMjNhYmM0NTZcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBVUkwgcGFyYSBhY2Vzc28gYW8gYXJxdWl2b1xyXG4gKiAgICAgICAgIGNhdGVnb3J5OlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBlbnVtOiBbaW1hZ2UsIGRvY3VtZW50LCB0ZW1wXVxyXG4gKiAgICAgICAgICAgZXhhbXBsZTogZG9jdW1lbnRcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBDYXRlZ29yaWEgZG8gYXJxdWl2b1xyXG4gKiAgICAgICAgIHVwbG9hZGVkQnk6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGV4YW1wbGU6IGNsbTQ1NmRlZjc4OVxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IElEIGRvIHVzdcOhcmlvIHF1ZSBmZXogbyB1cGxvYWRcclxuICogICAgICAgICBpc1B1YmxpYzpcclxuICogICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgIGV4YW1wbGU6IGZhbHNlXHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogU2UgbyBhcnF1aXZvIMOpIHDDumJsaWNvIG91IHByaXZhZG9cclxuICogICAgICAgICBjcmVhdGVkQXQ6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGZvcm1hdDogZGF0ZS10aW1lXHJcbiAqICAgICAgICAgICBleGFtcGxlOiAyMDI0LTAxLTE1VDEwOjMwOjAwWlxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IERhdGEgZG8gdXBsb2FkXHJcbiAqICAgICAgICAgdXBkYXRlZEF0OlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBmb3JtYXQ6IGRhdGUtdGltZVxyXG4gKiAgICAgICAgICAgZXhhbXBsZTogMjAyNC0wMS0xNVQxMDozMDowMFpcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBEYXRhIGRhIMO6bHRpbWEgYXR1YWxpemHDp8Ojb1xyXG4gKiAgICAgXHJcbiAqICAgICBVcGxvYWRSZXNwb25zZTpcclxuICogICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgc3RhdHVzOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBleGFtcGxlOiBzdWNjZXNzXHJcbiAqICAgICAgICAgbWVzc2FnZTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZXhhbXBsZTogQXJxdWl2byBlbnZpYWRvIGNvbSBzdWNlc3NvXHJcbiAqICAgICAgICAgZGF0YTpcclxuICogICAgICAgICAgICRyZWY6ICcjL2NvbXBvbmVudHMvc2NoZW1hcy9GaWxlVXBsb2FkJ1xyXG4gKiAgICAgXHJcbiAqICAgICBNdWx0aXBsZVVwbG9hZFJlc3BvbnNlOlxyXG4gKiAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICBzdGF0dXM6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGV4YW1wbGU6IHN1Y2Nlc3NcclxuICogICAgICAgICBtZXNzYWdlOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBleGFtcGxlOiBBcnF1aXZvcyBlbnZpYWRvcyBjb20gc3VjZXNzb1xyXG4gKiAgICAgICAgIGRhdGE6XHJcbiAqICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgIHVwbG9hZGVkOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IGFycmF5XHJcbiAqICAgICAgICAgICAgICAgaXRlbXM6XHJcbiAqICAgICAgICAgICAgICAgICAkcmVmOiAnIy9jb21wb25lbnRzL3NjaGVtYXMvRmlsZVVwbG9hZCdcclxuICogICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogQXJxdWl2b3MgZW52aWFkb3MgY29tIHN1Y2Vzc29cclxuICogICAgICAgICAgICAgZmFpbGVkOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IGFycmF5XHJcbiAqICAgICAgICAgICAgICAgaXRlbXM6XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICAgIGZpbGVuYW1lOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgICAgIGV4YW1wbGU6IGFycXVpdm9faW52YWxpZG8uZXhlXHJcbiAqICAgICAgICAgICAgICAgICAgIGVycm9yOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgICAgIGV4YW1wbGU6IFRpcG8gZGUgYXJxdWl2byBuw6NvIHBlcm1pdGlkb1xyXG4gKiAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBBcnF1aXZvcyBxdWUgZmFsaGFyYW0gbm8gdXBsb2FkXHJcbiAqICAgICAgICAgICAgIHN1bW1hcnk6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgIHRvdGFsOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgICAgICAgIGV4YW1wbGU6IDVcclxuICogICAgICAgICAgICAgICAgIHN1Y2Nlc3M6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgICAgICAgZXhhbXBsZTogNFxyXG4gKiAgICAgICAgICAgICAgICAgZmFpbGVkOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgICAgICAgIGV4YW1wbGU6IDFcclxuICogICAgIFxyXG4gKiAgICAgRmlsZUxpc3RSZXNwb25zZTpcclxuICogICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgc3RhdHVzOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBleGFtcGxlOiBzdWNjZXNzXHJcbiAqICAgICAgICAgbWVzc2FnZTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZXhhbXBsZTogQXJxdWl2b3MgcmVjdXBlcmFkb3MgY29tIHN1Y2Vzc29cclxuICogICAgICAgICBkYXRhOlxyXG4gKiAgICAgICAgICAgdHlwZTogYXJyYXlcclxuICogICAgICAgICAgIGl0ZW1zOlxyXG4gKiAgICAgICAgICAgICAkcmVmOiAnIy9jb21wb25lbnRzL3NjaGVtYXMvRmlsZVVwbG9hZCdcclxuICogICAgICAgICBwYWdpbmF0aW9uOlxyXG4gKiAgICAgICAgICAgJHJlZjogJyMvY29tcG9uZW50cy9zY2hlbWFzL1BhZ2luYXRpb24nXHJcbiAqICAgICBcclxuICogICAgIEZpbGVVcGRhdGVSZXF1ZXN0OlxyXG4gKiAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICBmaWxlbmFtZTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZXhhbXBsZTogbm92b19ub21lLnBkZlxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IE5vdm8gbm9tZSBwYXJhIG8gYXJxdWl2b1xyXG4gKiAgICAgICAgIGlzUHVibGljOlxyXG4gKiAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgZXhhbXBsZTogdHJ1ZVxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IEFsdGVyYXIgdmlzaWJpbGlkYWRlIGRvIGFycXVpdm9cclxuICogICAgICAgICBjYXRlZ29yeTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZW51bTogW2ltYWdlLCBkb2N1bWVudCwgdGVtcF1cclxuICogICAgICAgICAgIGV4YW1wbGU6IGRvY3VtZW50XHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogTm92YSBjYXRlZ29yaWEgZG8gYXJxdWl2b1xyXG4gKiAgICAgXHJcbiAqICAgICBDbGVhbnVwUmVzcG9uc2U6XHJcbiAqICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgIHN0YXR1czpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZXhhbXBsZTogc3VjY2Vzc1xyXG4gKiAgICAgICAgIG1lc3NhZ2U6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGV4YW1wbGU6IExpbXBlemEgZGUgYXJxdWl2b3Mgw7NyZsOjb3MgY29uY2x1w61kYVxyXG4gKiAgICAgICAgIGRhdGE6XHJcbiAqICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgIGRlbGV0ZWRGaWxlczpcclxuICogICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgICAgZXhhbXBsZTogMTVcclxuICogICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogTsO6bWVybyBkZSBhcnF1aXZvcyByZW1vdmlkb3NcclxuICogICAgICAgICAgICAgZnJlZWRTcGFjZTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICBleGFtcGxlOiAyNS42IE1CXHJcbiAqICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IEVzcGHDp28gbGliZXJhZG9cclxuICogICAgICAgICAgICAgY2F0ZWdvcmllczpcclxuICogICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgdGVtcDpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICAgICAgICBleGFtcGxlOiAxMFxyXG4gKiAgICAgICAgICAgICAgICAgb3JwaGFuZWQ6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgICAgICAgZXhhbXBsZTogNVxyXG4gKiAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBBcnF1aXZvcyByZW1vdmlkb3MgcG9yIGNhdGVnb3JpYVxyXG4gKi9cclxuXHJcbi8vIEVzdGUgYXJxdWl2byBjb250w6ltIGFwZW5hcyBkZWZpbmnDp8O1ZXMgZGUgZXNxdWVtYXMgU3dhZ2dlclxyXG4vLyBOw6NvIGjDoSBjw7NkaWdvIFR5cGVTY3JpcHQgZXhlY3V0w6F2ZWwgYXF1aVxyXG5leHBvcnQge307Il0sIm1hcHBpbmdzIjoiOztBQUFBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQTtBQUFBLFNBQUFBLGVBQUE7RUFBQSxJQUFBQyxJQUFBO0VBQUEsSUFBQUMsSUFBQTtFQUFBLElBQUFDLE1BQUEsT0FBQUMsUUFBQTtFQUFBLElBQUFDLEdBQUE7RUFBQSxJQUFBQyxZQUFBO0lBQUFMLElBQUE7SUFBQU0sWUFBQTtNQUFBO1FBQUFDLEtBQUE7VUFBQUMsSUFBQTtVQUFBQyxNQUFBO1FBQUE7UUFBQUMsR0FBQTtVQUFBRixJQUFBO1VBQUFDLE1BQUE7UUFBQTtNQUFBO0lBQUE7SUFBQUUsS0FBQTtJQUFBQyxTQUFBO0lBQUFDLENBQUE7TUFBQTtJQUFBO0lBQUFDLENBQUE7SUFBQUMsQ0FBQTtJQUFBQyxjQUFBO01BQUFDLElBQUE7TUFBQUMsUUFBQTtNQUFBQyxLQUFBO01BQUFDLE9BQUE7TUFBQUMsY0FBQTtNQUFBQyxPQUFBO0lBQUE7SUFBQUMsZUFBQTtJQUFBdEIsSUFBQTtFQUFBO0VBQUEsSUFBQXVCLFFBQUEsR0FBQXRCLE1BQUEsQ0FBQUUsR0FBQSxNQUFBRixNQUFBLENBQUFFLEdBQUE7RUFBQSxLQUFBb0IsUUFBQSxDQUFBeEIsSUFBQSxLQUFBd0IsUUFBQSxDQUFBeEIsSUFBQSxFQUFBQyxJQUFBLEtBQUFBLElBQUE7SUFBQXVCLFFBQUEsQ0FBQXhCLElBQUEsSUFBQUssWUFBQTtFQUFBO0VBQUEsSUFBQW9CLGNBQUEsR0FBQUQsUUFBQSxDQUFBeEIsSUFBQTtFQUFBIiwiaWdub3JlTGlzdCI6W119

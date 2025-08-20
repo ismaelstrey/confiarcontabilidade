@@ -1,0 +1,962 @@
+969324ed76aaa590deddfad1b3194996
+"use strict";
+
+/* istanbul ignore next */
+function cov_2o43m5bdu6() {
+  var path = "D:\\dev\\contabil\\contabil-site\\backend\\src\\routes\\uploadRoutes.ts";
+  var hash = "ff3c0b68b508b7e971a8600f336d4e8d265a549e";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "D:\\dev\\contabil\\contabil-site\\backend\\src\\routes\\uploadRoutes.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 22
+        },
+        end: {
+          line: 4,
+          column: 1
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 4
+        },
+        end: {
+          line: 3,
+          column: 62
+        }
+      },
+      "2": {
+        start: {
+          line: 5,
+          column: 0
+        },
+        end: {
+          line: 5,
+          column: 62
+        }
+      },
+      "3": {
+        start: {
+          line: 6,
+          column: 18
+        },
+        end: {
+          line: 6,
+          column: 36
+        }
+      },
+      "4": {
+        start: {
+          line: 7,
+          column: 15
+        },
+        end: {
+          line: 7,
+          column: 45
+        }
+      },
+      "5": {
+        start: {
+          line: 8,
+          column: 27
+        },
+        end: {
+          line: 8,
+          column: 86
+        }
+      },
+      "6": {
+        start: {
+          line: 9,
+          column: 15
+        },
+        end: {
+          line: 9,
+          column: 38
+        }
+      },
+      "7": {
+        start: {
+          line: 133,
+          column: 0
+        },
+        end: {
+          line: 133,
+          column: 123
+        }
+      },
+      "8": {
+        start: {
+          line: 179,
+          column: 0
+        },
+        end: {
+          line: 179,
+          column: 126
+        }
+      },
+      "9": {
+        start: {
+          line: 224,
+          column: 0
+        },
+        end: {
+          line: 224,
+          column: 137
+        }
+      },
+      "10": {
+        start: {
+          line: 341,
+          column: 0
+        },
+        end: {
+          line: 341,
+          column: 74
+        }
+      },
+      "11": {
+        start: {
+          line: 376,
+          column: 0
+        },
+        end: {
+          line: 376,
+          column: 80
+        }
+      },
+      "12": {
+        start: {
+          line: 410,
+          column: 0
+        },
+        end: {
+          line: 410,
+          column: 68
+        }
+      },
+      "13": {
+        start: {
+          line: 471,
+          column: 0
+        },
+        end: {
+          line: 471,
+          column: 80
+        }
+      },
+      "14": {
+        start: {
+          line: 506,
+          column: 0
+        },
+        end: {
+          line: 506,
+          column: 82
+        }
+      },
+      "15": {
+        start: {
+          line: 539,
+          column: 0
+        },
+        end: {
+          line: 539,
+          column: 129
+        }
+      },
+      "16": {
+        start: {
+          line: 540,
+          column: 0
+        },
+        end: {
+          line: 540,
+          column: 25
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 2,
+            column: 56
+          },
+          end: {
+            line: 2,
+            column: 57
+          }
+        },
+        loc: {
+          start: {
+            line: 2,
+            column: 71
+          },
+          end: {
+            line: 4,
+            column: 1
+          }
+        },
+        line: 2
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 2,
+            column: 22
+          },
+          end: {
+            line: 4,
+            column: 1
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 2,
+            column: 23
+          },
+          end: {
+            line: 2,
+            column: 27
+          }
+        }, {
+          start: {
+            line: 2,
+            column: 31
+          },
+          end: {
+            line: 2,
+            column: 51
+          }
+        }, {
+          start: {
+            line: 2,
+            column: 56
+          },
+          end: {
+            line: 4,
+            column: 1
+          }
+        }],
+        line: 2
+      },
+      "1": {
+        loc: {
+          start: {
+            line: 3,
+            column: 11
+          },
+          end: {
+            line: 3,
+            column: 61
+          }
+        },
+        type: "cond-expr",
+        locations: [{
+          start: {
+            line: 3,
+            column: 37
+          },
+          end: {
+            line: 3,
+            column: 40
+          }
+        }, {
+          start: {
+            line: 3,
+            column: 43
+          },
+          end: {
+            line: 3,
+            column: 61
+          }
+        }],
+        line: 3
+      },
+      "2": {
+        loc: {
+          start: {
+            line: 3,
+            column: 12
+          },
+          end: {
+            line: 3,
+            column: 33
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 3,
+            column: 12
+          },
+          end: {
+            line: 3,
+            column: 15
+          }
+        }, {
+          start: {
+            line: 3,
+            column: 19
+          },
+          end: {
+            line: 3,
+            column: 33
+          }
+        }],
+        line: 3
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0,
+      "15": 0,
+      "16": 0
+    },
+    f: {
+      "0": 0
+    },
+    b: {
+      "0": [0, 0, 0],
+      "1": [0, 0],
+      "2": [0, 0]
+    },
+    inputSourceMap: {
+      file: "D:\\dev\\contabil\\contabil-site\\backend\\src\\routes\\uploadRoutes.ts",
+      mappings: ";;;;;AAAA,qCAAiC;AACjC,8CAA8D;AAC9D,uFAA+D;AAE/D,MAAM,MAAM,GAAG,IAAA,gBAAM,GAAE,CAAC;AAExB;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAiEG;AAEH;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAwDG;AACH,MAAM,CAAC,IAAI,CAAC,QAAQ,EAAE,mBAAY,EAAE,0BAAgB,CAAC,YAAY,EAAE,0BAAgB,CAAC,UAAU,CAAC,CAAC;AAEhG;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GA4CG;AACH,MAAM,CAAC,IAAI,CAAC,WAAW,EAAE,mBAAY,EAAE,0BAAgB,CAAC,YAAY,EAAE,0BAAgB,CAAC,UAAU,CAAC,CAAC;AAEnG;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GA2CG;AACH,MAAM,CAAC,IAAI,CAAC,WAAW,EAAE,mBAAY,EAAE,0BAAgB,CAAC,cAAc,EAAE,0BAAgB,CAAC,mBAAmB,CAAC,CAAC;AAE9G;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAmHG;AACH,MAAM,CAAC,GAAG,CAAC,GAAG,EAAE,mBAAY,EAAE,0BAAgB,CAAC,QAAQ,CAAC,CAAC;AAEzD;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAiCG;AACH,MAAM,CAAC,GAAG,CAAC,MAAM,EAAE,mBAAY,EAAE,0BAAgB,CAAC,WAAW,CAAC,CAAC;AAE/D;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAgCG;AACH,MAAM,CAAC,GAAG,CAAC,eAAe,EAAE,0BAAgB,CAAC,WAAW,CAAC,CAAC;AAE1D;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GA2DG;AACH,MAAM,CAAC,GAAG,CAAC,MAAM,EAAE,mBAAY,EAAE,0BAAgB,CAAC,WAAW,CAAC,CAAC;AAE/D;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAiCG;AACH,MAAM,CAAC,MAAM,CAAC,MAAM,EAAE,mBAAY,EAAE,0BAAgB,CAAC,UAAU,CAAC,CAAC;AAEjE;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GA+BG;AACH,MAAM,CAAC,MAAM,CAAC,mBAAmB,EAAE,mBAAY,EAAE,IAAA,gBAAS,EAAC,OAAO,CAAC,EAAE,0BAAgB,CAAC,YAAY,CAAC,CAAC;AAEpG,kBAAe,MAAM,CAAC",
+      names: [],
+      sources: ["D:\\dev\\contabil\\contabil-site\\backend\\src\\routes\\uploadRoutes.ts"],
+      sourcesContent: ["import { Router } from 'express';\r\nimport { authenticate, authorize } from '../middlewares/auth';\r\nimport UploadController from '../controllers/uploadController';\r\n\r\nconst router = Router();\r\n\r\n/**\r\n * @swagger\r\n * components:\r\n *   schemas:\r\n *     Upload:\r\n *       type: object\r\n *       properties:\r\n *         id:\r\n *           type: string\r\n *         filename:\r\n *           type: string\r\n *         originalName:\r\n *           type: string\r\n *         mimetype:\r\n *           type: string\r\n *         size:\r\n *           type: integer\r\n *         path:\r\n *           type: string\r\n *         url:\r\n *           type: string\r\n *         type:\r\n *           type: string\r\n *           enum: [IMAGE, DOCUMENT, VIDEO, AUDIO, OTHER]\r\n *         category:\r\n *           type: string\r\n *         description:\r\n *           type: string\r\n *         alt:\r\n *           type: string\r\n *         metadata:\r\n *           type: object\r\n *           properties:\r\n *             width:\r\n *               type: integer\r\n *             height:\r\n *               type: integer\r\n *             duration:\r\n *               type: number\r\n *             pages:\r\n *               type: integer\r\n *         isPublic:\r\n *           type: boolean\r\n *         uploadedBy:\r\n *           type: string\r\n *         createdAt:\r\n *           type: string\r\n *           format: date-time\r\n *         updatedAt:\r\n *           type: string\r\n *           format: date-time\r\n *     UploadResponse:\r\n *       type: object\r\n *       properties:\r\n *         success:\r\n *           type: boolean\r\n *         data:\r\n *           type: object\r\n *           properties:\r\n *             files:\r\n *               type: array\r\n *               items:\r\n *                 $ref: '#/components/schemas/Upload'\r\n *         message:\r\n *           type: string\r\n */\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/upload/image:\r\n *   post:\r\n *     summary: Upload de imagem\r\n *     tags: [Upload]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     requestBody:\r\n *       required: true\r\n *       content:\r\n *         multipart/form-data:\r\n *           schema:\r\n *             type: object\r\n *             properties:\r\n *               file:\r\n *                 type: string\r\n *                 format: binary\r\n *                 description: Arquivo de imagem (JPG, PNG, GIF, WebP)\r\n *               category:\r\n *                 type: string\r\n *                 description: Categoria da imagem (opcional)\r\n *               description:\r\n *                 type: string\r\n *                 description: Descri\xE7\xE3o da imagem (opcional)\r\n *               alt:\r\n *                 type: string\r\n *                 description: Texto alternativo (opcional)\r\n *               isPublic:\r\n *                 type: boolean\r\n *                 default: true\r\n *                 description: Se a imagem \xE9 p\xFAblica\r\n *               resize:\r\n *                 type: string\r\n *                 description: Redimensionar - exemplo 800x600 ou 50%\r\n *               quality:\r\n *                 type: integer\r\n *                 minimum: 1\r\n *                 maximum: 100\r\n *                 default: 85\r\n *                 description: Qualidade da compress\xE3o (1-100)\r\n *     responses:\r\n *       201:\r\n *         description: Imagem enviada com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               $ref: '#/components/schemas/UploadResponse'\r\n *       400:\r\n *         description: Arquivo inv\xE1lido ou muito grande\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       413:\r\n *         description: Arquivo muito grande\r\n *       415:\r\n *         description: Tipo de arquivo n\xE3o suportado\r\n */\r\nrouter.post('/image', authenticate, UploadController.uploadSingle, UploadController.uploadFile);\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/upload/document:\r\n *   post:\r\n *     summary: Upload de documento\r\n *     tags: [Upload]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     requestBody:\r\n *       required: true\r\n *       content:\r\n *         multipart/form-data:\r\n *           schema:\r\n *             type: object\r\n *             properties:\r\n *               file:\r\n *                 type: string\r\n *                 format: binary\r\n *                 description: Arquivo de documento (PDF, DOC, DOCX, XLS, XLSX, TXT)\r\n *               category:\r\n *                 type: string\r\n *                 description: Categoria do documento (opcional)\r\n *               description:\r\n *                 type: string\r\n *                 description: Descri\xE7\xE3o do documento (opcional)\r\n *               isPublic:\r\n *                 type: boolean\r\n *                 default: false\r\n *                 description: Se o documento \xE9 p\xFAblico\r\n *     responses:\r\n *       201:\r\n *         description: Documento enviado com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               $ref: '#/components/schemas/UploadResponse'\r\n *       400:\r\n *         description: Arquivo inv\xE1lido ou muito grande\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       413:\r\n *         description: Arquivo muito grande\r\n *       415:\r\n *         description: Tipo de arquivo n\xE3o suportado\r\n */\r\nrouter.post('/document', authenticate, UploadController.uploadSingle, UploadController.uploadFile);\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/upload/multiple:\r\n *   post:\r\n *     summary: Upload m\xFAltiplo de arquivos\r\n *     tags: [Upload]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     requestBody:\r\n *       required: true\r\n *       content:\r\n *         multipart/form-data:\r\n *           schema:\r\n *             type: object\r\n *             properties:\r\n *               files:\r\n *                 type: array\r\n *                 items:\r\n *                   type: string\r\n *                   format: binary\r\n *                 description: M\xFAltiplos arquivos (m\xE1ximo 10)\r\n *               category:\r\n *                 type: string\r\n *                 description: Categoria dos arquivos (opcional)\r\n *               isPublic:\r\n *                 type: boolean\r\n *                 default: true\r\n *                 description: Se os arquivos s\xE3o p\xFAblicos\r\n *     responses:\r\n *       201:\r\n *         description: Arquivos enviados com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               $ref: '#/components/schemas/UploadResponse'\r\n *       400:\r\n *         description: Arquivos inv\xE1lidos ou muitos arquivos\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       413:\r\n *         description: Arquivos muito grandes\r\n *       415:\r\n *         description: Tipos de arquivo n\xE3o suportados\r\n */\r\nrouter.post('/multiple', authenticate, UploadController.uploadMultiple, UploadController.uploadMultipleFiles);\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/upload:\r\n *   get:\r\n *     summary: Listar arquivos enviados\r\n *     tags: [Upload]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     parameters:\r\n *       - in: query\r\n *         name: page\r\n *         schema:\r\n *           type: integer\r\n *           minimum: 1\r\n *           default: 1\r\n *         description: N\xFAmero da p\xE1gina\r\n *       - in: query\r\n *         name: limit\r\n *         schema:\r\n *           type: integer\r\n *           minimum: 1\r\n *           maximum: 100\r\n *           default: 20\r\n *         description: Itens por p\xE1gina\r\n *       - in: query\r\n *         name: type\r\n *         schema:\r\n *           type: string\r\n *           enum: [IMAGE, DOCUMENT, VIDEO, AUDIO, OTHER]\r\n *         description: Filtrar por tipo\r\n *       - in: query\r\n *         name: category\r\n *         schema:\r\n *           type: string\r\n *         description: Filtrar por categoria\r\n *       - in: query\r\n *         name: search\r\n *         schema:\r\n *           type: string\r\n *         description: Buscar por nome ou descri\xE7\xE3o\r\n *       - in: query\r\n *         name: isPublic\r\n *         schema:\r\n *           type: boolean\r\n *         description: Filtrar por visibilidade\r\n *       - in: query\r\n *         name: uploadedBy\r\n *         schema:\r\n *           type: string\r\n *         description: Filtrar por usu\xE1rio (apenas admin)\r\n *       - in: query\r\n *         name: dateFrom\r\n *         schema:\r\n *           type: string\r\n *           format: date\r\n *         description: Data inicial (YYYY-MM-DD)\r\n *       - in: query\r\n *         name: dateTo\r\n *         schema:\r\n *           type: string\r\n *           format: date\r\n *         description: Data final (YYYY-MM-DD)\r\n *       - in: query\r\n *         name: sortBy\r\n *         schema:\r\n *           type: string\r\n *           enum: [createdAt, filename, size, type]\r\n *           default: createdAt\r\n *         description: Campo para ordena\xE7\xE3o\r\n *       - in: query\r\n *         name: sortOrder\r\n *         schema:\r\n *           type: string\r\n *           enum: [asc, desc]\r\n *           default: desc\r\n *         description: Ordem da classifica\xE7\xE3o\r\n *     responses:\r\n *       200:\r\n *         description: Lista de arquivos\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 data:\r\n *                   type: object\r\n *                   properties:\r\n *                     files:\r\n *                       type: array\r\n *                       items:\r\n *                         $ref: '#/components/schemas/Upload'\r\n *                     pagination:\r\n *                       type: object\r\n *                       properties:\r\n *                         page:\r\n *                           type: integer\r\n *                         limit:\r\n *                           type: integer\r\n *                         total:\r\n *                           type: integer\r\n *                         pages:\r\n *                           type: integer\r\n *                     stats:\r\n *                       type: object\r\n *                       properties:\r\n *                         totalFiles:\r\n *                           type: integer\r\n *                         totalSize:\r\n *                           type: integer\r\n *                         byType:\r\n *                           type: object\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n */\r\nrouter.get('/', authenticate, UploadController.getFiles);\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/upload/{id}:\r\n *   get:\r\n *     summary: Obter informa\xE7\xF5es do arquivo\r\n *     tags: [Upload]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     parameters:\r\n *       - in: path\r\n *         name: id\r\n *         required: true\r\n *         schema:\r\n *           type: string\r\n *         description: ID do arquivo\r\n *     responses:\r\n *       200:\r\n *         description: Informa\xE7\xF5es do arquivo\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 data:\r\n *                   $ref: '#/components/schemas/Upload'\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       403:\r\n *         description: Sem permiss\xE3o para acessar o arquivo\r\n *       404:\r\n *         description: Arquivo n\xE3o encontrado\r\n */\r\nrouter.get('/:id', authenticate, UploadController.getFileById);\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/upload/{id}/download:\r\n *   get:\r\n *     summary: Download do arquivo\r\n *     tags: [Upload]\r\n *     parameters:\r\n *       - in: path\r\n *         name: id\r\n *         required: true\r\n *         schema:\r\n *           type: string\r\n *         description: ID do arquivo\r\n *       - in: query\r\n *         name: token\r\n *         schema:\r\n *           type: string\r\n *         description: Token de acesso (para arquivos privados)\r\n *     responses:\r\n *       200:\r\n *         description: Arquivo para download\r\n *         content:\r\n *           application/octet-stream:\r\n *             schema:\r\n *               type: string\r\n *               format: binary\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       403:\r\n *         description: Sem permiss\xE3o para acessar o arquivo\r\n *       404:\r\n *         description: Arquivo n\xE3o encontrado\r\n */\r\nrouter.get('/:id/download', UploadController.getFileById);\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/upload/{id}:\r\n *   put:\r\n *     summary: Atualizar informa\xE7\xF5es do arquivo\r\n *     tags: [Upload]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     parameters:\r\n *       - in: path\r\n *         name: id\r\n *         required: true\r\n *         schema:\r\n *           type: string\r\n *         description: ID do arquivo\r\n *     requestBody:\r\n *       required: true\r\n *       content:\r\n *         application/json:\r\n *           schema:\r\n *             type: object\r\n *             properties:\r\n *               filename:\r\n *                 type: string\r\n *                 description: Novo nome do arquivo\r\n *               category:\r\n *                 type: string\r\n *                 description: Nova categoria\r\n *               description:\r\n *                 type: string\r\n *                 description: Nova descri\xE7\xE3o\r\n *               alt:\r\n *                 type: string\r\n *                 description: Novo texto alternativo\r\n *               isPublic:\r\n *                 type: boolean\r\n *                 description: Nova visibilidade\r\n *     responses:\r\n *       200:\r\n *         description: Arquivo atualizado com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 data:\r\n *                   $ref: '#/components/schemas/Upload'\r\n *                 message:\r\n *                   type: string\r\n *       400:\r\n *         description: Dados inv\xE1lidos\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       403:\r\n *         description: Sem permiss\xE3o para editar o arquivo\r\n *       404:\r\n *         description: Arquivo n\xE3o encontrado\r\n */\r\nrouter.put('/:id', authenticate, UploadController.getFileById);\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/upload/{id}:\r\n *   delete:\r\n *     summary: Excluir arquivo\r\n *     tags: [Upload]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     parameters:\r\n *       - in: path\r\n *         name: id\r\n *         required: true\r\n *         schema:\r\n *           type: string\r\n *         description: ID do arquivo\r\n *     responses:\r\n *       200:\r\n *         description: Arquivo exclu\xEDdo com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 message:\r\n *                   type: string\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       403:\r\n *         description: Sem permiss\xE3o para excluir o arquivo\r\n *       404:\r\n *         description: Arquivo n\xE3o encontrado\r\n */\r\nrouter.delete('/:id', authenticate, UploadController.deleteFile);\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/upload/cleanup/orphaned:\r\n *   delete:\r\n *     summary: Limpar arquivos \xF3rf\xE3os (Admin)\r\n *     tags: [Upload]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     responses:\r\n *       200:\r\n *         description: Limpeza realizada com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 data:\r\n *                   type: object\r\n *                   properties:\r\n *                     deletedFiles:\r\n *                       type: integer\r\n *                     freedSpace:\r\n *                       type: integer\r\n *                 message:\r\n *                   type: string\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       403:\r\n *         description: Sem permiss\xE3o\r\n */\r\nrouter.delete('/cleanup/orphaned', authenticate, authorize('ADMIN'), UploadController.getFileStats);\r\n\r\nexport default router;"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "ff3c0b68b508b7e971a8600f336d4e8d265a549e"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_2o43m5bdu6 = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_2o43m5bdu6();
+var __importDefault =
+/* istanbul ignore next */
+(cov_2o43m5bdu6().s[0]++,
+/* istanbul ignore next */
+(cov_2o43m5bdu6().b[0][0]++, this) &&
+/* istanbul ignore next */
+(cov_2o43m5bdu6().b[0][1]++, this.__importDefault) ||
+/* istanbul ignore next */
+(cov_2o43m5bdu6().b[0][2]++, function (mod) {
+  /* istanbul ignore next */
+  cov_2o43m5bdu6().f[0]++;
+  cov_2o43m5bdu6().s[1]++;
+  return /* istanbul ignore next */(cov_2o43m5bdu6().b[2][0]++, mod) &&
+  /* istanbul ignore next */
+  (cov_2o43m5bdu6().b[2][1]++, mod.__esModule) ?
+  /* istanbul ignore next */
+  (cov_2o43m5bdu6().b[1][0]++, mod) :
+  /* istanbul ignore next */
+  (cov_2o43m5bdu6().b[1][1]++, {
+    "default": mod
+  });
+}));
+/* istanbul ignore next */
+cov_2o43m5bdu6().s[2]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const express_1 =
+/* istanbul ignore next */
+(cov_2o43m5bdu6().s[3]++, require("express"));
+const auth_1 =
+/* istanbul ignore next */
+(cov_2o43m5bdu6().s[4]++, require("../middlewares/auth"));
+const uploadController_1 =
+/* istanbul ignore next */
+(cov_2o43m5bdu6().s[5]++, __importDefault(require("../controllers/uploadController")));
+const router =
+/* istanbul ignore next */
+(cov_2o43m5bdu6().s[6]++, (0, express_1.Router)());
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Upload:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: string
+ *         filename:
+ *           type: string
+ *         originalName:
+ *           type: string
+ *         mimetype:
+ *           type: string
+ *         size:
+ *           type: integer
+ *         path:
+ *           type: string
+ *         url:
+ *           type: string
+ *         type:
+ *           type: string
+ *           enum: [IMAGE, DOCUMENT, VIDEO, AUDIO, OTHER]
+ *         category:
+ *           type: string
+ *         description:
+ *           type: string
+ *         alt:
+ *           type: string
+ *         metadata:
+ *           type: object
+ *           properties:
+ *             width:
+ *               type: integer
+ *             height:
+ *               type: integer
+ *             duration:
+ *               type: number
+ *             pages:
+ *               type: integer
+ *         isPublic:
+ *           type: boolean
+ *         uploadedBy:
+ *           type: string
+ *         createdAt:
+ *           type: string
+ *           format: date-time
+ *         updatedAt:
+ *           type: string
+ *           format: date-time
+ *     UploadResponse:
+ *       type: object
+ *       properties:
+ *         success:
+ *           type: boolean
+ *         data:
+ *           type: object
+ *           properties:
+ *             files:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Upload'
+ *         message:
+ *           type: string
+ */
+/**
+ * @swagger
+ * /api/v1/upload/image:
+ *   post:
+ *     summary: Upload de imagem
+ *     tags: [Upload]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               file:
+ *                 type: string
+ *                 format: binary
+ *                 description: Arquivo de imagem (JPG, PNG, GIF, WebP)
+ *               category:
+ *                 type: string
+ *                 description: Categoria da imagem (opcional)
+ *               description:
+ *                 type: string
+ *                 description: Descrição da imagem (opcional)
+ *               alt:
+ *                 type: string
+ *                 description: Texto alternativo (opcional)
+ *               isPublic:
+ *                 type: boolean
+ *                 default: true
+ *                 description: Se a imagem é pública
+ *               resize:
+ *                 type: string
+ *                 description: Redimensionar - exemplo 800x600 ou 50%
+ *               quality:
+ *                 type: integer
+ *                 minimum: 1
+ *                 maximum: 100
+ *                 default: 85
+ *                 description: Qualidade da compressão (1-100)
+ *     responses:
+ *       201:
+ *         description: Imagem enviada com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/UploadResponse'
+ *       400:
+ *         description: Arquivo inválido ou muito grande
+ *       401:
+ *         description: Token inválido
+ *       413:
+ *         description: Arquivo muito grande
+ *       415:
+ *         description: Tipo de arquivo não suportado
+ */
+/* istanbul ignore next */
+cov_2o43m5bdu6().s[7]++;
+router.post('/image', auth_1.authenticate, uploadController_1.default.uploadSingle, uploadController_1.default.uploadFile);
+/**
+ * @swagger
+ * /api/v1/upload/document:
+ *   post:
+ *     summary: Upload de documento
+ *     tags: [Upload]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               file:
+ *                 type: string
+ *                 format: binary
+ *                 description: Arquivo de documento (PDF, DOC, DOCX, XLS, XLSX, TXT)
+ *               category:
+ *                 type: string
+ *                 description: Categoria do documento (opcional)
+ *               description:
+ *                 type: string
+ *                 description: Descrição do documento (opcional)
+ *               isPublic:
+ *                 type: boolean
+ *                 default: false
+ *                 description: Se o documento é público
+ *     responses:
+ *       201:
+ *         description: Documento enviado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/UploadResponse'
+ *       400:
+ *         description: Arquivo inválido ou muito grande
+ *       401:
+ *         description: Token inválido
+ *       413:
+ *         description: Arquivo muito grande
+ *       415:
+ *         description: Tipo de arquivo não suportado
+ */
+/* istanbul ignore next */
+cov_2o43m5bdu6().s[8]++;
+router.post('/document', auth_1.authenticate, uploadController_1.default.uploadSingle, uploadController_1.default.uploadFile);
+/**
+ * @swagger
+ * /api/v1/upload/multiple:
+ *   post:
+ *     summary: Upload múltiplo de arquivos
+ *     tags: [Upload]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         multipart/form-data:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               files:
+ *                 type: array
+ *                 items:
+ *                   type: string
+ *                   format: binary
+ *                 description: Múltiplos arquivos (máximo 10)
+ *               category:
+ *                 type: string
+ *                 description: Categoria dos arquivos (opcional)
+ *               isPublic:
+ *                 type: boolean
+ *                 default: true
+ *                 description: Se os arquivos são públicos
+ *     responses:
+ *       201:
+ *         description: Arquivos enviados com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/UploadResponse'
+ *       400:
+ *         description: Arquivos inválidos ou muitos arquivos
+ *       401:
+ *         description: Token inválido
+ *       413:
+ *         description: Arquivos muito grandes
+ *       415:
+ *         description: Tipos de arquivo não suportados
+ */
+/* istanbul ignore next */
+cov_2o43m5bdu6().s[9]++;
+router.post('/multiple', auth_1.authenticate, uploadController_1.default.uploadMultiple, uploadController_1.default.uploadMultipleFiles);
+/**
+ * @swagger
+ * /api/v1/upload:
+ *   get:
+ *     summary: Listar arquivos enviados
+ *     tags: [Upload]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           default: 1
+ *         description: Número da página
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           maximum: 100
+ *           default: 20
+ *         description: Itens por página
+ *       - in: query
+ *         name: type
+ *         schema:
+ *           type: string
+ *           enum: [IMAGE, DOCUMENT, VIDEO, AUDIO, OTHER]
+ *         description: Filtrar por tipo
+ *       - in: query
+ *         name: category
+ *         schema:
+ *           type: string
+ *         description: Filtrar por categoria
+ *       - in: query
+ *         name: search
+ *         schema:
+ *           type: string
+ *         description: Buscar por nome ou descrição
+ *       - in: query
+ *         name: isPublic
+ *         schema:
+ *           type: boolean
+ *         description: Filtrar por visibilidade
+ *       - in: query
+ *         name: uploadedBy
+ *         schema:
+ *           type: string
+ *         description: Filtrar por usuário (apenas admin)
+ *       - in: query
+ *         name: dateFrom
+ *         schema:
+ *           type: string
+ *           format: date
+ *         description: Data inicial (YYYY-MM-DD)
+ *       - in: query
+ *         name: dateTo
+ *         schema:
+ *           type: string
+ *           format: date
+ *         description: Data final (YYYY-MM-DD)
+ *       - in: query
+ *         name: sortBy
+ *         schema:
+ *           type: string
+ *           enum: [createdAt, filename, size, type]
+ *           default: createdAt
+ *         description: Campo para ordenação
+ *       - in: query
+ *         name: sortOrder
+ *         schema:
+ *           type: string
+ *           enum: [asc, desc]
+ *           default: desc
+ *         description: Ordem da classificação
+ *     responses:
+ *       200:
+ *         description: Lista de arquivos
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     files:
+ *                       type: array
+ *                       items:
+ *                         $ref: '#/components/schemas/Upload'
+ *                     pagination:
+ *                       type: object
+ *                       properties:
+ *                         page:
+ *                           type: integer
+ *                         limit:
+ *                           type: integer
+ *                         total:
+ *                           type: integer
+ *                         pages:
+ *                           type: integer
+ *                     stats:
+ *                       type: object
+ *                       properties:
+ *                         totalFiles:
+ *                           type: integer
+ *                         totalSize:
+ *                           type: integer
+ *                         byType:
+ *                           type: object
+ *       401:
+ *         description: Token inválido
+ */
+/* istanbul ignore next */
+cov_2o43m5bdu6().s[10]++;
+router.get('/', auth_1.authenticate, uploadController_1.default.getFiles);
+/**
+ * @swagger
+ * /api/v1/upload/{id}:
+ *   get:
+ *     summary: Obter informações do arquivo
+ *     tags: [Upload]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID do arquivo
+ *     responses:
+ *       200:
+ *         description: Informações do arquivo
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   $ref: '#/components/schemas/Upload'
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão para acessar o arquivo
+ *       404:
+ *         description: Arquivo não encontrado
+ */
+/* istanbul ignore next */
+cov_2o43m5bdu6().s[11]++;
+router.get('/:id', auth_1.authenticate, uploadController_1.default.getFileById);
+/**
+ * @swagger
+ * /api/v1/upload/{id}/download:
+ *   get:
+ *     summary: Download do arquivo
+ *     tags: [Upload]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID do arquivo
+ *       - in: query
+ *         name: token
+ *         schema:
+ *           type: string
+ *         description: Token de acesso (para arquivos privados)
+ *     responses:
+ *       200:
+ *         description: Arquivo para download
+ *         content:
+ *           application/octet-stream:
+ *             schema:
+ *               type: string
+ *               format: binary
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão para acessar o arquivo
+ *       404:
+ *         description: Arquivo não encontrado
+ */
+/* istanbul ignore next */
+cov_2o43m5bdu6().s[12]++;
+router.get('/:id/download', uploadController_1.default.getFileById);
+/**
+ * @swagger
+ * /api/v1/upload/{id}:
+ *   put:
+ *     summary: Atualizar informações do arquivo
+ *     tags: [Upload]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID do arquivo
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               filename:
+ *                 type: string
+ *                 description: Novo nome do arquivo
+ *               category:
+ *                 type: string
+ *                 description: Nova categoria
+ *               description:
+ *                 type: string
+ *                 description: Nova descrição
+ *               alt:
+ *                 type: string
+ *                 description: Novo texto alternativo
+ *               isPublic:
+ *                 type: boolean
+ *                 description: Nova visibilidade
+ *     responses:
+ *       200:
+ *         description: Arquivo atualizado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   $ref: '#/components/schemas/Upload'
+ *                 message:
+ *                   type: string
+ *       400:
+ *         description: Dados inválidos
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão para editar o arquivo
+ *       404:
+ *         description: Arquivo não encontrado
+ */
+/* istanbul ignore next */
+cov_2o43m5bdu6().s[13]++;
+router.put('/:id', auth_1.authenticate, uploadController_1.default.getFileById);
+/**
+ * @swagger
+ * /api/v1/upload/{id}:
+ *   delete:
+ *     summary: Excluir arquivo
+ *     tags: [Upload]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID do arquivo
+ *     responses:
+ *       200:
+ *         description: Arquivo excluído com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 message:
+ *                   type: string
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão para excluir o arquivo
+ *       404:
+ *         description: Arquivo não encontrado
+ */
+/* istanbul ignore next */
+cov_2o43m5bdu6().s[14]++;
+router.delete('/:id', auth_1.authenticate, uploadController_1.default.deleteFile);
+/**
+ * @swagger
+ * /api/v1/upload/cleanup/orphaned:
+ *   delete:
+ *     summary: Limpar arquivos órfãos (Admin)
+ *     tags: [Upload]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Limpeza realizada com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     deletedFiles:
+ *                       type: integer
+ *                     freedSpace:
+ *                       type: integer
+ *                 message:
+ *                   type: string
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ */
+/* istanbul ignore next */
+cov_2o43m5bdu6().s[15]++;
+router.delete('/cleanup/orphaned', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), uploadController_1.default.getFileStats);
+/* istanbul ignore next */
+cov_2o43m5bdu6().s[16]++;
+exports.default = router;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJleHByZXNzXzEiLCJjb3ZfMm80M201YmR1NiIsInMiLCJyZXF1aXJlIiwiYXV0aF8xIiwidXBsb2FkQ29udHJvbGxlcl8xIiwiX19pbXBvcnREZWZhdWx0Iiwicm91dGVyIiwiUm91dGVyIiwicG9zdCIsImF1dGhlbnRpY2F0ZSIsImRlZmF1bHQiLCJ1cGxvYWRTaW5nbGUiLCJ1cGxvYWRGaWxlIiwidXBsb2FkTXVsdGlwbGUiLCJ1cGxvYWRNdWx0aXBsZUZpbGVzIiwiZ2V0IiwiZ2V0RmlsZXMiLCJnZXRGaWxlQnlJZCIsInB1dCIsImRlbGV0ZSIsImRlbGV0ZUZpbGUiLCJhdXRob3JpemUiLCJnZXRGaWxlU3RhdHMiLCJleHBvcnRzIl0sInNvdXJjZXMiOlsiRDpcXGRldlxcY29udGFiaWxcXGNvbnRhYmlsLXNpdGVcXGJhY2tlbmRcXHNyY1xccm91dGVzXFx1cGxvYWRSb3V0ZXMudHMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgUm91dGVyIH0gZnJvbSAnZXhwcmVzcyc7XHJcbmltcG9ydCB7IGF1dGhlbnRpY2F0ZSwgYXV0aG9yaXplIH0gZnJvbSAnLi4vbWlkZGxld2FyZXMvYXV0aCc7XHJcbmltcG9ydCBVcGxvYWRDb250cm9sbGVyIGZyb20gJy4uL2NvbnRyb2xsZXJzL3VwbG9hZENvbnRyb2xsZXInO1xyXG5cclxuY29uc3Qgcm91dGVyID0gUm91dGVyKCk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogY29tcG9uZW50czpcclxuICogICBzY2hlbWFzOlxyXG4gKiAgICAgVXBsb2FkOlxyXG4gKiAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICBpZDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGZpbGVuYW1lOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgb3JpZ2luYWxOYW1lOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgbWltZXR5cGU6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBzaXplOlxyXG4gKiAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgIHBhdGg6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICB1cmw6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICB0eXBlOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBlbnVtOiBbSU1BR0UsIERPQ1VNRU5ULCBWSURFTywgQVVESU8sIE9USEVSXVxyXG4gKiAgICAgICAgIGNhdGVnb3J5OlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBhbHQ6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBtZXRhZGF0YTpcclxuICogICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgd2lkdGg6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICBoZWlnaHQ6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICBkdXJhdGlvbjpcclxuICogICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgcGFnZXM6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgIGlzUHVibGljOlxyXG4gKiAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgIHVwbG9hZGVkQnk6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBjcmVhdGVkQXQ6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGZvcm1hdDogZGF0ZS10aW1lXHJcbiAqICAgICAgICAgdXBkYXRlZEF0OlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBmb3JtYXQ6IGRhdGUtdGltZVxyXG4gKiAgICAgVXBsb2FkUmVzcG9uc2U6XHJcbiAqICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgIHN1Y2Nlc3M6XHJcbiAqICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgZGF0YTpcclxuICogICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgZmlsZXM6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogYXJyYXlcclxuICogICAgICAgICAgICAgICBpdGVtczpcclxuICogICAgICAgICAgICAgICAgICRyZWY6ICcjL2NvbXBvbmVudHMvc2NoZW1hcy9VcGxvYWQnXHJcbiAqICAgICAgICAgbWVzc2FnZTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKi9cclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL3VwbG9hZC9pbWFnZTpcclxuICogICBwb3N0OlxyXG4gKiAgICAgc3VtbWFyeTogVXBsb2FkIGRlIGltYWdlbVxyXG4gKiAgICAgdGFnczogW1VwbG9hZF1cclxuICogICAgIHNlY3VyaXR5OlxyXG4gKiAgICAgICAtIGJlYXJlckF1dGg6IFtdXHJcbiAqICAgICByZXF1ZXN0Qm9keTpcclxuICogICAgICAgcmVxdWlyZWQ6IHRydWVcclxuICogICAgICAgY29udGVudDpcclxuICogICAgICAgICBtdWx0aXBhcnQvZm9ybS1kYXRhOlxyXG4gKiAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICBmaWxlOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICBmb3JtYXQ6IGJpbmFyeVxyXG4gKiAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IEFycXVpdm8gZGUgaW1hZ2VtIChKUEcsIFBORywgR0lGLCBXZWJQKVxyXG4gKiAgICAgICAgICAgICAgIGNhdGVnb3J5OlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogQ2F0ZWdvcmlhIGRhIGltYWdlbSAob3BjaW9uYWwpXHJcbiAqICAgICAgICAgICAgICAgZGVzY3JpcHRpb246XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBEZXNjcmnDp8OjbyBkYSBpbWFnZW0gKG9wY2lvbmFsKVxyXG4gKiAgICAgICAgICAgICAgIGFsdDpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IFRleHRvIGFsdGVybmF0aXZvIChvcGNpb25hbClcclxuICogICAgICAgICAgICAgICBpc1B1YmxpYzpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgIGRlZmF1bHQ6IHRydWVcclxuICogICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBTZSBhIGltYWdlbSDDqSBww7pibGljYVxyXG4gKiAgICAgICAgICAgICAgIHJlc2l6ZTpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IFJlZGltZW5zaW9uYXIgLSBleGVtcGxvIDgwMHg2MDAgb3UgNTAlXHJcbiAqICAgICAgICAgICAgICAgcXVhbGl0eTpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgICAgIG1pbmltdW06IDFcclxuICogICAgICAgICAgICAgICAgIG1heGltdW06IDEwMFxyXG4gKiAgICAgICAgICAgICAgICAgZGVmYXVsdDogODVcclxuICogICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBRdWFsaWRhZGUgZGEgY29tcHJlc3PDo28gKDEtMTAwKVxyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDE6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEltYWdlbSBlbnZpYWRhIGNvbSBzdWNlc3NvXHJcbiAqICAgICAgICAgY29udGVudDpcclxuICogICAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgICAkcmVmOiAnIy9jb21wb25lbnRzL3NjaGVtYXMvVXBsb2FkUmVzcG9uc2UnXHJcbiAqICAgICAgIDQwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogQXJxdWl2byBpbnbDoWxpZG8gb3UgbXVpdG8gZ3JhbmRlXHJcbiAqICAgICAgIDQwMTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gaW52w6FsaWRvXHJcbiAqICAgICAgIDQxMzpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogQXJxdWl2byBtdWl0byBncmFuZGVcclxuICogICAgICAgNDE1OlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBUaXBvIGRlIGFycXVpdm8gbsOjbyBzdXBvcnRhZG9cclxuICovXHJcbnJvdXRlci5wb3N0KCcvaW1hZ2UnLCBhdXRoZW50aWNhdGUsIFVwbG9hZENvbnRyb2xsZXIudXBsb2FkU2luZ2xlLCBVcGxvYWRDb250cm9sbGVyLnVwbG9hZEZpbGUpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvdXBsb2FkL2RvY3VtZW50OlxyXG4gKiAgIHBvc3Q6XHJcbiAqICAgICBzdW1tYXJ5OiBVcGxvYWQgZGUgZG9jdW1lbnRvXHJcbiAqICAgICB0YWdzOiBbVXBsb2FkXVxyXG4gKiAgICAgc2VjdXJpdHk6XHJcbiAqICAgICAgIC0gYmVhcmVyQXV0aDogW11cclxuICogICAgIHJlcXVlc3RCb2R5OlxyXG4gKiAgICAgICByZXF1aXJlZDogdHJ1ZVxyXG4gKiAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgIG11bHRpcGFydC9mb3JtLWRhdGE6XHJcbiAqICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgIGZpbGU6XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgIGZvcm1hdDogYmluYXJ5XHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogQXJxdWl2byBkZSBkb2N1bWVudG8gKFBERiwgRE9DLCBET0NYLCBYTFMsIFhMU1gsIFRYVClcclxuICogICAgICAgICAgICAgICBjYXRlZ29yeTpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IENhdGVnb3JpYSBkbyBkb2N1bWVudG8gKG9wY2lvbmFsKVxyXG4gKiAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogRGVzY3Jpw6fDo28gZG8gZG9jdW1lbnRvIChvcGNpb25hbClcclxuICogICAgICAgICAgICAgICBpc1B1YmxpYzpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgIGRlZmF1bHQ6IGZhbHNlXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogU2UgbyBkb2N1bWVudG8gw6kgcMO6YmxpY29cclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAxOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBEb2N1bWVudG8gZW52aWFkbyBjb20gc3VjZXNzb1xyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgJHJlZjogJyMvY29tcG9uZW50cy9zY2hlbWFzL1VwbG9hZFJlc3BvbnNlJ1xyXG4gKiAgICAgICA0MDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEFycXVpdm8gaW52w6FsaWRvIG91IG11aXRvIGdyYW5kZVxyXG4gKiAgICAgICA0MDE6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGludsOhbGlkb1xyXG4gKiAgICAgICA0MTM6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEFycXVpdm8gbXVpdG8gZ3JhbmRlXHJcbiAqICAgICAgIDQxNTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVGlwbyBkZSBhcnF1aXZvIG7Do28gc3Vwb3J0YWRvXHJcbiAqL1xyXG5yb3V0ZXIucG9zdCgnL2RvY3VtZW50JywgYXV0aGVudGljYXRlLCBVcGxvYWRDb250cm9sbGVyLnVwbG9hZFNpbmdsZSwgVXBsb2FkQ29udHJvbGxlci51cGxvYWRGaWxlKTtcclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL3VwbG9hZC9tdWx0aXBsZTpcclxuICogICBwb3N0OlxyXG4gKiAgICAgc3VtbWFyeTogVXBsb2FkIG3Dumx0aXBsbyBkZSBhcnF1aXZvc1xyXG4gKiAgICAgdGFnczogW1VwbG9hZF1cclxuICogICAgIHNlY3VyaXR5OlxyXG4gKiAgICAgICAtIGJlYXJlckF1dGg6IFtdXHJcbiAqICAgICByZXF1ZXN0Qm9keTpcclxuICogICAgICAgcmVxdWlyZWQ6IHRydWVcclxuICogICAgICAgY29udGVudDpcclxuICogICAgICAgICBtdWx0aXBhcnQvZm9ybS1kYXRhOlxyXG4gKiAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICBmaWxlczpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IGFycmF5XHJcbiAqICAgICAgICAgICAgICAgICBpdGVtczpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICAgIGZvcm1hdDogYmluYXJ5XHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogTcO6bHRpcGxvcyBhcnF1aXZvcyAobcOheGltbyAxMClcclxuICogICAgICAgICAgICAgICBjYXRlZ29yeTpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IENhdGVnb3JpYSBkb3MgYXJxdWl2b3MgKG9wY2lvbmFsKVxyXG4gKiAgICAgICAgICAgICAgIGlzUHVibGljOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgZGVmYXVsdDogdHJ1ZVxyXG4gKiAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IFNlIG9zIGFycXVpdm9zIHPDo28gcMO6YmxpY29zXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogQXJxdWl2b3MgZW52aWFkb3MgY29tIHN1Y2Vzc29cclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgICRyZWY6ICcjL2NvbXBvbmVudHMvc2NoZW1hcy9VcGxvYWRSZXNwb25zZSdcclxuICogICAgICAgNDAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBBcnF1aXZvcyBpbnbDoWxpZG9zIG91IG11aXRvcyBhcnF1aXZvc1xyXG4gKiAgICAgICA0MDE6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGludsOhbGlkb1xyXG4gKiAgICAgICA0MTM6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEFycXVpdm9zIG11aXRvIGdyYW5kZXNcclxuICogICAgICAgNDE1OlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBUaXBvcyBkZSBhcnF1aXZvIG7Do28gc3Vwb3J0YWRvc1xyXG4gKi9cclxucm91dGVyLnBvc3QoJy9tdWx0aXBsZScsIGF1dGhlbnRpY2F0ZSwgVXBsb2FkQ29udHJvbGxlci51cGxvYWRNdWx0aXBsZSwgVXBsb2FkQ29udHJvbGxlci51cGxvYWRNdWx0aXBsZUZpbGVzKTtcclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL3VwbG9hZDpcclxuICogICBnZXQ6XHJcbiAqICAgICBzdW1tYXJ5OiBMaXN0YXIgYXJxdWl2b3MgZW52aWFkb3NcclxuICogICAgIHRhZ3M6IFtVcGxvYWRdXHJcbiAqICAgICBzZWN1cml0eTpcclxuICogICAgICAgLSBiZWFyZXJBdXRoOiBbXVxyXG4gKiAgICAgcGFyYW1ldGVyczpcclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiBwYWdlXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgbWluaW11bTogMVxyXG4gKiAgICAgICAgICAgZGVmYXVsdDogMVxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBOw7ptZXJvIGRhIHDDoWdpbmFcclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiBsaW1pdFxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgIG1pbmltdW06IDFcclxuICogICAgICAgICAgIG1heGltdW06IDEwMFxyXG4gKiAgICAgICAgICAgZGVmYXVsdDogMjBcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogSXRlbnMgcG9yIHDDoWdpbmFcclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiB0eXBlXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBlbnVtOiBbSU1BR0UsIERPQ1VNRU5ULCBWSURFTywgQVVESU8sIE9USEVSXVxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBGaWx0cmFyIHBvciB0aXBvXHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogY2F0ZWdvcnlcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRmlsdHJhciBwb3IgY2F0ZWdvcmlhXHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogc2VhcmNoXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEJ1c2NhciBwb3Igbm9tZSBvdSBkZXNjcmnDp8Ojb1xyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IGlzUHVibGljXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBGaWx0cmFyIHBvciB2aXNpYmlsaWRhZGVcclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiB1cGxvYWRlZEJ5XHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEZpbHRyYXIgcG9yIHVzdcOhcmlvIChhcGVuYXMgYWRtaW4pXHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogZGF0ZUZyb21cclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGZvcm1hdDogZGF0ZVxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBEYXRhIGluaWNpYWwgKFlZWVktTU0tREQpXHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogZGF0ZVRvXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBmb3JtYXQ6IGRhdGVcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRGF0YSBmaW5hbCAoWVlZWS1NTS1ERClcclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiBzb3J0QnlcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGVudW06IFtjcmVhdGVkQXQsIGZpbGVuYW1lLCBzaXplLCB0eXBlXVxyXG4gKiAgICAgICAgICAgZGVmYXVsdDogY3JlYXRlZEF0XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IENhbXBvIHBhcmEgb3JkZW5hw6fDo29cclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiBzb3J0T3JkZXJcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGVudW06IFthc2MsIGRlc2NdXHJcbiAqICAgICAgICAgICBkZWZhdWx0OiBkZXNjXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IE9yZGVtIGRhIGNsYXNzaWZpY2HDp8Ojb1xyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IExpc3RhIGRlIGFycXVpdm9zXHJcbiAqICAgICAgICAgY29udGVudDpcclxuICogICAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgc3VjY2VzczpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgZGF0YTpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgZmlsZXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBhcnJheVxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgaXRlbXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICRyZWY6ICcjL2NvbXBvbmVudHMvc2NoZW1hcy9VcGxvYWQnXHJcbiAqICAgICAgICAgICAgICAgICAgICAgcGFnaW5hdGlvbjpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgcGFnZTpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIGxpbWl0OlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgdG90YWw6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICBwYWdlczpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgc3RhdHM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIHRvdGFsRmlsZXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICB0b3RhbFNpemU6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICBieVR5cGU6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgIDQwMTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gaW52w6FsaWRvXHJcbiAqL1xyXG5yb3V0ZXIuZ2V0KCcvJywgYXV0aGVudGljYXRlLCBVcGxvYWRDb250cm9sbGVyLmdldEZpbGVzKTtcclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL3VwbG9hZC97aWR9OlxyXG4gKiAgIGdldDpcclxuICogICAgIHN1bW1hcnk6IE9idGVyIGluZm9ybWHDp8O1ZXMgZG8gYXJxdWl2b1xyXG4gKiAgICAgdGFnczogW1VwbG9hZF1cclxuICogICAgIHNlY3VyaXR5OlxyXG4gKiAgICAgICAtIGJlYXJlckF1dGg6IFtdXHJcbiAqICAgICBwYXJhbWV0ZXJzOlxyXG4gKiAgICAgICAtIGluOiBwYXRoXHJcbiAqICAgICAgICAgbmFtZTogaWRcclxuICogICAgICAgICByZXF1aXJlZDogdHJ1ZVxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBJRCBkbyBhcnF1aXZvXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogSW5mb3JtYcOnw7VlcyBkbyBhcnF1aXZvXHJcbiAqICAgICAgICAgY29udGVudDpcclxuICogICAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgc3VjY2VzczpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgZGF0YTpcclxuICogICAgICAgICAgICAgICAgICAgJHJlZjogJyMvY29tcG9uZW50cy9zY2hlbWFzL1VwbG9hZCdcclxuICogICAgICAgNDAxOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBUb2tlbiBpbnbDoWxpZG9cclxuICogICAgICAgNDAzOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBTZW0gcGVybWlzc8OjbyBwYXJhIGFjZXNzYXIgbyBhcnF1aXZvXHJcbiAqICAgICAgIDQwNDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogQXJxdWl2byBuw6NvIGVuY29udHJhZG9cclxuICovXHJcbnJvdXRlci5nZXQoJy86aWQnLCBhdXRoZW50aWNhdGUsIFVwbG9hZENvbnRyb2xsZXIuZ2V0RmlsZUJ5SWQpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvdXBsb2FkL3tpZH0vZG93bmxvYWQ6XHJcbiAqICAgZ2V0OlxyXG4gKiAgICAgc3VtbWFyeTogRG93bmxvYWQgZG8gYXJxdWl2b1xyXG4gKiAgICAgdGFnczogW1VwbG9hZF1cclxuICogICAgIHBhcmFtZXRlcnM6XHJcbiAqICAgICAgIC0gaW46IHBhdGhcclxuICogICAgICAgICBuYW1lOiBpZFxyXG4gKiAgICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IElEIGRvIGFycXVpdm9cclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiB0b2tlblxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBUb2tlbiBkZSBhY2Vzc28gKHBhcmEgYXJxdWl2b3MgcHJpdmFkb3MpXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogQXJxdWl2byBwYXJhIGRvd25sb2FkXHJcbiAqICAgICAgICAgY29udGVudDpcclxuICogICAgICAgICAgIGFwcGxpY2F0aW9uL29jdGV0LXN0cmVhbTpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgIGZvcm1hdDogYmluYXJ5XHJcbiAqICAgICAgIDQwMTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gaW52w6FsaWRvXHJcbiAqICAgICAgIDQwMzpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogU2VtIHBlcm1pc3PDo28gcGFyYSBhY2Vzc2FyIG8gYXJxdWl2b1xyXG4gKiAgICAgICA0MDQ6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEFycXVpdm8gbsOjbyBlbmNvbnRyYWRvXHJcbiAqL1xyXG5yb3V0ZXIuZ2V0KCcvOmlkL2Rvd25sb2FkJywgVXBsb2FkQ29udHJvbGxlci5nZXRGaWxlQnlJZCk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS91cGxvYWQve2lkfTpcclxuICogICBwdXQ6XHJcbiAqICAgICBzdW1tYXJ5OiBBdHVhbGl6YXIgaW5mb3JtYcOnw7VlcyBkbyBhcnF1aXZvXHJcbiAqICAgICB0YWdzOiBbVXBsb2FkXVxyXG4gKiAgICAgc2VjdXJpdHk6XHJcbiAqICAgICAgIC0gYmVhcmVyQXV0aDogW11cclxuICogICAgIHBhcmFtZXRlcnM6XHJcbiAqICAgICAgIC0gaW46IHBhdGhcclxuICogICAgICAgICBuYW1lOiBpZFxyXG4gKiAgICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IElEIGRvIGFycXVpdm9cclxuICogICAgIHJlcXVlc3RCb2R5OlxyXG4gKiAgICAgICByZXF1aXJlZDogdHJ1ZVxyXG4gKiAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgIGZpbGVuYW1lOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogTm92byBub21lIGRvIGFycXVpdm9cclxuICogICAgICAgICAgICAgICBjYXRlZ29yeTpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IE5vdmEgY2F0ZWdvcmlhXHJcbiAqICAgICAgICAgICAgICAgZGVzY3JpcHRpb246XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBOb3ZhIGRlc2NyacOnw6NvXHJcbiAqICAgICAgICAgICAgICAgYWx0OlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogTm92byB0ZXh0byBhbHRlcm5hdGl2b1xyXG4gKiAgICAgICAgICAgICAgIGlzUHVibGljOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IE5vdmEgdmlzaWJpbGlkYWRlXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogQXJxdWl2byBhdHVhbGl6YWRvIGNvbSBzdWNlc3NvXHJcbiAqICAgICAgICAgY29udGVudDpcclxuICogICAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgc3VjY2VzczpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgZGF0YTpcclxuICogICAgICAgICAgICAgICAgICAgJHJlZjogJyMvY29tcG9uZW50cy9zY2hlbWFzL1VwbG9hZCdcclxuICogICAgICAgICAgICAgICAgIG1lc3NhZ2U6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICA0MDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IERhZG9zIGludsOhbGlkb3NcclxuICogICAgICAgNDAxOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBUb2tlbiBpbnbDoWxpZG9cclxuICogICAgICAgNDAzOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBTZW0gcGVybWlzc8OjbyBwYXJhIGVkaXRhciBvIGFycXVpdm9cclxuICogICAgICAgNDA0OlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBBcnF1aXZvIG7Do28gZW5jb250cmFkb1xyXG4gKi9cclxucm91dGVyLnB1dCgnLzppZCcsIGF1dGhlbnRpY2F0ZSwgVXBsb2FkQ29udHJvbGxlci5nZXRGaWxlQnlJZCk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS91cGxvYWQve2lkfTpcclxuICogICBkZWxldGU6XHJcbiAqICAgICBzdW1tYXJ5OiBFeGNsdWlyIGFycXVpdm9cclxuICogICAgIHRhZ3M6IFtVcGxvYWRdXHJcbiAqICAgICBzZWN1cml0eTpcclxuICogICAgICAgLSBiZWFyZXJBdXRoOiBbXVxyXG4gKiAgICAgcGFyYW1ldGVyczpcclxuICogICAgICAgLSBpbjogcGF0aFxyXG4gKiAgICAgICAgIG5hbWU6IGlkXHJcbiAqICAgICAgICAgcmVxdWlyZWQ6IHRydWVcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogSUQgZG8gYXJxdWl2b1xyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEFycXVpdm8gZXhjbHXDrWRvIGNvbSBzdWNlc3NvXHJcbiAqICAgICAgICAgY29udGVudDpcclxuICogICAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgc3VjY2VzczpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgbWVzc2FnZTpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgIDQwMTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gaW52w6FsaWRvXHJcbiAqICAgICAgIDQwMzpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogU2VtIHBlcm1pc3PDo28gcGFyYSBleGNsdWlyIG8gYXJxdWl2b1xyXG4gKiAgICAgICA0MDQ6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEFycXVpdm8gbsOjbyBlbmNvbnRyYWRvXHJcbiAqL1xyXG5yb3V0ZXIuZGVsZXRlKCcvOmlkJywgYXV0aGVudGljYXRlLCBVcGxvYWRDb250cm9sbGVyLmRlbGV0ZUZpbGUpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvdXBsb2FkL2NsZWFudXAvb3JwaGFuZWQ6XHJcbiAqICAgZGVsZXRlOlxyXG4gKiAgICAgc3VtbWFyeTogTGltcGFyIGFycXVpdm9zIMOzcmbDo29zIChBZG1pbilcclxuICogICAgIHRhZ3M6IFtVcGxvYWRdXHJcbiAqICAgICBzZWN1cml0eTpcclxuICogICAgICAgLSBiZWFyZXJBdXRoOiBbXVxyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IExpbXBlemEgcmVhbGl6YWRhIGNvbSBzdWNlc3NvXHJcbiAqICAgICAgICAgY29udGVudDpcclxuICogICAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgc3VjY2VzczpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgZGF0YTpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgZGVsZXRlZEZpbGVzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgIGZyZWVkU3BhY2U6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgICAgICBtZXNzYWdlOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgNDAxOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBUb2tlbiBpbnbDoWxpZG9cclxuICogICAgICAgNDAzOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBTZW0gcGVybWlzc8Ojb1xyXG4gKi9cclxucm91dGVyLmRlbGV0ZSgnL2NsZWFudXAvb3JwaGFuZWQnLCBhdXRoZW50aWNhdGUsIGF1dGhvcml6ZSgnQURNSU4nKSwgVXBsb2FkQ29udHJvbGxlci5nZXRGaWxlU3RhdHMpO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgcm91dGVyOyJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7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

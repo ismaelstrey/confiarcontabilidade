@@ -292,7 +292,82 @@ export class ContactController {
   }
 
   /**
-   * Marca um contato como lido (admin)
+/**
+   * Atualiza status do contato
+   */
+  static async updateContactStatus(req: Request, res: Response): Promise<void> {
+    try {
+      const { id } = req.params;
+      const { status } = req.body;
+
+      // Validar status
+      const validStatuses = ['PENDING', 'IN_PROGRESS', 'RESOLVED', 'CLOSED'];
+      if (!status || !validStatuses.includes(status)) {
+        res.status(400).json({
+          success: false,
+          message: 'Status deve ser: PENDING, IN_PROGRESS, RESOLVED ou CLOSED'
+        });
+        return;
+      }
+      if (!id) {
+        res.status(400).json({
+          success: false,
+          message: 'ID do contato é obrigatório'
+        });
+        return;
+      }
+      // Verificar se o contato existe
+      const existingContact = await prisma.contact.findUnique({
+        where: { id }
+      });
+
+      if (!existingContact) {
+        res.status(404).json({
+          success: false,
+          message: 'Contato não encontrado'
+        });
+        return;
+      }
+
+      // Atualizar status
+      const updatedContact = await prisma.contact.update({
+        where: { id },
+        data: {
+          status,
+          updatedAt: new Date()
+        }
+      });
+
+      logger.info('Status do contato atualizado', {
+        contactId: id,
+        oldStatus: existingContact.status,
+        newStatus: status,
+        updatedBy: req.user?.id || 'system'
+      });
+
+      res.status(200).json({
+        success: true,
+        message: 'Status atualizado com sucesso',
+        data: {
+          contact: {
+            id: updatedContact.id,
+            status: updatedContact.status,
+            updatedAt: updatedContact.updatedAt
+          }
+        }
+      });
+
+    } catch (error) {
+      logger.error('Erro ao atualizar status do contato:', error);
+      res.status(500).json({
+        success: false,
+        message: 'Erro interno do servidor'
+      });
+    }
+  }
+
+  /**
+   * Marca contato como lido
    */
   static async markAsRead(req: Request, res: Response): Promise<void> {
     try {

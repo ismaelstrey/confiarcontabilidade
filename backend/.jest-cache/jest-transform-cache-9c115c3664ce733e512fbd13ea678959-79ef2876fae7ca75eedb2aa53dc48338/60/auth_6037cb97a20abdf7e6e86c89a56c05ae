@@ -1,0 +1,246 @@
+d6034bac1bc038ba8795015c7c685ae5
+"use strict";
+
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     RegisterRequest:
+ *       type: object
+ *       required:
+ *         - name
+ *         - email
+ *         - password
+ *         - confirmPassword
+ *       properties:
+ *         name:
+ *           type: string
+ *           minLength: 2
+ *           maxLength: 100
+ *           example: João Silva
+ *           description: Nome completo do usuário
+ *         email:
+ *           type: string
+ *           format: email
+ *           example: joao@example.com
+ *           description: Email válido para login
+ *         password:
+ *           type: string
+ *           format: password
+ *           minLength: 8
+ *           example: Senha123!
+ *           description: Senha com pelo menos 8 caracteres
+ *         confirmPassword:
+ *           type: string
+ *           format: password
+ *           example: Senha123!
+ *           description: Confirmação da senha (deve ser igual à senha)
+ *
+ *     LoginRequest:
+ *       type: object
+ *       required:
+ *         - email
+ *         - password
+ *       properties:
+ *         email:
+ *           type: string
+ *           format: email
+ *           example: joao@example.com
+ *           description: Email cadastrado
+ *         password:
+ *           type: string
+ *           format: password
+ *           example: Senha123!
+ *           description: Senha do usuário
+ *
+ *     RefreshTokenRequest:
+ *       type: object
+ *       required:
+ *         - refreshToken
+ *       properties:
+ *         refreshToken:
+ *           type: string
+ *           example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+ *           description: Token de renovação válido
+ *
+ *     ChangePasswordRequest:
+ *       type: object
+ *       required:
+ *         - currentPassword
+ *         - newPassword
+ *         - confirmPassword
+ *       properties:
+ *         currentPassword:
+ *           type: string
+ *           format: password
+ *           example: SenhaAtual123!
+ *           description: Senha atual do usuário
+ *         newPassword:
+ *           type: string
+ *           format: password
+ *           minLength: 8
+ *           example: NovaSenha123!
+ *           description: Nova senha com pelo menos 8 caracteres
+ *         confirmPassword:
+ *           type: string
+ *           format: password
+ *           example: NovaSenha123!
+ *           description: Confirmação da nova senha
+ *
+ *     ForgotPasswordRequest:
+ *       type: object
+ *       required:
+ *         - email
+ *       properties:
+ *         email:
+ *           type: string
+ *           format: email
+ *           example: joao@example.com
+ *           description: Email cadastrado para recuperação
+ *
+ *     ResetPasswordRequest:
+ *       type: object
+ *       required:
+ *         - token
+ *         - newPassword
+ *         - confirmPassword
+ *       properties:
+ *         token:
+ *           type: string
+ *           example: abc123def456
+ *           description: Token de recuperação recebido por email
+ *         newPassword:
+ *           type: string
+ *           format: password
+ *           minLength: 8
+ *           example: NovaSenha123!
+ *           description: Nova senha
+ *         confirmPassword:
+ *           type: string
+ *           format: password
+ *           example: NovaSenha123!
+ *           description: Confirmação da nova senha
+ *
+ *     AuthResponse:
+ *       type: object
+ *       properties:
+ *         status:
+ *           type: string
+ *           example: success
+ *         message:
+ *           type: string
+ *           example: Login realizado com sucesso
+ *         data:
+ *           type: object
+ *           properties:
+ *             user:
+ *               $ref: '#/components/schemas/User'
+ *             tokens:
+ *               type: object
+ *               properties:
+ *                 accessToken:
+ *                   type: string
+ *                   example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+ *                   description: Token de acesso JWT
+ *                 refreshToken:
+ *                   type: string
+ *                   example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+ *                   description: Token de renovação
+ *                 expiresIn:
+ *                   type: number
+ *                   example: 3600
+ *                   description: Tempo de expiração em segundos
+ *
+ *     User:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: string
+ *           example: clm123abc456
+ *           description: ID único do usuário
+ *         name:
+ *           type: string
+ *           example: João Silva
+ *           description: Nome completo
+ *         email:
+ *           type: string
+ *           format: email
+ *           example: joao@example.com
+ *           description: Email do usuário
+ *         role:
+ *           type: string
+ *           enum: [USER, ADMIN]
+ *           example: USER
+ *           description: Papel do usuário no sistema
+ *         isActive:
+ *           type: boolean
+ *           example: true
+ *           description: Status ativo do usuário
+ *         createdAt:
+ *           type: string
+ *           format: date-time
+ *           example: 2024-01-15T10:30:00Z
+ *           description: Data de criação
+ *         updatedAt:
+ *           type: string
+ *           format: date-time
+ *           example: 2024-01-15T10:30:00Z
+ *           description: Data da última atualização
+ */
+/* istanbul ignore next */
+function cov_1baiyf18rf() {
+  var path = "D:\\dev\\contabil\\contabil-site\\backend\\src\\docs\\schemas\\auth.ts";
+  var hash = "0d7a6841fe3025c14749fec807d72b8f777f3f96";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "D:\\dev\\contabil\\contabil-site\\backend\\src\\docs\\schemas\\auth.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 188,
+          column: 0
+        },
+        end: {
+          line: 188,
+          column: 62
+        }
+      }
+    },
+    fnMap: {},
+    branchMap: {},
+    s: {
+      "0": 0
+    },
+    f: {},
+    b: {},
+    inputSourceMap: {
+      file: "D:\\dev\\contabil\\contabil-site\\backend\\src\\docs\\schemas\\auth.ts",
+      mappings: ";AAAA;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAyLG",
+      names: [],
+      sources: ["D:\\dev\\contabil\\contabil-site\\backend\\src\\docs\\schemas\\auth.ts"],
+      sourcesContent: ["/**\r\n * @swagger\r\n * components:\r\n *   schemas:\r\n *     RegisterRequest:\r\n *       type: object\r\n *       required:\r\n *         - name\r\n *         - email\r\n *         - password\r\n *         - confirmPassword\r\n *       properties:\r\n *         name:\r\n *           type: string\r\n *           minLength: 2\r\n *           maxLength: 100\r\n *           example: Jo\xE3o Silva\r\n *           description: Nome completo do usu\xE1rio\r\n *         email:\r\n *           type: string\r\n *           format: email\r\n *           example: joao@example.com\r\n *           description: Email v\xE1lido para login\r\n *         password:\r\n *           type: string\r\n *           format: password\r\n *           minLength: 8\r\n *           example: Senha123!\r\n *           description: Senha com pelo menos 8 caracteres\r\n *         confirmPassword:\r\n *           type: string\r\n *           format: password\r\n *           example: Senha123!\r\n *           description: Confirma\xE7\xE3o da senha (deve ser igual \xE0 senha)\r\n *     \r\n *     LoginRequest:\r\n *       type: object\r\n *       required:\r\n *         - email\r\n *         - password\r\n *       properties:\r\n *         email:\r\n *           type: string\r\n *           format: email\r\n *           example: joao@example.com\r\n *           description: Email cadastrado\r\n *         password:\r\n *           type: string\r\n *           format: password\r\n *           example: Senha123!\r\n *           description: Senha do usu\xE1rio\r\n *     \r\n *     RefreshTokenRequest:\r\n *       type: object\r\n *       required:\r\n *         - refreshToken\r\n *       properties:\r\n *         refreshToken:\r\n *           type: string\r\n *           example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\r\n *           description: Token de renova\xE7\xE3o v\xE1lido\r\n *     \r\n *     ChangePasswordRequest:\r\n *       type: object\r\n *       required:\r\n *         - currentPassword\r\n *         - newPassword\r\n *         - confirmPassword\r\n *       properties:\r\n *         currentPassword:\r\n *           type: string\r\n *           format: password\r\n *           example: SenhaAtual123!\r\n *           description: Senha atual do usu\xE1rio\r\n *         newPassword:\r\n *           type: string\r\n *           format: password\r\n *           minLength: 8\r\n *           example: NovaSenha123!\r\n *           description: Nova senha com pelo menos 8 caracteres\r\n *         confirmPassword:\r\n *           type: string\r\n *           format: password\r\n *           example: NovaSenha123!\r\n *           description: Confirma\xE7\xE3o da nova senha\r\n *     \r\n *     ForgotPasswordRequest:\r\n *       type: object\r\n *       required:\r\n *         - email\r\n *       properties:\r\n *         email:\r\n *           type: string\r\n *           format: email\r\n *           example: joao@example.com\r\n *           description: Email cadastrado para recupera\xE7\xE3o\r\n *     \r\n *     ResetPasswordRequest:\r\n *       type: object\r\n *       required:\r\n *         - token\r\n *         - newPassword\r\n *         - confirmPassword\r\n *       properties:\r\n *         token:\r\n *           type: string\r\n *           example: abc123def456\r\n *           description: Token de recupera\xE7\xE3o recebido por email\r\n *         newPassword:\r\n *           type: string\r\n *           format: password\r\n *           minLength: 8\r\n *           example: NovaSenha123!\r\n *           description: Nova senha\r\n *         confirmPassword:\r\n *           type: string\r\n *           format: password\r\n *           example: NovaSenha123!\r\n *           description: Confirma\xE7\xE3o da nova senha\r\n *     \r\n *     AuthResponse:\r\n *       type: object\r\n *       properties:\r\n *         status:\r\n *           type: string\r\n *           example: success\r\n *         message:\r\n *           type: string\r\n *           example: Login realizado com sucesso\r\n *         data:\r\n *           type: object\r\n *           properties:\r\n *             user:\r\n *               $ref: '#/components/schemas/User'\r\n *             tokens:\r\n *               type: object\r\n *               properties:\r\n *                 accessToken:\r\n *                   type: string\r\n *                   example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\r\n *                   description: Token de acesso JWT\r\n *                 refreshToken:\r\n *                   type: string\r\n *                   example: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...\r\n *                   description: Token de renova\xE7\xE3o\r\n *                 expiresIn:\r\n *                   type: number\r\n *                   example: 3600\r\n *                   description: Tempo de expira\xE7\xE3o em segundos\r\n *     \r\n *     User:\r\n *       type: object\r\n *       properties:\r\n *         id:\r\n *           type: string\r\n *           example: clm123abc456\r\n *           description: ID \xFAnico do usu\xE1rio\r\n *         name:\r\n *           type: string\r\n *           example: Jo\xE3o Silva\r\n *           description: Nome completo\r\n *         email:\r\n *           type: string\r\n *           format: email\r\n *           example: joao@example.com\r\n *           description: Email do usu\xE1rio\r\n *         role:\r\n *           type: string\r\n *           enum: [USER, ADMIN]\r\n *           example: USER\r\n *           description: Papel do usu\xE1rio no sistema\r\n *         isActive:\r\n *           type: boolean\r\n *           example: true\r\n *           description: Status ativo do usu\xE1rio\r\n *         createdAt:\r\n *           type: string\r\n *           format: date-time\r\n *           example: 2024-01-15T10:30:00Z\r\n *           description: Data de cria\xE7\xE3o\r\n *         updatedAt:\r\n *           type: string\r\n *           format: date-time\r\n *           example: 2024-01-15T10:30:00Z\r\n *           description: Data da \xFAltima atualiza\xE7\xE3o\r\n */\r\n\r\n// Este arquivo cont\xE9m apenas defini\xE7\xF5es de esquemas Swagger\r\n// N\xE3o h\xE1 c\xF3digo TypeScript execut\xE1vel aqui\r\nexport {};"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "0d7a6841fe3025c14749fec807d72b8f777f3f96"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_1baiyf18rf = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_1baiyf18rf();
+cov_1baiyf18rf().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfMWJhaXlmMThyZiIsInBhdGgiLCJoYXNoIiwiZ2xvYmFsIiwiRnVuY3Rpb24iLCJnY3YiLCJjb3ZlcmFnZURhdGEiLCJzdGF0ZW1lbnRNYXAiLCJzdGFydCIsImxpbmUiLCJjb2x1bW4iLCJlbmQiLCJmbk1hcCIsImJyYW5jaE1hcCIsInMiLCJmIiwiYiIsImlucHV0U291cmNlTWFwIiwiZmlsZSIsIm1hcHBpbmdzIiwibmFtZXMiLCJzb3VyY2VzIiwic291cmNlc0NvbnRlbnQiLCJ2ZXJzaW9uIiwiX2NvdmVyYWdlU2NoZW1hIiwiY292ZXJhZ2UiLCJhY3R1YWxDb3ZlcmFnZSJdLCJzb3VyY2VzIjpbIkQ6XFxkZXZcXGNvbnRhYmlsXFxjb250YWJpbC1zaXRlXFxiYWNrZW5kXFxzcmNcXGRvY3NcXHNjaGVtYXNcXGF1dGgudHMiXSwic291cmNlc0NvbnRlbnQiOlsiLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIGNvbXBvbmVudHM6XHJcbiAqICAgc2NoZW1hczpcclxuICogICAgIFJlZ2lzdGVyUmVxdWVzdDpcclxuICogICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgIHJlcXVpcmVkOlxyXG4gKiAgICAgICAgIC0gbmFtZVxyXG4gKiAgICAgICAgIC0gZW1haWxcclxuICogICAgICAgICAtIHBhc3N3b3JkXHJcbiAqICAgICAgICAgLSBjb25maXJtUGFzc3dvcmRcclxuICogICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICBuYW1lOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBtaW5MZW5ndGg6IDJcclxuICogICAgICAgICAgIG1heExlbmd0aDogMTAwXHJcbiAqICAgICAgICAgICBleGFtcGxlOiBKb8OjbyBTaWx2YVxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IE5vbWUgY29tcGxldG8gZG8gdXN1w6FyaW9cclxuICogICAgICAgICBlbWFpbDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZm9ybWF0OiBlbWFpbFxyXG4gKiAgICAgICAgICAgZXhhbXBsZTogam9hb0BleGFtcGxlLmNvbVxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IEVtYWlsIHbDoWxpZG8gcGFyYSBsb2dpblxyXG4gKiAgICAgICAgIHBhc3N3b3JkOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBmb3JtYXQ6IHBhc3N3b3JkXHJcbiAqICAgICAgICAgICBtaW5MZW5ndGg6IDhcclxuICogICAgICAgICAgIGV4YW1wbGU6IFNlbmhhMTIzIVxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IFNlbmhhIGNvbSBwZWxvIG1lbm9zIDggY2FyYWN0ZXJlc1xyXG4gKiAgICAgICAgIGNvbmZpcm1QYXNzd29yZDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZm9ybWF0OiBwYXNzd29yZFxyXG4gKiAgICAgICAgICAgZXhhbXBsZTogU2VuaGExMjMhXHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogQ29uZmlybWHDp8OjbyBkYSBzZW5oYSAoZGV2ZSBzZXIgaWd1YWwgw6Agc2VuaGEpXHJcbiAqICAgICBcclxuICogICAgIExvZ2luUmVxdWVzdDpcclxuICogICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgIHJlcXVpcmVkOlxyXG4gKiAgICAgICAgIC0gZW1haWxcclxuICogICAgICAgICAtIHBhc3N3b3JkXHJcbiAqICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgZW1haWw6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGZvcm1hdDogZW1haWxcclxuICogICAgICAgICAgIGV4YW1wbGU6IGpvYW9AZXhhbXBsZS5jb21cclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBFbWFpbCBjYWRhc3RyYWRvXHJcbiAqICAgICAgICAgcGFzc3dvcmQ6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGZvcm1hdDogcGFzc3dvcmRcclxuICogICAgICAgICAgIGV4YW1wbGU6IFNlbmhhMTIzIVxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IFNlbmhhIGRvIHVzdcOhcmlvXHJcbiAqICAgICBcclxuICogICAgIFJlZnJlc2hUb2tlblJlcXVlc3Q6XHJcbiAqICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICByZXF1aXJlZDpcclxuICogICAgICAgICAtIHJlZnJlc2hUb2tlblxyXG4gKiAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgIHJlZnJlc2hUb2tlbjpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZXhhbXBsZTogZXlKaGJHY2lPaUpJVXpJMU5pSXNJblI1Y0NJNklrcFhWQ0o5Li4uXHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gZGUgcmVub3Zhw6fDo28gdsOhbGlkb1xyXG4gKiAgICAgXHJcbiAqICAgICBDaGFuZ2VQYXNzd29yZFJlcXVlc3Q6XHJcbiAqICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICByZXF1aXJlZDpcclxuICogICAgICAgICAtIGN1cnJlbnRQYXNzd29yZFxyXG4gKiAgICAgICAgIC0gbmV3UGFzc3dvcmRcclxuICogICAgICAgICAtIGNvbmZpcm1QYXNzd29yZFxyXG4gKiAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgIGN1cnJlbnRQYXNzd29yZDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZm9ybWF0OiBwYXNzd29yZFxyXG4gKiAgICAgICAgICAgZXhhbXBsZTogU2VuaGFBdHVhbDEyMyFcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBTZW5oYSBhdHVhbCBkbyB1c3XDoXJpb1xyXG4gKiAgICAgICAgIG5ld1Bhc3N3b3JkOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBmb3JtYXQ6IHBhc3N3b3JkXHJcbiAqICAgICAgICAgICBtaW5MZW5ndGg6IDhcclxuICogICAgICAgICAgIGV4YW1wbGU6IE5vdmFTZW5oYTEyMyFcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBOb3ZhIHNlbmhhIGNvbSBwZWxvIG1lbm9zIDggY2FyYWN0ZXJlc1xyXG4gKiAgICAgICAgIGNvbmZpcm1QYXNzd29yZDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZm9ybWF0OiBwYXNzd29yZFxyXG4gKiAgICAgICAgICAgZXhhbXBsZTogTm92YVNlbmhhMTIzIVxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IENvbmZpcm1hw6fDo28gZGEgbm92YSBzZW5oYVxyXG4gKiAgICAgXHJcbiAqICAgICBGb3Jnb3RQYXNzd29yZFJlcXVlc3Q6XHJcbiAqICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICByZXF1aXJlZDpcclxuICogICAgICAgICAtIGVtYWlsXHJcbiAqICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgZW1haWw6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGZvcm1hdDogZW1haWxcclxuICogICAgICAgICAgIGV4YW1wbGU6IGpvYW9AZXhhbXBsZS5jb21cclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBFbWFpbCBjYWRhc3RyYWRvIHBhcmEgcmVjdXBlcmHDp8Ojb1xyXG4gKiAgICAgXHJcbiAqICAgICBSZXNldFBhc3N3b3JkUmVxdWVzdDpcclxuICogICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgIHJlcXVpcmVkOlxyXG4gKiAgICAgICAgIC0gdG9rZW5cclxuICogICAgICAgICAtIG5ld1Bhc3N3b3JkXHJcbiAqICAgICAgICAgLSBjb25maXJtUGFzc3dvcmRcclxuICogICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICB0b2tlbjpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZXhhbXBsZTogYWJjMTIzZGVmNDU2XHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gZGUgcmVjdXBlcmHDp8OjbyByZWNlYmlkbyBwb3IgZW1haWxcclxuICogICAgICAgICBuZXdQYXNzd29yZDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZm9ybWF0OiBwYXNzd29yZFxyXG4gKiAgICAgICAgICAgbWluTGVuZ3RoOiA4XHJcbiAqICAgICAgICAgICBleGFtcGxlOiBOb3ZhU2VuaGExMjMhXHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogTm92YSBzZW5oYVxyXG4gKiAgICAgICAgIGNvbmZpcm1QYXNzd29yZDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZm9ybWF0OiBwYXNzd29yZFxyXG4gKiAgICAgICAgICAgZXhhbXBsZTogTm92YVNlbmhhMTIzIVxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IENvbmZpcm1hw6fDo28gZGEgbm92YSBzZW5oYVxyXG4gKiAgICAgXHJcbiAqICAgICBBdXRoUmVzcG9uc2U6XHJcbiAqICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgIHN0YXR1czpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZXhhbXBsZTogc3VjY2Vzc1xyXG4gKiAgICAgICAgIG1lc3NhZ2U6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGV4YW1wbGU6IExvZ2luIHJlYWxpemFkbyBjb20gc3VjZXNzb1xyXG4gKiAgICAgICAgIGRhdGE6XHJcbiAqICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgIHVzZXI6XHJcbiAqICAgICAgICAgICAgICAgJHJlZjogJyMvY29tcG9uZW50cy9zY2hlbWFzL1VzZXInXHJcbiAqICAgICAgICAgICAgIHRva2VuczpcclxuICogICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgYWNjZXNzVG9rZW46XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgICBleGFtcGxlOiBleUpoYkdjaU9pSklVekkxTmlJc0luUjVjQ0k2SWtwWFZDSjkuLi5cclxuICogICAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGRlIGFjZXNzbyBKV1RcclxuICogICAgICAgICAgICAgICAgIHJlZnJlc2hUb2tlbjpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICAgIGV4YW1wbGU6IGV5SmhiR2NpT2lKSVV6STFOaUlzSW5SNWNDSTZJa3BYVkNKOS4uLlxyXG4gKiAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gZGUgcmVub3Zhw6fDo29cclxuICogICAgICAgICAgICAgICAgIGV4cGlyZXNJbjpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgIGV4YW1wbGU6IDM2MDBcclxuICogICAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IFRlbXBvIGRlIGV4cGlyYcOnw6NvIGVtIHNlZ3VuZG9zXHJcbiAqICAgICBcclxuICogICAgIFVzZXI6XHJcbiAqICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgIGlkOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBleGFtcGxlOiBjbG0xMjNhYmM0NTZcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBJRCDDum5pY28gZG8gdXN1w6FyaW9cclxuICogICAgICAgICBuYW1lOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBleGFtcGxlOiBKb8OjbyBTaWx2YVxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IE5vbWUgY29tcGxldG9cclxuICogICAgICAgICBlbWFpbDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZm9ybWF0OiBlbWFpbFxyXG4gKiAgICAgICAgICAgZXhhbXBsZTogam9hb0BleGFtcGxlLmNvbVxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IEVtYWlsIGRvIHVzdcOhcmlvXHJcbiAqICAgICAgICAgcm9sZTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZW51bTogW1VTRVIsIEFETUlOXVxyXG4gKiAgICAgICAgICAgZXhhbXBsZTogVVNFUlxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IFBhcGVsIGRvIHVzdcOhcmlvIG5vIHNpc3RlbWFcclxuICogICAgICAgICBpc0FjdGl2ZTpcclxuICogICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgIGV4YW1wbGU6IHRydWVcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBTdGF0dXMgYXRpdm8gZG8gdXN1w6FyaW9cclxuICogICAgICAgICBjcmVhdGVkQXQ6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGZvcm1hdDogZGF0ZS10aW1lXHJcbiAqICAgICAgICAgICBleGFtcGxlOiAyMDI0LTAxLTE1VDEwOjMwOjAwWlxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IERhdGEgZGUgY3JpYcOnw6NvXHJcbiAqICAgICAgICAgdXBkYXRlZEF0OlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBmb3JtYXQ6IGRhdGUtdGltZVxyXG4gKiAgICAgICAgICAgZXhhbXBsZTogMjAyNC0wMS0xNVQxMDozMDowMFpcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBEYXRhIGRhIMO6bHRpbWEgYXR1YWxpemHDp8Ojb1xyXG4gKi9cclxuXHJcbi8vIEVzdGUgYXJxdWl2byBjb250w6ltIGFwZW5hcyBkZWZpbmnDp8O1ZXMgZGUgZXNxdWVtYXMgU3dhZ2dlclxyXG4vLyBOw6NvIGjDoSBjw7NkaWdvIFR5cGVTY3JpcHQgZXhlY3V0w6F2ZWwgYXF1aVxyXG5leHBvcnQge307Il0sIm1hcHBpbmdzIjoiOztBQUFBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQTtBQUFBLFNBQUFBLGVBQUE7RUFBQSxJQUFBQyxJQUFBO0VBQUEsSUFBQUMsSUFBQTtFQUFBLElBQUFDLE1BQUEsT0FBQUMsUUFBQTtFQUFBLElBQUFDLEdBQUE7RUFBQSxJQUFBQyxZQUFBO0lBQUFMLElBQUE7SUFBQU0sWUFBQTtNQUFBO1FBQUFDLEtBQUE7VUFBQUMsSUFBQTtVQUFBQyxNQUFBO1FBQUE7UUFBQUMsR0FBQTtVQUFBRixJQUFBO1VBQUFDLE1BQUE7UUFBQTtNQUFBO0lBQUE7SUFBQUUsS0FBQTtJQUFBQyxTQUFBO0lBQUFDLENBQUE7TUFBQTtJQUFBO0lBQUFDLENBQUE7SUFBQUMsQ0FBQTtJQUFBQyxjQUFBO01BQUFDLElBQUE7TUFBQUMsUUFBQTtNQUFBQyxLQUFBO01BQUFDLE9BQUE7TUFBQUMsY0FBQTtNQUFBQyxPQUFBO0lBQUE7SUFBQUMsZUFBQTtJQUFBdEIsSUFBQTtFQUFBO0VBQUEsSUFBQXVCLFFBQUEsR0FBQXRCLE1BQUEsQ0FBQUUsR0FBQSxNQUFBRixNQUFBLENBQUFFLEdBQUE7RUFBQSxLQUFBb0IsUUFBQSxDQUFBeEIsSUFBQSxLQUFBd0IsUUFBQSxDQUFBeEIsSUFBQSxFQUFBQyxJQUFBLEtBQUFBLElBQUE7SUFBQXVCLFFBQUEsQ0FBQXhCLElBQUEsSUFBQUssWUFBQTtFQUFBO0VBQUEsSUFBQW9CLGNBQUEsR0FBQUQsUUFBQSxDQUFBeEIsSUFBQTtFQUFBIiwiaWdub3JlTGlzdCI6W119

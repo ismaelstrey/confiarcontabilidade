@@ -1,0 +1,1192 @@
+974f7f156dc94a3a0da6ba32b2cf5f6d
+"use strict";
+
+/* istanbul ignore next */
+function cov_x9zhz160e() {
+  var path = "D:\\dev\\contabil\\contabil-site\\backend\\src\\routes\\calculatorRoutes.ts";
+  var hash = "b0090b949b4084de4f3e501c4c320116d341abfb";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "D:\\dev\\contabil\\contabil-site\\backend\\src\\routes\\calculatorRoutes.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 18
+        },
+        end: {
+          line: 3,
+          column: 36
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 31
+        },
+        end: {
+          line: 4,
+          column: 77
+        }
+      },
+      "3": {
+        start: {
+          line: 5,
+          column: 15
+        },
+        end: {
+          line: 5,
+          column: 45
+        }
+      },
+      "4": {
+        start: {
+          line: 6,
+          column: 15
+        },
+        end: {
+          line: 6,
+          column: 38
+        }
+      },
+      "5": {
+        start: {
+          line: 199,
+          column: 0
+        },
+        end: {
+          line: 199,
+          column: 111
+        }
+      },
+      "6": {
+        start: {
+          line: 199,
+          column: 41
+        },
+        end: {
+          line: 199,
+          column: 109
+        }
+      },
+      "7": {
+        start: {
+          line: 256,
+          column: 0
+        },
+        end: {
+          line: 256,
+          column: 117
+        }
+      },
+      "8": {
+        start: {
+          line: 256,
+          column: 42
+        },
+        end: {
+          line: 256,
+          column: 115
+        }
+      },
+      "9": {
+        start: {
+          line: 335,
+          column: 0
+        },
+        end: {
+          line: 335,
+          column: 110
+        }
+      },
+      "10": {
+        start: {
+          line: 335,
+          column: 38
+        },
+        end: {
+          line: 335,
+          column: 108
+        }
+      },
+      "11": {
+        start: {
+          line: 412,
+          column: 0
+        },
+        end: {
+          line: 412,
+          column: 127
+        }
+      },
+      "12": {
+        start: {
+          line: 412,
+          column: 47
+        },
+        end: {
+          line: 412,
+          column: 125
+        }
+      },
+      "13": {
+        start: {
+          line: 500,
+          column: 0
+        },
+        end: {
+          line: 500,
+          column: 120
+        }
+      },
+      "14": {
+        start: {
+          line: 500,
+          column: 43
+        },
+        end: {
+          line: 500,
+          column: 118
+        }
+      },
+      "15": {
+        start: {
+          line: 583,
+          column: 0
+        },
+        end: {
+          line: 583,
+          column: 104
+        }
+      },
+      "16": {
+        start: {
+          line: 583,
+          column: 35
+        },
+        end: {
+          line: 583,
+          column: 102
+        }
+      },
+      "17": {
+        start: {
+          line: 617,
+          column: 0
+        },
+        end: {
+          line: 617,
+          column: 167
+        }
+      },
+      "18": {
+        start: {
+          line: 617,
+          column: 90
+        },
+        end: {
+          line: 617,
+          column: 165
+        }
+      },
+      "19": {
+        start: {
+          line: 634,
+          column: 0
+        },
+        end: {
+          line: 634,
+          column: 173
+        }
+      },
+      "20": {
+        start: {
+          line: 634,
+          column: 93
+        },
+        end: {
+          line: 634,
+          column: 171
+        }
+      },
+      "21": {
+        start: {
+          line: 635,
+          column: 0
+        },
+        end: {
+          line: 635,
+          column: 25
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 199,
+            column: 27
+          },
+          end: {
+            line: 199,
+            column: 28
+          }
+        },
+        loc: {
+          start: {
+            line: 199,
+            column: 41
+          },
+          end: {
+            line: 199,
+            column: 109
+          }
+        },
+        line: 199
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 256,
+            column: 28
+          },
+          end: {
+            line: 256,
+            column: 29
+          }
+        },
+        loc: {
+          start: {
+            line: 256,
+            column: 42
+          },
+          end: {
+            line: 256,
+            column: 115
+          }
+        },
+        line: 256
+      },
+      "2": {
+        name: "(anonymous_2)",
+        decl: {
+          start: {
+            line: 335,
+            column: 24
+          },
+          end: {
+            line: 335,
+            column: 25
+          }
+        },
+        loc: {
+          start: {
+            line: 335,
+            column: 38
+          },
+          end: {
+            line: 335,
+            column: 108
+          }
+        },
+        line: 335
+      },
+      "3": {
+        name: "(anonymous_3)",
+        decl: {
+          start: {
+            line: 412,
+            column: 33
+          },
+          end: {
+            line: 412,
+            column: 34
+          }
+        },
+        loc: {
+          start: {
+            line: 412,
+            column: 47
+          },
+          end: {
+            line: 412,
+            column: 125
+          }
+        },
+        line: 412
+      },
+      "4": {
+        name: "(anonymous_4)",
+        decl: {
+          start: {
+            line: 500,
+            column: 29
+          },
+          end: {
+            line: 500,
+            column: 30
+          }
+        },
+        loc: {
+          start: {
+            line: 500,
+            column: 43
+          },
+          end: {
+            line: 500,
+            column: 118
+          }
+        },
+        line: 500
+      },
+      "5": {
+        name: "(anonymous_5)",
+        decl: {
+          start: {
+            line: 583,
+            column: 21
+          },
+          end: {
+            line: 583,
+            column: 22
+          }
+        },
+        loc: {
+          start: {
+            line: 583,
+            column: 35
+          },
+          end: {
+            line: 583,
+            column: 102
+          }
+        },
+        line: 583
+      },
+      "6": {
+        name: "(anonymous_6)",
+        decl: {
+          start: {
+            line: 617,
+            column: 76
+          },
+          end: {
+            line: 617,
+            column: 77
+          }
+        },
+        loc: {
+          start: {
+            line: 617,
+            column: 90
+          },
+          end: {
+            line: 617,
+            column: 165
+          }
+        },
+        line: 617
+      },
+      "7": {
+        name: "(anonymous_7)",
+        decl: {
+          start: {
+            line: 634,
+            column: 79
+          },
+          end: {
+            line: 634,
+            column: 80
+          }
+        },
+        loc: {
+          start: {
+            line: 634,
+            column: 93
+          },
+          end: {
+            line: 634,
+            column: 171
+          }
+        },
+        line: 634
+      }
+    },
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0,
+      "15": 0,
+      "16": 0,
+      "17": 0,
+      "18": 0,
+      "19": 0,
+      "20": 0,
+      "21": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0
+    },
+    b: {},
+    inputSourceMap: {
+      file: "D:\\dev\\contabil\\contabil-site\\backend\\src\\routes\\calculatorRoutes.ts",
+      mappings: ";;AAAA,qCAAiC;AACjC,8EAA2E;AAC3E,8CAA8D;AAE9D,MAAM,MAAM,GAAG,IAAA,gBAAM,GAAE,CAAC;AAExB;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAiKG;AAEH;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GA6BG;AACH,MAAM,CAAC,IAAI,CAAC,aAAa,EAAE,CAAC,GAAG,EAAE,GAAG,EAAE,EAAE,CAAC,2CAAoB,CAAC,cAAc,CAAC,GAAG,EAAE,GAAG,CAAC,CAAC,CAAC;AAExF;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAuDG;AACH,MAAM,CAAC,IAAI,CAAC,cAAc,EAAE,CAAC,GAAG,EAAE,GAAG,EAAE,EAAE,CAAC,2CAAoB,CAAC,mBAAmB,CAAC,GAAG,EAAE,GAAG,CAAC,CAAC,CAAC;AAE9F;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GA6EG;AACH,MAAM,CAAC,IAAI,CAAC,UAAU,EAAE,CAAC,GAAG,EAAE,GAAG,EAAE,EAAE,CAAC,2CAAoB,CAAC,gBAAgB,CAAC,GAAG,EAAE,GAAG,CAAC,CAAC,CAAC;AAEvF;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GA2EG;AACH,MAAM,CAAC,IAAI,CAAC,mBAAmB,EAAE,CAAC,GAAG,EAAE,GAAG,EAAE,EAAE,CAAC,2CAAoB,CAAC,wBAAwB,CAAC,GAAG,EAAE,GAAG,CAAC,CAAC,CAAC;AAExG;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAsFG;AACH,MAAM,CAAC,IAAI,CAAC,eAAe,EAAE,CAAC,GAAG,EAAE,GAAG,EAAE,EAAE,CAAC,2CAAoB,CAAC,qBAAqB,CAAC,GAAG,EAAE,GAAG,CAAC,CAAC,CAAC;AAEjG;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAiFG;AACH,MAAM,CAAC,IAAI,CAAC,OAAO,EAAE,CAAC,GAAG,EAAE,GAAG,EAAE,EAAE,CAAC,2CAAoB,CAAC,aAAa,CAAC,GAAG,EAAE,GAAG,CAAC,CAAC,CAAC;AAEjF,wBAAwB;AAExB;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GA+BG;AACH,MAAM,CAAC,GAAG,CAAC,UAAU,EAAE,mBAAY,EAAE,IAAA,gBAAS,EAAC,OAAO,CAAC,EAAE,CAAC,GAAG,EAAE,GAAG,EAAE,EAAE,CAAC,2CAAoB,CAAC,qBAAqB,CAAC,GAAG,EAAE,GAAG,CAAC,CAAC,CAAC;AAE7H;;;;;;;;;;;;;;;GAeG;AACH,MAAM,CAAC,GAAG,CAAC,aAAa,EAAE,mBAAY,EAAE,IAAA,gBAAS,EAAC,OAAO,CAAC,EAAE,CAAC,GAAG,EAAE,GAAG,EAAE,EAAE,CAAC,2CAAoB,CAAC,wBAAwB,CAAC,GAAG,EAAE,GAAG,CAAC,CAAC,CAAC;AAEnI,kBAAe,MAAM,CAAC",
+      names: [],
+      sources: ["D:\\dev\\contabil\\contabil-site\\backend\\src\\routes\\calculatorRoutes.ts"],
+      sourcesContent: ["import { Router } from 'express';\r\nimport { calculatorController } from '../controllers/calculatorController';\r\nimport { authenticate, authorize } from '../middlewares/auth';\r\n\r\nconst router = Router();\r\n\r\n/**\r\n * @swagger\r\n * components:\r\n *   schemas:\r\n *     TaxCalculationRequest:\r\n *       type: object\r\n *       required:\r\n *         - income\r\n *         - deductions\r\n *         - taxYear\r\n *       properties:\r\n *         income:\r\n *           type: number\r\n *           minimum: 0\r\n *           description: Renda bruta anual\r\n *         deductions:\r\n *           type: number\r\n *           minimum: 0\r\n *           description: Dedu\xE7\xF5es totais\r\n *         taxYear:\r\n *           type: integer\r\n *           minimum: 2020\r\n *           maximum: 2030\r\n *           description: Ano fiscal\r\n *         dependents:\r\n *           type: integer\r\n *           minimum: 0\r\n *           default: 0\r\n *           description: N\xFAmero de dependentes\r\n *         medicalExpenses:\r\n *           type: number\r\n *           minimum: 0\r\n *           default: 0\r\n *           description: Gastos m\xE9dicos\r\n *         educationExpenses:\r\n *           type: number\r\n *           minimum: 0\r\n *           default: 0\r\n *           description: Gastos com educa\xE7\xE3o\r\n *         pensionContributions:\r\n *           type: number\r\n *           minimum: 0\r\n *           default: 0\r\n *           description: Contribui\xE7\xF5es previdenci\xE1rias\r\n *     TaxCalculationResult:\r\n *       type: object\r\n *       properties:\r\n *         grossIncome:\r\n *           type: number\r\n *           description: Renda bruta\r\n *         taxableIncome:\r\n *           type: number\r\n *           description: Renda tribut\xE1vel\r\n *         totalDeductions:\r\n *           type: number\r\n *           description: Total de dedu\xE7\xF5es\r\n *         incomeTax:\r\n *           type: number\r\n *           description: Imposto de renda devido\r\n *         netIncome:\r\n *           type: number\r\n *           description: Renda l\xEDquida\r\n *         effectiveRate:\r\n *           type: number\r\n *           description: Al\xEDquota efetiva (%)\r\n *         marginalRate:\r\n *           type: number\r\n *           description: Al\xEDquota marginal (%)\r\n *         breakdown:\r\n *           type: array\r\n *           items:\r\n *             type: object\r\n *             properties:\r\n *               bracket:\r\n *                 type: string\r\n *               rate:\r\n *                 type: number\r\n *               taxableAmount:\r\n *                 type: number\r\n *               tax:\r\n *                 type: number\r\n *         deductionsBreakdown:\r\n *           type: object\r\n *           properties:\r\n *             standard:\r\n *               type: number\r\n *             dependents:\r\n *               type: number\r\n *             medical:\r\n *               type: number\r\n *             education:\r\n *               type: number\r\n *             pension:\r\n *               type: number\r\n *             other:\r\n *               type: number\r\n *     CompanyTaxRequest:\r\n *       type: object\r\n *       required:\r\n *         - revenue\r\n *         - expenses\r\n *         - companyType\r\n *       properties:\r\n *         revenue:\r\n *           type: number\r\n *           minimum: 0\r\n *           description: Receita bruta\r\n *         expenses:\r\n *           type: number\r\n *           minimum: 0\r\n *           description: Despesas operacionais\r\n *         companyType:\r\n *           type: string\r\n *           enum: [MEI, SIMPLES, LUCRO_PRESUMIDO, LUCRO_REAL]\r\n *           description: Tipo de empresa\r\n *         employees:\r\n *           type: integer\r\n *           minimum: 0\r\n *           default: 0\r\n *           description: N\xFAmero de funcion\xE1rios\r\n *         sector:\r\n *           type: string\r\n *           description: Setor de atividade\r\n *     PayrollCalculationRequest:\r\n *       type: object\r\n *       required:\r\n *         - grossSalary\r\n *         - position\r\n *       properties:\r\n *         grossSalary:\r\n *           type: number\r\n *           minimum: 0\r\n *           description: Sal\xE1rio bruto\r\n *         position:\r\n *           type: string\r\n *           description: Cargo do funcion\xE1rio\r\n *         dependents:\r\n *           type: integer\r\n *           minimum: 0\r\n *           default: 0\r\n *           description: N\xFAmero de dependentes\r\n *         transportVoucher:\r\n *           type: number\r\n *           minimum: 0\r\n *           default: 0\r\n *           description: Vale transporte\r\n *         mealVoucher:\r\n *           type: number\r\n *           minimum: 0\r\n *           default: 0\r\n *           description: Vale refei\xE7\xE3o\r\n *         healthInsurance:\r\n *           type: number\r\n *           minimum: 0\r\n *           default: 0\r\n *           description: Plano de sa\xFAde\r\n *         lifeInsurance:\r\n *           type: number\r\n *           minimum: 0\r\n *           default: 0\r\n *           description: Seguro de vida\r\n */\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/calculator/income-tax:\r\n *   post:\r\n *     summary: Calcular imposto de renda pessoa f\xEDsica\r\n *     tags: [Calculadora]\r\n *     requestBody:\r\n *       required: true\r\n *       content:\r\n *         application/json:\r\n *           schema:\r\n *             $ref: '#/components/schemas/TaxCalculationRequest'\r\n *     responses:\r\n *       200:\r\n *         description: C\xE1lculo realizado com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 data:\r\n *                   $ref: '#/components/schemas/TaxCalculationResult'\r\n *                 calculatedAt:\r\n *                   type: string\r\n *                   format: date-time\r\n *       400:\r\n *         description: Dados inv\xE1lidos para c\xE1lculo\r\n */\r\nrouter.post('/income-tax', (req, res) => calculatorController.calculateTaxes(req, res));\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/calculator/company-tax:\r\n *   post:\r\n *     summary: Calcular impostos para pessoa jur\xEDdica\r\n *     tags: [Calculadora]\r\n *     requestBody:\r\n *       required: true\r\n *       content:\r\n *         application/json:\r\n *           schema:\r\n *             $ref: '#/components/schemas/CompanyTaxRequest'\r\n *     responses:\r\n *       200:\r\n *         description: C\xE1lculo realizado com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 data:\r\n *                   type: object\r\n *                   properties:\r\n *                     revenue:\r\n *                       type: number\r\n *                     expenses:\r\n *                       type: number\r\n *                     profit:\r\n *                       type: number\r\n *                     taxes:\r\n *                       type: object\r\n *                       properties:\r\n *                         irpj:\r\n *                           type: number\r\n *                         csll:\r\n *                           type: number\r\n *                         pis:\r\n *                           type: number\r\n *                         cofins:\r\n *                           type: number\r\n *                         iss:\r\n *                           type: number\r\n *                         total:\r\n *                           type: number\r\n *                     netProfit:\r\n *                       type: number\r\n *                     effectiveRate:\r\n *                       type: number\r\n *                 calculatedAt:\r\n *                   type: string\r\n *                   format: date-time\r\n *       400:\r\n *         description: Dados inv\xE1lidos para c\xE1lculo\r\n */\r\nrouter.post('/company-tax', (req, res) => calculatorController.calculateCompanyTax(req, res));\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/calculator/payroll:\r\n *   post:\r\n *     summary: Calcular folha de pagamento\r\n *     tags: [Calculadora]\r\n *     requestBody:\r\n *       required: true\r\n *       content:\r\n *         application/json:\r\n *           schema:\r\n *             $ref: '#/components/schemas/PayrollCalculationRequest'\r\n *     responses:\r\n *       200:\r\n *         description: C\xE1lculo realizado com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 data:\r\n *                   type: object\r\n *                   properties:\r\n *                     grossSalary:\r\n *                       type: number\r\n *                     deductions:\r\n *                       type: object\r\n *                       properties:\r\n *                         inss:\r\n *                           type: number\r\n *                         irrf:\r\n *                           type: number\r\n *                         transportVoucher:\r\n *                           type: number\r\n *                         healthInsurance:\r\n *                           type: number\r\n *                         lifeInsurance:\r\n *                           type: number\r\n *                         other:\r\n *                           type: number\r\n *                         total:\r\n *                           type: number\r\n *                     benefits:\r\n *                       type: object\r\n *                       properties:\r\n *                         mealVoucher:\r\n *                           type: number\r\n *                         transportVoucher:\r\n *                           type: number\r\n *                         familyAllowance:\r\n *                           type: number\r\n *                         total:\r\n *                           type: number\r\n *                     netSalary:\r\n *                       type: number\r\n *                     employerCosts:\r\n *                       type: object\r\n *                       properties:\r\n *                         inss:\r\n *                           type: number\r\n *                         fgts:\r\n *                           type: number\r\n *                         rat:\r\n *                           type: number\r\n *                         salarioEducacao:\r\n *                           type: number\r\n *                         total:\r\n *                           type: number\r\n *                     totalCost:\r\n *                       type: number\r\n *                 calculatedAt:\r\n *                   type: string\r\n *                   format: date-time\r\n *       400:\r\n *         description: Dados inv\xE1lidos para c\xE1lculo\r\n */\r\nrouter.post('/payroll', (req, res) => calculatorController.calculatePayroll(req, res));\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/calculator/simples-nacional:\r\n *   post:\r\n *     summary: Calcular impostos do Simples Nacional\r\n *     tags: [Calculadora]\r\n *     requestBody:\r\n *       required: true\r\n *       content:\r\n *         application/json:\r\n *           schema:\r\n *             type: object\r\n *             required:\r\n *               - revenue\r\n *               - annex\r\n *             properties:\r\n *               revenue:\r\n *                 type: number\r\n *                 minimum: 0\r\n *                 description: Receita bruta mensal\r\n *               annex:\r\n *                 type: string\r\n *                 enum: [I, II, III, IV, V]\r\n *                 description: Anexo do Simples Nacional\r\n *               accumulatedRevenue:\r\n *                 type: number\r\n *                 minimum: 0\r\n *                 description: Receita acumulada nos \xFAltimos 12 meses\r\n *     responses:\r\n *       200:\r\n *         description: C\xE1lculo realizado com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 data:\r\n *                   type: object\r\n *                   properties:\r\n *                     revenue:\r\n *                       type: number\r\n *                     annex:\r\n *                       type: string\r\n *                     bracket:\r\n *                       type: string\r\n *                     rate:\r\n *                       type: number\r\n *                     tax:\r\n *                       type: number\r\n *                     netRevenue:\r\n *                       type: number\r\n *                     breakdown:\r\n *                       type: object\r\n *                       properties:\r\n *                         irpj:\r\n *                           type: number\r\n *                         csll:\r\n *                           type: number\r\n *                         pis:\r\n *                           type: number\r\n *                         cofins:\r\n *                           type: number\r\n *                         cpp:\r\n *                           type: number\r\n *                         icms:\r\n *                           type: number\r\n *                         iss:\r\n *                           type: number\r\n *                 calculatedAt:\r\n *                   type: string\r\n *                   format: date-time\r\n *       400:\r\n *         description: Dados inv\xE1lidos para c\xE1lculo\r\n */\r\nrouter.post('/simples-nacional', (req, res) => calculatorController.calculateSimplesNacional(req, res));\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/calculator/depreciation:\r\n *   post:\r\n *     summary: Calcular deprecia\xE7\xE3o de bens\r\n *     tags: [Calculadora]\r\n *     requestBody:\r\n *       required: true\r\n *       content:\r\n *         application/json:\r\n *           schema:\r\n *             type: object\r\n *             required:\r\n *               - assetValue\r\n *               - assetType\r\n *               - acquisitionDate\r\n *             properties:\r\n *               assetValue:\r\n *                 type: number\r\n *                 minimum: 0\r\n *                 description: Valor do bem\r\n *               assetType:\r\n *                 type: string\r\n *                 enum: [BUILDING, MACHINERY, VEHICLE, FURNITURE, COMPUTER, OTHER]\r\n *                 description: Tipo do bem\r\n *               acquisitionDate:\r\n *                 type: string\r\n *                 format: date\r\n *                 description: Data de aquisi\xE7\xE3o\r\n *               residualValue:\r\n *                 type: number\r\n *                 minimum: 0\r\n *                 default: 0\r\n *                 description: Valor residual\r\n *               method:\r\n *                 type: string\r\n *                 enum: [LINEAR, ACCELERATED, SUM_OF_YEARS]\r\n *                 default: LINEAR\r\n *                 description: M\xE9todo de deprecia\xE7\xE3o\r\n *     responses:\r\n *       200:\r\n *         description: C\xE1lculo realizado com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 data:\r\n *                   type: object\r\n *                   properties:\r\n *                     assetValue:\r\n *                       type: number\r\n *                     residualValue:\r\n *                       type: number\r\n *                     depreciableValue:\r\n *                       type: number\r\n *                     usefulLife:\r\n *                       type: integer\r\n *                     annualDepreciation:\r\n *                       type: number\r\n *                     monthlyDepreciation:\r\n *                       type: number\r\n *                     accumulatedDepreciation:\r\n *                       type: number\r\n *                     currentValue:\r\n *                       type: number\r\n *                     schedule:\r\n *                       type: array\r\n *                       items:\r\n *                         type: object\r\n *                         properties:\r\n *                           year:\r\n *                             type: integer\r\n *                           depreciation:\r\n *                             type: number\r\n *                           accumulated:\r\n *                             type: number\r\n *                           bookValue:\r\n *                             type: number\r\n *                 calculatedAt:\r\n *                   type: string\r\n *                   format: date-time\r\n *       400:\r\n *         description: Dados inv\xE1lidos para c\xE1lculo\r\n */\r\nrouter.post('/depreciation', (req, res) => calculatorController.calculateDepreciation(req, res));\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/calculator/loan:\r\n *   post:\r\n *     summary: Calcular financiamento/empr\xE9stimo\r\n *     tags: [Calculadora]\r\n *     requestBody:\r\n *       required: true\r\n *       content:\r\n *         application/json:\r\n *           schema:\r\n *             type: object\r\n *             required:\r\n *               - principal\r\n *               - interestRate\r\n *               - term\r\n *             properties:\r\n *               principal:\r\n *                 type: number\r\n *                 minimum: 0\r\n *                 description: Valor principal\r\n *               interestRate:\r\n *                 type: number\r\n *                 minimum: 0\r\n *                 description: Taxa de juros (% ao m\xEAs)\r\n *               term:\r\n *                 type: integer\r\n *                 minimum: 1\r\n *                 description: Prazo em meses\r\n *               paymentType:\r\n *                 type: string\r\n *                 enum: [SAC, PRICE, AMERICAN]\r\n *                 default: PRICE\r\n *                 description: Sistema de amortiza\xE7\xE3o\r\n *     responses:\r\n *       200:\r\n *         description: C\xE1lculo realizado com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 data:\r\n *                   type: object\r\n *                   properties:\r\n *                     principal:\r\n *                       type: number\r\n *                     interestRate:\r\n *                       type: number\r\n *                     term:\r\n *                       type: integer\r\n *                     paymentType:\r\n *                       type: string\r\n *                     monthlyPayment:\r\n *                       type: number\r\n *                     totalPayment:\r\n *                       type: number\r\n *                     totalInterest:\r\n *                       type: number\r\n *                     schedule:\r\n *                       type: array\r\n *                       items:\r\n *                         type: object\r\n *                         properties:\r\n *                           month:\r\n *                             type: integer\r\n *                           payment:\r\n *                             type: number\r\n *                           principal:\r\n *                             type: number\r\n *                           interest:\r\n *                             type: number\r\n *                           balance:\r\n *                             type: number\r\n *                 calculatedAt:\r\n *                   type: string\r\n *                   format: date-time\r\n *       400:\r\n *         description: Dados inv\xE1lidos para c\xE1lculo\r\n */\r\nrouter.post('/loan', (req, res) => calculatorController.calculateLoan(req, res));\r\n\r\n// Rotas administrativas\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/calculator/history:\r\n *   get:\r\n *     summary: Obter hist\xF3rico de c\xE1lculos (Admin)\r\n *     tags: [Calculadora]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     parameters:\r\n *       - in: query\r\n *         name: page\r\n *         schema:\r\n *           type: integer\r\n *           minimum: 1\r\n *           default: 1\r\n *         description: P\xE1gina\r\n *       - in: query\r\n *         name: limit\r\n *         schema:\r\n *           type: integer\r\n *           minimum: 1\r\n *           maximum: 100\r\n *           default: 20\r\n *         description: Itens por p\xE1gina\r\n *     responses:\r\n *       200:\r\n *         description: Hist\xF3rico obtido com sucesso\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       403:\r\n *         description: Sem permiss\xE3o\r\n */\r\nrouter.get('/history', authenticate, authorize('ADMIN'), (req, res) => calculatorController.getCalculationHistory(req, res));\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/calculator/statistics:\r\n *   get:\r\n *     summary: Obter estat\xEDsticas de c\xE1lculos (Admin)\r\n *     tags: [Calculadora]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     responses:\r\n *       200:\r\n *         description: Estat\xEDsticas obtidas com sucesso\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       403:\r\n *         description: Sem permiss\xE3o\r\n */\r\nrouter.get('/statistics', authenticate, authorize('ADMIN'), (req, res) => calculatorController.getCalculationStatistics(req, res));\r\n\r\nexport default router;"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "b0090b949b4084de4f3e501c4c320116d341abfb"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_x9zhz160e = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_x9zhz160e();
+cov_x9zhz160e().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const express_1 =
+/* istanbul ignore next */
+(cov_x9zhz160e().s[1]++, require("express"));
+const calculatorController_1 =
+/* istanbul ignore next */
+(cov_x9zhz160e().s[2]++, require("../controllers/calculatorController"));
+const auth_1 =
+/* istanbul ignore next */
+(cov_x9zhz160e().s[3]++, require("../middlewares/auth"));
+const router =
+/* istanbul ignore next */
+(cov_x9zhz160e().s[4]++, (0, express_1.Router)());
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     TaxCalculationRequest:
+ *       type: object
+ *       required:
+ *         - income
+ *         - deductions
+ *         - taxYear
+ *       properties:
+ *         income:
+ *           type: number
+ *           minimum: 0
+ *           description: Renda bruta anual
+ *         deductions:
+ *           type: number
+ *           minimum: 0
+ *           description: Deduções totais
+ *         taxYear:
+ *           type: integer
+ *           minimum: 2020
+ *           maximum: 2030
+ *           description: Ano fiscal
+ *         dependents:
+ *           type: integer
+ *           minimum: 0
+ *           default: 0
+ *           description: Número de dependentes
+ *         medicalExpenses:
+ *           type: number
+ *           minimum: 0
+ *           default: 0
+ *           description: Gastos médicos
+ *         educationExpenses:
+ *           type: number
+ *           minimum: 0
+ *           default: 0
+ *           description: Gastos com educação
+ *         pensionContributions:
+ *           type: number
+ *           minimum: 0
+ *           default: 0
+ *           description: Contribuições previdenciárias
+ *     TaxCalculationResult:
+ *       type: object
+ *       properties:
+ *         grossIncome:
+ *           type: number
+ *           description: Renda bruta
+ *         taxableIncome:
+ *           type: number
+ *           description: Renda tributável
+ *         totalDeductions:
+ *           type: number
+ *           description: Total de deduções
+ *         incomeTax:
+ *           type: number
+ *           description: Imposto de renda devido
+ *         netIncome:
+ *           type: number
+ *           description: Renda líquida
+ *         effectiveRate:
+ *           type: number
+ *           description: Alíquota efetiva (%)
+ *         marginalRate:
+ *           type: number
+ *           description: Alíquota marginal (%)
+ *         breakdown:
+ *           type: array
+ *           items:
+ *             type: object
+ *             properties:
+ *               bracket:
+ *                 type: string
+ *               rate:
+ *                 type: number
+ *               taxableAmount:
+ *                 type: number
+ *               tax:
+ *                 type: number
+ *         deductionsBreakdown:
+ *           type: object
+ *           properties:
+ *             standard:
+ *               type: number
+ *             dependents:
+ *               type: number
+ *             medical:
+ *               type: number
+ *             education:
+ *               type: number
+ *             pension:
+ *               type: number
+ *             other:
+ *               type: number
+ *     CompanyTaxRequest:
+ *       type: object
+ *       required:
+ *         - revenue
+ *         - expenses
+ *         - companyType
+ *       properties:
+ *         revenue:
+ *           type: number
+ *           minimum: 0
+ *           description: Receita bruta
+ *         expenses:
+ *           type: number
+ *           minimum: 0
+ *           description: Despesas operacionais
+ *         companyType:
+ *           type: string
+ *           enum: [MEI, SIMPLES, LUCRO_PRESUMIDO, LUCRO_REAL]
+ *           description: Tipo de empresa
+ *         employees:
+ *           type: integer
+ *           minimum: 0
+ *           default: 0
+ *           description: Número de funcionários
+ *         sector:
+ *           type: string
+ *           description: Setor de atividade
+ *     PayrollCalculationRequest:
+ *       type: object
+ *       required:
+ *         - grossSalary
+ *         - position
+ *       properties:
+ *         grossSalary:
+ *           type: number
+ *           minimum: 0
+ *           description: Salário bruto
+ *         position:
+ *           type: string
+ *           description: Cargo do funcionário
+ *         dependents:
+ *           type: integer
+ *           minimum: 0
+ *           default: 0
+ *           description: Número de dependentes
+ *         transportVoucher:
+ *           type: number
+ *           minimum: 0
+ *           default: 0
+ *           description: Vale transporte
+ *         mealVoucher:
+ *           type: number
+ *           minimum: 0
+ *           default: 0
+ *           description: Vale refeição
+ *         healthInsurance:
+ *           type: number
+ *           minimum: 0
+ *           default: 0
+ *           description: Plano de saúde
+ *         lifeInsurance:
+ *           type: number
+ *           minimum: 0
+ *           default: 0
+ *           description: Seguro de vida
+ */
+/**
+ * @swagger
+ * /api/v1/calculator/income-tax:
+ *   post:
+ *     summary: Calcular imposto de renda pessoa física
+ *     tags: [Calculadora]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/TaxCalculationRequest'
+ *     responses:
+ *       200:
+ *         description: Cálculo realizado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   $ref: '#/components/schemas/TaxCalculationResult'
+ *                 calculatedAt:
+ *                   type: string
+ *                   format: date-time
+ *       400:
+ *         description: Dados inválidos para cálculo
+ */
+/* istanbul ignore next */
+cov_x9zhz160e().s[5]++;
+router.post('/income-tax', (req, res) => {
+  /* istanbul ignore next */
+  cov_x9zhz160e().f[0]++;
+  cov_x9zhz160e().s[6]++;
+  return calculatorController_1.calculatorController.calculateTaxes(req, res);
+});
+/**
+ * @swagger
+ * /api/v1/calculator/company-tax:
+ *   post:
+ *     summary: Calcular impostos para pessoa jurídica
+ *     tags: [Calculadora]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/CompanyTaxRequest'
+ *     responses:
+ *       200:
+ *         description: Cálculo realizado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     revenue:
+ *                       type: number
+ *                     expenses:
+ *                       type: number
+ *                     profit:
+ *                       type: number
+ *                     taxes:
+ *                       type: object
+ *                       properties:
+ *                         irpj:
+ *                           type: number
+ *                         csll:
+ *                           type: number
+ *                         pis:
+ *                           type: number
+ *                         cofins:
+ *                           type: number
+ *                         iss:
+ *                           type: number
+ *                         total:
+ *                           type: number
+ *                     netProfit:
+ *                       type: number
+ *                     effectiveRate:
+ *                       type: number
+ *                 calculatedAt:
+ *                   type: string
+ *                   format: date-time
+ *       400:
+ *         description: Dados inválidos para cálculo
+ */
+/* istanbul ignore next */
+cov_x9zhz160e().s[7]++;
+router.post('/company-tax', (req, res) => {
+  /* istanbul ignore next */
+  cov_x9zhz160e().f[1]++;
+  cov_x9zhz160e().s[8]++;
+  return calculatorController_1.calculatorController.calculateCompanyTax(req, res);
+});
+/**
+ * @swagger
+ * /api/v1/calculator/payroll:
+ *   post:
+ *     summary: Calcular folha de pagamento
+ *     tags: [Calculadora]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/PayrollCalculationRequest'
+ *     responses:
+ *       200:
+ *         description: Cálculo realizado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     grossSalary:
+ *                       type: number
+ *                     deductions:
+ *                       type: object
+ *                       properties:
+ *                         inss:
+ *                           type: number
+ *                         irrf:
+ *                           type: number
+ *                         transportVoucher:
+ *                           type: number
+ *                         healthInsurance:
+ *                           type: number
+ *                         lifeInsurance:
+ *                           type: number
+ *                         other:
+ *                           type: number
+ *                         total:
+ *                           type: number
+ *                     benefits:
+ *                       type: object
+ *                       properties:
+ *                         mealVoucher:
+ *                           type: number
+ *                         transportVoucher:
+ *                           type: number
+ *                         familyAllowance:
+ *                           type: number
+ *                         total:
+ *                           type: number
+ *                     netSalary:
+ *                       type: number
+ *                     employerCosts:
+ *                       type: object
+ *                       properties:
+ *                         inss:
+ *                           type: number
+ *                         fgts:
+ *                           type: number
+ *                         rat:
+ *                           type: number
+ *                         salarioEducacao:
+ *                           type: number
+ *                         total:
+ *                           type: number
+ *                     totalCost:
+ *                       type: number
+ *                 calculatedAt:
+ *                   type: string
+ *                   format: date-time
+ *       400:
+ *         description: Dados inválidos para cálculo
+ */
+/* istanbul ignore next */
+cov_x9zhz160e().s[9]++;
+router.post('/payroll', (req, res) => {
+  /* istanbul ignore next */
+  cov_x9zhz160e().f[2]++;
+  cov_x9zhz160e().s[10]++;
+  return calculatorController_1.calculatorController.calculatePayroll(req, res);
+});
+/**
+ * @swagger
+ * /api/v1/calculator/simples-nacional:
+ *   post:
+ *     summary: Calcular impostos do Simples Nacional
+ *     tags: [Calculadora]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - revenue
+ *               - annex
+ *             properties:
+ *               revenue:
+ *                 type: number
+ *                 minimum: 0
+ *                 description: Receita bruta mensal
+ *               annex:
+ *                 type: string
+ *                 enum: [I, II, III, IV, V]
+ *                 description: Anexo do Simples Nacional
+ *               accumulatedRevenue:
+ *                 type: number
+ *                 minimum: 0
+ *                 description: Receita acumulada nos últimos 12 meses
+ *     responses:
+ *       200:
+ *         description: Cálculo realizado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     revenue:
+ *                       type: number
+ *                     annex:
+ *                       type: string
+ *                     bracket:
+ *                       type: string
+ *                     rate:
+ *                       type: number
+ *                     tax:
+ *                       type: number
+ *                     netRevenue:
+ *                       type: number
+ *                     breakdown:
+ *                       type: object
+ *                       properties:
+ *                         irpj:
+ *                           type: number
+ *                         csll:
+ *                           type: number
+ *                         pis:
+ *                           type: number
+ *                         cofins:
+ *                           type: number
+ *                         cpp:
+ *                           type: number
+ *                         icms:
+ *                           type: number
+ *                         iss:
+ *                           type: number
+ *                 calculatedAt:
+ *                   type: string
+ *                   format: date-time
+ *       400:
+ *         description: Dados inválidos para cálculo
+ */
+/* istanbul ignore next */
+cov_x9zhz160e().s[11]++;
+router.post('/simples-nacional', (req, res) => {
+  /* istanbul ignore next */
+  cov_x9zhz160e().f[3]++;
+  cov_x9zhz160e().s[12]++;
+  return calculatorController_1.calculatorController.calculateSimplesNacional(req, res);
+});
+/**
+ * @swagger
+ * /api/v1/calculator/depreciation:
+ *   post:
+ *     summary: Calcular depreciação de bens
+ *     tags: [Calculadora]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - assetValue
+ *               - assetType
+ *               - acquisitionDate
+ *             properties:
+ *               assetValue:
+ *                 type: number
+ *                 minimum: 0
+ *                 description: Valor do bem
+ *               assetType:
+ *                 type: string
+ *                 enum: [BUILDING, MACHINERY, VEHICLE, FURNITURE, COMPUTER, OTHER]
+ *                 description: Tipo do bem
+ *               acquisitionDate:
+ *                 type: string
+ *                 format: date
+ *                 description: Data de aquisição
+ *               residualValue:
+ *                 type: number
+ *                 minimum: 0
+ *                 default: 0
+ *                 description: Valor residual
+ *               method:
+ *                 type: string
+ *                 enum: [LINEAR, ACCELERATED, SUM_OF_YEARS]
+ *                 default: LINEAR
+ *                 description: Método de depreciação
+ *     responses:
+ *       200:
+ *         description: Cálculo realizado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     assetValue:
+ *                       type: number
+ *                     residualValue:
+ *                       type: number
+ *                     depreciableValue:
+ *                       type: number
+ *                     usefulLife:
+ *                       type: integer
+ *                     annualDepreciation:
+ *                       type: number
+ *                     monthlyDepreciation:
+ *                       type: number
+ *                     accumulatedDepreciation:
+ *                       type: number
+ *                     currentValue:
+ *                       type: number
+ *                     schedule:
+ *                       type: array
+ *                       items:
+ *                         type: object
+ *                         properties:
+ *                           year:
+ *                             type: integer
+ *                           depreciation:
+ *                             type: number
+ *                           accumulated:
+ *                             type: number
+ *                           bookValue:
+ *                             type: number
+ *                 calculatedAt:
+ *                   type: string
+ *                   format: date-time
+ *       400:
+ *         description: Dados inválidos para cálculo
+ */
+/* istanbul ignore next */
+cov_x9zhz160e().s[13]++;
+router.post('/depreciation', (req, res) => {
+  /* istanbul ignore next */
+  cov_x9zhz160e().f[4]++;
+  cov_x9zhz160e().s[14]++;
+  return calculatorController_1.calculatorController.calculateDepreciation(req, res);
+});
+/**
+ * @swagger
+ * /api/v1/calculator/loan:
+ *   post:
+ *     summary: Calcular financiamento/empréstimo
+ *     tags: [Calculadora]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - principal
+ *               - interestRate
+ *               - term
+ *             properties:
+ *               principal:
+ *                 type: number
+ *                 minimum: 0
+ *                 description: Valor principal
+ *               interestRate:
+ *                 type: number
+ *                 minimum: 0
+ *                 description: Taxa de juros (% ao mês)
+ *               term:
+ *                 type: integer
+ *                 minimum: 1
+ *                 description: Prazo em meses
+ *               paymentType:
+ *                 type: string
+ *                 enum: [SAC, PRICE, AMERICAN]
+ *                 default: PRICE
+ *                 description: Sistema de amortização
+ *     responses:
+ *       200:
+ *         description: Cálculo realizado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     principal:
+ *                       type: number
+ *                     interestRate:
+ *                       type: number
+ *                     term:
+ *                       type: integer
+ *                     paymentType:
+ *                       type: string
+ *                     monthlyPayment:
+ *                       type: number
+ *                     totalPayment:
+ *                       type: number
+ *                     totalInterest:
+ *                       type: number
+ *                     schedule:
+ *                       type: array
+ *                       items:
+ *                         type: object
+ *                         properties:
+ *                           month:
+ *                             type: integer
+ *                           payment:
+ *                             type: number
+ *                           principal:
+ *                             type: number
+ *                           interest:
+ *                             type: number
+ *                           balance:
+ *                             type: number
+ *                 calculatedAt:
+ *                   type: string
+ *                   format: date-time
+ *       400:
+ *         description: Dados inválidos para cálculo
+ */
+/* istanbul ignore next */
+cov_x9zhz160e().s[15]++;
+router.post('/loan', (req, res) => {
+  /* istanbul ignore next */
+  cov_x9zhz160e().f[5]++;
+  cov_x9zhz160e().s[16]++;
+  return calculatorController_1.calculatorController.calculateLoan(req, res);
+});
+// Rotas administrativas
+/**
+ * @swagger
+ * /api/v1/calculator/history:
+ *   get:
+ *     summary: Obter histórico de cálculos (Admin)
+ *     tags: [Calculadora]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           default: 1
+ *         description: Página
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           maximum: 100
+ *           default: 20
+ *         description: Itens por página
+ *     responses:
+ *       200:
+ *         description: Histórico obtido com sucesso
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ */
+/* istanbul ignore next */
+cov_x9zhz160e().s[17]++;
+router.get('/history', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), (req, res) => {
+  /* istanbul ignore next */
+  cov_x9zhz160e().f[6]++;
+  cov_x9zhz160e().s[18]++;
+  return calculatorController_1.calculatorController.getCalculationHistory(req, res);
+});
+/**
+ * @swagger
+ * /api/v1/calculator/statistics:
+ *   get:
+ *     summary: Obter estatísticas de cálculos (Admin)
+ *     tags: [Calculadora]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Estatísticas obtidas com sucesso
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ */
+/* istanbul ignore next */
+cov_x9zhz160e().s[19]++;
+router.get('/statistics', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), (req, res) => {
+  /* istanbul ignore next */
+  cov_x9zhz160e().f[7]++;
+  cov_x9zhz160e().s[20]++;
+  return calculatorController_1.calculatorController.getCalculationStatistics(req, res);
+});
+/* istanbul ignore next */
+cov_x9zhz160e().s[21]++;
+exports.default = router;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJleHByZXNzXzEiLCJjb3ZfeDl6aHoxNjBlIiwicyIsInJlcXVpcmUiLCJjYWxjdWxhdG9yQ29udHJvbGxlcl8xIiwiYXV0aF8xIiwicm91dGVyIiwiUm91dGVyIiwicG9zdCIsInJlcSIsInJlcyIsImYiLCJjYWxjdWxhdG9yQ29udHJvbGxlciIsImNhbGN1bGF0ZVRheGVzIiwiY2FsY3VsYXRlQ29tcGFueVRheCIsImNhbGN1bGF0ZVBheXJvbGwiLCJjYWxjdWxhdGVTaW1wbGVzTmFjaW9uYWwiLCJjYWxjdWxhdGVEZXByZWNpYXRpb24iLCJjYWxjdWxhdGVMb2FuIiwiZ2V0IiwiYXV0aGVudGljYXRlIiwiYXV0aG9yaXplIiwiZ2V0Q2FsY3VsYXRpb25IaXN0b3J5IiwiZ2V0Q2FsY3VsYXRpb25TdGF0aXN0aWNzIiwiZXhwb3J0cyIsImRlZmF1bHQiXSwic291cmNlcyI6WyJEOlxcZGV2XFxjb250YWJpbFxcY29udGFiaWwtc2l0ZVxcYmFja2VuZFxcc3JjXFxyb3V0ZXNcXGNhbGN1bGF0b3JSb3V0ZXMudHMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgUm91dGVyIH0gZnJvbSAnZXhwcmVzcyc7XHJcbmltcG9ydCB7IGNhbGN1bGF0b3JDb250cm9sbGVyIH0gZnJvbSAnLi4vY29udHJvbGxlcnMvY2FsY3VsYXRvckNvbnRyb2xsZXInO1xyXG5pbXBvcnQgeyBhdXRoZW50aWNhdGUsIGF1dGhvcml6ZSB9IGZyb20gJy4uL21pZGRsZXdhcmVzL2F1dGgnO1xyXG5cclxuY29uc3Qgcm91dGVyID0gUm91dGVyKCk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogY29tcG9uZW50czpcclxuICogICBzY2hlbWFzOlxyXG4gKiAgICAgVGF4Q2FsY3VsYXRpb25SZXF1ZXN0OlxyXG4gKiAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgcmVxdWlyZWQ6XHJcbiAqICAgICAgICAgLSBpbmNvbWVcclxuICogICAgICAgICAtIGRlZHVjdGlvbnNcclxuICogICAgICAgICAtIHRheFllYXJcclxuICogICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICBpbmNvbWU6XHJcbiAqICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgIG1pbmltdW06IDBcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBSZW5kYSBicnV0YSBhbnVhbFxyXG4gKiAgICAgICAgIGRlZHVjdGlvbnM6XHJcbiAqICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgIG1pbmltdW06IDBcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBEZWR1w6fDtWVzIHRvdGFpc1xyXG4gKiAgICAgICAgIHRheFllYXI6XHJcbiAqICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICBtaW5pbXVtOiAyMDIwXHJcbiAqICAgICAgICAgICBtYXhpbXVtOiAyMDMwXHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogQW5vIGZpc2NhbFxyXG4gKiAgICAgICAgIGRlcGVuZGVudHM6XHJcbiAqICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICBtaW5pbXVtOiAwXHJcbiAqICAgICAgICAgICBkZWZhdWx0OiAwXHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogTsO6bWVybyBkZSBkZXBlbmRlbnRlc1xyXG4gKiAgICAgICAgIG1lZGljYWxFeHBlbnNlczpcclxuICogICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgbWluaW11bTogMFxyXG4gKiAgICAgICAgICAgZGVmYXVsdDogMFxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IEdhc3RvcyBtw6lkaWNvc1xyXG4gKiAgICAgICAgIGVkdWNhdGlvbkV4cGVuc2VzOlxyXG4gKiAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICBtaW5pbXVtOiAwXHJcbiAqICAgICAgICAgICBkZWZhdWx0OiAwXHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogR2FzdG9zIGNvbSBlZHVjYcOnw6NvXHJcbiAqICAgICAgICAgcGVuc2lvbkNvbnRyaWJ1dGlvbnM6XHJcbiAqICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgIG1pbmltdW06IDBcclxuICogICAgICAgICAgIGRlZmF1bHQ6IDBcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBDb250cmlidWnDp8O1ZXMgcHJldmlkZW5jacOhcmlhc1xyXG4gKiAgICAgVGF4Q2FsY3VsYXRpb25SZXN1bHQ6XHJcbiAqICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgIGdyb3NzSW5jb21lOlxyXG4gKiAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogUmVuZGEgYnJ1dGFcclxuICogICAgICAgICB0YXhhYmxlSW5jb21lOlxyXG4gKiAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogUmVuZGEgdHJpYnV0w6F2ZWxcclxuICogICAgICAgICB0b3RhbERlZHVjdGlvbnM6XHJcbiAqICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBUb3RhbCBkZSBkZWR1w6fDtWVzXHJcbiAqICAgICAgICAgaW5jb21lVGF4OlxyXG4gKiAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogSW1wb3N0byBkZSByZW5kYSBkZXZpZG9cclxuICogICAgICAgICBuZXRJbmNvbWU6XHJcbiAqICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBSZW5kYSBsw61xdWlkYVxyXG4gKiAgICAgICAgIGVmZmVjdGl2ZVJhdGU6XHJcbiAqICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBBbMOtcXVvdGEgZWZldGl2YSAoJSlcclxuICogICAgICAgICBtYXJnaW5hbFJhdGU6XHJcbiAqICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBBbMOtcXVvdGEgbWFyZ2luYWwgKCUpXHJcbiAqICAgICAgICAgYnJlYWtkb3duOlxyXG4gKiAgICAgICAgICAgdHlwZTogYXJyYXlcclxuICogICAgICAgICAgIGl0ZW1zOlxyXG4gKiAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICBicmFja2V0OlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgcmF0ZTpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgIHRheGFibGVBbW91bnQ6XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICB0YXg6XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICBkZWR1Y3Rpb25zQnJlYWtkb3duOlxyXG4gKiAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICBzdGFuZGFyZDpcclxuICogICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgZGVwZW5kZW50czpcclxuICogICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgbWVkaWNhbDpcclxuICogICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgZWR1Y2F0aW9uOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICBwZW5zaW9uOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICBvdGhlcjpcclxuICogICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgIENvbXBhbnlUYXhSZXF1ZXN0OlxyXG4gKiAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgcmVxdWlyZWQ6XHJcbiAqICAgICAgICAgLSByZXZlbnVlXHJcbiAqICAgICAgICAgLSBleHBlbnNlc1xyXG4gKiAgICAgICAgIC0gY29tcGFueVR5cGVcclxuICogICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICByZXZlbnVlOlxyXG4gKiAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICBtaW5pbXVtOiAwXHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogUmVjZWl0YSBicnV0YVxyXG4gKiAgICAgICAgIGV4cGVuc2VzOlxyXG4gKiAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICBtaW5pbXVtOiAwXHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogRGVzcGVzYXMgb3BlcmFjaW9uYWlzXHJcbiAqICAgICAgICAgY29tcGFueVR5cGU6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGVudW06IFtNRUksIFNJTVBMRVMsIExVQ1JPX1BSRVNVTUlETywgTFVDUk9fUkVBTF1cclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBUaXBvIGRlIGVtcHJlc2FcclxuICogICAgICAgICBlbXBsb3llZXM6XHJcbiAqICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICBtaW5pbXVtOiAwXHJcbiAqICAgICAgICAgICBkZWZhdWx0OiAwXHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogTsO6bWVybyBkZSBmdW5jaW9uw6FyaW9zXHJcbiAqICAgICAgICAgc2VjdG9yOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogU2V0b3IgZGUgYXRpdmlkYWRlXHJcbiAqICAgICBQYXlyb2xsQ2FsY3VsYXRpb25SZXF1ZXN0OlxyXG4gKiAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgcmVxdWlyZWQ6XHJcbiAqICAgICAgICAgLSBncm9zc1NhbGFyeVxyXG4gKiAgICAgICAgIC0gcG9zaXRpb25cclxuICogICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICBncm9zc1NhbGFyeTpcclxuICogICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgbWluaW11bTogMFxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IFNhbMOhcmlvIGJydXRvXHJcbiAqICAgICAgICAgcG9zaXRpb246XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBDYXJnbyBkbyBmdW5jaW9uw6FyaW9cclxuICogICAgICAgICBkZXBlbmRlbnRzOlxyXG4gKiAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgbWluaW11bTogMFxyXG4gKiAgICAgICAgICAgZGVmYXVsdDogMFxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IE7Dum1lcm8gZGUgZGVwZW5kZW50ZXNcclxuICogICAgICAgICB0cmFuc3BvcnRWb3VjaGVyOlxyXG4gKiAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICBtaW5pbXVtOiAwXHJcbiAqICAgICAgICAgICBkZWZhdWx0OiAwXHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogVmFsZSB0cmFuc3BvcnRlXHJcbiAqICAgICAgICAgbWVhbFZvdWNoZXI6XHJcbiAqICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgIG1pbmltdW06IDBcclxuICogICAgICAgICAgIGRlZmF1bHQ6IDBcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBWYWxlIHJlZmVpw6fDo29cclxuICogICAgICAgICBoZWFsdGhJbnN1cmFuY2U6XHJcbiAqICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgIG1pbmltdW06IDBcclxuICogICAgICAgICAgIGRlZmF1bHQ6IDBcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBQbGFubyBkZSBzYcO6ZGVcclxuICogICAgICAgICBsaWZlSW5zdXJhbmNlOlxyXG4gKiAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICBtaW5pbXVtOiAwXHJcbiAqICAgICAgICAgICBkZWZhdWx0OiAwXHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogU2VndXJvIGRlIHZpZGFcclxuICovXHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS9jYWxjdWxhdG9yL2luY29tZS10YXg6XHJcbiAqICAgcG9zdDpcclxuICogICAgIHN1bW1hcnk6IENhbGN1bGFyIGltcG9zdG8gZGUgcmVuZGEgcGVzc29hIGbDrXNpY2FcclxuICogICAgIHRhZ3M6IFtDYWxjdWxhZG9yYV1cclxuICogICAgIHJlcXVlc3RCb2R5OlxyXG4gKiAgICAgICByZXF1aXJlZDogdHJ1ZVxyXG4gKiAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICRyZWY6ICcjL2NvbXBvbmVudHMvc2NoZW1hcy9UYXhDYWxjdWxhdGlvblJlcXVlc3QnXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogQ8OhbGN1bG8gcmVhbGl6YWRvIGNvbSBzdWNlc3NvXHJcbiAqICAgICAgICAgY29udGVudDpcclxuICogICAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgc3VjY2VzczpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgZGF0YTpcclxuICogICAgICAgICAgICAgICAgICAgJHJlZjogJyMvY29tcG9uZW50cy9zY2hlbWFzL1RheENhbGN1bGF0aW9uUmVzdWx0J1xyXG4gKiAgICAgICAgICAgICAgICAgY2FsY3VsYXRlZEF0OlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgICAgZm9ybWF0OiBkYXRlLXRpbWVcclxuICogICAgICAgNDAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBEYWRvcyBpbnbDoWxpZG9zIHBhcmEgY8OhbGN1bG9cclxuICovXHJcbnJvdXRlci5wb3N0KCcvaW5jb21lLXRheCcsIChyZXEsIHJlcykgPT4gY2FsY3VsYXRvckNvbnRyb2xsZXIuY2FsY3VsYXRlVGF4ZXMocmVxLCByZXMpKTtcclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL2NhbGN1bGF0b3IvY29tcGFueS10YXg6XHJcbiAqICAgcG9zdDpcclxuICogICAgIHN1bW1hcnk6IENhbGN1bGFyIGltcG9zdG9zIHBhcmEgcGVzc29hIGp1csOtZGljYVxyXG4gKiAgICAgdGFnczogW0NhbGN1bGFkb3JhXVxyXG4gKiAgICAgcmVxdWVzdEJvZHk6XHJcbiAqICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgJHJlZjogJyMvY29tcG9uZW50cy9zY2hlbWFzL0NvbXBhbnlUYXhSZXF1ZXN0J1xyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEPDoWxjdWxvIHJlYWxpemFkbyBjb20gc3VjZXNzb1xyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgIHN1Y2Nlc3M6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgIGRhdGE6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgIHJldmVudWU6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICBleHBlbnNlczpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgIHByb2ZpdDpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgIHRheGVzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICBpcnBqOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICBjc2xsOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICBwaXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIGNvZmluczpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgaXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICB0b3RhbDpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICBuZXRQcm9maXQ6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICBlZmZlY3RpdmVSYXRlOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICBjYWxjdWxhdGVkQXQ6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgICBmb3JtYXQ6IGRhdGUtdGltZVxyXG4gKiAgICAgICA0MDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IERhZG9zIGludsOhbGlkb3MgcGFyYSBjw6FsY3Vsb1xyXG4gKi9cclxucm91dGVyLnBvc3QoJy9jb21wYW55LXRheCcsIChyZXEsIHJlcykgPT4gY2FsY3VsYXRvckNvbnRyb2xsZXIuY2FsY3VsYXRlQ29tcGFueVRheChyZXEsIHJlcykpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvY2FsY3VsYXRvci9wYXlyb2xsOlxyXG4gKiAgIHBvc3Q6XHJcbiAqICAgICBzdW1tYXJ5OiBDYWxjdWxhciBmb2xoYSBkZSBwYWdhbWVudG9cclxuICogICAgIHRhZ3M6IFtDYWxjdWxhZG9yYV1cclxuICogICAgIHJlcXVlc3RCb2R5OlxyXG4gKiAgICAgICByZXF1aXJlZDogdHJ1ZVxyXG4gKiAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICRyZWY6ICcjL2NvbXBvbmVudHMvc2NoZW1hcy9QYXlyb2xsQ2FsY3VsYXRpb25SZXF1ZXN0J1xyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEPDoWxjdWxvIHJlYWxpemFkbyBjb20gc3VjZXNzb1xyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgIHN1Y2Nlc3M6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgIGRhdGE6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgIGdyb3NzU2FsYXJ5OlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgZGVkdWN0aW9uczpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgaW5zczpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgaXJyZjpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgdHJhbnNwb3J0Vm91Y2hlcjpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgaGVhbHRoSW5zdXJhbmNlOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICBsaWZlSW5zdXJhbmNlOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICBvdGhlcjpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgdG90YWw6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgYmVuZWZpdHM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIG1lYWxWb3VjaGVyOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICB0cmFuc3BvcnRWb3VjaGVyOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICBmYW1pbHlBbGxvd2FuY2U6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIHRvdGFsOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgIG5ldFNhbGFyeTpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgIGVtcGxveWVyQ29zdHM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIGluc3M6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIGZndHM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIHJhdDpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgc2FsYXJpb0VkdWNhY2FvOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICB0b3RhbDpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICB0b3RhbENvc3Q6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgIGNhbGN1bGF0ZWRBdDpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICAgIGZvcm1hdDogZGF0ZS10aW1lXHJcbiAqICAgICAgIDQwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRGFkb3MgaW52w6FsaWRvcyBwYXJhIGPDoWxjdWxvXHJcbiAqL1xyXG5yb3V0ZXIucG9zdCgnL3BheXJvbGwnLCAocmVxLCByZXMpID0+IGNhbGN1bGF0b3JDb250cm9sbGVyLmNhbGN1bGF0ZVBheXJvbGwocmVxLCByZXMpKTtcclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL2NhbGN1bGF0b3Ivc2ltcGxlcy1uYWNpb25hbDpcclxuICogICBwb3N0OlxyXG4gKiAgICAgc3VtbWFyeTogQ2FsY3VsYXIgaW1wb3N0b3MgZG8gU2ltcGxlcyBOYWNpb25hbFxyXG4gKiAgICAgdGFnczogW0NhbGN1bGFkb3JhXVxyXG4gKiAgICAgcmVxdWVzdEJvZHk6XHJcbiAqICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgIHJlcXVpcmVkOlxyXG4gKiAgICAgICAgICAgICAgIC0gcmV2ZW51ZVxyXG4gKiAgICAgICAgICAgICAgIC0gYW5uZXhcclxuICogICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICByZXZlbnVlOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICBtaW5pbXVtOiAwXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogUmVjZWl0YSBicnV0YSBtZW5zYWxcclxuICogICAgICAgICAgICAgICBhbm5leDpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgZW51bTogW0ksIElJLCBJSUksIElWLCBWXVxyXG4gKiAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IEFuZXhvIGRvIFNpbXBsZXMgTmFjaW9uYWxcclxuICogICAgICAgICAgICAgICBhY2N1bXVsYXRlZFJldmVudWU6XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgIG1pbmltdW06IDBcclxuICogICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBSZWNlaXRhIGFjdW11bGFkYSBub3Mgw7psdGltb3MgMTIgbWVzZXNcclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBDw6FsY3VsbyByZWFsaXphZG8gY29tIHN1Y2Vzc29cclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICBzdWNjZXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBkYXRhOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgICByZXZlbnVlOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgYW5uZXg6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgICAgICBicmFja2V0OlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICAgICAgcmF0ZTpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgIHRheDpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgIG5ldFJldmVudWU6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICBicmVha2Rvd246XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIGlycGo6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIGNzbGw6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIHBpczpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgY29maW5zOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICBjcHA6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIGljbXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIGlzczpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgIGNhbGN1bGF0ZWRBdDpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICAgIGZvcm1hdDogZGF0ZS10aW1lXHJcbiAqICAgICAgIDQwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRGFkb3MgaW52w6FsaWRvcyBwYXJhIGPDoWxjdWxvXHJcbiAqL1xyXG5yb3V0ZXIucG9zdCgnL3NpbXBsZXMtbmFjaW9uYWwnLCAocmVxLCByZXMpID0+IGNhbGN1bGF0b3JDb250cm9sbGVyLmNhbGN1bGF0ZVNpbXBsZXNOYWNpb25hbChyZXEsIHJlcykpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvY2FsY3VsYXRvci9kZXByZWNpYXRpb246XHJcbiAqICAgcG9zdDpcclxuICogICAgIHN1bW1hcnk6IENhbGN1bGFyIGRlcHJlY2lhw6fDo28gZGUgYmVuc1xyXG4gKiAgICAgdGFnczogW0NhbGN1bGFkb3JhXVxyXG4gKiAgICAgcmVxdWVzdEJvZHk6XHJcbiAqICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgIHJlcXVpcmVkOlxyXG4gKiAgICAgICAgICAgICAgIC0gYXNzZXRWYWx1ZVxyXG4gKiAgICAgICAgICAgICAgIC0gYXNzZXRUeXBlXHJcbiAqICAgICAgICAgICAgICAgLSBhY3F1aXNpdGlvbkRhdGVcclxuICogICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICBhc3NldFZhbHVlOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICBtaW5pbXVtOiAwXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogVmFsb3IgZG8gYmVtXHJcbiAqICAgICAgICAgICAgICAgYXNzZXRUeXBlOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICBlbnVtOiBbQlVJTERJTkcsIE1BQ0hJTkVSWSwgVkVISUNMRSwgRlVSTklUVVJFLCBDT01QVVRFUiwgT1RIRVJdXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogVGlwbyBkbyBiZW1cclxuICogICAgICAgICAgICAgICBhY3F1aXNpdGlvbkRhdGU6XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgIGZvcm1hdDogZGF0ZVxyXG4gKiAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IERhdGEgZGUgYXF1aXNpw6fDo29cclxuICogICAgICAgICAgICAgICByZXNpZHVhbFZhbHVlOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICBtaW5pbXVtOiAwXHJcbiAqICAgICAgICAgICAgICAgICBkZWZhdWx0OiAwXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogVmFsb3IgcmVzaWR1YWxcclxuICogICAgICAgICAgICAgICBtZXRob2Q6XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgIGVudW06IFtMSU5FQVIsIEFDQ0VMRVJBVEVELCBTVU1fT0ZfWUVBUlNdXHJcbiAqICAgICAgICAgICAgICAgICBkZWZhdWx0OiBMSU5FQVJcclxuICogICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBNw6l0b2RvIGRlIGRlcHJlY2lhw6fDo29cclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBDw6FsY3VsbyByZWFsaXphZG8gY29tIHN1Y2Vzc29cclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICBzdWNjZXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBkYXRhOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgICBhc3NldFZhbHVlOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgcmVzaWR1YWxWYWx1ZTpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgIGRlcHJlY2lhYmxlVmFsdWU6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICB1c2VmdWxMaWZlOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgIGFubnVhbERlcHJlY2lhdGlvbjpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgIG1vbnRobHlEZXByZWNpYXRpb246XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICBhY2N1bXVsYXRlZERlcHJlY2lhdGlvbjpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgIGN1cnJlbnRWYWx1ZTpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgIHNjaGVkdWxlOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogYXJyYXlcclxuICogICAgICAgICAgICAgICAgICAgICAgIGl0ZW1zOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB5ZWFyOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIGRlcHJlY2lhdGlvbjpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIGFjY3VtdWxhdGVkOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgYm9va1ZhbHVlOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICBjYWxjdWxhdGVkQXQ6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgICBmb3JtYXQ6IGRhdGUtdGltZVxyXG4gKiAgICAgICA0MDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IERhZG9zIGludsOhbGlkb3MgcGFyYSBjw6FsY3Vsb1xyXG4gKi9cclxucm91dGVyLnBvc3QoJy9kZXByZWNpYXRpb24nLCAocmVxLCByZXMpID0+IGNhbGN1bGF0b3JDb250cm9sbGVyLmNhbGN1bGF0ZURlcHJlY2lhdGlvbihyZXEsIHJlcykpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvY2FsY3VsYXRvci9sb2FuOlxyXG4gKiAgIHBvc3Q6XHJcbiAqICAgICBzdW1tYXJ5OiBDYWxjdWxhciBmaW5hbmNpYW1lbnRvL2VtcHLDqXN0aW1vXHJcbiAqICAgICB0YWdzOiBbQ2FsY3VsYWRvcmFdXHJcbiAqICAgICByZXF1ZXN0Qm9keTpcclxuICogICAgICAgcmVxdWlyZWQ6IHRydWVcclxuICogICAgICAgY29udGVudDpcclxuICogICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgcmVxdWlyZWQ6XHJcbiAqICAgICAgICAgICAgICAgLSBwcmluY2lwYWxcclxuICogICAgICAgICAgICAgICAtIGludGVyZXN0UmF0ZVxyXG4gKiAgICAgICAgICAgICAgIC0gdGVybVxyXG4gKiAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgIHByaW5jaXBhbDpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgbWluaW11bTogMFxyXG4gKiAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IFZhbG9yIHByaW5jaXBhbFxyXG4gKiAgICAgICAgICAgICAgIGludGVyZXN0UmF0ZTpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgbWluaW11bTogMFxyXG4gKiAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IFRheGEgZGUganVyb3MgKCUgYW8gbcOqcylcclxuICogICAgICAgICAgICAgICB0ZXJtOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICAgICAgbWluaW11bTogMVxyXG4gKiAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IFByYXpvIGVtIG1lc2VzXHJcbiAqICAgICAgICAgICAgICAgcGF5bWVudFR5cGU6XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgIGVudW06IFtTQUMsIFBSSUNFLCBBTUVSSUNBTl1cclxuICogICAgICAgICAgICAgICAgIGRlZmF1bHQ6IFBSSUNFXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogU2lzdGVtYSBkZSBhbW9ydGl6YcOnw6NvXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogQ8OhbGN1bG8gcmVhbGl6YWRvIGNvbSBzdWNlc3NvXHJcbiAqICAgICAgICAgY29udGVudDpcclxuICogICAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgc3VjY2VzczpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgZGF0YTpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgcHJpbmNpcGFsOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgaW50ZXJlc3RSYXRlOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgdGVybTpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgICAgICAgICBwYXltZW50VHlwZTpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgICAgIG1vbnRobHlQYXltZW50OlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgdG90YWxQYXltZW50OlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgdG90YWxJbnRlcmVzdDpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgIHNjaGVkdWxlOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogYXJyYXlcclxuICogICAgICAgICAgICAgICAgICAgICAgIGl0ZW1zOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICBtb250aDpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICBwYXltZW50OlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgcHJpbmNpcGFsOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgaW50ZXJlc3Q6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICBiYWxhbmNlOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogbnVtYmVyXHJcbiAqICAgICAgICAgICAgICAgICBjYWxjdWxhdGVkQXQ6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgICBmb3JtYXQ6IGRhdGUtdGltZVxyXG4gKiAgICAgICA0MDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IERhZG9zIGludsOhbGlkb3MgcGFyYSBjw6FsY3Vsb1xyXG4gKi9cclxucm91dGVyLnBvc3QoJy9sb2FuJywgKHJlcSwgcmVzKSA9PiBjYWxjdWxhdG9yQ29udHJvbGxlci5jYWxjdWxhdGVMb2FuKHJlcSwgcmVzKSk7XHJcblxyXG4vLyBSb3RhcyBhZG1pbmlzdHJhdGl2YXNcclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL2NhbGN1bGF0b3IvaGlzdG9yeTpcclxuICogICBnZXQ6XHJcbiAqICAgICBzdW1tYXJ5OiBPYnRlciBoaXN0w7NyaWNvIGRlIGPDoWxjdWxvcyAoQWRtaW4pXHJcbiAqICAgICB0YWdzOiBbQ2FsY3VsYWRvcmFdXHJcbiAqICAgICBzZWN1cml0eTpcclxuICogICAgICAgLSBiZWFyZXJBdXRoOiBbXVxyXG4gKiAgICAgcGFyYW1ldGVyczpcclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiBwYWdlXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgbWluaW11bTogMVxyXG4gKiAgICAgICAgICAgZGVmYXVsdDogMVxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBQw6FnaW5hXHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogbGltaXRcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICBtaW5pbXVtOiAxXHJcbiAqICAgICAgICAgICBtYXhpbXVtOiAxMDBcclxuICogICAgICAgICAgIGRlZmF1bHQ6IDIwXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEl0ZW5zIHBvciBww6FnaW5hXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogSGlzdMOzcmljbyBvYnRpZG8gY29tIHN1Y2Vzc29cclxuICogICAgICAgNDAxOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBUb2tlbiBpbnbDoWxpZG9cclxuICogICAgICAgNDAzOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBTZW0gcGVybWlzc8Ojb1xyXG4gKi9cclxucm91dGVyLmdldCgnL2hpc3RvcnknLCBhdXRoZW50aWNhdGUsIGF1dGhvcml6ZSgnQURNSU4nKSwgKHJlcSwgcmVzKSA9PiBjYWxjdWxhdG9yQ29udHJvbGxlci5nZXRDYWxjdWxhdGlvbkhpc3RvcnkocmVxLCByZXMpKTtcclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL2NhbGN1bGF0b3Ivc3RhdGlzdGljczpcclxuICogICBnZXQ6XHJcbiAqICAgICBzdW1tYXJ5OiBPYnRlciBlc3RhdMOtc3RpY2FzIGRlIGPDoWxjdWxvcyAoQWRtaW4pXHJcbiAqICAgICB0YWdzOiBbQ2FsY3VsYWRvcmFdXHJcbiAqICAgICBzZWN1cml0eTpcclxuICogICAgICAgLSBiZWFyZXJBdXRoOiBbXVxyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEVzdGF0w61zdGljYXMgb2J0aWRhcyBjb20gc3VjZXNzb1xyXG4gKiAgICAgICA0MDE6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGludsOhbGlkb1xyXG4gKiAgICAgICA0MDM6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFNlbSBwZXJtaXNzw6NvXHJcbiAqL1xyXG5yb3V0ZXIuZ2V0KCcvc3RhdGlzdGljcycsIGF1dGhlbnRpY2F0ZSwgYXV0aG9yaXplKCdBRE1JTicpLCAocmVxLCByZXMpID0+IGNhbGN1bGF0b3JDb250cm9sbGVyLmdldENhbGN1bGF0aW9uU3RhdGlzdGljcyhyZXEsIHJlcykpO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgcm91dGVyOyJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQSxNQUFBQSxTQUFBO0FBQUE7QUFBQSxDQUFBQyxhQUFBLEdBQUFDLENBQUEsT0FBQUMsT0FBQTtBQUNBLE1BQUFDLHNCQUFBO0FBQUE7QUFBQSxDQUFBSCxhQUFBLEdBQUFDLENBQUEsT0FBQUMsT0FBQTtBQUNBLE1BQUFFLE1BQUE7QUFBQTtBQUFBLENBQUFKLGFBQUEsR0FBQUMsQ0FBQSxPQUFBQyxPQUFBO0FBRUEsTUFBTUcsTUFBTTtB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

@@ -1,0 +1,558 @@
+a1a206e45250718e386e317bde596e53
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_1 = require("../middlewares/auth");
+const newsletterController_1 = require("../controllers/newsletterController");
+const router = (0, express_1.Router)();
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Newsletter:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: string
+ *         email:
+ *           type: string
+ *         name:
+ *           type: string
+ *         isActive:
+ *           type: boolean
+ *         preferences:
+ *           type: object
+ *           properties:
+ *             frequency:
+ *               type: string
+ *               enum: [DAILY, WEEKLY, MONTHLY]
+ *             categories:
+ *               type: array
+ *               items:
+ *                 type: string
+ *             topics:
+ *               type: array
+ *               items:
+ *                 type: string
+ *         source:
+ *           type: string
+ *         ipAddress:
+ *           type: string
+ *         userAgent:
+ *           type: string
+ *         confirmedAt:
+ *           type: string
+ *           format: date-time
+ *         unsubscribedAt:
+ *           type: string
+ *           format: date-time
+ *         createdAt:
+ *           type: string
+ *           format: date-time
+ *         updatedAt:
+ *           type: string
+ *           format: date-time
+ *     NewsletterSubscription:
+ *       type: object
+ *       required:
+ *         - email
+ *       properties:
+ *         email:
+ *           type: string
+ *           format: email
+ *           description: Email para inscrição
+ *         name:
+ *           type: string
+ *           description: Nome do assinante (opcional)
+ *         preferences:
+ *           type: object
+ *           properties:
+ *             frequency:
+ *               type: string
+ *               enum: [DAILY, WEEKLY, MONTHLY]
+ *               default: WEEKLY
+ *               description: Frequência de envio
+ *             categories:
+ *               type: array
+ *               items:
+ *                 type: string
+ *               description: Categorias de interesse
+ *             topics:
+ *               type: array
+ *               items:
+ *                 type: string
+ *               description: Tópicos de interesse
+ *         source:
+ *           type: string
+ *           description: Origem da inscrição (opcional)
+ *     NewsletterCampaign:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: string
+ *         title:
+ *           type: string
+ *         subject:
+ *           type: string
+ *         content:
+ *           type: string
+ *         htmlContent:
+ *           type: string
+ *         status:
+ *           type: string
+ *           enum: [DRAFT, SCHEDULED, SENDING, SENT, CANCELLED]
+ *         scheduledAt:
+ *           type: string
+ *           format: date-time
+ *         sentAt:
+ *           type: string
+ *           format: date-time
+ *         recipientCount:
+ *           type: integer
+ *         openCount:
+ *           type: integer
+ *         clickCount:
+ *           type: integer
+ *         unsubscribeCount:
+ *           type: integer
+ *         bounceCount:
+ *           type: integer
+ *         createdBy:
+ *           type: string
+ *         createdAt:
+ *           type: string
+ *           format: date-time
+ *         updatedAt:
+ *           type: string
+ *           format: date-time
+ */
+/**
+ * @swagger
+ * /api/v1/newsletter/subscribe:
+ *   post:
+ *     summary: Inscrever-se na newsletter
+ *     tags: [Newsletter]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/NewsletterSubscription'
+ *     responses:
+ *       201:
+ *         description: Inscrição realizada com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 message:
+ *                   type: string
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     confirmationRequired:
+ *                       type: boolean
+ *                     subscriptionId:
+ *                       type: string
+ *       400:
+ *         description: Dados inválidos
+ *       409:
+ *         description: Email já inscrito
+ *       429:
+ *         description: Muitas tentativas - tente novamente mais tarde
+ */
+router.post('/subscribe', newsletterController_1.NewsletterController.subscribeValidation, newsletterController_1.NewsletterController.subscribe);
+/**
+ * @swagger
+ * /api/v1/newsletter/confirm/{token}:
+ *   get:
+ *     summary: Confirmar inscrição na newsletter
+ *     tags: [Newsletter]
+ *     parameters:
+ *       - in: path
+ *         name: token
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Token de confirmação
+ *     responses:
+ *       200:
+ *         description: Inscrição confirmada com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 message:
+ *                   type: string
+ *       400:
+ *         description: Token inválido ou expirado
+ *       404:
+ *         description: Inscrição não encontrada
+ */
+router.get('/confirm/:token', newsletterController_1.NewsletterController.confirmSubscription);
+/**
+ * @swagger
+ * /api/v1/newsletter/unsubscribe/{token}:
+ *   get:
+ *     summary: Cancelar inscrição na newsletter
+ *     tags: [Newsletter]
+ *     parameters:
+ *       - in: path
+ *         name: token
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Token de cancelamento
+ *     responses:
+ *       200:
+ *         description: Inscrição cancelada com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 message:
+ *                   type: string
+ *       400:
+ *         description: Token inválido
+ *       404:
+ *         description: Inscrição não encontrada
+ */
+router.get('/unsubscribe/:token', newsletterController_1.NewsletterController.unsubscribe);
+/**
+ * @swagger
+ * /api/v1/newsletter/preferences/{token}:
+ *   get:
+ *     summary: Obter preferências do assinante
+ *     tags: [Newsletter]
+ *     parameters:
+ *       - in: path
+ *         name: token
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Token do assinante
+ *     responses:
+ *       200:
+ *         description: Preferências do assinante
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   $ref: '#/components/schemas/Newsletter'
+ *       400:
+ *         description: Token inválido
+ *       404:
+ *         description: Assinante não encontrado
+ */
+router.get('/preferences/:token', newsletterController_1.NewsletterController.getPreferences);
+/**
+ * @swagger
+ * /api/v1/newsletter/preferences/{token}:
+ *   put:
+ *     summary: Atualizar preferências do assinante
+ *     tags: [Newsletter]
+ *     parameters:
+ *       - in: path
+ *         name: token
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Token do assinante
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 description: Nome do assinante
+ *               preferences:
+ *                 type: object
+ *                 properties:
+ *                   frequency:
+ *                     type: string
+ *                     enum: [DAILY, WEEKLY, MONTHLY]
+ *                   categories:
+ *                     type: array
+ *                     items:
+ *                       type: string
+ *                   topics:
+ *                     type: array
+ *                     items:
+ *                       type: string
+ *     responses:
+ *       200:
+ *         description: Preferências atualizadas com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 message:
+ *                   type: string
+ *                 data:
+ *                   $ref: '#/components/schemas/Newsletter'
+ *       400:
+ *         description: Dados inválidos ou token inválido
+ *       404:
+ *         description: Assinante não encontrado
+ */
+router.put('/preferences/:token', newsletterController_1.NewsletterController.updatePreferences);
+// Rotas administrativas
+/**
+ * @swagger
+ * /api/v1/newsletter/subscribers:
+ *   get:
+ *     summary: Listar assinantes (Admin)
+ *     tags: [Newsletter]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           default: 1
+ *         description: Número da página
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           maximum: 100
+ *           default: 20
+ *         description: Itens por página
+ *       - in: query
+ *         name: status
+ *         schema:
+ *           type: string
+ *           enum: [active, inactive, unconfirmed]
+ *         description: Filtrar por status
+ *       - in: query
+ *         name: search
+ *         schema:
+ *           type: string
+ *         description: Buscar por email ou nome
+ *       - in: query
+ *         name: dateFrom
+ *         schema:
+ *           type: string
+ *           format: date
+ *         description: Data inicial (YYYY-MM-DD)
+ *       - in: query
+ *         name: dateTo
+ *         schema:
+ *           type: string
+ *           format: date
+ *         description: Data final (YYYY-MM-DD)
+ *       - in: query
+ *         name: sortBy
+ *         schema:
+ *           type: string
+ *           enum: [createdAt, email, name, confirmedAt]
+ *           default: createdAt
+ *         description: Campo para ordenação
+ *       - in: query
+ *         name: sortOrder
+ *         schema:
+ *           type: string
+ *           enum: [asc, desc]
+ *           default: desc
+ *         description: Ordem da classificação
+ *     responses:
+ *       200:
+ *         description: Lista de assinantes
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     subscribers:
+ *                       type: array
+ *                       items:
+ *                         $ref: '#/components/schemas/Newsletter'
+ *                     pagination:
+ *                       type: object
+ *                       properties:
+ *                         page:
+ *                           type: integer
+ *                         limit:
+ *                           type: integer
+ *                         total:
+ *                           type: integer
+ *                         pages:
+ *                           type: integer
+ *                     stats:
+ *                       type: object
+ *                       properties:
+ *                         total:
+ *                           type: integer
+ *                         active:
+ *                           type: integer
+ *                         inactive:
+ *                           type: integer
+ *                         unconfirmed:
+ *                           type: integer
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ */
+router.get('/subscribers', auth_1.authenticate, (0, auth_1.authorize)('ADMIN', 'EDITOR'), newsletterController_1.NewsletterController.getSubscribers);
+/**
+ * @swagger
+ * /api/v1/newsletter/campaigns:
+ *   get:
+ *     summary: Listar campanhas (Admin)
+ *     tags: [Newsletter]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           default: 1
+ *         description: Número da página
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           maximum: 50
+ *           default: 10
+ *         description: Itens por página
+ *       - in: query
+ *         name: status
+ *         schema:
+ *           type: string
+ *           enum: [DRAFT, SCHEDULED, SENDING, SENT, CANCELLED]
+ *         description: Filtrar por status
+ *     responses:
+ *       200:
+ *         description: Lista de campanhas
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     campaigns:
+ *                       type: array
+ *                       items:
+ *                         $ref: '#/components/schemas/NewsletterCampaign'
+ *                     pagination:
+ *                       type: object
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ */
+router.get('/campaigns', auth_1.authenticate, (0, auth_1.authorize)('ADMIN', 'EDITOR'), newsletterController_1.NewsletterController.getCampaigns);
+/**
+ * @swagger
+ * /api/v1/newsletter/campaigns:
+ *   post:
+ *     summary: Criar nova campanha (Admin)
+ *     tags: [Newsletter]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - title
+ *               - subject
+ *               - content
+ *             properties:
+ *               title:
+ *                 type: string
+ *                 minLength: 3
+ *                 description: Título da campanha
+ *               subject:
+ *                 type: string
+ *                 minLength: 5
+ *                 description: Assunto do email
+ *               content:
+ *                 type: string
+ *                 minLength: 10
+ *                 description: Conteúdo da campanha
+ *               htmlContent:
+ *                 type: string
+ *                 description: Conteúdo HTML (opcional)
+ *               scheduledAt:
+ *                 type: string
+ *                 format: date-time
+ *                 description: Data de agendamento (opcional)
+ *     responses:
+ *       201:
+ *         description: Campanha criada com sucesso
+ *       400:
+ *         description: Dados inválidos
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ */
+router.post('/campaigns', auth_1.authenticate, (0, auth_1.authorize)('ADMIN', 'EDITOR'), newsletterController_1.NewsletterController.campaignValidation, newsletterController_1.NewsletterController.createCampaign);
+/**
+ * @swagger
+ * /api/v1/newsletter/campaigns/{id}/send:
+ *   post:
+ *     summary: Enviar campanha (Admin)
+ *     tags: [Newsletter]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID da campanha
+ *     responses:
+ *       200:
+ *         description: Campanha enviada com sucesso
+ *       400:
+ *         description: Campanha não pode ser enviada
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ *       404:
+ *         description: Campanha não encontrada
+ */
+router.post('/campaigns/:id/send', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), newsletterController_1.NewsletterController.sendCampaignToSubscribers);
+exports.default = router;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRDpcXGRldlxcY29udGFiaWxcXGNvbnRhYmlsLXNpdGVcXGJhY2tlbmRcXHNyY1xccm91dGVzXFxuZXdzbGV0dGVyUm91dGVzLnRzIiwibWFwcGluZ3MiOiI7O0FBQUEscUNBQWlDO0FBQ2pDLDhDQUE4RDtBQUM5RCw4RUFBMkU7QUFDM0UsTUFBTSxNQUFNLEdBQUcsSUFBQSxnQkFBTSxHQUFFLENBQUM7QUFFeEI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztHQXdIRztBQUVIOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0dBcUNHO0FBQ0gsTUFBTSxDQUFDLElBQUksQ0FBQyxZQUFZLEVBQUUsMkNBQW9CLENBQUMsbUJBQW1CLEVBQUUsMkNBQW9CLENBQUMsU0FBUyxDQUFDLENBQUM7QUFFcEc7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0dBNkJHO0FBQ0gsTUFBTSxDQUFDLEdBQUcsQ0FBQyxpQkFBaUIsRUFBRSwyQ0FBb0IsQ0FBQyxtQkFBbUIsQ0FBQyxDQUFDO0FBRXhFOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztHQTZCRztBQUNILE1BQU0sQ0FBQyxHQUFHLENBQUMscUJBQXFCLEVBQUUsMkNBQW9CLENBQUMsV0FBVyxDQUFDLENBQUM7QUFFcEU7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0dBNkJHO0FBQ0gsTUFBTSxDQUFDLEdBQUcsQ0FBQyxxQkFBcUIsRUFBRSwyQ0FBb0IsQ0FBQyxjQUFjLENBQUMsQ0FBQztBQUV2RTs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztHQXVERztBQUNILE1BQU0sQ0FBQyxHQUFHLENBQUMscUJBQXFCLEVBQUUsMkNBQW9CLENBQUMsaUJBQWlCLENBQUMsQ0FBQztBQUUxRSx3QkFBd0I7QUFFeEI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0dBd0dHO0FBQ0gsTUFBTSxDQUFDLEdBQUcsQ0FBQyxjQUFjLEVBQUUsbUJBQVksRUFBRSxJQUFBLGdCQUFTLEVBQUMsT0FBTyxFQUFFLFFBQVEsQ0FBQyxFQUFFLDJDQUFvQixDQUFDLGNBQWMsQ0FBQyxDQUFDO0FBRTVHOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztHQXFERztBQUNILE1BQU0sQ0FBQyxHQUFHLENBQUMsWUFBWSxFQUFFLG1CQUFZLEVBQUUsSUFBQSxnQkFBUyxFQUFDLE9BQU8sRUFBRSxRQUFRLENBQUMsRUFBRSwyQ0FBb0IsQ0FBQyxZQUFZLENBQUMsQ0FBQztBQUV4Rzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7R0ErQ0c7QUFDSCxNQUFNLENBQUMsSUFBSSxDQUFDLFlBQVksRUFBRSxtQkFBWSxFQUFFLElBQUEsZ0JBQVMsRUFBQyxPQUFPLEVBQUUsUUFBUSxDQUFDLEVBQUUsMkNBQW9CLENBQUMsa0JBQWtCLEVBQUUsMkNBQW9CLENBQUMsY0FBYyxDQUFDLENBQUM7QUFFcEo7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0dBMEJHO0FBQ0gsTUFBTSxDQUFDLElBQUksQ0FBQyxxQkFBcUIsRUFBRSxtQkFBWSxFQUFFLElBQUEsZ0JBQVMsRUFBQyxPQUFPLENBQUMsRUFBRSwyQ0FBb0IsQ0FBQyx5QkFBeUIsQ0FBQyxDQUFDO0FBRXJILGtCQUFlLE1BQU0sQ0FBQyIsIm5hbWVzIjpbXSwic291cmNlcyI6WyJEOlxcZGV2XFxjb250YWJpbFxcY29udGFiaWwtc2l0ZVxcYmFja2VuZFxcc3JjXFxyb3V0ZXNcXG5ld3NsZXR0ZXJSb3V0ZXMudHMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgUm91dGVyIH0gZnJvbSAnZXhwcmVzcyc7XHJcbmltcG9ydCB7IGF1dGhlbnRpY2F0ZSwgYXV0aG9yaXplIH0gZnJvbSAnLi4vbWlkZGxld2FyZXMvYXV0aCc7XHJcbmltcG9ydCB7IE5ld3NsZXR0ZXJDb250cm9sbGVyIH0gZnJvbSAnLi4vY29udHJvbGxlcnMvbmV3c2xldHRlckNvbnRyb2xsZXInO1xyXG5jb25zdCByb3V0ZXIgPSBSb3V0ZXIoKTtcclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiBjb21wb25lbnRzOlxyXG4gKiAgIHNjaGVtYXM6XHJcbiAqICAgICBOZXdzbGV0dGVyOlxyXG4gKiAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICBpZDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGVtYWlsOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgbmFtZTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGlzQWN0aXZlOlxyXG4gKiAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgIHByZWZlcmVuY2VzOlxyXG4gKiAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICBmcmVxdWVuY3k6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgZW51bTogW0RBSUxZLCBXRUVLTFksIE1PTlRITFldXHJcbiAqICAgICAgICAgICAgIGNhdGVnb3JpZXM6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogYXJyYXlcclxuICogICAgICAgICAgICAgICBpdGVtczpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICB0b3BpY3M6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogYXJyYXlcclxuICogICAgICAgICAgICAgICBpdGVtczpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIHNvdXJjZTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGlwQWRkcmVzczpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIHVzZXJBZ2VudDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGNvbmZpcm1lZEF0OlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBmb3JtYXQ6IGRhdGUtdGltZVxyXG4gKiAgICAgICAgIHVuc3Vic2NyaWJlZEF0OlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBmb3JtYXQ6IGRhdGUtdGltZVxyXG4gKiAgICAgICAgIGNyZWF0ZWRBdDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZm9ybWF0OiBkYXRlLXRpbWVcclxuICogICAgICAgICB1cGRhdGVkQXQ6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGZvcm1hdDogZGF0ZS10aW1lXHJcbiAqICAgICBOZXdzbGV0dGVyU3Vic2NyaXB0aW9uOlxyXG4gKiAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgcmVxdWlyZWQ6XHJcbiAqICAgICAgICAgLSBlbWFpbFxyXG4gKiAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgIGVtYWlsOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBmb3JtYXQ6IGVtYWlsXHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogRW1haWwgcGFyYSBpbnNjcmnDp8Ojb1xyXG4gKiAgICAgICAgIG5hbWU6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBOb21lIGRvIGFzc2luYW50ZSAob3BjaW9uYWwpXHJcbiAqICAgICAgICAgcHJlZmVyZW5jZXM6XHJcbiAqICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgIGZyZXF1ZW5jeTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICBlbnVtOiBbREFJTFksIFdFRUtMWSwgTU9OVEhMWV1cclxuICogICAgICAgICAgICAgICBkZWZhdWx0OiBXRUVLTFlcclxuICogICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogRnJlcXXDqm5jaWEgZGUgZW52aW9cclxuICogICAgICAgICAgICAgY2F0ZWdvcmllczpcclxuICogICAgICAgICAgICAgICB0eXBlOiBhcnJheVxyXG4gKiAgICAgICAgICAgICAgIGl0ZW1zOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IENhdGVnb3JpYXMgZGUgaW50ZXJlc3NlXHJcbiAqICAgICAgICAgICAgIHRvcGljczpcclxuICogICAgICAgICAgICAgICB0eXBlOiBhcnJheVxyXG4gKiAgICAgICAgICAgICAgIGl0ZW1zOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IFTDs3BpY29zIGRlIGludGVyZXNzZVxyXG4gKiAgICAgICAgIHNvdXJjZTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IE9yaWdlbSBkYSBpbnNjcmnDp8OjbyAob3BjaW9uYWwpXHJcbiAqICAgICBOZXdzbGV0dGVyQ2FtcGFpZ246XHJcbiAqICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgIGlkOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgdGl0bGU6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBzdWJqZWN0OlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgY29udGVudDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGh0bWxDb250ZW50OlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgc3RhdHVzOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBlbnVtOiBbRFJBRlQsIFNDSEVEVUxFRCwgU0VORElORywgU0VOVCwgQ0FOQ0VMTEVEXVxyXG4gKiAgICAgICAgIHNjaGVkdWxlZEF0OlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBmb3JtYXQ6IGRhdGUtdGltZVxyXG4gKiAgICAgICAgIHNlbnRBdDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZm9ybWF0OiBkYXRlLXRpbWVcclxuICogICAgICAgICByZWNpcGllbnRDb3VudDpcclxuICogICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICBvcGVuQ291bnQ6XHJcbiAqICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgY2xpY2tDb3VudDpcclxuICogICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICB1bnN1YnNjcmliZUNvdW50OlxyXG4gKiAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgIGJvdW5jZUNvdW50OlxyXG4gKiAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgIGNyZWF0ZWRCeTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGNyZWF0ZWRBdDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZm9ybWF0OiBkYXRlLXRpbWVcclxuICogICAgICAgICB1cGRhdGVkQXQ6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGZvcm1hdDogZGF0ZS10aW1lXHJcbiAqL1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvbmV3c2xldHRlci9zdWJzY3JpYmU6XHJcbiAqICAgcG9zdDpcclxuICogICAgIHN1bW1hcnk6IEluc2NyZXZlci1zZSBuYSBuZXdzbGV0dGVyXHJcbiAqICAgICB0YWdzOiBbTmV3c2xldHRlcl1cclxuICogICAgIHJlcXVlc3RCb2R5OlxyXG4gKiAgICAgICByZXF1aXJlZDogdHJ1ZVxyXG4gKiAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICRyZWY6ICcjL2NvbXBvbmVudHMvc2NoZW1hcy9OZXdzbGV0dGVyU3Vic2NyaXB0aW9uJ1xyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDE6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEluc2NyacOnw6NvIHJlYWxpemFkYSBjb20gc3VjZXNzb1xyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgIHN1Y2Nlc3M6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgIG1lc3NhZ2U6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgZGF0YTpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgY29uZmlybWF0aW9uUmVxdWlyZWQ6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICAgICAgc3Vic2NyaXB0aW9uSWQ6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgNDAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBEYWRvcyBpbnbDoWxpZG9zXHJcbiAqICAgICAgIDQwOTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRW1haWwgasOhIGluc2NyaXRvXHJcbiAqICAgICAgIDQyOTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogTXVpdGFzIHRlbnRhdGl2YXMgLSB0ZW50ZSBub3ZhbWVudGUgbWFpcyB0YXJkZVxyXG4gKi9cclxucm91dGVyLnBvc3QoJy9zdWJzY3JpYmUnLCBOZXdzbGV0dGVyQ29udHJvbGxlci5zdWJzY3JpYmVWYWxpZGF0aW9uLCBOZXdzbGV0dGVyQ29udHJvbGxlci5zdWJzY3JpYmUpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvbmV3c2xldHRlci9jb25maXJtL3t0b2tlbn06XHJcbiAqICAgZ2V0OlxyXG4gKiAgICAgc3VtbWFyeTogQ29uZmlybWFyIGluc2NyacOnw6NvIG5hIG5ld3NsZXR0ZXJcclxuICogICAgIHRhZ3M6IFtOZXdzbGV0dGVyXVxyXG4gKiAgICAgcGFyYW1ldGVyczpcclxuICogICAgICAgLSBpbjogcGF0aFxyXG4gKiAgICAgICAgIG5hbWU6IHRva2VuXHJcbiAqICAgICAgICAgcmVxdWlyZWQ6IHRydWVcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gZGUgY29uZmlybWHDp8Ojb1xyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEluc2NyacOnw6NvIGNvbmZpcm1hZGEgY29tIHN1Y2Vzc29cclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICBzdWNjZXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBtZXNzYWdlOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgNDAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBUb2tlbiBpbnbDoWxpZG8gb3UgZXhwaXJhZG9cclxuICogICAgICAgNDA0OlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBJbnNjcmnDp8OjbyBuw6NvIGVuY29udHJhZGFcclxuICovXHJcbnJvdXRlci5nZXQoJy9jb25maXJtLzp0b2tlbicsIE5ld3NsZXR0ZXJDb250cm9sbGVyLmNvbmZpcm1TdWJzY3JpcHRpb24pO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvbmV3c2xldHRlci91bnN1YnNjcmliZS97dG9rZW59OlxyXG4gKiAgIGdldDpcclxuICogICAgIHN1bW1hcnk6IENhbmNlbGFyIGluc2NyacOnw6NvIG5hIG5ld3NsZXR0ZXJcclxuICogICAgIHRhZ3M6IFtOZXdzbGV0dGVyXVxyXG4gKiAgICAgcGFyYW1ldGVyczpcclxuICogICAgICAgLSBpbjogcGF0aFxyXG4gKiAgICAgICAgIG5hbWU6IHRva2VuXHJcbiAqICAgICAgICAgcmVxdWlyZWQ6IHRydWVcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gZGUgY2FuY2VsYW1lbnRvXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogSW5zY3Jpw6fDo28gY2FuY2VsYWRhIGNvbSBzdWNlc3NvXHJcbiAqICAgICAgICAgY29udGVudDpcclxuICogICAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgc3VjY2VzczpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgbWVzc2FnZTpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgIDQwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gaW52w6FsaWRvXHJcbiAqICAgICAgIDQwNDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogSW5zY3Jpw6fDo28gbsOjbyBlbmNvbnRyYWRhXHJcbiAqL1xyXG5yb3V0ZXIuZ2V0KCcvdW5zdWJzY3JpYmUvOnRva2VuJywgTmV3c2xldHRlckNvbnRyb2xsZXIudW5zdWJzY3JpYmUpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvbmV3c2xldHRlci9wcmVmZXJlbmNlcy97dG9rZW59OlxyXG4gKiAgIGdldDpcclxuICogICAgIHN1bW1hcnk6IE9idGVyIHByZWZlcsOqbmNpYXMgZG8gYXNzaW5hbnRlXHJcbiAqICAgICB0YWdzOiBbTmV3c2xldHRlcl1cclxuICogICAgIHBhcmFtZXRlcnM6XHJcbiAqICAgICAgIC0gaW46IHBhdGhcclxuICogICAgICAgICBuYW1lOiB0b2tlblxyXG4gKiAgICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGRvIGFzc2luYW50ZVxyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFByZWZlcsOqbmNpYXMgZG8gYXNzaW5hbnRlXHJcbiAqICAgICAgICAgY29udGVudDpcclxuICogICAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgc3VjY2VzczpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgZGF0YTpcclxuICogICAgICAgICAgICAgICAgICAgJHJlZjogJyMvY29tcG9uZW50cy9zY2hlbWFzL05ld3NsZXR0ZXInXHJcbiAqICAgICAgIDQwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gaW52w6FsaWRvXHJcbiAqICAgICAgIDQwNDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogQXNzaW5hbnRlIG7Do28gZW5jb250cmFkb1xyXG4gKi9cclxucm91dGVyLmdldCgnL3ByZWZlcmVuY2VzLzp0b2tlbicsIE5ld3NsZXR0ZXJDb250cm9sbGVyLmdldFByZWZlcmVuY2VzKTtcclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL25ld3NsZXR0ZXIvcHJlZmVyZW5jZXMve3Rva2VufTpcclxuICogICBwdXQ6XHJcbiAqICAgICBzdW1tYXJ5OiBBdHVhbGl6YXIgcHJlZmVyw6puY2lhcyBkbyBhc3NpbmFudGVcclxuICogICAgIHRhZ3M6IFtOZXdzbGV0dGVyXVxyXG4gKiAgICAgcGFyYW1ldGVyczpcclxuICogICAgICAgLSBpbjogcGF0aFxyXG4gKiAgICAgICAgIG5hbWU6IHRva2VuXHJcbiAqICAgICAgICAgcmVxdWlyZWQ6IHRydWVcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gZG8gYXNzaW5hbnRlXHJcbiAqICAgICByZXF1ZXN0Qm9keTpcclxuICogICAgICAgcmVxdWlyZWQ6IHRydWVcclxuICogICAgICAgY29udGVudDpcclxuICogICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICBuYW1lOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogTm9tZSBkbyBhc3NpbmFudGVcclxuICogICAgICAgICAgICAgICBwcmVmZXJlbmNlczpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgZnJlcXVlbmN5OlxyXG4gKiAgICAgICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgICAgIGVudW06IFtEQUlMWSwgV0VFS0xZLCBNT05USExZXVxyXG4gKiAgICAgICAgICAgICAgICAgICBjYXRlZ29yaWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGFycmF5XHJcbiAqICAgICAgICAgICAgICAgICAgICAgaXRlbXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgICAgdG9waWNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGFycmF5XHJcbiAqICAgICAgICAgICAgICAgICAgICAgaXRlbXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBQcmVmZXLDqm5jaWFzIGF0dWFsaXphZGFzIGNvbSBzdWNlc3NvXHJcbiAqICAgICAgICAgY29udGVudDpcclxuICogICAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgc3VjY2VzczpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgbWVzc2FnZTpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICBkYXRhOlxyXG4gKiAgICAgICAgICAgICAgICAgICAkcmVmOiAnIy9jb21wb25lbnRzL3NjaGVtYXMvTmV3c2xldHRlcidcclxuICogICAgICAgNDAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBEYWRvcyBpbnbDoWxpZG9zIG91IHRva2VuIGludsOhbGlkb1xyXG4gKiAgICAgICA0MDQ6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEFzc2luYW50ZSBuw6NvIGVuY29udHJhZG9cclxuICovXHJcbnJvdXRlci5wdXQoJy9wcmVmZXJlbmNlcy86dG9rZW4nLCBOZXdzbGV0dGVyQ29udHJvbGxlci51cGRhdGVQcmVmZXJlbmNlcyk7XHJcblxyXG4vLyBSb3RhcyBhZG1pbmlzdHJhdGl2YXNcclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL25ld3NsZXR0ZXIvc3Vic2NyaWJlcnM6XHJcbiAqICAgZ2V0OlxyXG4gKiAgICAgc3VtbWFyeTogTGlzdGFyIGFzc2luYW50ZXMgKEFkbWluKVxyXG4gKiAgICAgdGFnczogW05ld3NsZXR0ZXJdXHJcbiAqICAgICBzZWN1cml0eTpcclxuICogICAgICAgLSBiZWFyZXJBdXRoOiBbXVxyXG4gKiAgICAgcGFyYW1ldGVyczpcclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiBwYWdlXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgbWluaW11bTogMVxyXG4gKiAgICAgICAgICAgZGVmYXVsdDogMVxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBOw7ptZXJvIGRhIHDDoWdpbmFcclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiBsaW1pdFxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgIG1pbmltdW06IDFcclxuICogICAgICAgICAgIG1heGltdW06IDEwMFxyXG4gKiAgICAgICAgICAgZGVmYXVsdDogMjBcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogSXRlbnMgcG9yIHDDoWdpbmFcclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiBzdGF0dXNcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGVudW06IFthY3RpdmUsIGluYWN0aXZlLCB1bmNvbmZpcm1lZF1cclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRmlsdHJhciBwb3Igc3RhdHVzXHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogc2VhcmNoXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEJ1c2NhciBwb3IgZW1haWwgb3Ugbm9tZVxyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IGRhdGVGcm9tXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBmb3JtYXQ6IGRhdGVcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRGF0YSBpbmljaWFsIChZWVlZLU1NLUREKVxyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IGRhdGVUb1xyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZm9ybWF0OiBkYXRlXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IERhdGEgZmluYWwgKFlZWVktTU0tREQpXHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogc29ydEJ5XHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBlbnVtOiBbY3JlYXRlZEF0LCBlbWFpbCwgbmFtZSwgY29uZmlybWVkQXRdXHJcbiAqICAgICAgICAgICBkZWZhdWx0OiBjcmVhdGVkQXRcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogQ2FtcG8gcGFyYSBvcmRlbmHDp8Ojb1xyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IHNvcnRPcmRlclxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZW51bTogW2FzYywgZGVzY11cclxuICogICAgICAgICAgIGRlZmF1bHQ6IGRlc2NcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogT3JkZW0gZGEgY2xhc3NpZmljYcOnw6NvXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogTGlzdGEgZGUgYXNzaW5hbnRlc1xyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgIHN1Y2Nlc3M6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgIGRhdGE6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgIHN1YnNjcmliZXJzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogYXJyYXlcclxuICogICAgICAgICAgICAgICAgICAgICAgIGl0ZW1zOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAkcmVmOiAnIy9jb21wb25lbnRzL3NjaGVtYXMvTmV3c2xldHRlcidcclxuICogICAgICAgICAgICAgICAgICAgICBwYWdpbmF0aW9uOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICBwYWdlOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgbGltaXQ6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICB0b3RhbDpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIHBhZ2VzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgICAgICAgICBzdGF0czpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgdG90YWw6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICBhY3RpdmU6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICBpbmFjdGl2ZTpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIHVuY29uZmlybWVkOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgNDAxOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBUb2tlbiBpbnbDoWxpZG9cclxuICogICAgICAgNDAzOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBTZW0gcGVybWlzc8Ojb1xyXG4gKi9cclxucm91dGVyLmdldCgnL3N1YnNjcmliZXJzJywgYXV0aGVudGljYXRlLCBhdXRob3JpemUoJ0FETUlOJywgJ0VESVRPUicpLCBOZXdzbGV0dGVyQ29udHJvbGxlci5nZXRTdWJzY3JpYmVycyk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS9uZXdzbGV0dGVyL2NhbXBhaWduczpcclxuICogICBnZXQ6XHJcbiAqICAgICBzdW1tYXJ5OiBMaXN0YXIgY2FtcGFuaGFzIChBZG1pbilcclxuICogICAgIHRhZ3M6IFtOZXdzbGV0dGVyXVxyXG4gKiAgICAgc2VjdXJpdHk6XHJcbiAqICAgICAgIC0gYmVhcmVyQXV0aDogW11cclxuICogICAgIHBhcmFtZXRlcnM6XHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogcGFnZVxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgIG1pbmltdW06IDFcclxuICogICAgICAgICAgIGRlZmF1bHQ6IDFcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogTsO6bWVybyBkYSBww6FnaW5hXHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogbGltaXRcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICBtaW5pbXVtOiAxXHJcbiAqICAgICAgICAgICBtYXhpbXVtOiA1MFxyXG4gKiAgICAgICAgICAgZGVmYXVsdDogMTBcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogSXRlbnMgcG9yIHDDoWdpbmFcclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiBzdGF0dXNcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGVudW06IFtEUkFGVCwgU0NIRURVTEVELCBTRU5ESU5HLCBTRU5ULCBDQU5DRUxMRURdXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEZpbHRyYXIgcG9yIHN0YXR1c1xyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IExpc3RhIGRlIGNhbXBhbmhhc1xyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgIHN1Y2Nlc3M6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgIGRhdGE6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgIGNhbXBhaWduczpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGFycmF5XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICBpdGVtczpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgJHJlZjogJyMvY29tcG9uZW50cy9zY2hlbWFzL05ld3NsZXR0ZXJDYW1wYWlnbidcclxuICogICAgICAgICAgICAgICAgICAgICBwYWdpbmF0aW9uOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgIDQwMTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gaW52w6FsaWRvXHJcbiAqICAgICAgIDQwMzpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogU2VtIHBlcm1pc3PDo29cclxuICovXHJcbnJvdXRlci5nZXQoJy9jYW1wYWlnbnMnLCBhdXRoZW50aWNhdGUsIGF1dGhvcml6ZSgnQURNSU4nLCAnRURJVE9SJyksIE5ld3NsZXR0ZXJDb250cm9sbGVyLmdldENhbXBhaWducyk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS9uZXdzbGV0dGVyL2NhbXBhaWduczpcclxuICogICBwb3N0OlxyXG4gKiAgICAgc3VtbWFyeTogQ3JpYXIgbm92YSBjYW1wYW5oYSAoQWRtaW4pXHJcbiAqICAgICB0YWdzOiBbTmV3c2xldHRlcl1cclxuICogICAgIHNlY3VyaXR5OlxyXG4gKiAgICAgICAtIGJlYXJlckF1dGg6IFtdXHJcbiAqICAgICByZXF1ZXN0Qm9keTpcclxuICogICAgICAgcmVxdWlyZWQ6IHRydWVcclxuICogICAgICAgY29udGVudDpcclxuICogICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgcmVxdWlyZWQ6XHJcbiAqICAgICAgICAgICAgICAgLSB0aXRsZVxyXG4gKiAgICAgICAgICAgICAgIC0gc3ViamVjdFxyXG4gKiAgICAgICAgICAgICAgIC0gY29udGVudFxyXG4gKiAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgIHRpdGxlOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICBtaW5MZW5ndGg6IDNcclxuICogICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBUw610dWxvIGRhIGNhbXBhbmhhXHJcbiAqICAgICAgICAgICAgICAgc3ViamVjdDpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgbWluTGVuZ3RoOiA1XHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogQXNzdW50byBkbyBlbWFpbFxyXG4gKiAgICAgICAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgIG1pbkxlbmd0aDogMTBcclxuICogICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBDb250ZcO6ZG8gZGEgY2FtcGFuaGFcclxuICogICAgICAgICAgICAgICBodG1sQ29udGVudDpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IENvbnRlw7pkbyBIVE1MIChvcGNpb25hbClcclxuICogICAgICAgICAgICAgICBzY2hlZHVsZWRBdDpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgZm9ybWF0OiBkYXRlLXRpbWVcclxuICogICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBEYXRhIGRlIGFnZW5kYW1lbnRvIChvcGNpb25hbClcclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAxOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBDYW1wYW5oYSBjcmlhZGEgY29tIHN1Y2Vzc29cclxuICogICAgICAgNDAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBEYWRvcyBpbnbDoWxpZG9zXHJcbiAqICAgICAgIDQwMTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gaW52w6FsaWRvXHJcbiAqICAgICAgIDQwMzpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogU2VtIHBlcm1pc3PDo29cclxuICovXHJcbnJvdXRlci5wb3N0KCcvY2FtcGFpZ25zJywgYXV0aGVudGljYXRlLCBhdXRob3JpemUoJ0FETUlOJywgJ0VESVRPUicpLCBOZXdzbGV0dGVyQ29udHJvbGxlci5jYW1wYWlnblZhbGlkYXRpb24sIE5ld3NsZXR0ZXJDb250cm9sbGVyLmNyZWF0ZUNhbXBhaWduKTtcclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL25ld3NsZXR0ZXIvY2FtcGFpZ25zL3tpZH0vc2VuZDpcclxuICogICBwb3N0OlxyXG4gKiAgICAgc3VtbWFyeTogRW52aWFyIGNhbXBhbmhhIChBZG1pbilcclxuICogICAgIHRhZ3M6IFtOZXdzbGV0dGVyXVxyXG4gKiAgICAgc2VjdXJpdHk6XHJcbiAqICAgICAgIC0gYmVhcmVyQXV0aDogW11cclxuICogICAgIHBhcmFtZXRlcnM6XHJcbiAqICAgICAgIC0gaW46IHBhdGhcclxuICogICAgICAgICBuYW1lOiBpZFxyXG4gKiAgICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IElEIGRhIGNhbXBhbmhhXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogQ2FtcGFuaGEgZW52aWFkYSBjb20gc3VjZXNzb1xyXG4gKiAgICAgICA0MDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IENhbXBhbmhhIG7Do28gcG9kZSBzZXIgZW52aWFkYVxyXG4gKiAgICAgICA0MDE6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGludsOhbGlkb1xyXG4gKiAgICAgICA0MDM6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFNlbSBwZXJtaXNzw6NvXHJcbiAqICAgICAgIDQwNDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogQ2FtcGFuaGEgbsOjbyBlbmNvbnRyYWRhXHJcbiAqL1xyXG5yb3V0ZXIucG9zdCgnL2NhbXBhaWducy86aWQvc2VuZCcsIGF1dGhlbnRpY2F0ZSwgYXV0aG9yaXplKCdBRE1JTicpLCBOZXdzbGV0dGVyQ29udHJvbGxlci5zZW5kQ2FtcGFpZ25Ub1N1YnNjcmliZXJzKTtcclxuXHJcbmV4cG9ydCBkZWZhdWx0IHJvdXRlcjsiXSwidmVyc2lvbiI6M30=

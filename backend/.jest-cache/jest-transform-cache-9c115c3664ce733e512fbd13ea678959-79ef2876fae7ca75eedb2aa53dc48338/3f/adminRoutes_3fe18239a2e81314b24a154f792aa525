@@ -1,0 +1,757 @@
+f36862aef7dc49748a788c1d1966e3fa
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_1 = require("../middlewares/auth");
+const adminController_1 = __importDefault(require("../controllers/adminController"));
+const router = (0, express_1.Router)();
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     DashboardStats:
+ *       type: object
+ *       properties:
+ *         users:
+ *           type: object
+ *           properties:
+ *             total:
+ *               type: integer
+ *             active:
+ *               type: integer
+ *             newThisMonth:
+ *               type: integer
+ *             byRole:
+ *               type: object
+ *               properties:
+ *                 admin:
+ *                   type: integer
+ *                 editor:
+ *                   type: integer
+ *                 user:
+ *                   type: integer
+ *         articles:
+ *           type: object
+ *           properties:
+ *             total:
+ *               type: integer
+ *             published:
+ *               type: integer
+ *             draft:
+ *               type: integer
+ *             thisMonth:
+ *               type: integer
+ *             totalViews:
+ *               type: integer
+ *             totalLikes:
+ *               type: integer
+ *         contacts:
+ *           type: object
+ *           properties:
+ *             total:
+ *               type: integer
+ *             pending:
+ *               type: integer
+ *             replied:
+ *               type: integer
+ *             thisMonth:
+ *               type: integer
+ *         newsletter:
+ *           type: object
+ *           properties:
+ *             subscribers:
+ *               type: integer
+ *             activeSubscribers:
+ *               type: integer
+ *             campaigns:
+ *               type: integer
+ *             thisMonth:
+ *               type: integer
+ *         uploads:
+ *           type: object
+ *           properties:
+ *             total:
+ *               type: integer
+ *             totalSize:
+ *               type: string
+ *             thisMonth:
+ *               type: integer
+ *             byType:
+ *               type: object
+ *         system:
+ *           type: object
+ *           properties:
+ *             uptime:
+ *               type: string
+ *             version:
+ *               type: string
+ *             environment:
+ *               type: string
+ *             lastBackup:
+ *               type: string
+ *               format: date-time
+ *     SystemInfo:
+ *       type: object
+ *       properties:
+ *         server:
+ *           type: object
+ *           properties:
+ *             platform:
+ *               type: string
+ *             nodeVersion:
+ *               type: string
+ *             memory:
+ *               type: object
+ *               properties:
+ *                 used:
+ *                   type: string
+ *                 total:
+ *                   type: string
+ *                 percentage:
+ *                   type: number
+ *             cpu:
+ *               type: object
+ *               properties:
+ *                 usage:
+ *                   type: number
+ *                 cores:
+ *                   type: integer
+ *             uptime:
+ *               type: string
+ *         database:
+ *           type: object
+ *           properties:
+ *             status:
+ *               type: string
+ *             version:
+ *               type: string
+ *             size:
+ *               type: string
+ *             connections:
+ *               type: integer
+ *         cache:
+ *           type: object
+ *           properties:
+ *             status:
+ *               type: string
+ *             memory:
+ *               type: string
+ *             keys:
+ *               type: integer
+ *             hitRate:
+ *               type: number
+ *     ActivityLog:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: string
+ *         userId:
+ *           type: string
+ *         userName:
+ *           type: string
+ *         action:
+ *           type: string
+ *         resource:
+ *           type: string
+ *         resourceId:
+ *           type: string
+ *         details:
+ *           type: object
+ *         ipAddress:
+ *           type: string
+ *         userAgent:
+ *           type: string
+ *         timestamp:
+ *           type: string
+ *           format: date-time
+ *     BackupInfo:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: string
+ *         filename:
+ *           type: string
+ *         size:
+ *           type: string
+ *         type:
+ *           type: string
+ *           enum: [full, incremental]
+ *         status:
+ *           type: string
+ *           enum: [completed, failed, in_progress]
+ *         createdAt:
+ *           type: string
+ *           format: date-time
+ *         duration:
+ *           type: string
+ *     SettingItem:
+ *       type: object
+ *       properties:
+ *         key:
+ *           type: string
+ *         value:
+ *           type: string
+ *         type:
+ *           type: string
+ *           enum: [string, number, boolean, json]
+ *         category:
+ *           type: string
+ *         description:
+ *           type: string
+ *         isPublic:
+ *           type: boolean
+ *         updatedAt:
+ *           type: string
+ *           format: date-time
+ */
+/**
+ * @swagger
+ * /api/v1/admin/dashboard:
+ *   get:
+ *     summary: Obter estatísticas do dashboard administrativo
+ *     tags: [Admin]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Estatísticas do dashboard
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   $ref: '#/components/schemas/DashboardStats'
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão de administrador
+ */
+router.get('/dashboard', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), (req, res) => adminController_1.default.getDashboard(req, res));
+/**
+ * @swagger
+ * /api/v1/admin/system-info:
+ *   get:
+ *     summary: Obter informações do sistema
+ *     tags: [Admin]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Informações do sistema
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   $ref: '#/components/schemas/SystemInfo'
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão de administrador
+ */
+router.get('/system-info', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), (req, res) => adminController_1.default.getSystemInfo(req, res));
+/**
+ * @swagger
+ * /api/v1/admin/activity-logs:
+ *   get:
+ *     summary: Listar logs de atividade
+ *     tags: [Admin]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           default: 1
+ *         description: Número da página
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           maximum: 100
+ *           default: 50
+ *         description: Itens por página
+ *       - in: query
+ *         name: userId
+ *         schema:
+ *           type: string
+ *         description: Filtrar por usuário
+ *       - in: query
+ *         name: action
+ *         schema:
+ *           type: string
+ *         description: Filtrar por ação
+ *       - in: query
+ *         name: resource
+ *         schema:
+ *           type: string
+ *         description: Filtrar por recurso
+ *       - in: query
+ *         name: dateFrom
+ *         schema:
+ *           type: string
+ *           format: date
+ *         description: Data inicial (YYYY-MM-DD)
+ *       - in: query
+ *         name: dateTo
+ *         schema:
+ *           type: string
+ *           format: date
+ *         description: Data final (YYYY-MM-DD)
+ *       - in: query
+ *         name: sortBy
+ *         schema:
+ *           type: string
+ *           enum: [timestamp, action, resource]
+ *           default: timestamp
+ *         description: Campo para ordenação
+ *       - in: query
+ *         name: sortOrder
+ *         schema:
+ *           type: string
+ *           enum: [asc, desc]
+ *           default: desc
+ *         description: Ordem da classificação
+ *     responses:
+ *       200:
+ *         description: Lista de logs de atividade
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     logs:
+ *                       type: array
+ *                       items:
+ *                         $ref: '#/components/schemas/ActivityLog'
+ *                     pagination:
+ *                       type: object
+ *                       properties:
+ *                         page:
+ *                           type: integer
+ *                         limit:
+ *                           type: integer
+ *                         total:
+ *                           type: integer
+ *                         pages:
+ *                           type: integer
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão de administrador
+ */
+router.get('/activity-logs', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), (req, res) => adminController_1.default.getSystemLogs(req, res));
+/**
+ * @swagger
+ * /api/v1/admin/backups:
+ *   get:
+ *     summary: Listar backups do sistema
+ *     tags: [Admin]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           default: 1
+ *         description: Número da página
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           maximum: 50
+ *           default: 20
+ *         description: Itens por página
+ *       - in: query
+ *         name: type
+ *         schema:
+ *           type: string
+ *           enum: [full, incremental]
+ *         description: Filtrar por tipo de backup
+ *       - in: query
+ *         name: status
+ *         schema:
+ *           type: string
+ *           enum: [completed, failed, in_progress]
+ *         description: Filtrar por status
+ *     responses:
+ *       200:
+ *         description: Lista de backups
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     backups:
+ *                       type: array
+ *                       items:
+ *                         $ref: '#/components/schemas/BackupInfo'
+ *                     pagination:
+ *                       type: object
+ *                       properties:
+ *                         page:
+ *                           type: integer
+ *                         limit:
+ *                           type: integer
+ *                         total:
+ *                           type: integer
+ *                         pages:
+ *                           type: integer
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão de administrador
+ */
+router.get('/backups', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), (req, res) => adminController_1.default.getBackups(req, res));
+/**
+ * @swagger
+ * /api/v1/admin/backups:
+ *   post:
+ *     summary: Criar novo backup
+ *     tags: [Admin]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               type:
+ *                 type: string
+ *                 enum: [full, incremental]
+ *                 default: full
+ *                 description: Tipo de backup
+ *               description:
+ *                 type: string
+ *                 description: Descrição do backup (opcional)
+ *     responses:
+ *       202:
+ *         description: Backup iniciado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     backupId:
+ *                       type: string
+ *                     status:
+ *                       type: string
+ *                 message:
+ *                   type: string
+ *       400:
+ *         description: Dados inválidos
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão de administrador
+ *       409:
+ *         description: Backup já em andamento
+ */
+router.post('/backups', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), (req, res) => adminController_1.default.createBackup(req, res));
+/**
+ * @swagger
+ * /api/v1/admin/backups/{id}/download:
+ *   get:
+ *     summary: Download de backup
+ *     tags: [Admin]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID do backup
+ *     responses:
+ *       200:
+ *         description: Arquivo de backup
+ *         content:
+ *           application/octet-stream:
+ *             schema:
+ *               type: string
+ *               format: binary
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão de administrador
+ *       404:
+ *         description: Backup não encontrado
+ */
+router.get('/backups/:id/download', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), (req, res) => adminController_1.default.downloadBackup(req, res));
+/**
+ * @swagger
+ * /api/v1/admin/backups/{id}:
+ *   delete:
+ *     summary: Excluir backup
+ *     tags: [Admin]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID do backup
+ *     responses:
+ *       200:
+ *         description: Backup excluído com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 message:
+ *                   type: string
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão de administrador
+ *       404:
+ *         description: Backup não encontrado
+ */
+router.delete('/backups/:id', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), (req, res) => adminController_1.default.deleteBackup(req, res));
+/**
+ * @swagger
+ * /api/v1/admin/settings:
+ *   get:
+ *     summary: Listar configurações do sistema
+ *     tags: [Admin]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: category
+ *         schema:
+ *           type: string
+ *         description: Filtrar por categoria
+ *       - in: query
+ *         name: search
+ *         schema:
+ *           type: string
+ *         description: Buscar por chave ou descrição
+ *     responses:
+ *       200:
+ *         description: Lista de configurações
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/SettingItem'
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão de administrador
+ */
+router.get('/settings', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), (req, res) => adminController_1.default.getSettings(req, res));
+/**
+ * @swagger
+ * /api/v1/admin/settings:
+ *   put:
+ *     summary: Atualizar configurações do sistema
+ *     tags: [Admin]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               settings:
+ *                 type: array
+ *                 items:
+ *                   type: object
+ *                   required:
+ *                     - key
+ *                     - value
+ *                   properties:
+ *                     key:
+ *                       type: string
+ *                       description: Chave da configuração
+ *                     value:
+ *                       type: string
+ *                       description: Valor da configuração
+ *     responses:
+ *       200:
+ *         description: Configurações atualizadas com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     updated:
+ *                       type: integer
+ *                     failed:
+ *                       type: array
+ *                       items:
+ *                         type: object
+ *                         properties:
+ *                           key:
+ *                             type: string
+ *                           error:
+ *                             type: string
+ *                 message:
+ *                   type: string
+ *       400:
+ *         description: Dados inválidos
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão de administrador
+ */
+router.put('/settings', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), (req, res) => adminController_1.default.updateSettings(req, res));
+/**
+ * @swagger
+ * /api/v1/admin/cache/clear:
+ *   post:
+ *     summary: Limpar cache do sistema
+ *     tags: [Admin]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: false
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               pattern:
+ *                 type: string
+ *                 description: Padrão de chaves para limpar (opcional)
+ *               category:
+ *                 type: string
+ *                 enum: [all, articles, users, settings, uploads]
+ *                 default: all
+ *                 description: Categoria de cache para limpar
+ *     responses:
+ *       200:
+ *         description: Cache limpo com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     keysCleared:
+ *                       type: integer
+ *                     category:
+ *                       type: string
+ *                 message:
+ *                   type: string
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão de administrador
+ *       500:
+ *         description: Erro interno do servidor
+ */
+router.post('/cache/clear', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), (req, res) => adminController_1.default.clearCache(req, res));
+/**
+ * @swagger
+ * /api/v1/admin/maintenance:
+ *   post:
+ *     summary: Ativar/desativar modo de manutenção
+ *     tags: [Admin]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - enabled
+ *             properties:
+ *               enabled:
+ *                 type: boolean
+ *                 description: Ativar ou desativar modo de manutenção
+ *               message:
+ *                 type: string
+ *                 description: Mensagem personalizada (opcional)
+ *               estimatedDuration:
+ *                 type: string
+ *                 description: Duração estimada (opcional)
+ *     responses:
+ *       200:
+ *         description: Modo de manutenção alterado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     maintenanceMode:
+ *                       type: boolean
+ *                     message:
+ *                       type: string
+ *                     estimatedDuration:
+ *                       type: string
+ *                 message:
+ *                   type: string
+ *       400:
+ *         description: Dados inválidos
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão de administrador
+ */
+router.post('/maintenance', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), (req, res) => adminController_1.default.enableMaintenance(req, res));
+exports.default = router;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRDpcXGRldlxcY29udGFiaWxcXGNvbnRhYmlsLXNpdGVcXGJhY2tlbmRcXHNyY1xccm91dGVzXFxhZG1pblJvdXRlcy50cyIsIm1hcHBpbmdzIjoiOzs7OztBQUFBLHFDQUFpQztBQUNqQyw4Q0FBOEQ7QUFDOUQscUZBQTZEO0FBRTdELE1BQU0sTUFBTSxHQUFHLElBQUEsZ0JBQU0sR0FBRSxDQUFDO0FBRXhCOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7R0FzTUc7QUFFSDs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0dBd0JHO0FBQ0gsTUFBTSxDQUFDLEdBQUcsQ0FBQyxZQUFZLEVBQUUsbUJBQVksRUFBRSxJQUFBLGdCQUFTLEVBQUMsT0FBTyxDQUFDLEVBQUUsQ0FBQyxHQUFHLEVBQUUsR0FBRyxFQUFFLEVBQUUsQ0FBQyx5QkFBZSxDQUFDLFlBQVksQ0FBQyxHQUFHLEVBQUUsR0FBRyxDQUFDLENBQUMsQ0FBQztBQUVqSDs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0dBd0JHO0FBQ0gsTUFBTSxDQUFDLEdBQUcsQ0FBQyxjQUFjLEVBQUUsbUJBQVksRUFBRSxJQUFBLGdCQUFTLEVBQUMsT0FBTyxDQUFDLEVBQUUsQ0FBQyxHQUFHLEVBQUUsR0FBRyxFQUFFLEVBQUUsQ0FBQyx5QkFBZSxDQUFDLGFBQWEsQ0FBQyxHQUFHLEVBQUUsR0FBRyxDQUFDLENBQUMsQ0FBQztBQUVwSDs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztHQWlHRztBQUNILE1BQU0s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bUJBQVksRUFBRSxJQUFBLGdCQUFTLEVBQUMsT0FBTyxDQUFDLEVBQUUsQ0FBQyxHQUFHLEVBQUUsR0FBRyxFQUFFLEVBQUUsQ0FBQyx5QkFBZSxDQUFDLGlCQUFpQixDQUFDLEdBQUcsRUFBRSxHQUFHLENBQUMsQ0FBQyxDQUFDO0FBRXpILGtCQUFlLE1BQU0sQ0FBQyIsIm5hbWVzIjpbXSwic291cmNlcyI6WyJEOlxcZGV2XFxjb250YWJpbFxcY29udGFiaWwtc2l0ZVxcYmFja2VuZFxcc3JjXFxyb3V0ZXNcXGFkbWluUm91dGVzLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IFJvdXRlciB9IGZyb20gJ2V4cHJlc3MnO1xyXG5pbXBvcnQgeyBhdXRoZW50aWNhdGUsIGF1dGhvcml6ZSB9IGZyb20gJy4uL21pZGRsZXdhcmVzL2F1dGgnO1xyXG5pbXBvcnQgQWRtaW5Db250cm9sbGVyIGZyb20gJy4uL2NvbnRyb2xsZXJzL2FkbWluQ29udHJvbGxlcic7XHJcblxyXG5jb25zdCByb3V0ZXIgPSBSb3V0ZXIoKTtcclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiBjb21wb25lbnRzOlxyXG4gKiAgIHNjaGVtYXM6XHJcbiAqICAgICBEYXNoYm9hcmRTdGF0czpcclxuICogICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgdXNlcnM6XHJcbiAqICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgIHRvdGFsOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgYWN0aXZlOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgbmV3VGhpc01vbnRoOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgYnlSb2xlOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICBhZG1pbjpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICAgICAgZWRpdG9yOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgICAgICB1c2VyOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgYXJ0aWNsZXM6XHJcbiAqICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgIHRvdGFsOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgcHVibGlzaGVkOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgZHJhZnQ6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICB0aGlzTW9udGg6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICB0b3RhbFZpZXdzOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgdG90YWxMaWtlczpcclxuICogICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgY29udGFjdHM6XHJcbiAqICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgIHRvdGFsOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgcGVuZGluZzpcclxuICogICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgIHJlcGxpZWQ6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICB0aGlzTW9udGg6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgIG5ld3NsZXR0ZXI6XHJcbiAqICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgIHN1YnNjcmliZXJzOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgYWN0aXZlU3Vic2NyaWJlcnM6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICBjYW1wYWlnbnM6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICB0aGlzTW9udGg6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgIHVwbG9hZHM6XHJcbiAqICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgIHRvdGFsOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgdG90YWxTaXplOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICB0aGlzTW9udGg6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICBieVR5cGU6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgc3lzdGVtOlxyXG4gKiAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICB1cHRpbWU6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgIHZlcnNpb246XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgIGVudmlyb25tZW50OlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICBsYXN0QmFja3VwOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgIGZvcm1hdDogZGF0ZS10aW1lXHJcbiAqICAgICBTeXN0ZW1JbmZvOlxyXG4gKiAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICBzZXJ2ZXI6XHJcbiAqICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgIHBsYXRmb3JtOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICBub2RlVmVyc2lvbjpcclxuICogICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgbWVtb3J5OlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICB1c2VkOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgIHRvdGFsOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgIHBlcmNlbnRhZ2U6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IG51bWJlclxyXG4gKiAgICAgICAgICAgICBjcHU6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgIHVzYWdlOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgICAgICAgICAgICAgIGNvcmVzOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgIHVwdGltZTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBkYXRhYmFzZTpcclxuICogICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgc3RhdHVzOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICB2ZXJzaW9uOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICBzaXplOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICBjb25uZWN0aW9uczpcclxuICogICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgY2FjaGU6XHJcbiAqICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgIHN0YXR1czpcclxuICogICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgbWVtb3J5OlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICBrZXlzOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgaGl0UmF0ZTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBudW1iZXJcclxuICogICAgIEFjdGl2aXR5TG9nOlxyXG4gKiAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICBpZDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIHVzZXJJZDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIHVzZXJOYW1lOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgYWN0aW9uOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgcmVzb3VyY2U6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICByZXNvdXJjZUlkOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZGV0YWlsczpcclxuICogICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgIGlwQWRkcmVzczpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIHVzZXJBZ2VudDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIHRpbWVzdGFtcDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZm9ybWF0OiBkYXRlLXRpbWVcclxuICogICAgIEJhY2t1cEluZm86XHJcbiAqICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgIGlkOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZmlsZW5hbWU6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBzaXplOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgdHlwZTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZW51bTogW2Z1bGwsIGluY3JlbWVudGFsXVxyXG4gKiAgICAgICAgIHN0YXR1czpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZW51bTogW2NvbXBsZXRlZCwgZmFpbGVkLCBpbl9wcm9ncmVzc11cclxuICogICAgICAgICBjcmVhdGVkQXQ6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGZvcm1hdDogZGF0ZS10aW1lXHJcbiAqICAgICAgICAgZHVyYXRpb246XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgIFNldHRpbmdJdGVtOlxyXG4gKiAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICBrZXk6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICB2YWx1ZTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIHR5cGU6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGVudW06IFtzdHJpbmcsIG51bWJlciwgYm9vbGVhbiwganNvbl1cclxuICogICAgICAgICBjYXRlZ29yeTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgaXNQdWJsaWM6XHJcbiAqICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgdXBkYXRlZEF0OlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBmb3JtYXQ6IGRhdGUtdGltZVxyXG4gKi9cclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL2FkbWluL2Rhc2hib2FyZDpcclxuICogICBnZXQ6XHJcbiAqICAgICBzdW1tYXJ5OiBPYnRlciBlc3RhdMOtc3RpY2FzIGRvIGRhc2hib2FyZCBhZG1pbmlzdHJhdGl2b1xyXG4gKiAgICAgdGFnczogW0FkbWluXVxyXG4gKiAgICAgc2VjdXJpdHk6XHJcbiAqICAgICAgIC0gYmVhcmVyQXV0aDogW11cclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBFc3RhdMOtc3RpY2FzIGRvIGRhc2hib2FyZFxyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgIHN1Y2Nlc3M6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgIGRhdGE6XHJcbiAqICAgICAgICAgICAgICAgICAgICRyZWY6ICcjL2NvbXBvbmVudHMvc2NoZW1hcy9EYXNoYm9hcmRTdGF0cydcclxuICogICAgICAgNDAxOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBUb2tlbiBpbnbDoWxpZG9cclxuICogICAgICAgNDAzOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBTZW0gcGVybWlzc8OjbyBkZSBhZG1pbmlzdHJhZG9yXHJcbiAqL1xyXG5yb3V0ZXIuZ2V0KCcvZGFzaGJvYXJkJywgYXV0aGVudGljYXRlLCBhdXRob3JpemUoJ0FETUlOJyksIChyZXEsIHJlcykgPT4gQWRtaW5Db250cm9sbGVyLmdldERhc2hib2FyZChyZXEsIHJlcykpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvYWRtaW4vc3lzdGVtLWluZm86XHJcbiAqICAgZ2V0OlxyXG4gKiAgICAgc3VtbWFyeTogT2J0ZXIgaW5mb3JtYcOnw7VlcyBkbyBzaXN0ZW1hXHJcbiAqICAgICB0YWdzOiBbQWRtaW5dXHJcbiAqICAgICBzZWN1cml0eTpcclxuICogICAgICAgLSBiZWFyZXJBdXRoOiBbXVxyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEluZm9ybWHDp8O1ZXMgZG8gc2lzdGVtYVxyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgIHN1Y2Nlc3M6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgIGRhdGE6XHJcbiAqICAgICAgICAgICAgICAgICAgICRyZWY6ICcjL2NvbXBvbmVudHMvc2NoZW1hcy9TeXN0ZW1JbmZvJ1xyXG4gKiAgICAgICA0MDE6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGludsOhbGlkb1xyXG4gKiAgICAgICA0MDM6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFNlbSBwZXJtaXNzw6NvIGRlIGFkbWluaXN0cmFkb3JcclxuICovXHJcbnJvdXRlci5nZXQoJy9zeXN0ZW0taW5mbycsIGF1dGhlbnRpY2F0ZSwgYXV0aG9yaXplKCdBRE1JTicpLCAocmVxLCByZXMpID0+IEFkbWluQ29udHJvbGxlci5nZXRTeXN0ZW1JbmZvKHJlcSwgcmVzKSk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS9hZG1pbi9hY3Rpdml0eS1sb2dzOlxyXG4gKiAgIGdldDpcclxuICogICAgIHN1bW1hcnk6IExpc3RhciBsb2dzIGRlIGF0aXZpZGFkZVxyXG4gKiAgICAgdGFnczogW0FkbWluXVxyXG4gKiAgICAgc2VjdXJpdHk6XHJcbiAqICAgICAgIC0gYmVhcmVyQXV0aDogW11cclxuICogICAgIHBhcmFtZXRlcnM6XHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogcGFnZVxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgIG1pbmltdW06IDFcclxuICogICAgICAgICAgIGRlZmF1bHQ6IDFcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogTsO6bWVybyBkYSBww6FnaW5hXHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogbGltaXRcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICBtaW5pbXVtOiAxXHJcbiAqICAgICAgICAgICBtYXhpbXVtOiAxMDBcclxuICogICAgICAgICAgIGRlZmF1bHQ6IDUwXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEl0ZW5zIHBvciBww6FnaW5hXHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogdXNlcklkXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEZpbHRyYXIgcG9yIHVzdcOhcmlvXHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogYWN0aW9uXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEZpbHRyYXIgcG9yIGHDp8Ojb1xyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IHJlc291cmNlXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEZpbHRyYXIgcG9yIHJlY3Vyc29cclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiBkYXRlRnJvbVxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZm9ybWF0OiBkYXRlXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IERhdGEgaW5pY2lhbCAoWVlZWS1NTS1ERClcclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiBkYXRlVG9cclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGZvcm1hdDogZGF0ZVxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBEYXRhIGZpbmFsIChZWVlZLU1NLUREKVxyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IHNvcnRCeVxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZW51bTogW3RpbWVzdGFtcCwgYWN0aW9uLCByZXNvdXJjZV1cclxuICogICAgICAgICAgIGRlZmF1bHQ6IHRpbWVzdGFtcFxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBDYW1wbyBwYXJhIG9yZGVuYcOnw6NvXHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogc29ydE9yZGVyXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBlbnVtOiBbYXNjLCBkZXNjXVxyXG4gKiAgICAgICAgICAgZGVmYXVsdDogZGVzY1xyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBPcmRlbSBkYSBjbGFzc2lmaWNhw6fDo29cclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBMaXN0YSBkZSBsb2dzIGRlIGF0aXZpZGFkZVxyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgIHN1Y2Nlc3M6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgIGRhdGE6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgIGxvZ3M6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBhcnJheVxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgaXRlbXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICRyZWY6ICcjL2NvbXBvbmVudHMvc2NoZW1hcy9BY3Rpdml0eUxvZydcclxuICogICAgICAgICAgICAgICAgICAgICBwYWdpbmF0aW9uOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICBwYWdlOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgbGltaXQ6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICB0b3RhbDpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIHBhZ2VzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgNDAxOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBUb2tlbiBpbnbDoWxpZG9cclxuICogICAgICAgNDAzOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBTZW0gcGVybWlzc8OjbyBkZSBhZG1pbmlzdHJhZG9yXHJcbiAqL1xyXG5yb3V0ZXIuZ2V0KCcvYWN0aXZpdHktbG9ncycsIGF1dGhlbnRpY2F0ZSwgYXV0aG9yaXplKCdBRE1JTicpLCAocmVxLCByZXMpID0+IEFkbWluQ29udHJvbGxlci5nZXRTeXN0ZW1Mb2dzKHJlcSwgcmVzKSk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS9hZG1pbi9iYWNrdXBzOlxyXG4gKiAgIGdldDpcclxuICogICAgIHN1bW1hcnk6IExpc3RhciBiYWNrdXBzIGRvIHNpc3RlbWFcclxuICogICAgIHRhZ3M6IFtBZG1pbl1cclxuICogICAgIHNlY3VyaXR5OlxyXG4gKiAgICAgICAtIGJlYXJlckF1dGg6IFtdXHJcbiAqICAgICBwYXJhbWV0ZXJzOlxyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IHBhZ2VcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICBtaW5pbXVtOiAxXHJcbiAqICAgICAgICAgICBkZWZhdWx0OiAxXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IE7Dum1lcm8gZGEgcMOhZ2luYVxyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IGxpbWl0XHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgbWluaW11bTogMVxyXG4gKiAgICAgICAgICAgbWF4aW11bTogNTBcclxuICogICAgICAgICAgIGRlZmF1bHQ6IDIwXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEl0ZW5zIHBvciBww6FnaW5hXHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogdHlwZVxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZW51bTogW2Z1bGwsIGluY3JlbWVudGFsXVxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBGaWx0cmFyIHBvciB0aXBvIGRlIGJhY2t1cFxyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IHN0YXR1c1xyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZW51bTogW2NvbXBsZXRlZCwgZmFpbGVkLCBpbl9wcm9ncmVzc11cclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRmlsdHJhciBwb3Igc3RhdHVzXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogTGlzdGEgZGUgYmFja3Vwc1xyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgIHN1Y2Nlc3M6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgIGRhdGE6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgIGJhY2t1cHM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBhcnJheVxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgaXRlbXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICRyZWY6ICcjL2NvbXBvbmVudHMvc2NoZW1hcy9CYWNrdXBJbmZvJ1xyXG4gKiAgICAgICAgICAgICAgICAgICAgIHBhZ2luYXRpb246XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIHBhZ2U6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICBsaW1pdDpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIHRvdGFsOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgcGFnZXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICA0MDE6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGludsOhbGlkb1xyXG4gKiAgICAgICA0MDM6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFNlbSBwZXJtaXNzw6NvIGRlIGFkbWluaXN0cmFkb3JcclxuICovXHJcbnJvdXRlci5nZXQoJy9iYWNrdXBzJywgYXV0aGVudGljYXRlLCBhdXRob3JpemUoJ0FETUlOJyksIChyZXEsIHJlcykgPT4gQWRtaW5Db250cm9sbGVyLmdldEJhY2t1cHMocmVxLCByZXMpKTtcclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL2FkbWluL2JhY2t1cHM6XHJcbiAqICAgcG9zdDpcclxuICogICAgIHN1bW1hcnk6IENyaWFyIG5vdm8gYmFja3VwXHJcbiAqICAgICB0YWdzOiBbQWRtaW5dXHJcbiAqICAgICBzZWN1cml0eTpcclxuICogICAgICAgLSBiZWFyZXJBdXRoOiBbXVxyXG4gKiAgICAgcmVxdWVzdEJvZHk6XHJcbiAqICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgZW51bTogW2Z1bGwsIGluY3JlbWVudGFsXVxyXG4gKiAgICAgICAgICAgICAgICAgZGVmYXVsdDogZnVsbFxyXG4gKiAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IFRpcG8gZGUgYmFja3VwXHJcbiAqICAgICAgICAgICAgICAgZGVzY3JpcHRpb246XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBEZXNjcmnDp8OjbyBkbyBiYWNrdXAgKG9wY2lvbmFsKVxyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDI6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEJhY2t1cCBpbmljaWFkbyBjb20gc3VjZXNzb1xyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgIHN1Y2Nlc3M6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgIGRhdGE6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgIGJhY2t1cElkOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICAgICAgc3RhdHVzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICBtZXNzYWdlOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgNDAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBEYWRvcyBpbnbDoWxpZG9zXHJcbiAqICAgICAgIDQwMTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gaW52w6FsaWRvXHJcbiAqICAgICAgIDQwMzpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogU2VtIHBlcm1pc3PDo28gZGUgYWRtaW5pc3RyYWRvclxyXG4gKiAgICAgICA0MDk6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEJhY2t1cCBqw6EgZW0gYW5kYW1lbnRvXHJcbiAqL1xyXG5yb3V0ZXIucG9zdCgnL2JhY2t1cHMnLCBhdXRoZW50aWNhdGUsIGF1dGhvcml6ZSgnQURNSU4nKSwgKHJlcSwgcmVzKSA9PiBBZG1pbkNvbnRyb2xsZXIuY3JlYXRlQmFja3VwKHJlcSwgcmVzKSk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS9hZG1pbi9iYWNrdXBzL3tpZH0vZG93bmxvYWQ6XHJcbiAqICAgZ2V0OlxyXG4gKiAgICAgc3VtbWFyeTogRG93bmxvYWQgZGUgYmFja3VwXHJcbiAqICAgICB0YWdzOiBbQWRtaW5dXHJcbiAqICAgICBzZWN1cml0eTpcclxuICogICAgICAgLSBiZWFyZXJBdXRoOiBbXVxyXG4gKiAgICAgcGFyYW1ldGVyczpcclxuICogICAgICAgLSBpbjogcGF0aFxyXG4gKiAgICAgICAgIG5hbWU6IGlkXHJcbiAqICAgICAgICAgcmVxdWlyZWQ6IHRydWVcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogSUQgZG8gYmFja3VwXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogQXJxdWl2byBkZSBiYWNrdXBcclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vb2N0ZXQtc3RyZWFtOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgZm9ybWF0OiBiaW5hcnlcclxuICogICAgICAgNDAxOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBUb2tlbiBpbnbDoWxpZG9cclxuICogICAgICAgNDAzOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBTZW0gcGVybWlzc8OjbyBkZSBhZG1pbmlzdHJhZG9yXHJcbiAqICAgICAgIDQwNDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogQmFja3VwIG7Do28gZW5jb250cmFkb1xyXG4gKi9cclxucm91dGVyLmdldCgnL2JhY2t1cHMvOmlkL2Rvd25sb2FkJywgYXV0aGVudGljYXRlLCBhdXRob3JpemUoJ0FETUlOJyksIChyZXEsIHJlcykgPT4gQWRtaW5Db250cm9sbGVyLmRvd25sb2FkQmFja3VwKHJlcSwgcmVzKSk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS9hZG1pbi9iYWNrdXBzL3tpZH06XHJcbiAqICAgZGVsZXRlOlxyXG4gKiAgICAgc3VtbWFyeTogRXhjbHVpciBiYWNrdXBcclxuICogICAgIHRhZ3M6IFtBZG1pbl1cclxuICogICAgIHNlY3VyaXR5OlxyXG4gKiAgICAgICAtIGJlYXJlckF1dGg6IFtdXHJcbiAqICAgICBwYXJhbWV0ZXJzOlxyXG4gKiAgICAgICAtIGluOiBwYXRoXHJcbiAqICAgICAgICAgbmFtZTogaWRcclxuICogICAgICAgICByZXF1aXJlZDogdHJ1ZVxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBJRCBkbyBiYWNrdXBcclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBCYWNrdXAgZXhjbHXDrWRvIGNvbSBzdWNlc3NvXHJcbiAqICAgICAgICAgY29udGVudDpcclxuICogICAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgc3VjY2VzczpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgbWVzc2FnZTpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgIDQwMTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gaW52w6FsaWRvXHJcbiAqICAgICAgIDQwMzpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogU2VtIHBlcm1pc3PDo28gZGUgYWRtaW5pc3RyYWRvclxyXG4gKiAgICAgICA0MDQ6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEJhY2t1cCBuw6NvIGVuY29udHJhZG9cclxuICovXHJcbnJvdXRlci5kZWxldGUoJy9iYWNrdXBzLzppZCcsIGF1dGhlbnRpY2F0ZSwgYXV0aG9yaXplKCdBRE1JTicpLCAocmVxLCByZXMpID0+IEFkbWluQ29udHJvbGxlci5kZWxldGVCYWNrdXAocmVxLCByZXMpKTtcclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL2FkbWluL3NldHRpbmdzOlxyXG4gKiAgIGdldDpcclxuICogICAgIHN1bW1hcnk6IExpc3RhciBjb25maWd1cmHDp8O1ZXMgZG8gc2lzdGVtYVxyXG4gKiAgICAgdGFnczogW0FkbWluXVxyXG4gKiAgICAgc2VjdXJpdHk6XHJcbiAqICAgICAgIC0gYmVhcmVyQXV0aDogW11cclxuICogICAgIHBhcmFtZXRlcnM6XHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogY2F0ZWdvcnlcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRmlsdHJhciBwb3IgY2F0ZWdvcmlhXHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogc2VhcmNoXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEJ1c2NhciBwb3IgY2hhdmUgb3UgZGVzY3Jpw6fDo29cclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBMaXN0YSBkZSBjb25maWd1cmHDp8O1ZXNcclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICBzdWNjZXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBkYXRhOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBhcnJheVxyXG4gKiAgICAgICAgICAgICAgICAgICBpdGVtczpcclxuICogICAgICAgICAgICAgICAgICAgICAkcmVmOiAnIy9jb21wb25lbnRzL3NjaGVtYXMvU2V0dGluZ0l0ZW0nXHJcbiAqICAgICAgIDQwMTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gaW52w6FsaWRvXHJcbiAqICAgICAgIDQwMzpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogU2VtIHBlcm1pc3PDo28gZGUgYWRtaW5pc3RyYWRvclxyXG4gKi9cclxucm91dGVyLmdldCgnL3NldHRpbmdzJywgYXV0aGVudGljYXRlLCBhdXRob3JpemUoJ0FETUlOJyksIChyZXEsIHJlcykgPT4gQWRtaW5Db250cm9sbGVyLmdldFNldHRpbmdzKHJlcSwgcmVzKSk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS9hZG1pbi9zZXR0aW5nczpcclxuICogICBwdXQ6XHJcbiAqICAgICBzdW1tYXJ5OiBBdHVhbGl6YXIgY29uZmlndXJhw6fDtWVzIGRvIHNpc3RlbWFcclxuICogICAgIHRhZ3M6IFtBZG1pbl1cclxuICogICAgIHNlY3VyaXR5OlxyXG4gKiAgICAgICAtIGJlYXJlckF1dGg6IFtdXHJcbiAqICAgICByZXF1ZXN0Qm9keTpcclxuICogICAgICAgcmVxdWlyZWQ6IHRydWVcclxuICogICAgICAgY29udGVudDpcclxuICogICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICBzZXR0aW5nczpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IGFycmF5XHJcbiAqICAgICAgICAgICAgICAgICBpdGVtczpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgICAgIHJlcXVpcmVkOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgIC0ga2V5XHJcbiAqICAgICAgICAgICAgICAgICAgICAgLSB2YWx1ZVxyXG4gKiAgICAgICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgIGtleTpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IENoYXZlIGRhIGNvbmZpZ3VyYcOnw6NvXHJcbiAqICAgICAgICAgICAgICAgICAgICAgdmFsdWU6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBWYWxvciBkYSBjb25maWd1cmHDp8Ojb1xyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IENvbmZpZ3VyYcOnw7VlcyBhdHVhbGl6YWRhcyBjb20gc3VjZXNzb1xyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgIHN1Y2Nlc3M6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgIGRhdGE6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgIHVwZGF0ZWQ6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgZmFpbGVkOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogYXJyYXlcclxuICogICAgICAgICAgICAgICAgICAgICAgIGl0ZW1zOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICBrZXk6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICBlcnJvcjpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgbWVzc2FnZTpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgIDQwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRGFkb3MgaW52w6FsaWRvc1xyXG4gKiAgICAgICA0MDE6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGludsOhbGlkb1xyXG4gKiAgICAgICA0MDM6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFNlbSBwZXJtaXNzw6NvIGRlIGFkbWluaXN0cmFkb3JcclxuICovXHJcbnJvdXRlci5wdXQoJy9zZXR0aW5ncycsIGF1dGhlbnRpY2F0ZSwgYXV0aG9yaXplKCdBRE1JTicpLCAocmVxLCByZXMpID0+IEFkbWluQ29udHJvbGxlci51cGRhdGVTZXR0aW5ncyhyZXEsIHJlcykpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvYWRtaW4vY2FjaGUvY2xlYXI6XHJcbiAqICAgcG9zdDpcclxuICogICAgIHN1bW1hcnk6IExpbXBhciBjYWNoZSBkbyBzaXN0ZW1hXHJcbiAqICAgICB0YWdzOiBbQWRtaW5dXHJcbiAqICAgICBzZWN1cml0eTpcclxuICogICAgICAgLSBiZWFyZXJBdXRoOiBbXVxyXG4gKiAgICAgcmVxdWVzdEJvZHk6XHJcbiAqICAgICAgIHJlcXVpcmVkOiBmYWxzZVxyXG4gKiAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgIHBhdHRlcm46XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBQYWRyw6NvIGRlIGNoYXZlcyBwYXJhIGxpbXBhciAob3BjaW9uYWwpXHJcbiAqICAgICAgICAgICAgICAgY2F0ZWdvcnk6XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgIGVudW06IFthbGwsIGFydGljbGVzLCB1c2Vycywgc2V0dGluZ3MsIHVwbG9hZHNdXHJcbiAqICAgICAgICAgICAgICAgICBkZWZhdWx0OiBhbGxcclxuICogICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBDYXRlZ29yaWEgZGUgY2FjaGUgcGFyYSBsaW1wYXJcclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBDYWNoZSBsaW1wbyBjb20gc3VjZXNzb1xyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgIHN1Y2Nlc3M6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgIGRhdGE6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgIGtleXNDbGVhcmVkOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgIGNhdGVnb3J5OlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICBtZXNzYWdlOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgNDAxOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBUb2tlbiBpbnbDoWxpZG9cclxuICogICAgICAgNDAzOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBTZW0gcGVybWlzc8OjbyBkZSBhZG1pbmlzdHJhZG9yXHJcbiAqICAgICAgIDUwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRXJybyBpbnRlcm5vIGRvIHNlcnZpZG9yXHJcbiAqL1xyXG5yb3V0ZXIucG9zdCgnL2NhY2hlL2NsZWFyJywgYXV0aGVudGljYXRlLCBhdXRob3JpemUoJ0FETUlOJyksIChyZXEsIHJlcykgPT4gQWRtaW5Db250cm9sbGVyLmNsZWFyQ2FjaGUocmVxLCByZXMpKTtcclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL2FkbWluL21haW50ZW5hbmNlOlxyXG4gKiAgIHBvc3Q6XHJcbiAqICAgICBzdW1tYXJ5OiBBdGl2YXIvZGVzYXRpdmFyIG1vZG8gZGUgbWFudXRlbsOnw6NvXHJcbiAqICAgICB0YWdzOiBbQWRtaW5dXHJcbiAqICAgICBzZWN1cml0eTpcclxuICogICAgICAgLSBiZWFyZXJBdXRoOiBbXVxyXG4gKiAgICAgcmVxdWVzdEJvZHk6XHJcbiAqICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgIHJlcXVpcmVkOlxyXG4gKiAgICAgICAgICAgICAgIC0gZW5hYmxlZFxyXG4gKiAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgIGVuYWJsZWQ6XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogQXRpdmFyIG91IGRlc2F0aXZhciBtb2RvIGRlIG1hbnV0ZW7Dp8Ojb1xyXG4gKiAgICAgICAgICAgICAgIG1lc3NhZ2U6XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBNZW5zYWdlbSBwZXJzb25hbGl6YWRhIChvcGNpb25hbClcclxuICogICAgICAgICAgICAgICBlc3RpbWF0ZWREdXJhdGlvbjpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IER1cmHDp8OjbyBlc3RpbWFkYSAob3BjaW9uYWwpXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogTW9kbyBkZSBtYW51dGVuw6fDo28gYWx0ZXJhZG8gY29tIHN1Y2Vzc29cclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICBzdWNjZXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBkYXRhOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgICBtYWludGVuYW5jZU1vZGU6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICAgICAgbWVzc2FnZTpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgICAgIGVzdGltYXRlZER1cmF0aW9uOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICBtZXNzYWdlOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgNDAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBEYWRvcyBpbnbDoWxpZG9zXHJcbiAqICAgICAgIDQwMTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gaW52w6FsaWRvXHJcbiAqICAgICAgIDQwMzpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogU2VtIHBlcm1pc3PDo28gZGUgYWRtaW5pc3RyYWRvclxyXG4gKi9cclxucm91dGVyLnBvc3QoJy9tYWludGVuYW5jZScsIGF1dGhlbnRpY2F0ZSwgYXV0aG9yaXplKCdBRE1JTicpLCAocmVxLCByZXMpID0+IEFkbWluQ29udHJvbGxlci5lbmFibGVNYWludGVuYW5jZShyZXEsIHJlcykpO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgcm91dGVyOyJdLCJ2ZXJzaW9uIjozfQ==

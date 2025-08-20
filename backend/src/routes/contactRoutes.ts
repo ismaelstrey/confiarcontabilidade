@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { authenticate, authorize } from '../middlewares/auth';
+import ContactController from '../controllers/contactController';
 
 const router = Router();
 
@@ -112,14 +113,7 @@ const router = Router();
  *       429:
  *         description: Muitas tentativas - tente novamente mais tarde
  */
-router.post('/', (req, res) => {
-  // TODO: Implementar controller para enviar mensagem de contato
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'POST /contact',
-  });
-});
+router.post('/', (req, res) => ContactController.createContact(req, res));
 
 /**
  * @swagger
@@ -237,14 +231,7 @@ router.post('/', (req, res) => {
  *       403:
  *         description: Sem permissão
  */
-router.get('/', authenticate, authorize('ADMIN', 'EDITOR'), (req, res) => {
-  // TODO: Implementar controller para listar mensagens de contato
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'GET /contact',
-  });
-});
+router.get('/', authenticate, authorize('ADMIN', 'EDITOR'), ContactController.getContacts);
 
 /**
  * @swagger
@@ -280,14 +267,7 @@ router.get('/', authenticate, authorize('ADMIN', 'EDITOR'), (req, res) => {
  *       404:
  *         description: Mensagem não encontrada
  */
-router.get('/:id', authenticate, authorize('ADMIN', 'EDITOR'), (req, res) => {
-  // TODO: Implementar controller para obter mensagem por ID
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'GET /contact/:id',
-  });
-});
+router.get('/:id', authenticate, authorize('ADMIN', 'EDITOR'), ContactController.getContactById);
 
 /**
  * @swagger
@@ -350,14 +330,7 @@ router.get('/:id', authenticate, authorize('ADMIN', 'EDITOR'), (req, res) => {
  *       404:
  *         description: Mensagem não encontrada
  */
-router.patch('/:id/status', authenticate, authorize('ADMIN', 'EDITOR'), (req, res) => {
-  // TODO: Implementar controller para atualizar status
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'PATCH /contact/:id/status',
-  });
-});
+router.patch('/:id/status', authenticate, authorize('ADMIN', 'EDITOR'), (req, res) => ContactController.updateContactStatus(req, res));
 
 /**
  * @swagger
@@ -416,14 +389,7 @@ router.patch('/:id/status', authenticate, authorize('ADMIN', 'EDITOR'), (req, re
  *       404:
  *         description: Mensagem não encontrada
  */
-router.post('/:id/reply', authenticate, authorize('ADMIN', 'EDITOR'), (req, res) => {
-  // TODO: Implementar controller para responder mensagem
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'POST /contact/:id/reply',
-  });
-});
+router.post('/:id/reply', authenticate, authorize('ADMIN', 'EDITOR'), ContactController.replyToContact);
 
 /**
  * @swagger
@@ -459,13 +425,6 @@ router.post('/:id/reply', authenticate, authorize('ADMIN', 'EDITOR'), (req, res)
  *       404:
  *         description: Mensagem não encontrada
  */
-router.delete('/:id', authenticate, authorize('ADMIN'), (req, res) => {
-  // TODO: Implementar controller para excluir mensagem
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'DELETE /contact/:id',
-  });
-});
+router.delete('/:id', authenticate, authorize('ADMIN'), ContactController.deleteContact);
 
 export default router;

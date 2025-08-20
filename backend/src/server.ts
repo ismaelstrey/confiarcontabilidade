@@ -1,8 +1,8 @@
 import express from 'express';
 import dotenv from 'dotenv';
-import { PrismaClient } from '@prisma/client';
 import { setupSwagger } from './docs/swagger';
 import { cacheService } from './services/cacheService';
+import { prisma, connectDatabase, disconnectDatabase } from './lib/prisma';
 
 // Importar middlewares personalizados
 import { errorHandler } from './middlewares/errorHandler';
@@ -34,10 +34,7 @@ import cacheRoutes from './routes/cacheRoutes';
 // Carregar variáveis de ambiente
 dotenv.config();
 
-// Inicializar Prisma Client
-export const prisma = new PrismaClient({
-  log: process.env.NODE_ENV === 'development' ? ['query', 'info', 'warn', 'error'] : ['error'],
-});
+// Prisma é importado de ./lib/prisma
 
 // Criar aplicação Express
 const app = express();
@@ -145,8 +142,7 @@ app.use(errorHandler);
 const startServer = async () => {
   try {
     // Conectar ao banco de dados
-    await prisma.$connect();
-    logger.info('Conectado ao banco de dados PostgreSQL');
+    await connectDatabase();
 
     // Conectar ao Redis (cache)
     try {
@@ -173,14 +169,14 @@ const startServer = async () => {
 process.on('SIGINT', async () => {
   logger.info('Recebido SIGINT. Encerrando servidor graciosamente...');
   await cacheService.disconnect();
-  await prisma.$disconnect();
+  await disconnectDatabase();
   process.exit(0);
 });
 
 process.on('SIGTERM', async () => {
   logger.info('Recebido SIGTERM. Encerrando servidor graciosamente...');
   await cacheService.disconnect();
-  await prisma.$disconnect();
+  await disconnectDatabase();
   process.exit(0);
 });
 

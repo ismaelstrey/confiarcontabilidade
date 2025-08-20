@@ -1,4 +1,6 @@
 import { Router } from 'express';
+import { calculatorController } from '../controllers/calculatorController';
+import { authenticate, authorize } from '../middlewares/auth';
 
 const router = Router();
 
@@ -195,14 +197,7 @@ const router = Router();
  *       400:
  *         description: Dados inválidos para cálculo
  */
-router.post('/income-tax', (req, res) => {
-  // TODO: Implementar controller para cálculo de imposto de renda
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'POST /calculator/income-tax',
-  });
-});
+router.post('/income-tax', (req, res) => calculatorController.calculateTaxes(req, res));
 
 /**
  * @swagger
@@ -260,14 +255,7 @@ router.post('/income-tax', (req, res) => {
  *       400:
  *         description: Dados inválidos para cálculo
  */
-router.post('/company-tax', (req, res) => {
-  // TODO: Implementar controller para cálculo de impostos empresariais
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'POST /calculator/company-tax',
-  });
-});
+router.post('/company-tax', (req, res) => calculatorController.calculateCompanyTax(req, res));
 
 /**
  * @swagger
@@ -347,14 +335,7 @@ router.post('/company-tax', (req, res) => {
  *       400:
  *         description: Dados inválidos para cálculo
  */
-router.post('/payroll', (req, res) => {
-  // TODO: Implementar controller para cálculo de folha de pagamento
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'POST /calculator/payroll',
-  });
-});
+router.post('/payroll', (req, res) => calculatorController.calculatePayroll(req, res));
 
 /**
  * @swagger
@@ -432,14 +413,7 @@ router.post('/payroll', (req, res) => {
  *       400:
  *         description: Dados inválidos para cálculo
  */
-router.post('/simples-nacional', (req, res) => {
-  // TODO: Implementar controller para cálculo do Simples Nacional
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'POST /calculator/simples-nacional',
-  });
-});
+router.post('/simples-nacional', (req, res) => calculatorController.calculateSimplesNacional(req, res));
 
 /**
  * @swagger
@@ -528,14 +502,7 @@ router.post('/simples-nacional', (req, res) => {
  *       400:
  *         description: Dados inválidos para cálculo
  */
-router.post('/depreciation', (req, res) => {
-  // TODO: Implementar controller para cálculo de depreciação
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'POST /calculator/depreciation',
-  });
-});
+router.post('/depreciation', (req, res) => calculatorController.calculateDepreciation(req, res));
 
 /**
  * @swagger
@@ -619,13 +586,60 @@ router.post('/depreciation', (req, res) => {
  *       400:
  *         description: Dados inválidos para cálculo
  */
-router.post('/loan', (req, res) => {
-  // TODO: Implementar controller para cálculo de financiamento
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'POST /calculator/loan',
-  });
-});
+router.post('/loan', (req, res) => calculatorController.calculateLoan(req, res));
+
+// Rotas administrativas
+
+/**
+ * @swagger
+ * /api/v1/calculator/history:
+ *   get:
+ *     summary: Obter histórico de cálculos (Admin)
+ *     tags: [Calculadora]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           default: 1
+ *         description: Página
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           maximum: 100
+ *           default: 20
+ *         description: Itens por página
+ *     responses:
+ *       200:
+ *         description: Histórico obtido com sucesso
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ */
+router.get('/history', authenticate, authorize('ADMIN'), (req, res) => calculatorController.getCalculationHistory(req, res));
+
+/**
+ * @swagger
+ * /api/v1/calculator/statistics:
+ *   get:
+ *     summary: Obter estatísticas de cálculos (Admin)
+ *     tags: [Calculadora]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Estatísticas obtidas com sucesso
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ */
+router.get('/statistics', authenticate, authorize('ADMIN'), (req, res) => calculatorController.getCalculationStatistics(req, res));
 
 export default router;

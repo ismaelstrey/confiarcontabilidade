@@ -212,7 +212,7 @@ describe('Auth Routes Integration Tests', () => {
     });
   });
 
-  describe('POST /api/auth/refresh', () => {
+  describe('POST /api/auth/refresh-token', () => {
     let refreshToken: string;
     let userId: string;
 
@@ -240,14 +240,15 @@ describe('Auth Routes Integration Tests', () => {
         .send({
           email: userData.email,
           password: userData.password,
-        });
+        })
+        .expect(200);
 
       refreshToken = loginResponse.body.data.refreshToken;
     });
 
     it('should refresh token successfully', async () => {
       const response = await request(app)
-        .post('/api/auth/refresh')
+        .post('/api/auth/refresh-token')
         .send({ refreshToken })
         .expect(200);
 
@@ -259,7 +260,7 @@ describe('Auth Routes Integration Tests', () => {
 
     it('should return 401 for invalid refresh token', async () => {
       const response = await request(app)
-        .post('/api/auth/refresh')
+        .post('/api/auth/refresh-token')
         .send({ refreshToken: 'invalid_token' })
         .expect(401);
 
@@ -269,7 +270,7 @@ describe('Auth Routes Integration Tests', () => {
 
     it('should return 400 for missing refresh token', async () => {
       const response = await request(app)
-        .post('/api/auth/refresh')
+        .post('/api/auth/refresh-token')
         .send({})
         .expect(400);
 
@@ -306,7 +307,8 @@ describe('Auth Routes Integration Tests', () => {
         .send({
           email: userData.email,
           password: userData.password,
-        });
+        })
+        .expect(200);
 
       token = loginResponse.body.data.token;
     });

@@ -225,22 +225,19 @@ describe('Cache Middleware', () => {
     it('should invalidate cache patterns on successful response', async () => {
       const patterns = ['user:*', 'public:*'];
       mockRes.statusCode = 200;
-
-      // Mock do comportamento do res.on
-      onSpy.mockImplementation((event, callback) => {
-        if (event === 'finish') {
-          setTimeout(() => callback(), 0);
-        }
-      });
+      mockCacheService.delPattern.mockResolvedValue(undefined);
 
       const middleware = invalidateCacheMiddleware(patterns);
-      await middleware(mockReq as Request, mockRes as Response, mockNext);
+      middleware(mockReq as Request, mockRes as Response, mockNext);
 
       expect(mockNext).toHaveBeenCalled();
       expect(onSpy).toHaveBeenCalledWith('finish', expect.any(Function));
 
-      // Aguarda a execução assíncrona
-      await new Promise(resolve => setTimeout(resolve, 10));
+      // Simula o evento 'finish'
+      const finishCallback = onSpy.mock.calls.find(call => call[0] === 'finish')?.[1];
+      if (finishCallback) {
+        await finishCallback();
+      }
 
       expect(mockCacheService.delPattern).toHaveBeenCalledTimes(patterns.length);
       patterns.forEach(pattern => {
@@ -249,20 +246,18 @@ describe('Cache Middleware', () => {
     });
 
     it('should not invalidate cache on error response', async () => {
-      const patterns = ['user:*'];
+      const patterns = ['user:*', 'public:*'];
       mockRes.statusCode = 500;
-
-      onSpy.mockImplementation((event, callback) => {
-        if (event === 'finish') {
-          setTimeout(() => callback(), 0);
-        }
-      });
+      mockCacheService.delPattern.mockResolvedValue(undefined);
 
       const middleware = invalidateCacheMiddleware(patterns);
-      await middleware(mockReq as Request, mockRes as Response, mockNext);
+      middleware(mockReq as Request, mockRes as Response, mockNext);
 
-      // Aguarda a execução assíncrona
-      await new Promise(resolve => setTimeout(resolve, 10));
+      // Simula o evento 'finish'
+      const finishCallback = onSpy.mock.calls.find(call => call[0] === 'finish')?.[1];
+      if (finishCallback) {
+        await finishCallback();
+      }
 
       expect(mockCacheService.delPattern).not.toHaveBeenCalled();
     });
@@ -271,38 +266,36 @@ describe('Cache Middleware', () => {
   describe('invalidateUserCacheMiddleware', () => {
     it('should invalidate user cache with default pattern', async () => {
       mockRes.statusCode = 200;
-
-      onSpy.mockImplementation((event, callback) => {
-        if (event === 'finish') {
-          setTimeout(() => callback(), 0);
-        }
-      });
+      mockCacheService.delPattern.mockResolvedValue(undefined);
 
       const middleware = invalidateUserCacheMiddleware();
-      await middleware(mockReq as Request, mockRes as Response, mockNext);
+      middleware(mockReq as Request, mockRes as Response, mockNext);
 
-      // Aguarda a execução assíncrona
-      await new Promise(resolve => setTimeout(resolve, 10));
+      // Simula o evento 'finish'
+      const finishCallback = onSpy.mock.calls.find(call => call[0] === 'finish')?.[1];
+      if (finishCallback) {
+        await finishCallback();
+      }
 
+      expect(mockNext).toHaveBeenCalled();
       expect(mockCacheService.delPattern).toHaveBeenCalledWith('user:*');
     });
 
     it('should invalidate user cache with custom getUserId', async () => {
       mockRes.statusCode = 200;
       const getUserId = (req: Request) => '789';
-
-      onSpy.mockImplementation((event, callback) => {
-        if (event === 'finish') {
-          setTimeout(() => callback(), 0);
-        }
-      });
+      mockCacheService.delPattern.mockResolvedValue(undefined);
 
       const middleware = invalidateUserCacheMiddleware(getUserId);
-      await middleware(mockReq as Request, mockRes as Response, mockNext);
+      middleware(mockReq as Request, mockRes as Response, mockNext);
 
-      // Aguarda a execução assíncrona
-      await new Promise(resolve => setTimeout(resolve, 10));
+      // Simula o evento 'finish'
+      const finishCallback = onSpy.mock.calls.find(call => call[0] === 'finish')?.[1];
+      if (finishCallback) {
+        await finishCallback();
+      }
 
+      expect(mockNext).toHaveBeenCalled();
       expect(mockCacheService.delPattern).toHaveBeenCalledWith('user:789:*');
     });
   });
@@ -310,19 +303,18 @@ describe('Cache Middleware', () => {
   describe('invalidatePublicCacheMiddleware', () => {
     it('should invalidate public cache', async () => {
       mockRes.statusCode = 200;
-
-      onSpy.mockImplementation((event, callback) => {
-        if (event === 'finish') {
-          setTimeout(() => callback(), 0);
-        }
-      });
+      mockCacheService.delPattern.mockResolvedValue(undefined);
 
       const middleware = invalidatePublicCacheMiddleware();
-      await middleware(mockReq as Request, mockRes as Response, mockNext);
+      middleware(mockReq as Request, mockRes as Response, mockNext);
 
-      // Aguarda a execução assíncrona
-      await new Promise(resolve => setTimeout(resolve, 10));
+      // Simula o evento 'finish'
+      const finishCallback = onSpy.mock.calls.find(call => call[0] === 'finish')?.[1];
+      if (finishCallback) {
+        await finishCallback();
+      }
 
+      expect(mockNext).toHaveBeenCalled();
       expect(mockCacheService.delPattern).toHaveBeenCalledWith('public:*');
     });
   });
@@ -330,19 +322,18 @@ describe('Cache Middleware', () => {
   describe('invalidateArticleCacheMiddleware', () => {
     it('should invalidate article cache', async () => {
       mockRes.statusCode = 200;
-
-      onSpy.mockImplementation((event, callback) => {
-        if (event === 'finish') {
-          setTimeout(() => callback(), 0);
-        }
-      });
+      mockCacheService.delPattern.mockResolvedValue(undefined);
 
       const middleware = invalidateArticleCacheMiddleware();
-      await middleware(mockReq as Request, mockRes as Response, mockNext);
+      middleware(mockReq as Request, mockRes as Response, mockNext);
 
-      // Aguarda a execução assíncrona
-      await new Promise(resolve => setTimeout(resolve, 10));
+      // Simula o evento 'finish'
+      const finishCallback = onSpy.mock.calls.find(call => call[0] === 'finish')?.[1];
+      if (finishCallback) {
+        await finishCallback();
+      }
 
+      expect(mockNext).toHaveBeenCalled();
       expect(mockCacheService.delPattern).toHaveBeenCalledWith('article:*');
     });
   });

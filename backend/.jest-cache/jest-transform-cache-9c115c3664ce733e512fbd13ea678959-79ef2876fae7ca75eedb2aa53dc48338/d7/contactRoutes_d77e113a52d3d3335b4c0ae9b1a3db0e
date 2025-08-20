@@ -1,0 +1,891 @@
+b048c3346c1d31ab7ba9475f5916ca52
+"use strict";
+
+/* istanbul ignore next */
+function cov_1fsza9xkje() {
+  var path = "D:\\dev\\contabil\\contabil-site\\backend\\src\\routes\\contactRoutes.ts";
+  var hash = "f9df550b91d08d9945e491a6df50dda704060da5";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "D:\\dev\\contabil\\contabil-site\\backend\\src\\routes\\contactRoutes.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 22
+        },
+        end: {
+          line: 4,
+          column: 1
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 4
+        },
+        end: {
+          line: 3,
+          column: 62
+        }
+      },
+      "2": {
+        start: {
+          line: 5,
+          column: 0
+        },
+        end: {
+          line: 5,
+          column: 62
+        }
+      },
+      "3": {
+        start: {
+          line: 6,
+          column: 18
+        },
+        end: {
+          line: 6,
+          column: 36
+        }
+      },
+      "4": {
+        start: {
+          line: 7,
+          column: 15
+        },
+        end: {
+          line: 7,
+          column: 45
+        }
+      },
+      "5": {
+        start: {
+          line: 8,
+          column: 28
+        },
+        end: {
+          line: 8,
+          column: 88
+        }
+      },
+      "6": {
+        start: {
+          line: 9,
+          column: 15
+        },
+        end: {
+          line: 9,
+          column: 38
+        }
+      },
+      "7": {
+        start: {
+          line: 118,
+          column: 0
+        },
+        end: {
+          line: 118,
+          column: 84
+        }
+      },
+      "8": {
+        start: {
+          line: 118,
+          column: 31
+        },
+        end: {
+          line: 118,
+          column: 82
+        }
+      },
+      "9": {
+        start: {
+          line: 235,
+          column: 0
+        },
+        end: {
+          line: 235,
+          column: 120
+        }
+      },
+      "10": {
+        start: {
+          line: 270,
+          column: 0
+        },
+        end: {
+          line: 270,
+          column: 126
+        }
+      },
+      "11": {
+        start: {
+          line: 332,
+          column: 0
+        },
+        end: {
+          line: 332,
+          column: 164
+        }
+      },
+      "12": {
+        start: {
+          line: 332,
+          column: 105
+        },
+        end: {
+          line: 332,
+          column: 162
+        }
+      },
+      "13": {
+        start: {
+          line: 390,
+          column: 0
+        },
+        end: {
+          line: 390,
+          column: 133
+        }
+      },
+      "14": {
+        start: {
+          line: 425,
+          column: 0
+        },
+        end: {
+          line: 425,
+          column: 118
+        }
+      },
+      "15": {
+        start: {
+          line: 426,
+          column: 0
+        },
+        end: {
+          line: 426,
+          column: 25
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 2,
+            column: 56
+          },
+          end: {
+            line: 2,
+            column: 57
+          }
+        },
+        loc: {
+          start: {
+            line: 2,
+            column: 71
+          },
+          end: {
+            line: 4,
+            column: 1
+          }
+        },
+        line: 2
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 118,
+            column: 17
+          },
+          end: {
+            line: 118,
+            column: 18
+          }
+        },
+        loc: {
+          start: {
+            line: 118,
+            column: 31
+          },
+          end: {
+            line: 118,
+            column: 82
+          }
+        },
+        line: 118
+      },
+      "2": {
+        name: "(anonymous_2)",
+        decl: {
+          start: {
+            line: 332,
+            column: 91
+          },
+          end: {
+            line: 332,
+            column: 92
+          }
+        },
+        loc: {
+          start: {
+            line: 332,
+            column: 105
+          },
+          end: {
+            line: 332,
+            column: 162
+          }
+        },
+        line: 332
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 2,
+            column: 22
+          },
+          end: {
+            line: 4,
+            column: 1
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 2,
+            column: 23
+          },
+          end: {
+            line: 2,
+            column: 27
+          }
+        }, {
+          start: {
+            line: 2,
+            column: 31
+          },
+          end: {
+            line: 2,
+            column: 51
+          }
+        }, {
+          start: {
+            line: 2,
+            column: 56
+          },
+          end: {
+            line: 4,
+            column: 1
+          }
+        }],
+        line: 2
+      },
+      "1": {
+        loc: {
+          start: {
+            line: 3,
+            column: 11
+          },
+          end: {
+            line: 3,
+            column: 61
+          }
+        },
+        type: "cond-expr",
+        locations: [{
+          start: {
+            line: 3,
+            column: 37
+          },
+          end: {
+            line: 3,
+            column: 40
+          }
+        }, {
+          start: {
+            line: 3,
+            column: 43
+          },
+          end: {
+            line: 3,
+            column: 61
+          }
+        }],
+        line: 3
+      },
+      "2": {
+        loc: {
+          start: {
+            line: 3,
+            column: 12
+          },
+          end: {
+            line: 3,
+            column: 33
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 3,
+            column: 12
+          },
+          end: {
+            line: 3,
+            column: 15
+          }
+        }, {
+          start: {
+            line: 3,
+            column: 19
+          },
+          end: {
+            line: 3,
+            column: 33
+          }
+        }],
+        line: 3
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0,
+      "15": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    b: {
+      "0": [0, 0, 0],
+      "1": [0, 0],
+      "2": [0, 0]
+    },
+    inputSourceMap: {
+      file: "D:\\dev\\contabil\\contabil-site\\backend\\src\\routes\\contactRoutes.ts",
+      mappings: ";;;;;AAAA,qCAAiC;AACjC,8CAA8D;AAC9D,yFAAiE;AAEjE,MAAM,MAAM,GAAG,IAAA,gBAAM,GAAE,CAAC;AAExB;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAuEG;AAEH;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAmCG;AACH,MAAM,CAAC,IAAI,CAAC,GAAG,EAAE,CAAC,GAAG,EAAE,GAAG,EAAE,EAAE,CAAC,2BAAiB,CAAC,aAAa,CAAC,GAAG,EAAE,GAAG,CAAC,CAAC,CAAC;AAE1E;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAmHG;AACH,MAAM,CAAC,GAAG,CAAC,GAAG,EAAE,mBAAY,EAAE,IAAA,gBAAS,EAAC,OAAO,EAAE,QAAQ,CAAC,EAAE,2BAAiB,CAAC,WAAW,CAAC,CAAC;AAE3F;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAiCG;AACH,MAAM,CAAC,GAAG,CAAC,MAAM,EAAE,mBAAY,EAAE,IAAA,gBAAS,EAAC,OAAO,EAAE,QAAQ,CAAC,EAAE,2BAAiB,CAAC,cAAc,CAAC,CAAC;AAEjG;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GA4DG;AACH,MAAM,CAAC,KAAK,CAAC,aAAa,EAAE,mBAAY,EAAE,IAAA,gBAAS,EAAC,OAAO,EAAE,QAAQ,CAAC,EAAE,CAAC,GAAG,EAAE,GAAG,EAAE,EAAE,CAAC,2BAAiB,CAAC,mBAAmB,CAAC,GAAG,EAAE,GAAG,CAAC,CAAC,CAAC;AAEvI;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAwDG;AACH,MAAM,CAAC,IAAI,CAAC,YAAY,EAAE,mBAAY,EAAE,IAAA,gBAAS,EAAC,OAAO,EAAE,QAAQ,CAAC,EAAE,2BAAiB,CAAC,cAAc,CAAC,CAAC;AAExG;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAiCG;AACH,MAAM,CAAC,MAAM,CAAC,MAAM,EAAE,mBAAY,EAAE,IAAA,gBAAS,EAAC,OAAO,CAAC,EAAE,2BAAiB,CAAC,aAAa,CAAC,CAAC;AAEzF,kBAAe,MAAM,CAAC",
+      names: [],
+      sources: ["D:\\dev\\contabil\\contabil-site\\backend\\src\\routes\\contactRoutes.ts"],
+      sourcesContent: ["import { Router } from 'express';\r\nimport { authenticate, authorize } from '../middlewares/auth';\r\nimport ContactController from '../controllers/contactController';\r\n\r\nconst router = Router();\r\n\r\n/**\r\n * @swagger\r\n * components:\r\n *   schemas:\r\n *     Contact:\r\n *       type: object\r\n *       properties:\r\n *         id:\r\n *           type: string\r\n *         name:\r\n *           type: string\r\n *         email:\r\n *           type: string\r\n *         phone:\r\n *           type: string\r\n *         subject:\r\n *           type: string\r\n *         message:\r\n *           type: string\r\n *         status:\r\n *           type: string\r\n *           enum: [PENDING, IN_PROGRESS, RESOLVED, CLOSED]\r\n *         priority:\r\n *           type: string\r\n *           enum: [LOW, MEDIUM, HIGH, URGENT]\r\n *         assignedTo:\r\n *           type: string\r\n *         notes:\r\n *           type: string\r\n *         createdAt:\r\n *           type: string\r\n *           format: date-time\r\n *         updatedAt:\r\n *           type: string\r\n *           format: date-time\r\n *         resolvedAt:\r\n *           type: string\r\n *           format: date-time\r\n *     ContactRequest:\r\n *       type: object\r\n *       required:\r\n *         - name\r\n *         - email\r\n *         - subject\r\n *         - message\r\n *       properties:\r\n *         name:\r\n *           type: string\r\n *           minLength: 2\r\n *           description: Nome completo\r\n *         email:\r\n *           type: string\r\n *           format: email\r\n *           description: Email para contato\r\n *         phone:\r\n *           type: string\r\n *           description: Telefone (opcional)\r\n *         subject:\r\n *           type: string\r\n *           minLength: 5\r\n *           description: Assunto da mensagem\r\n *         message:\r\n *           type: string\r\n *           minLength: 10\r\n *           description: Mensagem detalhada\r\n *         company:\r\n *           type: string\r\n *           description: Empresa (opcional)\r\n *         website:\r\n *           type: string\r\n *           description: Website (opcional)\r\n */\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/contact:\r\n *   post:\r\n *     summary: Enviar mensagem de contato\r\n *     tags: [Contato]\r\n *     requestBody:\r\n *       required: true\r\n *       content:\r\n *         application/json:\r\n *           schema:\r\n *             $ref: '#/components/schemas/ContactRequest'\r\n *     responses:\r\n *       201:\r\n *         description: Mensagem enviada com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 data:\r\n *                   type: object\r\n *                   properties:\r\n *                     id:\r\n *                       type: string\r\n *                     ticketNumber:\r\n *                       type: string\r\n *                 message:\r\n *                   type: string\r\n *       400:\r\n *         description: Dados inv\xE1lidos\r\n *       429:\r\n *         description: Muitas tentativas - tente novamente mais tarde\r\n */\r\nrouter.post('/', (req, res) => ContactController.createContact(req, res));\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/contact:\r\n *   get:\r\n *     summary: Listar mensagens de contato (Admin)\r\n *     tags: [Contato]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     parameters:\r\n *       - in: query\r\n *         name: page\r\n *         schema:\r\n *           type: integer\r\n *           minimum: 1\r\n *           default: 1\r\n *         description: N\xFAmero da p\xE1gina\r\n *       - in: query\r\n *         name: limit\r\n *         schema:\r\n *           type: integer\r\n *           minimum: 1\r\n *           maximum: 100\r\n *           default: 20\r\n *         description: Itens por p\xE1gina\r\n *       - in: query\r\n *         name: status\r\n *         schema:\r\n *           type: string\r\n *           enum: [PENDING, IN_PROGRESS, RESOLVED, CLOSED]\r\n *         description: Filtrar por status\r\n *       - in: query\r\n *         name: priority\r\n *         schema:\r\n *           type: string\r\n *           enum: [LOW, MEDIUM, HIGH, URGENT]\r\n *         description: Filtrar por prioridade\r\n *       - in: query\r\n *         name: assignedTo\r\n *         schema:\r\n *           type: string\r\n *         description: Filtrar por respons\xE1vel\r\n *       - in: query\r\n *         name: search\r\n *         schema:\r\n *           type: string\r\n *         description: Buscar por nome, email ou assunto\r\n *       - in: query\r\n *         name: dateFrom\r\n *         schema:\r\n *           type: string\r\n *           format: date\r\n *         description: Data inicial (YYYY-MM-DD)\r\n *       - in: query\r\n *         name: dateTo\r\n *         schema:\r\n *           type: string\r\n *           format: date\r\n *         description: Data final (YYYY-MM-DD)\r\n *       - in: query\r\n *         name: sortBy\r\n *         schema:\r\n *           type: string\r\n *           enum: [createdAt, updatedAt, priority, status]\r\n *           default: createdAt\r\n *         description: Campo para ordena\xE7\xE3o\r\n *       - in: query\r\n *         name: sortOrder\r\n *         schema:\r\n *           type: string\r\n *           enum: [asc, desc]\r\n *           default: desc\r\n *         description: Ordem da classifica\xE7\xE3o\r\n *     responses:\r\n *       200:\r\n *         description: Lista de mensagens de contato\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 data:\r\n *                   type: object\r\n *                   properties:\r\n *                     contacts:\r\n *                       type: array\r\n *                       items:\r\n *                         $ref: '#/components/schemas/Contact'\r\n *                     pagination:\r\n *                       type: object\r\n *                       properties:\r\n *                         page:\r\n *                           type: integer\r\n *                         limit:\r\n *                           type: integer\r\n *                         total:\r\n *                           type: integer\r\n *                         pages:\r\n *                           type: integer\r\n *                     stats:\r\n *                       type: object\r\n *                       properties:\r\n *                         pending:\r\n *                           type: integer\r\n *                         inProgress:\r\n *                           type: integer\r\n *                         resolved:\r\n *                           type: integer\r\n *                         closed:\r\n *                           type: integer\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       403:\r\n *         description: Sem permiss\xE3o\r\n */\r\nrouter.get('/', authenticate, authorize('ADMIN', 'EDITOR'), ContactController.getContacts);\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/contact/{id}:\r\n *   get:\r\n *     summary: Obter mensagem de contato por ID (Admin)\r\n *     tags: [Contato]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     parameters:\r\n *       - in: path\r\n *         name: id\r\n *         required: true\r\n *         schema:\r\n *           type: string\r\n *         description: ID da mensagem\r\n *     responses:\r\n *       200:\r\n *         description: Dados da mensagem de contato\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 data:\r\n *                   $ref: '#/components/schemas/Contact'\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       403:\r\n *         description: Sem permiss\xE3o\r\n *       404:\r\n *         description: Mensagem n\xE3o encontrada\r\n */\r\nrouter.get('/:id', authenticate, authorize('ADMIN', 'EDITOR'), ContactController.getContactById);\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/contact/{id}/status:\r\n *   patch:\r\n *     summary: Atualizar status da mensagem (Admin)\r\n *     tags: [Contato]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     parameters:\r\n *       - in: path\r\n *         name: id\r\n *         required: true\r\n *         schema:\r\n *           type: string\r\n *         description: ID da mensagem\r\n *     requestBody:\r\n *       required: true\r\n *       content:\r\n *         application/json:\r\n *           schema:\r\n *             type: object\r\n *             required:\r\n *               - status\r\n *             properties:\r\n *               status:\r\n *                 type: string\r\n *                 enum: [PENDING, IN_PROGRESS, RESOLVED, CLOSED]\r\n *                 description: Novo status\r\n *               priority:\r\n *                 type: string\r\n *                 enum: [LOW, MEDIUM, HIGH, URGENT]\r\n *                 description: Nova prioridade (opcional)\r\n *               assignedTo:\r\n *                 type: string\r\n *                 description: ID do usu\xE1rio respons\xE1vel (opcional)\r\n *               notes:\r\n *                 type: string\r\n *                 description: Notas internas (opcional)\r\n *     responses:\r\n *       200:\r\n *         description: Status atualizado com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 data:\r\n *                   $ref: '#/components/schemas/Contact'\r\n *                 message:\r\n *                   type: string\r\n *       400:\r\n *         description: Dados inv\xE1lidos\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       403:\r\n *         description: Sem permiss\xE3o\r\n *       404:\r\n *         description: Mensagem n\xE3o encontrada\r\n */\r\nrouter.patch('/:id/status', authenticate, authorize('ADMIN', 'EDITOR'), (req, res) => ContactController.updateContactStatus(req, res));\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/contact/{id}/reply:\r\n *   post:\r\n *     summary: Responder mensagem de contato (Admin)\r\n *     tags: [Contato]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     parameters:\r\n *       - in: path\r\n *         name: id\r\n *         required: true\r\n *         schema:\r\n *           type: string\r\n *         description: ID da mensagem\r\n *     requestBody:\r\n *       required: true\r\n *       content:\r\n *         application/json:\r\n *           schema:\r\n *             type: object\r\n *             required:\r\n *               - subject\r\n *               - message\r\n *             properties:\r\n *               subject:\r\n *                 type: string\r\n *                 minLength: 5\r\n *                 description: Assunto da resposta\r\n *               message:\r\n *                 type: string\r\n *                 minLength: 10\r\n *                 description: Mensagem de resposta\r\n *               template:\r\n *                 type: string\r\n *                 description: Template de email (opcional)\r\n *     responses:\r\n *       200:\r\n *         description: Resposta enviada com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 message:\r\n *                   type: string\r\n *       400:\r\n *         description: Dados inv\xE1lidos\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       403:\r\n *         description: Sem permiss\xE3o\r\n *       404:\r\n *         description: Mensagem n\xE3o encontrada\r\n */\r\nrouter.post('/:id/reply', authenticate, authorize('ADMIN', 'EDITOR'), ContactController.replyToContact);\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/contact/{id}:\r\n *   delete:\r\n *     summary: Excluir mensagem de contato (Admin)\r\n *     tags: [Contato]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     parameters:\r\n *       - in: path\r\n *         name: id\r\n *         required: true\r\n *         schema:\r\n *           type: string\r\n *         description: ID da mensagem\r\n *     responses:\r\n *       200:\r\n *         description: Mensagem exclu\xEDda com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 message:\r\n *                   type: string\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       403:\r\n *         description: Sem permiss\xE3o\r\n *       404:\r\n *         description: Mensagem n\xE3o encontrada\r\n */\r\nrouter.delete('/:id', authenticate, authorize('ADMIN'), ContactController.deleteContact);\r\n\r\nexport default router;"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "f9df550b91d08d9945e491a6df50dda704060da5"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_1fsza9xkje = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_1fsza9xkje();
+var __importDefault =
+/* istanbul ignore next */
+(cov_1fsza9xkje().s[0]++,
+/* istanbul ignore next */
+(cov_1fsza9xkje().b[0][0]++, this) &&
+/* istanbul ignore next */
+(cov_1fsza9xkje().b[0][1]++, this.__importDefault) ||
+/* istanbul ignore next */
+(cov_1fsza9xkje().b[0][2]++, function (mod) {
+  /* istanbul ignore next */
+  cov_1fsza9xkje().f[0]++;
+  cov_1fsza9xkje().s[1]++;
+  return /* istanbul ignore next */(cov_1fsza9xkje().b[2][0]++, mod) &&
+  /* istanbul ignore next */
+  (cov_1fsza9xkje().b[2][1]++, mod.__esModule) ?
+  /* istanbul ignore next */
+  (cov_1fsza9xkje().b[1][0]++, mod) :
+  /* istanbul ignore next */
+  (cov_1fsza9xkje().b[1][1]++, {
+    "default": mod
+  });
+}));
+/* istanbul ignore next */
+cov_1fsza9xkje().s[2]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const express_1 =
+/* istanbul ignore next */
+(cov_1fsza9xkje().s[3]++, require("express"));
+const auth_1 =
+/* istanbul ignore next */
+(cov_1fsza9xkje().s[4]++, require("../middlewares/auth"));
+const contactController_1 =
+/* istanbul ignore next */
+(cov_1fsza9xkje().s[5]++, __importDefault(require("../controllers/contactController")));
+const router =
+/* istanbul ignore next */
+(cov_1fsza9xkje().s[6]++, (0, express_1.Router)());
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Contact:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: string
+ *         name:
+ *           type: string
+ *         email:
+ *           type: string
+ *         phone:
+ *           type: string
+ *         subject:
+ *           type: string
+ *         message:
+ *           type: string
+ *         status:
+ *           type: string
+ *           enum: [PENDING, IN_PROGRESS, RESOLVED, CLOSED]
+ *         priority:
+ *           type: string
+ *           enum: [LOW, MEDIUM, HIGH, URGENT]
+ *         assignedTo:
+ *           type: string
+ *         notes:
+ *           type: string
+ *         createdAt:
+ *           type: string
+ *           format: date-time
+ *         updatedAt:
+ *           type: string
+ *           format: date-time
+ *         resolvedAt:
+ *           type: string
+ *           format: date-time
+ *     ContactRequest:
+ *       type: object
+ *       required:
+ *         - name
+ *         - email
+ *         - subject
+ *         - message
+ *       properties:
+ *         name:
+ *           type: string
+ *           minLength: 2
+ *           description: Nome completo
+ *         email:
+ *           type: string
+ *           format: email
+ *           description: Email para contato
+ *         phone:
+ *           type: string
+ *           description: Telefone (opcional)
+ *         subject:
+ *           type: string
+ *           minLength: 5
+ *           description: Assunto da mensagem
+ *         message:
+ *           type: string
+ *           minLength: 10
+ *           description: Mensagem detalhada
+ *         company:
+ *           type: string
+ *           description: Empresa (opcional)
+ *         website:
+ *           type: string
+ *           description: Website (opcional)
+ */
+/**
+ * @swagger
+ * /api/v1/contact:
+ *   post:
+ *     summary: Enviar mensagem de contato
+ *     tags: [Contato]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/ContactRequest'
+ *     responses:
+ *       201:
+ *         description: Mensagem enviada com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     id:
+ *                       type: string
+ *                     ticketNumber:
+ *                       type: string
+ *                 message:
+ *                   type: string
+ *       400:
+ *         description: Dados inválidos
+ *       429:
+ *         description: Muitas tentativas - tente novamente mais tarde
+ */
+/* istanbul ignore next */
+cov_1fsza9xkje().s[7]++;
+router.post('/', (req, res) => {
+  /* istanbul ignore next */
+  cov_1fsza9xkje().f[1]++;
+  cov_1fsza9xkje().s[8]++;
+  return contactController_1.default.createContact(req, res);
+});
+/**
+ * @swagger
+ * /api/v1/contact:
+ *   get:
+ *     summary: Listar mensagens de contato (Admin)
+ *     tags: [Contato]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           default: 1
+ *         description: Número da página
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           maximum: 100
+ *           default: 20
+ *         description: Itens por página
+ *       - in: query
+ *         name: status
+ *         schema:
+ *           type: string
+ *           enum: [PENDING, IN_PROGRESS, RESOLVED, CLOSED]
+ *         description: Filtrar por status
+ *       - in: query
+ *         name: priority
+ *         schema:
+ *           type: string
+ *           enum: [LOW, MEDIUM, HIGH, URGENT]
+ *         description: Filtrar por prioridade
+ *       - in: query
+ *         name: assignedTo
+ *         schema:
+ *           type: string
+ *         description: Filtrar por responsável
+ *       - in: query
+ *         name: search
+ *         schema:
+ *           type: string
+ *         description: Buscar por nome, email ou assunto
+ *       - in: query
+ *         name: dateFrom
+ *         schema:
+ *           type: string
+ *           format: date
+ *         description: Data inicial (YYYY-MM-DD)
+ *       - in: query
+ *         name: dateTo
+ *         schema:
+ *           type: string
+ *           format: date
+ *         description: Data final (YYYY-MM-DD)
+ *       - in: query
+ *         name: sortBy
+ *         schema:
+ *           type: string
+ *           enum: [createdAt, updatedAt, priority, status]
+ *           default: createdAt
+ *         description: Campo para ordenação
+ *       - in: query
+ *         name: sortOrder
+ *         schema:
+ *           type: string
+ *           enum: [asc, desc]
+ *           default: desc
+ *         description: Ordem da classificação
+ *     responses:
+ *       200:
+ *         description: Lista de mensagens de contato
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     contacts:
+ *                       type: array
+ *                       items:
+ *                         $ref: '#/components/schemas/Contact'
+ *                     pagination:
+ *                       type: object
+ *                       properties:
+ *                         page:
+ *                           type: integer
+ *                         limit:
+ *                           type: integer
+ *                         total:
+ *                           type: integer
+ *                         pages:
+ *                           type: integer
+ *                     stats:
+ *                       type: object
+ *                       properties:
+ *                         pending:
+ *                           type: integer
+ *                         inProgress:
+ *                           type: integer
+ *                         resolved:
+ *                           type: integer
+ *                         closed:
+ *                           type: integer
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ */
+/* istanbul ignore next */
+cov_1fsza9xkje().s[9]++;
+router.get('/', auth_1.authenticate, (0, auth_1.authorize)('ADMIN', 'EDITOR'), contactController_1.default.getContacts);
+/**
+ * @swagger
+ * /api/v1/contact/{id}:
+ *   get:
+ *     summary: Obter mensagem de contato por ID (Admin)
+ *     tags: [Contato]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID da mensagem
+ *     responses:
+ *       200:
+ *         description: Dados da mensagem de contato
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   $ref: '#/components/schemas/Contact'
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ *       404:
+ *         description: Mensagem não encontrada
+ */
+/* istanbul ignore next */
+cov_1fsza9xkje().s[10]++;
+router.get('/:id', auth_1.authenticate, (0, auth_1.authorize)('ADMIN', 'EDITOR'), contactController_1.default.getContactById);
+/**
+ * @swagger
+ * /api/v1/contact/{id}/status:
+ *   patch:
+ *     summary: Atualizar status da mensagem (Admin)
+ *     tags: [Contato]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID da mensagem
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - status
+ *             properties:
+ *               status:
+ *                 type: string
+ *                 enum: [PENDING, IN_PROGRESS, RESOLVED, CLOSED]
+ *                 description: Novo status
+ *               priority:
+ *                 type: string
+ *                 enum: [LOW, MEDIUM, HIGH, URGENT]
+ *                 description: Nova prioridade (opcional)
+ *               assignedTo:
+ *                 type: string
+ *                 description: ID do usuário responsável (opcional)
+ *               notes:
+ *                 type: string
+ *                 description: Notas internas (opcional)
+ *     responses:
+ *       200:
+ *         description: Status atualizado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   $ref: '#/components/schemas/Contact'
+ *                 message:
+ *                   type: string
+ *       400:
+ *         description: Dados inválidos
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ *       404:
+ *         description: Mensagem não encontrada
+ */
+/* istanbul ignore next */
+cov_1fsza9xkje().s[11]++;
+router.patch('/:id/status', auth_1.authenticate, (0, auth_1.authorize)('ADMIN', 'EDITOR'), (req, res) => {
+  /* istanbul ignore next */
+  cov_1fsza9xkje().f[2]++;
+  cov_1fsza9xkje().s[12]++;
+  return contactController_1.default.updateContactStatus(req, res);
+});
+/**
+ * @swagger
+ * /api/v1/contact/{id}/reply:
+ *   post:
+ *     summary: Responder mensagem de contato (Admin)
+ *     tags: [Contato]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID da mensagem
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - subject
+ *               - message
+ *             properties:
+ *               subject:
+ *                 type: string
+ *                 minLength: 5
+ *                 description: Assunto da resposta
+ *               message:
+ *                 type: string
+ *                 minLength: 10
+ *                 description: Mensagem de resposta
+ *               template:
+ *                 type: string
+ *                 description: Template de email (opcional)
+ *     responses:
+ *       200:
+ *         description: Resposta enviada com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 message:
+ *                   type: string
+ *       400:
+ *         description: Dados inválidos
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ *       404:
+ *         description: Mensagem não encontrada
+ */
+/* istanbul ignore next */
+cov_1fsza9xkje().s[13]++;
+router.post('/:id/reply', auth_1.authenticate, (0, auth_1.authorize)('ADMIN', 'EDITOR'), contactController_1.default.replyToContact);
+/**
+ * @swagger
+ * /api/v1/contact/{id}:
+ *   delete:
+ *     summary: Excluir mensagem de contato (Admin)
+ *     tags: [Contato]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID da mensagem
+ *     responses:
+ *       200:
+ *         description: Mensagem excluída com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 message:
+ *                   type: string
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ *       404:
+ *         description: Mensagem não encontrada
+ */
+/* istanbul ignore next */
+cov_1fsza9xkje().s[14]++;
+router.delete('/:id', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), contactController_1.default.deleteContact);
+/* istanbul ignore next */
+cov_1fsza9xkje().s[15]++;
+exports.default = router;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJleHByZXNzXzEiLCJjb3ZfMWZzemE5eGtqZSIsInMiLCJyZXF1aXJlIiwiYXV0aF8xIiwiY29udGFjdENvbnRyb2xsZXJfMSIsIl9faW1wb3J0RGVmYXVsdCIsInJvdXRlciIsIlJvdXRlciIsInBvc3QiLCJyZXEiLCJyZXMiLCJmIiwiZGVmYXVsdCIsImNyZWF0ZUNvbnRhY3QiLCJnZXQiLCJhdXRoZW50aWNhdGUiLCJhdXRob3JpemUiLCJnZXRDb250YWN0cyIsImdldENvbnRhY3RCeUlkIiwicGF0Y2giLCJ1cGRhdGVDb250YWN0U3RhdHVzIiwicmVwbHlUb0NvbnRhY3QiLCJkZWxldGUiLCJkZWxldGVDb250YWN0IiwiZXhwb3J0cyJdLCJzb3VyY2VzIjpbIkQ6XFxkZXZcXGNvbnRhYmlsXFxjb250YWJpbC1zaXRlXFxiYWNrZW5kXFxzcmNcXHJvdXRlc1xcY29udGFjdFJvdXRlcy50cyJdLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBSb3V0ZXIgfSBmcm9tICdleHByZXNzJztcclxuaW1wb3J0IHsgYXV0aGVudGljYXRlLCBhdXRob3JpemUgfSBmcm9tICcuLi9taWRkbGV3YXJlcy9hdXRoJztcclxuaW1wb3J0IENvbnRhY3RDb250cm9sbGVyIGZyb20gJy4uL2NvbnRyb2xsZXJzL2NvbnRhY3RDb250cm9sbGVyJztcclxuXHJcbmNvbnN0IHJvdXRlciA9IFJvdXRlcigpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIGNvbXBvbmVudHM6XHJcbiAqICAgc2NoZW1hczpcclxuICogICAgIENvbnRhY3Q6XHJcbiAqICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgIGlkOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgbmFtZTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGVtYWlsOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgcGhvbmU6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBzdWJqZWN0OlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgbWVzc2FnZTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIHN0YXR1czpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZW51bTogW1BFTkRJTkcsIElOX1BST0dSRVNTLCBSRVNPTFZFRCwgQ0xPU0VEXVxyXG4gKiAgICAgICAgIHByaW9yaXR5OlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBlbnVtOiBbTE9XLCBNRURJVU0sIEhJR0gsIFVSR0VOVF1cclxuICogICAgICAgICBhc3NpZ25lZFRvOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgbm90ZXM6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBjcmVhdGVkQXQ6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGZvcm1hdDogZGF0ZS10aW1lXHJcbiAqICAgICAgICAgdXBkYXRlZEF0OlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBmb3JtYXQ6IGRhdGUtdGltZVxyXG4gKiAgICAgICAgIHJlc29sdmVkQXQ6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGZvcm1hdDogZGF0ZS10aW1lXHJcbiAqICAgICBDb250YWN0UmVxdWVzdDpcclxuICogICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgIHJlcXVpcmVkOlxyXG4gKiAgICAgICAgIC0gbmFtZVxyXG4gKiAgICAgICAgIC0gZW1haWxcclxuICogICAgICAgICAtIHN1YmplY3RcclxuICogICAgICAgICAtIG1lc3NhZ2VcclxuICogICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICBuYW1lOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBtaW5MZW5ndGg6IDJcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBOb21lIGNvbXBsZXRvXHJcbiAqICAgICAgICAgZW1haWw6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGZvcm1hdDogZW1haWxcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBFbWFpbCBwYXJhIGNvbnRhdG9cclxuICogICAgICAgICBwaG9uZTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IFRlbGVmb25lIChvcGNpb25hbClcclxuICogICAgICAgICBzdWJqZWN0OlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBtaW5MZW5ndGg6IDVcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBBc3N1bnRvIGRhIG1lbnNhZ2VtXHJcbiAqICAgICAgICAgbWVzc2FnZTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgbWluTGVuZ3RoOiAxMFxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IE1lbnNhZ2VtIGRldGFsaGFkYVxyXG4gKiAgICAgICAgIGNvbXBhbnk6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBFbXByZXNhIChvcGNpb25hbClcclxuICogICAgICAgICB3ZWJzaXRlOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogV2Vic2l0ZSAob3BjaW9uYWwpXHJcbiAqL1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvY29udGFjdDpcclxuICogICBwb3N0OlxyXG4gKiAgICAgc3VtbWFyeTogRW52aWFyIG1lbnNhZ2VtIGRlIGNvbnRhdG9cclxuICogICAgIHRhZ3M6IFtDb250YXRvXVxyXG4gKiAgICAgcmVxdWVzdEJvZHk6XHJcbiAqICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgJHJlZjogJyMvY29tcG9uZW50cy9zY2hlbWFzL0NvbnRhY3RSZXF1ZXN0J1xyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDE6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IE1lbnNhZ2VtIGVudmlhZGEgY29tIHN1Y2Vzc29cclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICBzdWNjZXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBkYXRhOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgICBpZDpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgICAgIHRpY2tldE51bWJlcjpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgbWVzc2FnZTpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgIDQwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRGFkb3MgaW52w6FsaWRvc1xyXG4gKiAgICAgICA0Mjk6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IE11aXRhcyB0ZW50YXRpdmFzIC0gdGVudGUgbm92YW1lbnRlIG1haXMgdGFyZGVcclxuICovXHJcbnJvdXRlci5wb3N0KCcvJywgKHJlcSwgcmVzKSA9PiBDb250YWN0Q29udHJvbGxlci5jcmVhdGVDb250YWN0KHJlcSwgcmVzKSk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS9jb250YWN0OlxyXG4gKiAgIGdldDpcclxuICogICAgIHN1bW1hcnk6IExpc3RhciBtZW5zYWdlbnMgZGUgY29udGF0byAoQWRtaW4pXHJcbiAqICAgICB0YWdzOiBbQ29udGF0b11cclxuICogICAgIHNlY3VyaXR5OlxyXG4gKiAgICAgICAtIGJlYXJlckF1dGg6IFtdXHJcbiAqICAgICBwYXJhbWV0ZXJzOlxyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IHBhZ2VcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICBtaW5pbXVtOiAxXHJcbiAqICAgICAgICAgICBkZWZhdWx0OiAxXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IE7Dum1lcm8gZGEgcMOhZ2luYVxyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IGxpbWl0XHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgbWluaW11bTogMVxyXG4gKiAgICAgICAgICAgbWF4aW11bTogMTAwXHJcbiAqICAgICAgICAgICBkZWZhdWx0OiAyMFxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBJdGVucyBwb3IgcMOhZ2luYVxyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IHN0YXR1c1xyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZW51bTogW1BFTkRJTkcsIElOX1BST0dSRVNTLCBSRVNPTFZFRCwgQ0xPU0VEXVxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBGaWx0cmFyIHBvciBzdGF0dXNcclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiBwcmlvcml0eVxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZW51bTogW0xPVywgTUVESVVNLCBISUdILCBVUkdFTlRdXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEZpbHRyYXIgcG9yIHByaW9yaWRhZGVcclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiBhc3NpZ25lZFRvXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEZpbHRyYXIgcG9yIHJlc3BvbnPDoXZlbFxyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IHNlYXJjaFxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBCdXNjYXIgcG9yIG5vbWUsIGVtYWlsIG91IGFzc3VudG9cclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiBkYXRlRnJvbVxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZm9ybWF0OiBkYXRlXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IERhdGEgaW5pY2lhbCAoWVlZWS1NTS1ERClcclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiBkYXRlVG9cclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGZvcm1hdDogZGF0ZVxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBEYXRhIGZpbmFsIChZWVlZLU1NLUREKVxyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IHNvcnRCeVxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZW51bTogW2NyZWF0ZWRBdCwgdXBkYXRlZEF0LCBwcmlvcml0eSwgc3RhdHVzXVxyXG4gKiAgICAgICAgICAgZGVmYXVsdDogY3JlYXRlZEF0XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IENhbXBvIHBhcmEgb3JkZW5hw6fDo29cclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiBzb3J0T3JkZXJcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGVudW06IFthc2MsIGRlc2NdXHJcbiAqICAgICAgICAgICBkZWZhdWx0OiBkZXNjXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IE9yZGVtIGRhIGNsYXNzaWZpY2HDp8Ojb1xyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IExpc3RhIGRlIG1lbnNhZ2VucyBkZSBjb250YXRvXHJcbiAqICAgICAgICAgY29udGVudDpcclxuICogICAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgc3VjY2VzczpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgZGF0YTpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgY29udGFjdHM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBhcnJheVxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgaXRlbXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICRyZWY6ICcjL2NvbXBvbmVudHMvc2NoZW1hcy9Db250YWN0J1xyXG4gKiAgICAgICAgICAgICAgICAgICAgIHBhZ2luYXRpb246XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIHBhZ2U6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICBsaW1pdDpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIHRvdGFsOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgcGFnZXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgIHN0YXRzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICBwZW5kaW5nOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgaW5Qcm9ncmVzczpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIHJlc29sdmVkOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgY2xvc2VkOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgNDAxOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBUb2tlbiBpbnbDoWxpZG9cclxuICogICAgICAgNDAzOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBTZW0gcGVybWlzc8Ojb1xyXG4gKi9cclxucm91dGVyLmdldCgnLycsIGF1dGhlbnRpY2F0ZSwgYXV0aG9yaXplKCdBRE1JTicsICdFRElUT1InKSwgQ29udGFjdENvbnRyb2xsZXIuZ2V0Q29udGFjdHMpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvY29udGFjdC97aWR9OlxyXG4gKiAgIGdldDpcclxuICogICAgIHN1bW1hcnk6IE9idGVyIG1lbnNhZ2VtIGRlIGNvbnRhdG8gcG9yIElEIChBZG1pbilcclxuICogICAgIHRhZ3M6IFtDb250YXRvXVxyXG4gKiAgICAgc2VjdXJpdHk6XHJcbiAqICAgICAgIC0gYmVhcmVyQXV0aDogW11cclxuICogICAgIHBhcmFtZXRlcnM6XHJcbiAqICAgICAgIC0gaW46IHBhdGhcclxuICogICAgICAgICBuYW1lOiBpZFxyXG4gKiAgICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IElEIGRhIG1lbnNhZ2VtXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRGFkb3MgZGEgbWVuc2FnZW0gZGUgY29udGF0b1xyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgIHN1Y2Nlc3M6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgIGRhdGE6XHJcbiAqICAgICAgICAgICAgICAgICAgICRyZWY6ICcjL2NvbXBvbmVudHMvc2NoZW1hcy9Db250YWN0J1xyXG4gKiAgICAgICA0MDE6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGludsOhbGlkb1xyXG4gKiAgICAgICA0MDM6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFNlbSBwZXJtaXNzw6NvXHJcbiAqICAgICAgIDQwNDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogTWVuc2FnZW0gbsOjbyBlbmNvbnRyYWRhXHJcbiAqL1xyXG5yb3V0ZXIuZ2V0KCcvOmlkJywgYXV0aGVudGljYXRlLCBhdXRob3JpemUoJ0FETUlOJywgJ0VESVRPUicpLCBDb250YWN0Q29udHJvbGxlci5nZXRDb250YWN0QnlJZCk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS9jb250YWN0L3tpZH0vc3RhdHVzOlxyXG4gKiAgIHBhdGNoOlxyXG4gKiAgICAgc3VtbWFyeTogQXR1YWxpemFyIHN0YXR1cyBkYSBtZW5zYWdlbSAoQWRtaW4pXHJcbiAqICAgICB0YWdzOiBbQ29udGF0b11cclxuICogICAgIHNlY3VyaXR5OlxyXG4gKiAgICAgICAtIGJlYXJlckF1dGg6IFtdXHJcbiAqICAgICBwYXJhbWV0ZXJzOlxyXG4gKiAgICAgICAtIGluOiBwYXRoXHJcbiAqICAgICAgICAgbmFtZTogaWRcclxuICogICAgICAgICByZXF1aXJlZDogdHJ1ZVxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBJRCBkYSBtZW5zYWdlbVxyXG4gKiAgICAgcmVxdWVzdEJvZHk6XHJcbiAqICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgIHJlcXVpcmVkOlxyXG4gKiAgICAgICAgICAgICAgIC0gc3RhdHVzXHJcbiAqICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgc3RhdHVzOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICBlbnVtOiBbUEVORElORywgSU5fUFJPR1JFU1MsIFJFU09MVkVELCBDTE9TRURdXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogTm92byBzdGF0dXNcclxuICogICAgICAgICAgICAgICBwcmlvcml0eTpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgZW51bTogW0xPVywgTUVESVVNLCBISUdILCBVUkdFTlRdXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogTm92YSBwcmlvcmlkYWRlIChvcGNpb25hbClcclxuICogICAgICAgICAgICAgICBhc3NpZ25lZFRvOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogSUQgZG8gdXN1w6FyaW8gcmVzcG9uc8OhdmVsIChvcGNpb25hbClcclxuICogICAgICAgICAgICAgICBub3RlczpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IE5vdGFzIGludGVybmFzIChvcGNpb25hbClcclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBTdGF0dXMgYXR1YWxpemFkbyBjb20gc3VjZXNzb1xyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgIHN1Y2Nlc3M6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgIGRhdGE6XHJcbiAqICAgICAgICAgICAgICAgICAgICRyZWY6ICcjL2NvbXBvbmVudHMvc2NoZW1hcy9Db250YWN0J1xyXG4gKiAgICAgICAgICAgICAgICAgbWVzc2FnZTpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgIDQwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRGFkb3MgaW52w6FsaWRvc1xyXG4gKiAgICAgICA0MDE6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGludsOhbGlkb1xyXG4gKiAgICAgICA0MDM6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFNlbSBwZXJtaXNzw6NvXHJcbiAqICAgICAgIDQwNDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogTWVuc2FnZW0gbsOjbyBlbmNvbnRyYWRhXHJcbiAqL1xyXG5yb3V0ZXIucGF0Y2goJy86aWQvc3RhdHVzJywgYXV0aGVudGljYXRlLCBhdXRob3JpemUoJ0FETUlOJywgJ0VESVRPUicpLCAocmVxLCByZXMpID0+IENvbnRhY3RDb250cm9sbGVyLnVwZGF0ZUNvbnRhY3RTdGF0dXMocmVxLCByZXMpKTtcclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL2NvbnRhY3Qve2lkfS9yZXBseTpcclxuICogICBwb3N0OlxyXG4gKiAgICAgc3VtbWFyeTogUmVzcG9uZGVyIG1lbnNhZ2VtIGRlIGNvbnRhdG8gKEFkbWluKVxyXG4gKiAgICAgdGFnczogW0NvbnRhdG9dXHJcbiAqICAgICBzZWN1cml0eTpcclxuICogICAgICAgLSBiZWFyZXJBdXRoOiBbXVxyXG4gKiAgICAgcGFyYW1ldGVyczpcclxuICogICAgICAgLSBpbjogcGF0aFxyXG4gKiAgICAgICAgIG5hbWU6IGlkXHJcbiAqICAgICAgICAgcmVxdWlyZWQ6IHRydWVcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogSUQgZGEgbWVuc2FnZW1cclxuICogICAgIHJlcXVlc3RCb2R5OlxyXG4gKiAgICAgICByZXF1aXJlZDogdHJ1ZVxyXG4gKiAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICByZXF1aXJlZDpcclxuICogICAgICAgICAgICAgICAtIHN1YmplY3RcclxuICogICAgICAgICAgICAgICAtIG1lc3NhZ2VcclxuICogICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICBzdWJqZWN0OlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICBtaW5MZW5ndGg6IDVcclxuICogICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBBc3N1bnRvIGRhIHJlc3Bvc3RhXHJcbiAqICAgICAgICAgICAgICAgbWVzc2FnZTpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgbWluTGVuZ3RoOiAxMFxyXG4gKiAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IE1lbnNhZ2VtIGRlIHJlc3Bvc3RhXHJcbiAqICAgICAgICAgICAgICAgdGVtcGxhdGU6XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBUZW1wbGF0ZSBkZSBlbWFpbCAob3BjaW9uYWwpXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogUmVzcG9zdGEgZW52aWFkYSBjb20gc3VjZXNzb1xyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgIHN1Y2Nlc3M6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgIG1lc3NhZ2U6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICA0MDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IERhZG9zIGludsOhbGlkb3NcclxuICogICAgICAgNDAxOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBUb2tlbiBpbnbDoWxpZG9cclxuICogICAgICAgNDAzOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBTZW0gcGVybWlzc8Ojb1xyXG4gKiAgICAgICA0MDQ6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IE1lbnNhZ2VtIG7Do28gZW5jb250cmFkYVxyXG4gKi9cclxucm91dGVyLnBvc3QoJy86aWQvcmVwbHknLCBhdXRoZW50aWNhdGUsIGF1dGhvcml6ZSgnQURNSU4nLCAnRURJVE9SJyksIENvbnRhY3RDb250cm9sbGVyLnJlcGx5VG9Db250YWN0KTtcclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL2NvbnRhY3Qve2lkfTpcclxuICogICBkZWxldGU6XHJcbiAqICAgICBzdW1tYXJ5OiBFeGNsdWlyIG1lbnNhZ2VtIGRlIGNvbnRhdG8gKEFkbWluKVxyXG4gKiAgICAgdGFnczogW0NvbnRhdG9dXHJcbiAqICAgICBzZWN1cml0eTpcclxuICogICAgICAgLSBiZWFyZXJBdXRoOiBbXVxyXG4gKiAgICAgcGFyYW1ldGVyczpcclxuICogICAgICAgLSBpbjogcGF0aFxyXG4gKiAgICAgICAgIG5hbWU6IGlkXHJcbiAqICAgICAgICAgcmVxdWlyZWQ6IHRydWVcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogSUQgZGEgbWVuc2FnZW1cclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBNZW5zYWdlbSBleGNsdcOtZGEgY29tIHN1Y2Vzc29cclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICBzdWNjZXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBtZXNzYWdlOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgNDAxOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBUb2tlbiBpbnbDoWxpZG9cclxuICogICAgICAgNDAzOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBTZW0gcGVybWlzc8Ojb1xyXG4gKiAgICAgICA0MDQ6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IE1lbnNhZ2VtIG7Do28gZW5jb250cmFkYVxyXG4gKi9cclxucm91dGVyLmRlbGV0ZSgnLzppZCcsIGF1dGhlbnRpY2F0ZSwgYXV0aG9yaXplKCdBRE1JTicpLCBDb250YWN0Q29udHJvbGxlci5kZWxldGVDb250YWN0KTtcclxuXHJcbmV4cG9ydCBkZWZhdWx0IHJvdXRlcjsiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQSxNQUFBQSxTQUFBO0FBQUE7QUFBQSxDQUFBQyxjQUFBLEdBQUFDLENBQUEsT0FBQUMsT0FBQTtBQUNBLE1BQUFDLE1BQUE7QUFBQTtBQUFBLENBQUFILGNBQUEsR0FBQUMsQ0FBQSxPQUFBQyxPQUFBO0FBQ0EsTUFBQUUsbUJBQUE7QUFBQTtBQUFBLENBQUFKLGNBQUEsR0FBQUMsQ0FBQSxPQUFBSSxlQUFBLENBQUFILE9BQUE7QUFFQSxNQUFNSSxNQUFNO0FBQUE7QUFBQSxDQUFBTixjQUFBLEdBQUFDLENBQUEsT0FBRyxJQUFBRixTQUFBLENBQUFRLE1BQU0sR0FBRTtBQUV2Qjs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBeUVBOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQTtBQUFBUCxjQUFBLEdBQUFDLENBQUE7QUFvQ0FLLE1BQU0sQ0FBQ0UsSUFBSSxDQUFDLEdBQUcsRUFBRSxDQUFDQyxHQUFHLEVBQUVDLEdBQUcsS0FBSztFQUFBO0VBQUFWLGNBQUEsR0FBQVcsQ0FBQTtFQUFBWCxjQUFBLEdBQUFDLENBQUE7RUFBQSxPQUFBRyxtQkFBQSxDQUFBUSxPQUFpQixDQUFDQyxhQUFhLENBQUNKLEdBQUcsRUFBRUMsR0FBRyxDQUFDO0FBQUQsQ0FBQyxDQUFDO0FBRXpFOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBO0FBQUFWLGNBQUEsR0FBQUMsQ0FBQTtBQW9IQUssTUFBTSxDQUFDUSxHQUFHLENBQUMsR0FBRyxFQUFFWCxNQUFBLENBQUFZLFlBQVksRUFBRSxJQUFBWixNQUFBLENBQUFhLFNBQVMsRUFBQyxPQUFPLEVBQUUsUUFBUSxDQUFDLEVBQUVaLG1CQUFBLENBQUFRLE9BQWlCLENBQUNLLFdBQVcsQ0FBQztBQUUxRjs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBO0FBQUFqQixjQUFBLEdBQUFDLENBQUE7QUFrQ0FLLE1BQU0sQ0FBQ1EsR0FBRyxDQUFDLE1BQU0sRUFBRVgsTUFBQSxDQUFBWSxZQUFZLEVBQUUsSUFBQVosTUFBQSxDQUFBYSxTQUFTLEVBQUMsT0FBTyxFQUFFLFFBQVEsQ0FBQyxFQUFFWixtQkFBQSxDQUFBUSxPQUFpQixDQUFDTSxjQUFjLENBQUM7QUFFaEc7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQTtBQUFBbEIsY0FBQSxHQUFBQyxDQUFBO0FBNkRBSyxNQUFNLENBQUNhLEtBQUssQ0FBQyxhQUFhLEVBQUVoQixNQUFBLENBQUFZLFlBQVksRUFBRSxJQUFBWixNQUFBLENBQUFhLFNBQVMsRUFBQyxPQUFPLEVBQUUsUUFBUSxDQUFDLEVBQUUsQ0FBQ1AsR0FBRyxFQUFFQyxHQUFHLEtBQUs7RUFBQTtFQUFBVixjQUFBLEdBQUFXLENBQUE7RUFBQVgsY0FBQSxHQUFBQyxDQUFBO0VBQUEsT0FBQUcsbUJBQUEsQ0FBQVEsT0FBaUIsQ0FBQ1EsbUJBQW1CLENBQUNYLEdBQUcsRUFBRUMsR0FBRyxDQUFDO0FBQUQsQ0FBQyxDQUFDO0FBRXRJOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQTtBQUFBVixjQUFBLEdBQUFDLENBQUE7QUF5REFLLE1BQU0sQ0FBQ0UsSUFBSSxDQUFDLFlBQVksRUFBRUwsTUFBQSxDQUFBWSxZQUFZLEVBQUUsSUFBQVosTUFBQSxDQUFBYSxTQUFTLEVBQUMsT0FBTyxFQUFFLFFBQVEsQ0FBQyxFQUFFWixtQkFBQSxDQUFBUSxPQUFpQixDQUFDUyxjQUFjLENBQUM7QUFFdkc7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQTtBQUFBckIsY0FBQSxHQUFBQyxDQUFBO0FBa0NBSyxNQUFNLENBQUNnQixNQUFNLENBQUMsTUFBTSxFQUFFbkIsTUFBQSxDQUFBWSxZQUFZLEVBQUUsSUFBQVosTUFBQSxDQUFBYSxTQUFTLEVBQUMsT0FBTyxDQUFDLEVBQUVaLG1CQUFBLENBQUFRLE9BQWlCLENBQUNXLGFBQWEsQ0FBQztBQUFDO0FBQUF2QixjQUFBLEdBQUFDLENBQUE7QUFFekZ1QixPQUFBLENBQUFaLE9BQUEsR0FBZU4sTUFBTSIsImlnbm9yZUxpc3QiOltdfQ==

@@ -96,7 +96,7 @@ describe('Auth Utils', () => {
       expect(result).toBe(expectedToken);
       expect(mockJwt.sign).toHaveBeenCalledWith(
         user,
-        'your-super-secret-jwt-key-change-this-in-production',
+        'test-jwt-secret',
         { expiresIn: '1h' }
       );
     });
@@ -116,7 +116,7 @@ describe('Auth Utils', () => {
       expect(result).toBe(expectedToken);
       expect(mockJwt.sign).toHaveBeenCalledWith(
         user,
-        'your-super-secret-jwt-key-change-this-in-production',
+        'test-jwt-secret',
         { expiresIn: '2h' }
       );
     });
@@ -154,7 +154,7 @@ describe('Auth Utils', () => {
       const result = verifyToken(token);
 
       expect(result).toEqual(decodedPayload);
-      expect(mockJwt.verify).toHaveBeenCalledWith(token, 'your-super-secret-jwt-key-change-this-in-production');
+      expect(mockJwt.verify).toHaveBeenCalledWith(token, 'test-jwt-secret');
     });
 
     it('should verify a valid refresh token', () => {
@@ -171,7 +171,7 @@ describe('Auth Utils', () => {
       const result = verifyToken(refreshToken);
 
       expect(result).toEqual(decodedPayload);
-      expect(mockJwt.verify).toHaveBeenCalledWith(refreshToken, 'your-super-secret-jwt-key-change-this-in-production');
+      expect(mockJwt.verify).toHaveBeenCalledWith(refreshToken, 'test-jwt-secret');
     });
 
     it('should throw error for invalid token', () => {
@@ -208,7 +208,7 @@ describe('Auth Utils', () => {
 
       verifyToken(token);
 
-      expect(mockJwt.verify).toHaveBeenCalledWith(token, 'your-super-secret-jwt-key-change-this-in-production');
+      expect(mockJwt.verify).toHaveBeenCalledWith(token, 'test-jwt-secret');
     });
   });
 

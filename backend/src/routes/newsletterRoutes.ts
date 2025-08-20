@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { authenticate, authorize } from '../middlewares/auth';
-
+import { NewsletterController } from '../controllers/newsletterController';
 const router = Router();
 
 /**
@@ -163,14 +163,7 @@ const router = Router();
  *       429:
  *         description: Muitas tentativas - tente novamente mais tarde
  */
-router.post('/subscribe', (req, res) => {
-  // TODO: Implementar controller para inscrição na newsletter
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'POST /newsletter/subscribe',
-  });
-});
+router.post('/subscribe', NewsletterController.subscribeValidation, NewsletterController.subscribe);
 
 /**
  * @swagger
@@ -202,14 +195,7 @@ router.post('/subscribe', (req, res) => {
  *       404:
  *         description: Inscrição não encontrada
  */
-router.get('/confirm/:token', (req, res) => {
-  // TODO: Implementar controller para confirmar inscrição
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'GET /newsletter/confirm/:token',
-  });
-});
+router.get('/confirm/:token', NewsletterController.confirmSubscription);
 
 /**
  * @swagger
@@ -241,14 +227,7 @@ router.get('/confirm/:token', (req, res) => {
  *       404:
  *         description: Inscrição não encontrada
  */
-router.get('/unsubscribe/:token', (req, res) => {
-  // TODO: Implementar controller para cancelar inscrição
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'GET /newsletter/unsubscribe/:token',
-  });
-});
+router.get('/unsubscribe/:token', NewsletterController.unsubscribe);
 
 /**
  * @swagger
@@ -280,14 +259,7 @@ router.get('/unsubscribe/:token', (req, res) => {
  *       404:
  *         description: Assinante não encontrado
  */
-router.get('/preferences/:token', (req, res) => {
-  // TODO: Implementar controller para obter preferências
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'GET /newsletter/preferences/:token',
-  });
-});
+router.get('/preferences/:token', NewsletterController.getPreferences);
 
 /**
  * @swagger
@@ -345,14 +317,7 @@ router.get('/preferences/:token', (req, res) => {
  *       404:
  *         description: Assinante não encontrado
  */
-router.put('/preferences/:token', (req, res) => {
-  // TODO: Implementar controller para atualizar preferências
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'PUT /newsletter/preferences/:token',
-  });
-});
+router.put('/preferences/:token', NewsletterController.updatePreferences);
 
 // Rotas administrativas
 
@@ -461,14 +426,7 @@ router.put('/preferences/:token', (req, res) => {
  *       403:
  *         description: Sem permissão
  */
-router.get('/subscribers', authenticate, authorize('ADMIN', 'EDITOR'), (req, res) => {
-  // TODO: Implementar controller para listar assinantes
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'GET /newsletter/subscribers',
-  });
-});
+router.get('/subscribers', authenticate, authorize('ADMIN', 'EDITOR'), NewsletterController.getSubscribers);
 
 /**
  * @swagger
@@ -524,14 +482,7 @@ router.get('/subscribers', authenticate, authorize('ADMIN', 'EDITOR'), (req, res
  *       403:
  *         description: Sem permissão
  */
-router.get('/campaigns', authenticate, authorize('ADMIN', 'EDITOR'), (req, res) => {
-  // TODO: Implementar controller para listar campanhas
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'GET /newsletter/campaigns',
-  });
-});
+router.get('/campaigns', authenticate, authorize('ADMIN', 'EDITOR'), NewsletterController.getCampaigns);
 
 /**
  * @swagger
@@ -581,14 +532,7 @@ router.get('/campaigns', authenticate, authorize('ADMIN', 'EDITOR'), (req, res) 
  *       403:
  *         description: Sem permissão
  */
-router.post('/campaigns', authenticate, authorize('ADMIN', 'EDITOR'), (req, res) => {
-  // TODO: Implementar controller para criar campanha
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'POST /newsletter/campaigns',
-  });
-});
+router.post('/campaigns', authenticate, authorize('ADMIN', 'EDITOR'), NewsletterController.campaignValidation, NewsletterController.createCampaign);
 
 /**
  * @swagger
@@ -617,13 +561,6 @@ router.post('/campaigns', authenticate, authorize('ADMIN', 'EDITOR'), (req, res)
  *       404:
  *         description: Campanha não encontrada
  */
-router.post('/campaigns/:id/send', authenticate, authorize('ADMIN'), (req, res) => {
-  // TODO: Implementar controller para enviar campanha
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'POST /newsletter/campaigns/:id/send',
-  });
-});
+router.post('/campaigns/:id/send', authenticate, authorize('ADMIN'), NewsletterController.sendCampaignToSubscribers);
 
 export default router;

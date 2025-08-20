@@ -19,6 +19,8 @@ export class UserRepository {
         avatar: true,
         createdAt: true,
         updatedAt: true,
+        isActive: true,
+
         // Excluir senha da consulta
         password: false,
       },

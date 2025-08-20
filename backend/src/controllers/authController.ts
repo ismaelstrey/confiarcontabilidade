@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { authService, RegisterData, LoginCredentials } from '../services/authService';
-import { prisma } from '../server';
+import { prisma } from '../lib/prisma';
 import logger from '../utils/logger';
 
 // Interface para refresh token
@@ -58,7 +58,11 @@ export class AuthController {
       res.status(200).json({
         success: true,
         message: 'Login realizado com sucesso',
-        data: result
+        data: {
+          user: result.user,
+          token: result.tokens.accessToken,
+          refreshToken: result.tokens.refreshToken
+        }
       });
     } catch (error: any) {
       logger.error('Erro ao fazer login', { error: error.message });
@@ -92,7 +96,10 @@ export class AuthController {
       res.status(200).json({
         success: true,
         message: 'Tokens atualizados com sucesso',
-        data: result
+        data: {
+          token: result.accessToken,
+          refreshToken: result.refreshToken
+        }
       });
     } catch (error: any) {
       logger.error('Erro ao atualizar tokens', { error: error.message });

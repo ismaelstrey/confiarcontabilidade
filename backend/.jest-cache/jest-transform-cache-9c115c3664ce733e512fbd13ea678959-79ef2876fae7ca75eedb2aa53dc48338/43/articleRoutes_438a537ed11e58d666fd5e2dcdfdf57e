@@ -1,0 +1,916 @@
+39beb5030f6d165373c085019593a97a
+"use strict";
+
+/* istanbul ignore next */
+function cov_2csi8sp34t() {
+  var path = "D:\\dev\\contabil\\contabil-site\\backend\\src\\routes\\articleRoutes.ts";
+  var hash = "be10971feae89d24444fb4b3e3140cdbda8793c6";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "D:\\dev\\contabil\\contabil-site\\backend\\src\\routes\\articleRoutes.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 22
+        },
+        end: {
+          line: 4,
+          column: 1
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 4
+        },
+        end: {
+          line: 3,
+          column: 62
+        }
+      },
+      "2": {
+        start: {
+          line: 5,
+          column: 0
+        },
+        end: {
+          line: 5,
+          column: 62
+        }
+      },
+      "3": {
+        start: {
+          line: 6,
+          column: 18
+        },
+        end: {
+          line: 6,
+          column: 36
+        }
+      },
+      "4": {
+        start: {
+          line: 7,
+          column: 15
+        },
+        end: {
+          line: 7,
+          column: 45
+        }
+      },
+      "5": {
+        start: {
+          line: 8,
+          column: 16
+        },
+        end: {
+          line: 8,
+          column: 47
+        }
+      },
+      "6": {
+        start: {
+          line: 9,
+          column: 28
+        },
+        end: {
+          line: 9,
+          column: 88
+        }
+      },
+      "7": {
+        start: {
+          line: 10,
+          column: 15
+        },
+        end: {
+          line: 10,
+          column: 38
+        }
+      },
+      "8": {
+        start: {
+          line: 229,
+          column: 0
+        },
+        end: {
+          line: 229,
+          column: 99
+        }
+      },
+      "9": {
+        start: {
+          line: 258,
+          column: 0
+        },
+        end: {
+          line: 258,
+          column: 104
+        }
+      },
+      "10": {
+        start: {
+          line: 294,
+          column: 0
+        },
+        end: {
+          line: 294,
+          column: 172
+        }
+      },
+      "11": {
+        start: {
+          line: 339,
+          column: 0
+        },
+        end: {
+          line: 339,
+          column: 174
+        }
+      },
+      "12": {
+        start: {
+          line: 374,
+          column: 0
+        },
+        end: {
+          line: 374,
+          column: 177
+        }
+      },
+      "13": {
+        start: {
+          line: 410,
+          column: 0
+        },
+        end: {
+          line: 410,
+          column: 66
+        }
+      },
+      "14": {
+        start: {
+          line: 445,
+          column: 0
+        },
+        end: {
+          line: 445,
+          column: 117
+        }
+      },
+      "15": {
+        start: {
+          line: 493,
+          column: 0
+        },
+        end: {
+          line: 493,
+          column: 72
+        }
+      },
+      "16": {
+        start: {
+          line: 494,
+          column: 0
+        },
+        end: {
+          line: 494,
+          column: 25
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 2,
+            column: 56
+          },
+          end: {
+            line: 2,
+            column: 57
+          }
+        },
+        loc: {
+          start: {
+            line: 2,
+            column: 71
+          },
+          end: {
+            line: 4,
+            column: 1
+          }
+        },
+        line: 2
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 2,
+            column: 22
+          },
+          end: {
+            line: 4,
+            column: 1
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 2,
+            column: 23
+          },
+          end: {
+            line: 2,
+            column: 27
+          }
+        }, {
+          start: {
+            line: 2,
+            column: 31
+          },
+          end: {
+            line: 2,
+            column: 51
+          }
+        }, {
+          start: {
+            line: 2,
+            column: 56
+          },
+          end: {
+            line: 4,
+            column: 1
+          }
+        }],
+        line: 2
+      },
+      "1": {
+        loc: {
+          start: {
+            line: 3,
+            column: 11
+          },
+          end: {
+            line: 3,
+            column: 61
+          }
+        },
+        type: "cond-expr",
+        locations: [{
+          start: {
+            line: 3,
+            column: 37
+          },
+          end: {
+            line: 3,
+            column: 40
+          }
+        }, {
+          start: {
+            line: 3,
+            column: 43
+          },
+          end: {
+            line: 3,
+            column: 61
+          }
+        }],
+        line: 3
+      },
+      "2": {
+        loc: {
+          start: {
+            line: 3,
+            column: 12
+          },
+          end: {
+            line: 3,
+            column: 33
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 3,
+            column: 12
+          },
+          end: {
+            line: 3,
+            column: 15
+          }
+        }, {
+          start: {
+            line: 3,
+            column: 19
+          },
+          end: {
+            line: 3,
+            column: 33
+          }
+        }],
+        line: 3
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0,
+      "15": 0,
+      "16": 0
+    },
+    f: {
+      "0": 0
+    },
+    b: {
+      "0": [0, 0, 0],
+      "1": [0, 0],
+      "2": [0, 0]
+    },
+    inputSourceMap: {
+      file: "D:\\dev\\contabil\\contabil-site\\backend\\src\\routes\\articleRoutes.ts",
+      mappings: ";;;;;AAAA,qCAAiC;AACjC,8CAA8D;AAC9D,gDAI8B;AAC9B,yFAAiE;AAEjE,MAAM,MAAM,GAAG,IAAA,gBAAM,GAAE,CAAC;AAExB;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GA8HG;AAEH;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GA0FG;AACH,MAAM,CAAC,GAAG,CAAC,GAAG,EAAE,IAAA,6BAAqB,EAAC,IAAI,CAAC,EAAE,2BAAiB,CAAC,WAAW,CAAC,CAAC;AAE5E;;;;;;;;;;;;;;;;;;;;;;;;;;;GA2BG;AACH,MAAM,CAAC,GAAG,CAAC,QAAQ,EAAE,IAAA,8BAAsB,EAAC,IAAI,CAAC,EAAE,2BAAiB,CAAC,UAAU,CAAC,CAAC;AAEjF;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAkCG;AACH,MAAM,CAAC,IAAI,CAAC,GAAG,EAAE,mBAAY,EAAE,IAAA,gBAAS,EAAC,OAAO,EAAE,QAAQ,CAAC,EAAE,IAAA,wCAAgC,GAAE,EAAE,2BAAiB,CAAC,aAAa,CAAC,CAAC;AAElI;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GA2CG;AACH,MAAM,CAAC,GAAG,CAAC,MAAM,EAAE,mBAAY,EAAE,IAAA,gBAAS,EAAC,OAAO,EAAE,QAAQ,CAAC,EAAE,IAAA,wCAAgC,GAAE,EAAE,2BAAiB,CAAC,aAAa,CAAC,CAAC;AAEpI;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAiCG;AACH,MAAM,CAAC,MAAM,CAAC,MAAM,EAAE,mBAAY,EAAE,IAAA,gBAAS,EAAC,OAAO,EAAE,QAAQ,CAAC,EAAE,IAAA,wCAAgC,GAAE,EAAE,2BAAiB,CAAC,aAAa,CAAC,CAAC;AAEvI;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAkCG;AACH,MAAM,CAAC,IAAI,CAAC,WAAW,EAAE,2BAAiB,CAAC,WAAW,CAAC,CAAC;AAExD;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAiCG;AACH,MAAM,CAAC,GAAG,CAAC,eAAe,EAAE,IAAA,6BAAqB,EAAC,GAAG,CAAC,EAAE,2BAAiB,CAAC,kBAAkB,CAAC,CAAC;AAE9F;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GA8CG;AACH,MAAM,CAAC,IAAI,CAAC,eAAe,EAAE,2BAAiB,CAAC,aAAa,CAAC,CAAC;AAE9D,kBAAe,MAAM,CAAC",
+      names: [],
+      sources: ["D:\\dev\\contabil\\contabil-site\\backend\\src\\routes\\articleRoutes.ts"],
+      sourcesContent: ["import { Router } from 'express';\r\nimport { authenticate, authorize } from '../middlewares/auth';\r\nimport {\r\n  publicCacheMiddleware,\r\n  articleCacheMiddleware,\r\n  invalidateArticleCacheMiddleware\r\n} from '../middlewares/cache';\r\nimport ArticleController from '../controllers/articleController';\r\n\r\nconst router = Router();\r\n\r\n/**\r\n * @swagger\r\n * components:\r\n *   schemas:\r\n *     Article:\r\n *       type: object\r\n *       properties:\r\n *         id:\r\n *           type: string\r\n *         title:\r\n *           type: string\r\n *         slug:\r\n *           type: string\r\n *         excerpt:\r\n *           type: string\r\n *         content:\r\n *           type: string\r\n *         featuredImage:\r\n *           type: string\r\n *         status:\r\n *           type: string\r\n *           enum: [DRAFT, PUBLISHED, ARCHIVED]\r\n *         publishedAt:\r\n *           type: string\r\n *           format: date-time\r\n *         readTime:\r\n *           type: integer\r\n *         views:\r\n *           type: integer\r\n *         likes:\r\n *           type: integer\r\n *         seoTitle:\r\n *           type: string\r\n *         seoDescription:\r\n *           type: string\r\n *         seoKeywords:\r\n *           type: string\r\n *         author:\r\n *           $ref: '#/components/schemas/User'\r\n *         categories:\r\n *           type: array\r\n *           items:\r\n *             $ref: '#/components/schemas/Category'\r\n *         tags:\r\n *           type: array\r\n *           items:\r\n *             $ref: '#/components/schemas/Tag'\r\n *         createdAt:\r\n *           type: string\r\n *           format: date-time\r\n *         updatedAt:\r\n *           type: string\r\n *           format: date-time\r\n *     Category:\r\n *       type: object\r\n *       properties:\r\n *         id:\r\n *           type: string\r\n *         name:\r\n *           type: string\r\n *         slug:\r\n *           type: string\r\n *         description:\r\n *           type: string\r\n *         color:\r\n *           type: string\r\n *         icon:\r\n *           type: string\r\n *     Tag:\r\n *       type: object\r\n *       properties:\r\n *         id:\r\n *           type: string\r\n *         name:\r\n *           type: string\r\n *         slug:\r\n *           type: string\r\n *         color:\r\n *           type: string\r\n *     CreateArticleRequest:\r\n *       type: object\r\n *       required:\r\n *         - title\r\n *         - content\r\n *       properties:\r\n *         title:\r\n *           type: string\r\n *           minLength: 3\r\n *           description: T\xEDtulo do artigo\r\n *         excerpt:\r\n *           type: string\r\n *           description: Resumo do artigo\r\n *         content:\r\n *           type: string\r\n *           minLength: 10\r\n *           description: Conte\xFAdo do artigo\r\n *         featuredImage:\r\n *           type: string\r\n *           description: URL da imagem destacada\r\n *         status:\r\n *           type: string\r\n *           enum: [DRAFT, PUBLISHED]\r\n *           default: DRAFT\r\n *         publishedAt:\r\n *           type: string\r\n *           format: date-time\r\n *           description: Data de publica\xE7\xE3o (opcional)\r\n *         seoTitle:\r\n *           type: string\r\n *           description: T\xEDtulo SEO\r\n *         seoDescription:\r\n *           type: string\r\n *           description: Descri\xE7\xE3o SEO\r\n *         seoKeywords:\r\n *           type: string\r\n *           description: Palavras-chave SEO\r\n *         categoryIds:\r\n *           type: array\r\n *           items:\r\n *             type: string\r\n *           description: IDs das categorias\r\n *         tagIds:\r\n *           type: array\r\n *           items:\r\n *             type: string\r\n *           description: IDs das tags\r\n */\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/articles:\r\n *   get:\r\n *     summary: Listar artigos\r\n *     tags: [Artigos]\r\n *     parameters:\r\n *       - in: query\r\n *         name: page\r\n *         schema:\r\n *           type: integer\r\n *           minimum: 1\r\n *           default: 1\r\n *         description: N\xFAmero da p\xE1gina\r\n *       - in: query\r\n *         name: limit\r\n *         schema:\r\n *           type: integer\r\n *           minimum: 1\r\n *           maximum: 100\r\n *           default: 10\r\n *         description: Itens por p\xE1gina\r\n *       - in: query\r\n *         name: status\r\n *         schema:\r\n *           type: string\r\n *           enum: [DRAFT, PUBLISHED, ARCHIVED]\r\n *         description: Filtrar por status\r\n *       - in: query\r\n *         name: category\r\n *         schema:\r\n *           type: string\r\n *         description: Filtrar por categoria (slug)\r\n *       - in: query\r\n *         name: tag\r\n *         schema:\r\n *           type: string\r\n *         description: Filtrar por tag (slug)\r\n *       - in: query\r\n *         name: search\r\n *         schema:\r\n *           type: string\r\n *         description: Buscar por t\xEDtulo ou conte\xFAdo\r\n *       - in: query\r\n *         name: author\r\n *         schema:\r\n *           type: string\r\n *         description: Filtrar por autor (ID)\r\n *       - in: query\r\n *         name: sortBy\r\n *         schema:\r\n *           type: string\r\n *           enum: [createdAt, publishedAt, title, views, likes]\r\n *           default: createdAt\r\n *         description: Campo para ordena\xE7\xE3o\r\n *       - in: query\r\n *         name: sortOrder\r\n *         schema:\r\n *           type: string\r\n *           enum: [asc, desc]\r\n *           default: desc\r\n *         description: Ordem da classifica\xE7\xE3o\r\n *     responses:\r\n *       200:\r\n *         description: Lista de artigos\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 data:\r\n *                   type: object\r\n *                   properties:\r\n *                     articles:\r\n *                       type: array\r\n *                       items:\r\n *                         $ref: '#/components/schemas/Article'\r\n *                     pagination:\r\n *                       type: object\r\n *                       properties:\r\n *                         page:\r\n *                           type: integer\r\n *                         limit:\r\n *                           type: integer\r\n *                         total:\r\n *                           type: integer\r\n *                         pages:\r\n *                           type: integer\r\n */\r\nrouter.get('/', publicCacheMiddleware(1800), ArticleController.getArticles);\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/articles/{slug}:\r\n *   get:\r\n *     summary: Obter artigo por slug\r\n *     tags: [Artigos]\r\n *     parameters:\r\n *       - in: path\r\n *         name: slug\r\n *         required: true\r\n *         schema:\r\n *           type: string\r\n *         description: Slug do artigo\r\n *     responses:\r\n *       200:\r\n *         description: Dados do artigo\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 data:\r\n *                   $ref: '#/components/schemas/Article'\r\n *       404:\r\n *         description: Artigo n\xE3o encontrado\r\n */\r\nrouter.get('/:slug', articleCacheMiddleware(3600), ArticleController.getArticle);\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/articles:\r\n *   post:\r\n *     summary: Criar novo artigo\r\n *     tags: [Artigos]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     requestBody:\r\n *       required: true\r\n *       content:\r\n *         application/json:\r\n *           schema:\r\n *             $ref: '#/components/schemas/CreateArticleRequest'\r\n *     responses:\r\n *       201:\r\n *         description: Artigo criado com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 data:\r\n *                   $ref: '#/components/schemas/Article'\r\n *                 message:\r\n *                   type: string\r\n *       400:\r\n *         description: Dados inv\xE1lidos\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       403:\r\n *         description: Sem permiss\xE3o\r\n */\r\nrouter.post('/', authenticate, authorize('ADMIN', 'EDITOR'), invalidateArticleCacheMiddleware(), ArticleController.createArticle);\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/articles/{id}:\r\n *   put:\r\n *     summary: Atualizar artigo\r\n *     tags: [Artigos]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     parameters:\r\n *       - in: path\r\n *         name: id\r\n *         required: true\r\n *         schema:\r\n *           type: string\r\n *         description: ID do artigo\r\n *     requestBody:\r\n *       required: true\r\n *       content:\r\n *         application/json:\r\n *           schema:\r\n *             $ref: '#/components/schemas/CreateArticleRequest'\r\n *     responses:\r\n *       200:\r\n *         description: Artigo atualizado com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 data:\r\n *                   $ref: '#/components/schemas/Article'\r\n *                 message:\r\n *                   type: string\r\n *       400:\r\n *         description: Dados inv\xE1lidos\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       403:\r\n *         description: Sem permiss\xE3o\r\n *       404:\r\n *         description: Artigo n\xE3o encontrado\r\n */\r\nrouter.put('/:id', authenticate, authorize('ADMIN', 'EDITOR'), invalidateArticleCacheMiddleware(), ArticleController.updateArticle);\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/articles/{id}:\r\n *   delete:\r\n *     summary: Excluir artigo\r\n *     tags: [Artigos]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     parameters:\r\n *       - in: path\r\n *         name: id\r\n *         required: true\r\n *         schema:\r\n *           type: string\r\n *         description: ID do artigo\r\n *     responses:\r\n *       200:\r\n *         description: Artigo exclu\xEDdo com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 message:\r\n *                   type: string\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       403:\r\n *         description: Sem permiss\xE3o\r\n *       404:\r\n *         description: Artigo n\xE3o encontrado\r\n */\r\nrouter.delete('/:id', authenticate, authorize('ADMIN', 'EDITOR'), invalidateArticleCacheMiddleware(), ArticleController.deleteArticle);\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/articles/{id}/like:\r\n *   post:\r\n *     summary: Curtir/descurtir artigo\r\n *     tags: [Artigos]\r\n *     parameters:\r\n *       - in: path\r\n *         name: id\r\n *         required: true\r\n *         schema:\r\n *           type: string\r\n *         description: ID do artigo\r\n *     responses:\r\n *       200:\r\n *         description: Like processado com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 data:\r\n *                   type: object\r\n *                   properties:\r\n *                     liked:\r\n *                       type: boolean\r\n *                     totalLikes:\r\n *                       type: integer\r\n *                 message:\r\n *                   type: string\r\n *       404:\r\n *         description: Artigo n\xE3o encontrado\r\n */\r\nrouter.post('/:id/like', ArticleController.likeArticle);\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/articles/{id}/comments:\r\n *   get:\r\n *     summary: Listar coment\xE1rios do artigo\r\n *     tags: [Artigos]\r\n *     parameters:\r\n *       - in: path\r\n *         name: id\r\n *         required: true\r\n *         schema:\r\n *           type: string\r\n *         description: ID do artigo\r\n *       - in: query\r\n *         name: page\r\n *         schema:\r\n *           type: integer\r\n *           minimum: 1\r\n *           default: 1\r\n *         description: N\xFAmero da p\xE1gina\r\n *       - in: query\r\n *         name: limit\r\n *         schema:\r\n *           type: integer\r\n *           minimum: 1\r\n *           maximum: 50\r\n *           default: 10\r\n *         description: Itens por p\xE1gina\r\n *     responses:\r\n *       200:\r\n *         description: Lista de coment\xE1rios\r\n *       404:\r\n *         description: Artigo n\xE3o encontrado\r\n */\r\nrouter.get('/:id/comments', publicCacheMiddleware(600), ArticleController.getArticleComments);\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/articles/{id}/comments:\r\n *   post:\r\n *     summary: Adicionar coment\xE1rio ao artigo\r\n *     tags: [Artigos]\r\n *     parameters:\r\n *       - in: path\r\n *         name: id\r\n *         required: true\r\n *         schema:\r\n *           type: string\r\n *         description: ID do artigo\r\n *     requestBody:\r\n *       required: true\r\n *       content:\r\n *         application/json:\r\n *           schema:\r\n *             type: object\r\n *             required:\r\n *               - content\r\n *               - authorName\r\n *               - authorEmail\r\n *             properties:\r\n *               content:\r\n *                 type: string\r\n *                 minLength: 3\r\n *                 description: Conte\xFAdo do coment\xE1rio\r\n *               authorName:\r\n *                 type: string\r\n *                 minLength: 2\r\n *                 description: Nome do autor\r\n *               authorEmail:\r\n *                 type: string\r\n *                 format: email\r\n *                 description: Email do autor\r\n *               parentId:\r\n *                 type: string\r\n *                 description: ID do coment\xE1rio pai (para respostas)\r\n *     responses:\r\n *       201:\r\n *         description: Coment\xE1rio adicionado com sucesso\r\n *       400:\r\n *         description: Dados inv\xE1lidos\r\n *       404:\r\n *         description: Artigo n\xE3o encontrado\r\n */\r\nrouter.post('/:id/comments', ArticleController.createComment);\r\n\r\nexport default router;"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "be10971feae89d24444fb4b3e3140cdbda8793c6"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_2csi8sp34t = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_2csi8sp34t();
+var __importDefault =
+/* istanbul ignore next */
+(cov_2csi8sp34t().s[0]++,
+/* istanbul ignore next */
+(cov_2csi8sp34t().b[0][0]++, this) &&
+/* istanbul ignore next */
+(cov_2csi8sp34t().b[0][1]++, this.__importDefault) ||
+/* istanbul ignore next */
+(cov_2csi8sp34t().b[0][2]++, function (mod) {
+  /* istanbul ignore next */
+  cov_2csi8sp34t().f[0]++;
+  cov_2csi8sp34t().s[1]++;
+  return /* istanbul ignore next */(cov_2csi8sp34t().b[2][0]++, mod) &&
+  /* istanbul ignore next */
+  (cov_2csi8sp34t().b[2][1]++, mod.__esModule) ?
+  /* istanbul ignore next */
+  (cov_2csi8sp34t().b[1][0]++, mod) :
+  /* istanbul ignore next */
+  (cov_2csi8sp34t().b[1][1]++, {
+    "default": mod
+  });
+}));
+/* istanbul ignore next */
+cov_2csi8sp34t().s[2]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const express_1 =
+/* istanbul ignore next */
+(cov_2csi8sp34t().s[3]++, require("express"));
+const auth_1 =
+/* istanbul ignore next */
+(cov_2csi8sp34t().s[4]++, require("../middlewares/auth"));
+const cache_1 =
+/* istanbul ignore next */
+(cov_2csi8sp34t().s[5]++, require("../middlewares/cache"));
+const articleController_1 =
+/* istanbul ignore next */
+(cov_2csi8sp34t().s[6]++, __importDefault(require("../controllers/articleController")));
+const router =
+/* istanbul ignore next */
+(cov_2csi8sp34t().s[7]++, (0, express_1.Router)());
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Article:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: string
+ *         title:
+ *           type: string
+ *         slug:
+ *           type: string
+ *         excerpt:
+ *           type: string
+ *         content:
+ *           type: string
+ *         featuredImage:
+ *           type: string
+ *         status:
+ *           type: string
+ *           enum: [DRAFT, PUBLISHED, ARCHIVED]
+ *         publishedAt:
+ *           type: string
+ *           format: date-time
+ *         readTime:
+ *           type: integer
+ *         views:
+ *           type: integer
+ *         likes:
+ *           type: integer
+ *         seoTitle:
+ *           type: string
+ *         seoDescription:
+ *           type: string
+ *         seoKeywords:
+ *           type: string
+ *         author:
+ *           $ref: '#/components/schemas/User'
+ *         categories:
+ *           type: array
+ *           items:
+ *             $ref: '#/components/schemas/Category'
+ *         tags:
+ *           type: array
+ *           items:
+ *             $ref: '#/components/schemas/Tag'
+ *         createdAt:
+ *           type: string
+ *           format: date-time
+ *         updatedAt:
+ *           type: string
+ *           format: date-time
+ *     Category:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: string
+ *         name:
+ *           type: string
+ *         slug:
+ *           type: string
+ *         description:
+ *           type: string
+ *         color:
+ *           type: string
+ *         icon:
+ *           type: string
+ *     Tag:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: string
+ *         name:
+ *           type: string
+ *         slug:
+ *           type: string
+ *         color:
+ *           type: string
+ *     CreateArticleRequest:
+ *       type: object
+ *       required:
+ *         - title
+ *         - content
+ *       properties:
+ *         title:
+ *           type: string
+ *           minLength: 3
+ *           description: Título do artigo
+ *         excerpt:
+ *           type: string
+ *           description: Resumo do artigo
+ *         content:
+ *           type: string
+ *           minLength: 10
+ *           description: Conteúdo do artigo
+ *         featuredImage:
+ *           type: string
+ *           description: URL da imagem destacada
+ *         status:
+ *           type: string
+ *           enum: [DRAFT, PUBLISHED]
+ *           default: DRAFT
+ *         publishedAt:
+ *           type: string
+ *           format: date-time
+ *           description: Data de publicação (opcional)
+ *         seoTitle:
+ *           type: string
+ *           description: Título SEO
+ *         seoDescription:
+ *           type: string
+ *           description: Descrição SEO
+ *         seoKeywords:
+ *           type: string
+ *           description: Palavras-chave SEO
+ *         categoryIds:
+ *           type: array
+ *           items:
+ *             type: string
+ *           description: IDs das categorias
+ *         tagIds:
+ *           type: array
+ *           items:
+ *             type: string
+ *           description: IDs das tags
+ */
+/**
+ * @swagger
+ * /api/v1/articles:
+ *   get:
+ *     summary: Listar artigos
+ *     tags: [Artigos]
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           default: 1
+ *         description: Número da página
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           maximum: 100
+ *           default: 10
+ *         description: Itens por página
+ *       - in: query
+ *         name: status
+ *         schema:
+ *           type: string
+ *           enum: [DRAFT, PUBLISHED, ARCHIVED]
+ *         description: Filtrar por status
+ *       - in: query
+ *         name: category
+ *         schema:
+ *           type: string
+ *         description: Filtrar por categoria (slug)
+ *       - in: query
+ *         name: tag
+ *         schema:
+ *           type: string
+ *         description: Filtrar por tag (slug)
+ *       - in: query
+ *         name: search
+ *         schema:
+ *           type: string
+ *         description: Buscar por título ou conteúdo
+ *       - in: query
+ *         name: author
+ *         schema:
+ *           type: string
+ *         description: Filtrar por autor (ID)
+ *       - in: query
+ *         name: sortBy
+ *         schema:
+ *           type: string
+ *           enum: [createdAt, publishedAt, title, views, likes]
+ *           default: createdAt
+ *         description: Campo para ordenação
+ *       - in: query
+ *         name: sortOrder
+ *         schema:
+ *           type: string
+ *           enum: [asc, desc]
+ *           default: desc
+ *         description: Ordem da classificação
+ *     responses:
+ *       200:
+ *         description: Lista de artigos
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     articles:
+ *                       type: array
+ *                       items:
+ *                         $ref: '#/components/schemas/Article'
+ *                     pagination:
+ *                       type: object
+ *                       properties:
+ *                         page:
+ *                           type: integer
+ *                         limit:
+ *                           type: integer
+ *                         total:
+ *                           type: integer
+ *                         pages:
+ *                           type: integer
+ */
+/* istanbul ignore next */
+cov_2csi8sp34t().s[8]++;
+router.get('/', (0, cache_1.publicCacheMiddleware)(1800), articleController_1.default.getArticles);
+/**
+ * @swagger
+ * /api/v1/articles/{slug}:
+ *   get:
+ *     summary: Obter artigo por slug
+ *     tags: [Artigos]
+ *     parameters:
+ *       - in: path
+ *         name: slug
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Slug do artigo
+ *     responses:
+ *       200:
+ *         description: Dados do artigo
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   $ref: '#/components/schemas/Article'
+ *       404:
+ *         description: Artigo não encontrado
+ */
+/* istanbul ignore next */
+cov_2csi8sp34t().s[9]++;
+router.get('/:slug', (0, cache_1.articleCacheMiddleware)(3600), articleController_1.default.getArticle);
+/**
+ * @swagger
+ * /api/v1/articles:
+ *   post:
+ *     summary: Criar novo artigo
+ *     tags: [Artigos]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/CreateArticleRequest'
+ *     responses:
+ *       201:
+ *         description: Artigo criado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   $ref: '#/components/schemas/Article'
+ *                 message:
+ *                   type: string
+ *       400:
+ *         description: Dados inválidos
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ */
+/* istanbul ignore next */
+cov_2csi8sp34t().s[10]++;
+router.post('/', auth_1.authenticate, (0, auth_1.authorize)('ADMIN', 'EDITOR'), (0, cache_1.invalidateArticleCacheMiddleware)(), articleController_1.default.createArticle);
+/**
+ * @swagger
+ * /api/v1/articles/{id}:
+ *   put:
+ *     summary: Atualizar artigo
+ *     tags: [Artigos]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID do artigo
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/CreateArticleRequest'
+ *     responses:
+ *       200:
+ *         description: Artigo atualizado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   $ref: '#/components/schemas/Article'
+ *                 message:
+ *                   type: string
+ *       400:
+ *         description: Dados inválidos
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ *       404:
+ *         description: Artigo não encontrado
+ */
+/* istanbul ignore next */
+cov_2csi8sp34t().s[11]++;
+router.put('/:id', auth_1.authenticate, (0, auth_1.authorize)('ADMIN', 'EDITOR'), (0, cache_1.invalidateArticleCacheMiddleware)(), articleController_1.default.updateArticle);
+/**
+ * @swagger
+ * /api/v1/articles/{id}:
+ *   delete:
+ *     summary: Excluir artigo
+ *     tags: [Artigos]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID do artigo
+ *     responses:
+ *       200:
+ *         description: Artigo excluído com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 message:
+ *                   type: string
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ *       404:
+ *         description: Artigo não encontrado
+ */
+/* istanbul ignore next */
+cov_2csi8sp34t().s[12]++;
+router.delete('/:id', auth_1.authenticate, (0, auth_1.authorize)('ADMIN', 'EDITOR'), (0, cache_1.invalidateArticleCacheMiddleware)(), articleController_1.default.deleteArticle);
+/**
+ * @swagger
+ * /api/v1/articles/{id}/like:
+ *   post:
+ *     summary: Curtir/descurtir artigo
+ *     tags: [Artigos]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID do artigo
+ *     responses:
+ *       200:
+ *         description: Like processado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     liked:
+ *                       type: boolean
+ *                     totalLikes:
+ *                       type: integer
+ *                 message:
+ *                   type: string
+ *       404:
+ *         description: Artigo não encontrado
+ */
+/* istanbul ignore next */
+cov_2csi8sp34t().s[13]++;
+router.post('/:id/like', articleController_1.default.likeArticle);
+/**
+ * @swagger
+ * /api/v1/articles/{id}/comments:
+ *   get:
+ *     summary: Listar comentários do artigo
+ *     tags: [Artigos]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID do artigo
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           default: 1
+ *         description: Número da página
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           maximum: 50
+ *           default: 10
+ *         description: Itens por página
+ *     responses:
+ *       200:
+ *         description: Lista de comentários
+ *       404:
+ *         description: Artigo não encontrado
+ */
+/* istanbul ignore next */
+cov_2csi8sp34t().s[14]++;
+router.get('/:id/comments', (0, cache_1.publicCacheMiddleware)(600), articleController_1.default.getArticleComments);
+/**
+ * @swagger
+ * /api/v1/articles/{id}/comments:
+ *   post:
+ *     summary: Adicionar comentário ao artigo
+ *     tags: [Artigos]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID do artigo
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - content
+ *               - authorName
+ *               - authorEmail
+ *             properties:
+ *               content:
+ *                 type: string
+ *                 minLength: 3
+ *                 description: Conteúdo do comentário
+ *               authorName:
+ *                 type: string
+ *                 minLength: 2
+ *                 description: Nome do autor
+ *               authorEmail:
+ *                 type: string
+ *                 format: email
+ *                 description: Email do autor
+ *               parentId:
+ *                 type: string
+ *                 description: ID do comentário pai (para respostas)
+ *     responses:
+ *       201:
+ *         description: Comentário adicionado com sucesso
+ *       400:
+ *         description: Dados inválidos
+ *       404:
+ *         description: Artigo não encontrado
+ */
+/* istanbul ignore next */
+cov_2csi8sp34t().s[15]++;
+router.post('/:id/comments', articleController_1.default.createComment);
+/* istanbul ignore next */
+cov_2csi8sp34t().s[16]++;
+exports.default = router;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJleHByZXNzXzEiLCJjb3ZfMmNzaThzcDM0dCIsInMiLCJyZXF1aXJlIiwiYXV0aF8xIiwiY2FjaGVfMSIsImFydGljbGVDb250cm9sbGVyXzEiLCJfX2ltcG9ydERlZmF1bHQiLCJyb3V0ZXIiLCJSb3V0ZXIiLCJnZXQiLCJwdWJsaWNDYWNoZU1pZGRsZXdhcmUiLCJkZWZhdWx0IiwiZ2V0QXJ0aWNsZXMiLCJhcnRpY2xlQ2FjaGVNaWRkbGV3YXJlIiwiZ2V0QXJ0aWNsZSIsInBvc3QiLCJhdXRoZW50aWNhdGUiLCJhdXRob3JpemUiLCJpbnZhbGlkYXRlQXJ0aWNsZUNhY2hlTWlkZGxld2FyZSIsImNyZWF0ZUFydGljbGUiLCJwdXQiLCJ1cGRhdGVBcnRpY2xlIiwiZGVsZXRlIiwiZGVsZXRlQXJ0aWNsZSIsImxpa2VBcnRpY2xlIiwiZ2V0QXJ0aWNsZUNvbW1lbnRzIiwiY3JlYXRlQ29tbWVudCIsImV4cG9ydHMiXSwic291cmNlcyI6WyJEOlxcZGV2XFxjb250YWJpbFxcY29udGFiaWwtc2l0ZVxcYmFja2VuZFxcc3JjXFxyb3V0ZXNcXGFydGljbGVSb3V0ZXMudHMiXSwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IHsgUm91dGVyIH0gZnJvbSAnZXhwcmVzcyc7XHJcbmltcG9ydCB7IGF1dGhlbnRpY2F0ZSwgYXV0aG9yaXplIH0gZnJvbSAnLi4vbWlkZGxld2FyZXMvYXV0aCc7XHJcbmltcG9ydCB7XHJcbiAgcHVibGljQ2FjaGVNaWRkbGV3YXJlLFxyXG4gIGFydGljbGVDYWNoZU1pZGRsZXdhcmUsXHJcbiAgaW52YWxpZGF0ZUFydGljbGVDYWNoZU1pZGRsZXdhcmVcclxufSBmcm9tICcuLi9taWRkbGV3YXJlcy9jYWNoZSc7XHJcbmltcG9ydCBBcnRpY2xlQ29udHJvbGxlciBmcm9tICcuLi9jb250cm9sbGVycy9hcnRpY2xlQ29udHJvbGxlcic7XHJcblxyXG5jb25zdCByb3V0ZXIgPSBSb3V0ZXIoKTtcclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiBjb21wb25lbnRzOlxyXG4gKiAgIHNjaGVtYXM6XHJcbiAqICAgICBBcnRpY2xlOlxyXG4gKiAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICBpZDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIHRpdGxlOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgc2x1ZzpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGV4Y2VycHQ6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZmVhdHVyZWRJbWFnZTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIHN0YXR1czpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZW51bTogW0RSQUZULCBQVUJMSVNIRUQsIEFSQ0hJVkVEXVxyXG4gKiAgICAgICAgIHB1Ymxpc2hlZEF0OlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBmb3JtYXQ6IGRhdGUtdGltZVxyXG4gKiAgICAgICAgIHJlYWRUaW1lOlxyXG4gKiAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgIHZpZXdzOlxyXG4gKiAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgIGxpa2VzOlxyXG4gKiAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgIHNlb1RpdGxlOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgc2VvRGVzY3JpcHRpb246XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBzZW9LZXl3b3JkczpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGF1dGhvcjpcclxuICogICAgICAgICAgICRyZWY6ICcjL2NvbXBvbmVudHMvc2NoZW1hcy9Vc2VyJ1xyXG4gKiAgICAgICAgIGNhdGVnb3JpZXM6XHJcbiAqICAgICAgICAgICB0eXBlOiBhcnJheVxyXG4gKiAgICAgICAgICAgaXRlbXM6XHJcbiAqICAgICAgICAgICAgICRyZWY6ICcjL2NvbXBvbmVudHMvc2NoZW1hcy9DYXRlZ29yeSdcclxuICogICAgICAgICB0YWdzOlxyXG4gKiAgICAgICAgICAgdHlwZTogYXJyYXlcclxuICogICAgICAgICAgIGl0ZW1zOlxyXG4gKiAgICAgICAgICAgICAkcmVmOiAnIy9jb21wb25lbnRzL3NjaGVtYXMvVGFnJ1xyXG4gKiAgICAgICAgIGNyZWF0ZWRBdDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZm9ybWF0OiBkYXRlLXRpbWVcclxuICogICAgICAgICB1cGRhdGVkQXQ6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGZvcm1hdDogZGF0ZS10aW1lXHJcbiAqICAgICBDYXRlZ29yeTpcclxuICogICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgaWQ6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBuYW1lOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgc2x1ZzpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgY29sb3I6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBpY29uOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICBUYWc6XHJcbiAqICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgIGlkOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgbmFtZTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIHNsdWc6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBjb2xvcjpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgQ3JlYXRlQXJ0aWNsZVJlcXVlc3Q6XHJcbiAqICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICByZXF1aXJlZDpcclxuICogICAgICAgICAtIHRpdGxlXHJcbiAqICAgICAgICAgLSBjb250ZW50XHJcbiAqICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgdGl0bGU6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIG1pbkxlbmd0aDogM1xyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IFTDrXR1bG8gZG8gYXJ0aWdvXHJcbiAqICAgICAgICAgZXhjZXJwdDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IFJlc3VtbyBkbyBhcnRpZ29cclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBtaW5MZW5ndGg6IDEwXHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogQ29udGXDumRvIGRvIGFydGlnb1xyXG4gKiAgICAgICAgIGZlYXR1cmVkSW1hZ2U6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBVUkwgZGEgaW1hZ2VtIGRlc3RhY2FkYVxyXG4gKiAgICAgICAgIHN0YXR1czpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZW51bTogW0RSQUZULCBQVUJMSVNIRURdXHJcbiAqICAgICAgICAgICBkZWZhdWx0OiBEUkFGVFxyXG4gKiAgICAgICAgIHB1Ymxpc2hlZEF0OlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBmb3JtYXQ6IGRhdGUtdGltZVxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IERhdGEgZGUgcHVibGljYcOnw6NvIChvcGNpb25hbClcclxuICogICAgICAgICBzZW9UaXRsZTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IFTDrXR1bG8gU0VPXHJcbiAqICAgICAgICAgc2VvRGVzY3JpcHRpb246XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBEZXNjcmnDp8OjbyBTRU9cclxuICogICAgICAgICBzZW9LZXl3b3JkczpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IFBhbGF2cmFzLWNoYXZlIFNFT1xyXG4gKiAgICAgICAgIGNhdGVnb3J5SWRzOlxyXG4gKiAgICAgICAgICAgdHlwZTogYXJyYXlcclxuICogICAgICAgICAgIGl0ZW1zOlxyXG4gKiAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBJRHMgZGFzIGNhdGVnb3JpYXNcclxuICogICAgICAgICB0YWdJZHM6XHJcbiAqICAgICAgICAgICB0eXBlOiBhcnJheVxyXG4gKiAgICAgICAgICAgaXRlbXM6XHJcbiAqICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IElEcyBkYXMgdGFnc1xyXG4gKi9cclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL2FydGljbGVzOlxyXG4gKiAgIGdldDpcclxuICogICAgIHN1bW1hcnk6IExpc3RhciBhcnRpZ29zXHJcbiAqICAgICB0YWdzOiBbQXJ0aWdvc11cclxuICogICAgIHBhcmFtZXRlcnM6XHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogcGFnZVxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgIG1pbmltdW06IDFcclxuICogICAgICAgICAgIGRlZmF1bHQ6IDFcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogTsO6bWVybyBkYSBww6FnaW5hXHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogbGltaXRcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICBtaW5pbXVtOiAxXHJcbiAqICAgICAgICAgICBtYXhpbXVtOiAxMDBcclxuICogICAgICAgICAgIGRlZmF1bHQ6IDEwXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEl0ZW5zIHBvciBww6FnaW5hXHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogc3RhdHVzXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBlbnVtOiBbRFJBRlQsIFBVQkxJU0hFRCwgQVJDSElWRURdXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEZpbHRyYXIgcG9yIHN0YXR1c1xyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IGNhdGVnb3J5XHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEZpbHRyYXIgcG9yIGNhdGVnb3JpYSAoc2x1ZylcclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiB0YWdcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRmlsdHJhciBwb3IgdGFnIChzbHVnKVxyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IHNlYXJjaFxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBCdXNjYXIgcG9yIHTDrXR1bG8gb3UgY29udGXDumRvXHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogYXV0aG9yXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEZpbHRyYXIgcG9yIGF1dG9yIChJRClcclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiBzb3J0QnlcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGVudW06IFtjcmVhdGVkQXQsIHB1Ymxpc2hlZEF0LCB0aXRsZSwgdmlld3MsIGxpa2VzXVxyXG4gKiAgICAgICAgICAgZGVmYXVsdDogY3JlYXRlZEF0XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IENhbXBvIHBhcmEgb3JkZW5hw6fDo29cclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiBzb3J0T3JkZXJcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGVudW06IFthc2MsIGRlc2NdXHJcbiAqICAgICAgICAgICBkZWZhdWx0OiBkZXNjXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IE9yZGVtIGRhIGNsYXNzaWZpY2HDp8Ojb1xyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IExpc3RhIGRlIGFydGlnb3NcclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICBzdWNjZXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBkYXRhOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgICBhcnRpY2xlczpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGFycmF5XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICBpdGVtczpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgJHJlZjogJyMvY29tcG9uZW50cy9zY2hlbWFzL0FydGljbGUnXHJcbiAqICAgICAgICAgICAgICAgICAgICAgcGFnaW5hdGlvbjpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgcGFnZTpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIGxpbWl0OlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgdG90YWw6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICBwYWdlczpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqL1xyXG5yb3V0ZXIuZ2V0KCcvJywgcHVibGljQ2FjaGVNaWRkbGV3YXJlKDE4MDApLCBBcnRpY2xlQ29udHJvbGxlci5nZXRBcnRpY2xlcyk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS9hcnRpY2xlcy97c2x1Z306XHJcbiAqICAgZ2V0OlxyXG4gKiAgICAgc3VtbWFyeTogT2J0ZXIgYXJ0aWdvIHBvciBzbHVnXHJcbiAqICAgICB0YWdzOiBbQXJ0aWdvc11cclxuICogICAgIHBhcmFtZXRlcnM6XHJcbiAqICAgICAgIC0gaW46IHBhdGhcclxuICogICAgICAgICBuYW1lOiBzbHVnXHJcbiAqICAgICAgICAgcmVxdWlyZWQ6IHRydWVcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogU2x1ZyBkbyBhcnRpZ29cclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBEYWRvcyBkbyBhcnRpZ29cclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICBzdWNjZXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBkYXRhOlxyXG4gKiAgICAgICAgICAgICAgICAgICAkcmVmOiAnIy9jb21wb25lbnRzL3NjaGVtYXMvQXJ0aWNsZSdcclxuICogICAgICAgNDA0OlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBBcnRpZ28gbsOjbyBlbmNvbnRyYWRvXHJcbiAqL1xyXG5yb3V0ZXIuZ2V0KCcvOnNsdWcnLCBhcnRpY2xlQ2FjaGVNaWRkbGV3YXJlKDM2MDApLCBBcnRpY2xlQ29udHJvbGxlci5nZXRBcnRpY2xlKTtcclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL2FydGljbGVzOlxyXG4gKiAgIHBvc3Q6XHJcbiAqICAgICBzdW1tYXJ5OiBDcmlhciBub3ZvIGFydGlnb1xyXG4gKiAgICAgdGFnczogW0FydGlnb3NdXHJcbiAqICAgICBzZWN1cml0eTpcclxuICogICAgICAgLSBiZWFyZXJBdXRoOiBbXVxyXG4gKiAgICAgcmVxdWVzdEJvZHk6XHJcbiAqICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgJHJlZjogJyMvY29tcG9uZW50cy9zY2hlbWFzL0NyZWF0ZUFydGljbGVSZXF1ZXN0J1xyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDE6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEFydGlnbyBjcmlhZG8gY29tIHN1Y2Vzc29cclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICBzdWNjZXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBkYXRhOlxyXG4gKiAgICAgICAgICAgICAgICAgICAkcmVmOiAnIy9jb21wb25lbnRzL3NjaGVtYXMvQXJ0aWNsZSdcclxuICogICAgICAgICAgICAgICAgIG1lc3NhZ2U6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICA0MDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IERhZG9zIGludsOhbGlkb3NcclxuICogICAgICAgNDAxOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBUb2tlbiBpbnbDoWxpZG9cclxuICogICAgICAgNDAzOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBTZW0gcGVybWlzc8Ojb1xyXG4gKi9cclxucm91dGVyLnBvc3QoJy8nLCBhdXRoZW50aWNhdGUsIGF1dGhvcml6ZSgnQURNSU4nLCAnRURJVE9SJyksIGludmFsaWRhdGVBcnRpY2xlQ2FjaGVNaWRkbGV3YXJlKCksIEFydGljbGVDb250cm9sbGVyLmNyZWF0ZUFydGljbGUpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvYXJ0aWNsZXMve2lkfTpcclxuICogICBwdXQ6XHJcbiAqICAgICBzdW1tYXJ5OiBBdHVhbGl6YXIgYXJ0aWdvXHJcbiAqICAgICB0YWdzOiBbQXJ0aWdvc11cclxuICogICAgIHNlY3VyaXR5OlxyXG4gKiAgICAgICAtIGJlYXJlckF1dGg6IFtdXHJcbiAqICAgICBwYXJhbWV0ZXJzOlxyXG4gKiAgICAgICAtIGluOiBwYXRoXHJcbiAqICAgICAgICAgbmFtZTogaWRcclxuICogICAgICAgICByZXF1aXJlZDogdHJ1ZVxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBJRCBkbyBhcnRpZ29cclxuICogICAgIHJlcXVlc3RCb2R5OlxyXG4gKiAgICAgICByZXF1aXJlZDogdHJ1ZVxyXG4gKiAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICRyZWY6ICcjL2NvbXBvbmVudHMvc2NoZW1hcy9DcmVhdGVBcnRpY2xlUmVxdWVzdCdcclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBBcnRpZ28gYXR1YWxpemFkbyBjb20gc3VjZXNzb1xyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgIHN1Y2Nlc3M6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgIGRhdGE6XHJcbiAqICAgICAgICAgICAgICAgICAgICRyZWY6ICcjL2NvbXBvbmVudHMvc2NoZW1hcy9BcnRpY2xlJ1xyXG4gKiAgICAgICAgICAgICAgICAgbWVzc2FnZTpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgIDQwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRGFkb3MgaW52w6FsaWRvc1xyXG4gKiAgICAgICA0MDE6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGludsOhbGlkb1xyXG4gKiAgICAgICA0MDM6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFNlbSBwZXJtaXNzw6NvXHJcbiAqICAgICAgIDQwNDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogQXJ0aWdvIG7Do28gZW5jb250cmFkb1xyXG4gKi9cclxucm91dGVyLnB1dCgnLzppZCcsIGF1dGhlbnRpY2F0ZSwgYXV0aG9yaXplKCdBRE1JTicsICdFRElUT1InKSwgaW52YWxpZGF0ZUFydGljbGVDYWNoZU1pZGRsZXdhcmUoKSwgQXJ0aWNsZUNvbnRyb2xsZXIudXBkYXRlQXJ0aWNsZSk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS9hcnRpY2xlcy97aWR9OlxyXG4gKiAgIGRlbGV0ZTpcclxuICogICAgIHN1bW1hcnk6IEV4Y2x1aXIgYXJ0aWdvXHJcbiAqICAgICB0YWdzOiBbQXJ0aWdvc11cclxuICogICAgIHNlY3VyaXR5OlxyXG4gKiAgICAgICAtIGJlYXJlckF1dGg6IFtdXHJcbiAqICAgICBwYXJhbWV0ZXJzOlxyXG4gKiAgICAgICAtIGluOiBwYXRoXHJcbiAqICAgICAgICAgbmFtZTogaWRcclxuICogICAgICAgICByZXF1aXJlZDogdHJ1ZVxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBJRCBkbyBhcnRpZ29cclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBBcnRpZ28gZXhjbHXDrWRvIGNvbSBzdWNlc3NvXHJcbiAqICAgICAgICAgY29udGVudDpcclxuICogICAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgc3VjY2VzczpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgbWVzc2FnZTpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgIDQwMTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gaW52w6FsaWRvXHJcbiAqICAgICAgIDQwMzpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogU2VtIHBlcm1pc3PDo29cclxuICogICAgICAgNDA0OlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBBcnRpZ28gbsOjbyBlbmNvbnRyYWRvXHJcbiAqL1xyXG5yb3V0ZXIuZGVsZXRlKCcvOmlkJywgYXV0aGVudGljYXRlLCBhdXRob3JpemUoJ0FETUlOJywgJ0VESVRPUicpLCBpbnZhbGlkYXRlQXJ0aWNsZUNhY2hlTWlkZGxld2FyZSgpLCBBcnRpY2xlQ29udHJvbGxlci5kZWxldGVBcnRpY2xlKTtcclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL2FydGljbGVzL3tpZH0vbGlrZTpcclxuICogICBwb3N0OlxyXG4gKiAgICAgc3VtbWFyeTogQ3VydGlyL2Rlc2N1cnRpciBhcnRpZ29cclxuICogICAgIHRhZ3M6IFtBcnRpZ29zXVxyXG4gKiAgICAgcGFyYW1ldGVyczpcclxuICogICAgICAgLSBpbjogcGF0aFxyXG4gKiAgICAgICAgIG5hbWU6IGlkXHJcbiAqICAgICAgICAgcmVxdWlyZWQ6IHRydWVcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogSUQgZG8gYXJ0aWdvXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogTGlrZSBwcm9jZXNzYWRvIGNvbSBzdWNlc3NvXHJcbiAqICAgICAgICAgY29udGVudDpcclxuICogICAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgc3VjY2VzczpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgZGF0YTpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgbGlrZWQ6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICAgICAgdG90YWxMaWtlczpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgICAgIG1lc3NhZ2U6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICA0MDQ6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEFydGlnbyBuw6NvIGVuY29udHJhZG9cclxuICovXHJcbnJvdXRlci5wb3N0KCcvOmlkL2xpa2UnLCBBcnRpY2xlQ29udHJvbGxlci5saWtlQXJ0aWNsZSk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS9hcnRpY2xlcy97aWR9L2NvbW1lbnRzOlxyXG4gKiAgIGdldDpcclxuICogICAgIHN1bW1hcnk6IExpc3RhciBjb21lbnTDoXJpb3MgZG8gYXJ0aWdvXHJcbiAqICAgICB0YWdzOiBbQXJ0aWdvc11cclxuICogICAgIHBhcmFtZXRlcnM6XHJcbiAqICAgICAgIC0gaW46IHBhdGhcclxuICogICAgICAgICBuYW1lOiBpZFxyXG4gKiAgICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IElEIGRvIGFydGlnb1xyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IHBhZ2VcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICBtaW5pbXVtOiAxXHJcbiAqICAgICAgICAgICBkZWZhdWx0OiAxXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IE7Dum1lcm8gZGEgcMOhZ2luYVxyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IGxpbWl0XHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgbWluaW11bTogMVxyXG4gKiAgICAgICAgICAgbWF4aW11bTogNTBcclxuICogICAgICAgICAgIGRlZmF1bHQ6IDEwXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEl0ZW5zIHBvciBww6FnaW5hXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogTGlzdGEgZGUgY29tZW50w6FyaW9zXHJcbiAqICAgICAgIDQwNDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogQXJ0aWdvIG7Do28gZW5jb250cmFkb1xyXG4gKi9cclxucm91dGVyLmdldCgnLzppZC9jb21tZW50cycsIHB1YmxpY0NhY2hlTWlkZGxld2FyZSg2MDApLCBBcnRpY2xlQ29udHJvbGxlci5nZXRBcnRpY2xlQ29tbWVudHMpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvYXJ0aWNsZXMve2lkfS9jb21tZW50czpcclxuICogICBwb3N0OlxyXG4gKiAgICAgc3VtbWFyeTogQWRpY2lvbmFyIGNvbWVudMOhcmlvIGFvIGFydGlnb1xyXG4gKiAgICAgdGFnczogW0FydGlnb3NdXHJcbiAqICAgICBwYXJhbWV0ZXJzOlxyXG4gKiAgICAgICAtIGluOiBwYXRoXHJcbiAqICAgICAgICAgbmFtZTogaWRcclxuICogICAgICAgICByZXF1aXJlZDogdHJ1ZVxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBJRCBkbyBhcnRpZ29cclxuICogICAgIHJlcXVlc3RCb2R5OlxyXG4gKiAgICAgICByZXF1aXJlZDogdHJ1ZVxyXG4gKiAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICByZXF1aXJlZDpcclxuICogICAgICAgICAgICAgICAtIGNvbnRlbnRcclxuICogICAgICAgICAgICAgICAtIGF1dGhvck5hbWVcclxuICogICAgICAgICAgICAgICAtIGF1dGhvckVtYWlsXHJcbiAqICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgY29udGVudDpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgbWluTGVuZ3RoOiAzXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogQ29udGXDumRvIGRvIGNvbWVudMOhcmlvXHJcbiAqICAgICAgICAgICAgICAgYXV0aG9yTmFtZTpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgbWluTGVuZ3RoOiAyXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogTm9tZSBkbyBhdXRvclxyXG4gKiAgICAgICAgICAgICAgIGF1dGhvckVtYWlsOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICBmb3JtYXQ6IGVtYWlsXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogRW1haWwgZG8gYXV0b3JcclxuICogICAgICAgICAgICAgICBwYXJlbnRJZDpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IElEIGRvIGNvbWVudMOhcmlvIHBhaSAocGFyYSByZXNwb3N0YXMpXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogQ29tZW50w6FyaW8gYWRpY2lvbmFkbyBjb20gc3VjZXNzb1xyXG4gKiAgICAgICA0MDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IERhZG9zIGludsOhbGlkb3NcclxuICogICAgICAgNDA0OlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBBcnRpZ28gbsOjbyBlbmNvbnRyYWRvXHJcbiAqL1xyXG5yb3V0ZXIucG9zdCgnLzppZC9jb21tZW50cycsIEFydGljbGVDb250cm9sbGVyLmNyZWF0ZUNvbW1lbnQpO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgcm91dGVyOyJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBLE1BQUFBLFNBQUE7QUFBQTtBQUFBLENBQUFDLGNBQUEsR0FBQUMsQ0FBQSxPQUFBQyxPQUFBO0FBQ0EsTUFBQUMsTUFBQTtBQUFBO0FBQUEsQ0FB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

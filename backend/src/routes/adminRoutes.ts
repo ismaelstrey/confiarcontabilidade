@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import { authenticate, authorize } from '../middlewares/auth';
+import AdminController from '../controllers/adminController';
 
 const router = Router();
 
@@ -228,14 +229,7 @@ const router = Router();
  *       403:
  *         description: Sem permissão de administrador
  */
-router.get('/dashboard', authenticate, authorize('ADMIN'), (req, res) => {
-  // TODO: Implementar controller para estatísticas do dashboard
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'GET /admin/dashboard',
-  });
-});
+router.get('/dashboard', authenticate, authorize('ADMIN'), (req, res) => AdminController.getDashboard(req, res));
 
 /**
  * @swagger
@@ -262,14 +256,7 @@ router.get('/dashboard', authenticate, authorize('ADMIN'), (req, res) => {
  *       403:
  *         description: Sem permissão de administrador
  */
-router.get('/system-info', authenticate, authorize('ADMIN'), (req, res) => {
-  // TODO: Implementar controller para informações do sistema
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'GET /admin/system-info',
-  });
-});
+router.get('/system-info', authenticate, authorize('ADMIN'), (req, res) => AdminController.getSystemInfo(req, res));
 
 /**
  * @swagger
@@ -369,14 +356,7 @@ router.get('/system-info', authenticate, authorize('ADMIN'), (req, res) => {
  *       403:
  *         description: Sem permissão de administrador
  */
-router.get('/activity-logs', authenticate, authorize('ADMIN'), (req, res) => {
-  // TODO: Implementar controller para logs de atividade
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'GET /admin/activity-logs',
-  });
-});
+router.get('/activity-logs', authenticate, authorize('ADMIN'), (req, res) => AdminController.getSystemLogs(req, res));
 
 /**
  * @swagger
@@ -447,14 +427,7 @@ router.get('/activity-logs', authenticate, authorize('ADMIN'), (req, res) => {
  *       403:
  *         description: Sem permissão de administrador
  */
-router.get('/backups', authenticate, authorize('ADMIN'), (req, res) => {
-  // TODO: Implementar controller para listar backups
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'GET /admin/backups',
-  });
-});
+router.get('/backups', authenticate, authorize('ADMIN'), (req, res) => AdminController.getBackups(req, res));
 
 /**
  * @swagger
@@ -507,14 +480,7 @@ router.get('/backups', authenticate, authorize('ADMIN'), (req, res) => {
  *       409:
  *         description: Backup já em andamento
  */
-router.post('/backups', authenticate, authorize('ADMIN'), (req, res) => {
-  // TODO: Implementar controller para criar backup
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'POST /admin/backups',
-  });
-});
+router.post('/backups', authenticate, authorize('ADMIN'), (req, res) => AdminController.createBackup(req, res));
 
 /**
  * @swagger
@@ -546,14 +512,7 @@ router.post('/backups', authenticate, authorize('ADMIN'), (req, res) => {
  *       404:
  *         description: Backup não encontrado
  */
-router.get('/backups/:id/download', authenticate, authorize('ADMIN'), (req, res) => {
-  // TODO: Implementar controller para download de backup
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'GET /admin/backups/:id/download',
-  });
-});
+router.get('/backups/:id/download', authenticate, authorize('ADMIN'), (req, res) => AdminController.downloadBackup(req, res));
 
 /**
  * @swagger
@@ -589,14 +548,7 @@ router.get('/backups/:id/download', authenticate, authorize('ADMIN'), (req, res)
  *       404:
  *         description: Backup não encontrado
  */
-router.delete('/backups/:id', authenticate, authorize('ADMIN'), (req, res) => {
-  // TODO: Implementar controller para excluir backup
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'DELETE /admin/backups/:id',
-  });
-});
+router.delete('/backups/:id', authenticate, authorize('ADMIN'), (req, res) => AdminController.deleteBackup(req, res));
 
 /**
  * @swagger
@@ -636,14 +588,7 @@ router.delete('/backups/:id', authenticate, authorize('ADMIN'), (req, res) => {
  *       403:
  *         description: Sem permissão de administrador
  */
-router.get('/settings', authenticate, authorize('ADMIN'), (req, res) => {
-  // TODO: Implementar controller para listar configurações
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'GET /admin/settings',
-  });
-});
+router.get('/settings', authenticate, authorize('ADMIN'), (req, res) => AdminController.getSettings(req, res));
 
 /**
  * @swagger
@@ -707,14 +652,7 @@ router.get('/settings', authenticate, authorize('ADMIN'), (req, res) => {
  *       403:
  *         description: Sem permissão de administrador
  */
-router.put('/settings', authenticate, authorize('ADMIN'), (req, res) => {
-  // TODO: Implementar controller para atualizar configurações
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'PUT /admin/settings',
-  });
-});
+router.put('/settings', authenticate, authorize('ADMIN'), (req, res) => AdminController.updateSettings(req, res));
 
 /**
  * @swagger
@@ -765,14 +703,7 @@ router.put('/settings', authenticate, authorize('ADMIN'), (req, res) => {
  *       500:
  *         description: Erro interno do servidor
  */
-router.post('/cache/clear', authenticate, authorize('ADMIN'), (req, res) => {
-  // TODO: Implementar controller para limpar cache
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'POST /admin/cache/clear',
-  });
-});
+router.post('/cache/clear', authenticate, authorize('ADMIN'), (req, res) => AdminController.clearCache(req, res));
 
 /**
  * @swagger
@@ -828,13 +759,6 @@ router.post('/cache/clear', authenticate, authorize('ADMIN'), (req, res) => {
  *       403:
  *         description: Sem permissão de administrador
  */
-router.post('/maintenance', authenticate, authorize('ADMIN'), (req, res) => {
-  // TODO: Implementar controller para modo de manutenção
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'POST /admin/maintenance',
-  });
-});
+router.post('/maintenance', authenticate, authorize('ADMIN'), (req, res) => AdminController.enableMaintenance(req, res));
 
 export default router;

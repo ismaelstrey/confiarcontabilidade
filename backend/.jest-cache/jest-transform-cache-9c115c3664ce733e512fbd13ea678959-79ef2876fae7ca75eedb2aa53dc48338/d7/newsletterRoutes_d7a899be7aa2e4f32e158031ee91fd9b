@@ -1,0 +1,796 @@
+69d848e64322646124d611613abafd4c
+"use strict";
+
+/* istanbul ignore next */
+function cov_fbqzt4lpu() {
+  var path = "D:\\dev\\contabil\\contabil-site\\backend\\src\\routes\\newsletterRoutes.ts";
+  var hash = "53c495ef79c3f1fbb2e28569369f583bdf76dd28";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "D:\\dev\\contabil\\contabil-site\\backend\\src\\routes\\newsletterRoutes.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 0
+        },
+        end: {
+          line: 2,
+          column: 62
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 18
+        },
+        end: {
+          line: 3,
+          column: 36
+        }
+      },
+      "2": {
+        start: {
+          line: 4,
+          column: 15
+        },
+        end: {
+          line: 4,
+          column: 45
+        }
+      },
+      "3": {
+        start: {
+          line: 5,
+          column: 31
+        },
+        end: {
+          line: 5,
+          column: 77
+        }
+      },
+      "4": {
+        start: {
+          line: 6,
+          column: 15
+        },
+        end: {
+          line: 6,
+          column: 38
+        }
+      },
+      "5": {
+        start: {
+          line: 166,
+          column: 0
+        },
+        end: {
+          line: 166,
+          column: 146
+        }
+      },
+      "6": {
+        start: {
+          line: 197,
+          column: 0
+        },
+        end: {
+          line: 197,
+          column: 95
+        }
+      },
+      "7": {
+        start: {
+          line: 228,
+          column: 0
+        },
+        end: {
+          line: 228,
+          column: 91
+        }
+      },
+      "8": {
+        start: {
+          line: 259,
+          column: 0
+        },
+        end: {
+          line: 259,
+          column: 94
+        }
+      },
+      "9": {
+        start: {
+          line: 316,
+          column: 0
+        },
+        end: {
+          line: 316,
+          column: 97
+        }
+      },
+      "10": {
+        start: {
+          line: 423,
+          column: 0
+        },
+        end: {
+          line: 423,
+          column: 150
+        }
+      },
+      "11": {
+        start: {
+          line: 478,
+          column: 0
+        },
+        end: {
+          line: 478,
+          column: 146
+        }
+      },
+      "12": {
+        start: {
+          line: 527,
+          column: 0
+        },
+        end: {
+          line: 527,
+          column: 213
+        }
+      },
+      "13": {
+        start: {
+          line: 555,
+          column: 0
+        },
+        end: {
+          line: 555,
+          column: 159
+        }
+      },
+      "14": {
+        start: {
+          line: 556,
+          column: 0
+        },
+        end: {
+          line: 556,
+          column: 25
+        }
+      }
+    },
+    fnMap: {},
+    branchMap: {},
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0
+    },
+    f: {},
+    b: {},
+    inputSourceMap: {
+      file: "D:\\dev\\contabil\\contabil-site\\backend\\src\\routes\\newsletterRoutes.ts",
+      mappings: ";;AAAA,qCAAiC;AACjC,8CAA8D;AAC9D,8EAA2E;AAC3E,MAAM,MAAM,GAAG,IAAA,gBAAM,GAAE,CAAC;AAExB;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAwHG;AAEH;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAqCG;AACH,MAAM,CAAC,IAAI,CAAC,YAAY,EAAE,2CAAoB,CAAC,mBAAmB,EAAE,2CAAoB,CAAC,SAAS,CAAC,CAAC;AAEpG;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GA6BG;AACH,MAAM,CAAC,GAAG,CAAC,iBAAiB,EAAE,2CAAoB,CAAC,mBAAmB,CAAC,CAAC;AAExE;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GA6BG;AACH,MAAM,CAAC,GAAG,CAAC,qBAAqB,EAAE,2CAAoB,CAAC,WAAW,CAAC,CAAC;AAEpE;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GA6BG;AACH,MAAM,CAAC,GAAG,CAAC,qBAAqB,EAAE,2CAAoB,CAAC,cAAc,CAAC,CAAC;AAEvE;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAuDG;AACH,MAAM,CAAC,GAAG,CAAC,qBAAqB,EAAE,2CAAoB,CAAC,iBAAiB,CAAC,CAAC;AAE1E,wBAAwB;AAExB;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAwGG;AACH,MAAM,CAAC,GAAG,CAAC,cAAc,EAAE,mBAAY,EAAE,IAAA,gBAAS,EAAC,OAAO,EAAE,QAAQ,CAAC,EAAE,2CAAoB,CAAC,cAAc,CAAC,CAAC;AAE5G;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GAqDG;AACH,MAAM,CAAC,GAAG,CAAC,YAAY,EAAE,mBAAY,EAAE,IAAA,gBAAS,EAAC,OAAO,EAAE,QAAQ,CAAC,EAAE,2CAAoB,CAAC,YAAY,CAAC,CAAC;AAExG;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;GA+CG;AACH,MAAM,CAAC,IAAI,CAAC,YAAY,EAAE,mBAAY,EAAE,IAAA,gBAAS,EAAC,OAAO,EAAE,QAAQ,CAAC,EAAE,2CAAoB,CAAC,kBAAkB,EAAE,2CAAoB,CAAC,cAAc,CAAC,CAAC;AAEpJ;;;;;;;;;;;;;;;;;;;;;;;;;;GA0BG;AACH,MAAM,CAAC,IAAI,CAAC,qBAAqB,EAAE,mBAAY,EAAE,IAAA,gBAAS,EAAC,OAAO,CAAC,EAAE,2CAAoB,CAAC,yBAAyB,CAAC,CAAC;AAErH,kBAAe,MAAM,CAAC",
+      names: [],
+      sources: ["D:\\dev\\contabil\\contabil-site\\backend\\src\\routes\\newsletterRoutes.ts"],
+      sourcesContent: ["import { Router } from 'express';\r\nimport { authenticate, authorize } from '../middlewares/auth';\r\nimport { NewsletterController } from '../controllers/newsletterController';\r\nconst router = Router();\r\n\r\n/**\r\n * @swagger\r\n * components:\r\n *   schemas:\r\n *     Newsletter:\r\n *       type: object\r\n *       properties:\r\n *         id:\r\n *           type: string\r\n *         email:\r\n *           type: string\r\n *         name:\r\n *           type: string\r\n *         isActive:\r\n *           type: boolean\r\n *         preferences:\r\n *           type: object\r\n *           properties:\r\n *             frequency:\r\n *               type: string\r\n *               enum: [DAILY, WEEKLY, MONTHLY]\r\n *             categories:\r\n *               type: array\r\n *               items:\r\n *                 type: string\r\n *             topics:\r\n *               type: array\r\n *               items:\r\n *                 type: string\r\n *         source:\r\n *           type: string\r\n *         ipAddress:\r\n *           type: string\r\n *         userAgent:\r\n *           type: string\r\n *         confirmedAt:\r\n *           type: string\r\n *           format: date-time\r\n *         unsubscribedAt:\r\n *           type: string\r\n *           format: date-time\r\n *         createdAt:\r\n *           type: string\r\n *           format: date-time\r\n *         updatedAt:\r\n *           type: string\r\n *           format: date-time\r\n *     NewsletterSubscription:\r\n *       type: object\r\n *       required:\r\n *         - email\r\n *       properties:\r\n *         email:\r\n *           type: string\r\n *           format: email\r\n *           description: Email para inscri\xE7\xE3o\r\n *         name:\r\n *           type: string\r\n *           description: Nome do assinante (opcional)\r\n *         preferences:\r\n *           type: object\r\n *           properties:\r\n *             frequency:\r\n *               type: string\r\n *               enum: [DAILY, WEEKLY, MONTHLY]\r\n *               default: WEEKLY\r\n *               description: Frequ\xEAncia de envio\r\n *             categories:\r\n *               type: array\r\n *               items:\r\n *                 type: string\r\n *               description: Categorias de interesse\r\n *             topics:\r\n *               type: array\r\n *               items:\r\n *                 type: string\r\n *               description: T\xF3picos de interesse\r\n *         source:\r\n *           type: string\r\n *           description: Origem da inscri\xE7\xE3o (opcional)\r\n *     NewsletterCampaign:\r\n *       type: object\r\n *       properties:\r\n *         id:\r\n *           type: string\r\n *         title:\r\n *           type: string\r\n *         subject:\r\n *           type: string\r\n *         content:\r\n *           type: string\r\n *         htmlContent:\r\n *           type: string\r\n *         status:\r\n *           type: string\r\n *           enum: [DRAFT, SCHEDULED, SENDING, SENT, CANCELLED]\r\n *         scheduledAt:\r\n *           type: string\r\n *           format: date-time\r\n *         sentAt:\r\n *           type: string\r\n *           format: date-time\r\n *         recipientCount:\r\n *           type: integer\r\n *         openCount:\r\n *           type: integer\r\n *         clickCount:\r\n *           type: integer\r\n *         unsubscribeCount:\r\n *           type: integer\r\n *         bounceCount:\r\n *           type: integer\r\n *         createdBy:\r\n *           type: string\r\n *         createdAt:\r\n *           type: string\r\n *           format: date-time\r\n *         updatedAt:\r\n *           type: string\r\n *           format: date-time\r\n */\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/newsletter/subscribe:\r\n *   post:\r\n *     summary: Inscrever-se na newsletter\r\n *     tags: [Newsletter]\r\n *     requestBody:\r\n *       required: true\r\n *       content:\r\n *         application/json:\r\n *           schema:\r\n *             $ref: '#/components/schemas/NewsletterSubscription'\r\n *     responses:\r\n *       201:\r\n *         description: Inscri\xE7\xE3o realizada com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 message:\r\n *                   type: string\r\n *                 data:\r\n *                   type: object\r\n *                   properties:\r\n *                     confirmationRequired:\r\n *                       type: boolean\r\n *                     subscriptionId:\r\n *                       type: string\r\n *       400:\r\n *         description: Dados inv\xE1lidos\r\n *       409:\r\n *         description: Email j\xE1 inscrito\r\n *       429:\r\n *         description: Muitas tentativas - tente novamente mais tarde\r\n */\r\nrouter.post('/subscribe', NewsletterController.subscribeValidation, NewsletterController.subscribe);\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/newsletter/confirm/{token}:\r\n *   get:\r\n *     summary: Confirmar inscri\xE7\xE3o na newsletter\r\n *     tags: [Newsletter]\r\n *     parameters:\r\n *       - in: path\r\n *         name: token\r\n *         required: true\r\n *         schema:\r\n *           type: string\r\n *         description: Token de confirma\xE7\xE3o\r\n *     responses:\r\n *       200:\r\n *         description: Inscri\xE7\xE3o confirmada com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 message:\r\n *                   type: string\r\n *       400:\r\n *         description: Token inv\xE1lido ou expirado\r\n *       404:\r\n *         description: Inscri\xE7\xE3o n\xE3o encontrada\r\n */\r\nrouter.get('/confirm/:token', NewsletterController.confirmSubscription);\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/newsletter/unsubscribe/{token}:\r\n *   get:\r\n *     summary: Cancelar inscri\xE7\xE3o na newsletter\r\n *     tags: [Newsletter]\r\n *     parameters:\r\n *       - in: path\r\n *         name: token\r\n *         required: true\r\n *         schema:\r\n *           type: string\r\n *         description: Token de cancelamento\r\n *     responses:\r\n *       200:\r\n *         description: Inscri\xE7\xE3o cancelada com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 message:\r\n *                   type: string\r\n *       400:\r\n *         description: Token inv\xE1lido\r\n *       404:\r\n *         description: Inscri\xE7\xE3o n\xE3o encontrada\r\n */\r\nrouter.get('/unsubscribe/:token', NewsletterController.unsubscribe);\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/newsletter/preferences/{token}:\r\n *   get:\r\n *     summary: Obter prefer\xEAncias do assinante\r\n *     tags: [Newsletter]\r\n *     parameters:\r\n *       - in: path\r\n *         name: token\r\n *         required: true\r\n *         schema:\r\n *           type: string\r\n *         description: Token do assinante\r\n *     responses:\r\n *       200:\r\n *         description: Prefer\xEAncias do assinante\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 data:\r\n *                   $ref: '#/components/schemas/Newsletter'\r\n *       400:\r\n *         description: Token inv\xE1lido\r\n *       404:\r\n *         description: Assinante n\xE3o encontrado\r\n */\r\nrouter.get('/preferences/:token', NewsletterController.getPreferences);\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/newsletter/preferences/{token}:\r\n *   put:\r\n *     summary: Atualizar prefer\xEAncias do assinante\r\n *     tags: [Newsletter]\r\n *     parameters:\r\n *       - in: path\r\n *         name: token\r\n *         required: true\r\n *         schema:\r\n *           type: string\r\n *         description: Token do assinante\r\n *     requestBody:\r\n *       required: true\r\n *       content:\r\n *         application/json:\r\n *           schema:\r\n *             type: object\r\n *             properties:\r\n *               name:\r\n *                 type: string\r\n *                 description: Nome do assinante\r\n *               preferences:\r\n *                 type: object\r\n *                 properties:\r\n *                   frequency:\r\n *                     type: string\r\n *                     enum: [DAILY, WEEKLY, MONTHLY]\r\n *                   categories:\r\n *                     type: array\r\n *                     items:\r\n *                       type: string\r\n *                   topics:\r\n *                     type: array\r\n *                     items:\r\n *                       type: string\r\n *     responses:\r\n *       200:\r\n *         description: Prefer\xEAncias atualizadas com sucesso\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 message:\r\n *                   type: string\r\n *                 data:\r\n *                   $ref: '#/components/schemas/Newsletter'\r\n *       400:\r\n *         description: Dados inv\xE1lidos ou token inv\xE1lido\r\n *       404:\r\n *         description: Assinante n\xE3o encontrado\r\n */\r\nrouter.put('/preferences/:token', NewsletterController.updatePreferences);\r\n\r\n// Rotas administrativas\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/newsletter/subscribers:\r\n *   get:\r\n *     summary: Listar assinantes (Admin)\r\n *     tags: [Newsletter]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     parameters:\r\n *       - in: query\r\n *         name: page\r\n *         schema:\r\n *           type: integer\r\n *           minimum: 1\r\n *           default: 1\r\n *         description: N\xFAmero da p\xE1gina\r\n *       - in: query\r\n *         name: limit\r\n *         schema:\r\n *           type: integer\r\n *           minimum: 1\r\n *           maximum: 100\r\n *           default: 20\r\n *         description: Itens por p\xE1gina\r\n *       - in: query\r\n *         name: status\r\n *         schema:\r\n *           type: string\r\n *           enum: [active, inactive, unconfirmed]\r\n *         description: Filtrar por status\r\n *       - in: query\r\n *         name: search\r\n *         schema:\r\n *           type: string\r\n *         description: Buscar por email ou nome\r\n *       - in: query\r\n *         name: dateFrom\r\n *         schema:\r\n *           type: string\r\n *           format: date\r\n *         description: Data inicial (YYYY-MM-DD)\r\n *       - in: query\r\n *         name: dateTo\r\n *         schema:\r\n *           type: string\r\n *           format: date\r\n *         description: Data final (YYYY-MM-DD)\r\n *       - in: query\r\n *         name: sortBy\r\n *         schema:\r\n *           type: string\r\n *           enum: [createdAt, email, name, confirmedAt]\r\n *           default: createdAt\r\n *         description: Campo para ordena\xE7\xE3o\r\n *       - in: query\r\n *         name: sortOrder\r\n *         schema:\r\n *           type: string\r\n *           enum: [asc, desc]\r\n *           default: desc\r\n *         description: Ordem da classifica\xE7\xE3o\r\n *     responses:\r\n *       200:\r\n *         description: Lista de assinantes\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 data:\r\n *                   type: object\r\n *                   properties:\r\n *                     subscribers:\r\n *                       type: array\r\n *                       items:\r\n *                         $ref: '#/components/schemas/Newsletter'\r\n *                     pagination:\r\n *                       type: object\r\n *                       properties:\r\n *                         page:\r\n *                           type: integer\r\n *                         limit:\r\n *                           type: integer\r\n *                         total:\r\n *                           type: integer\r\n *                         pages:\r\n *                           type: integer\r\n *                     stats:\r\n *                       type: object\r\n *                       properties:\r\n *                         total:\r\n *                           type: integer\r\n *                         active:\r\n *                           type: integer\r\n *                         inactive:\r\n *                           type: integer\r\n *                         unconfirmed:\r\n *                           type: integer\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       403:\r\n *         description: Sem permiss\xE3o\r\n */\r\nrouter.get('/subscribers', authenticate, authorize('ADMIN', 'EDITOR'), NewsletterController.getSubscribers);\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/newsletter/campaigns:\r\n *   get:\r\n *     summary: Listar campanhas (Admin)\r\n *     tags: [Newsletter]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     parameters:\r\n *       - in: query\r\n *         name: page\r\n *         schema:\r\n *           type: integer\r\n *           minimum: 1\r\n *           default: 1\r\n *         description: N\xFAmero da p\xE1gina\r\n *       - in: query\r\n *         name: limit\r\n *         schema:\r\n *           type: integer\r\n *           minimum: 1\r\n *           maximum: 50\r\n *           default: 10\r\n *         description: Itens por p\xE1gina\r\n *       - in: query\r\n *         name: status\r\n *         schema:\r\n *           type: string\r\n *           enum: [DRAFT, SCHEDULED, SENDING, SENT, CANCELLED]\r\n *         description: Filtrar por status\r\n *     responses:\r\n *       200:\r\n *         description: Lista de campanhas\r\n *         content:\r\n *           application/json:\r\n *             schema:\r\n *               type: object\r\n *               properties:\r\n *                 success:\r\n *                   type: boolean\r\n *                 data:\r\n *                   type: object\r\n *                   properties:\r\n *                     campaigns:\r\n *                       type: array\r\n *                       items:\r\n *                         $ref: '#/components/schemas/NewsletterCampaign'\r\n *                     pagination:\r\n *                       type: object\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       403:\r\n *         description: Sem permiss\xE3o\r\n */\r\nrouter.get('/campaigns', authenticate, authorize('ADMIN', 'EDITOR'), NewsletterController.getCampaigns);\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/newsletter/campaigns:\r\n *   post:\r\n *     summary: Criar nova campanha (Admin)\r\n *     tags: [Newsletter]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     requestBody:\r\n *       required: true\r\n *       content:\r\n *         application/json:\r\n *           schema:\r\n *             type: object\r\n *             required:\r\n *               - title\r\n *               - subject\r\n *               - content\r\n *             properties:\r\n *               title:\r\n *                 type: string\r\n *                 minLength: 3\r\n *                 description: T\xEDtulo da campanha\r\n *               subject:\r\n *                 type: string\r\n *                 minLength: 5\r\n *                 description: Assunto do email\r\n *               content:\r\n *                 type: string\r\n *                 minLength: 10\r\n *                 description: Conte\xFAdo da campanha\r\n *               htmlContent:\r\n *                 type: string\r\n *                 description: Conte\xFAdo HTML (opcional)\r\n *               scheduledAt:\r\n *                 type: string\r\n *                 format: date-time\r\n *                 description: Data de agendamento (opcional)\r\n *     responses:\r\n *       201:\r\n *         description: Campanha criada com sucesso\r\n *       400:\r\n *         description: Dados inv\xE1lidos\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       403:\r\n *         description: Sem permiss\xE3o\r\n */\r\nrouter.post('/campaigns', authenticate, authorize('ADMIN', 'EDITOR'), NewsletterController.campaignValidation, NewsletterController.createCampaign);\r\n\r\n/**\r\n * @swagger\r\n * /api/v1/newsletter/campaigns/{id}/send:\r\n *   post:\r\n *     summary: Enviar campanha (Admin)\r\n *     tags: [Newsletter]\r\n *     security:\r\n *       - bearerAuth: []\r\n *     parameters:\r\n *       - in: path\r\n *         name: id\r\n *         required: true\r\n *         schema:\r\n *           type: string\r\n *         description: ID da campanha\r\n *     responses:\r\n *       200:\r\n *         description: Campanha enviada com sucesso\r\n *       400:\r\n *         description: Campanha n\xE3o pode ser enviada\r\n *       401:\r\n *         description: Token inv\xE1lido\r\n *       403:\r\n *         description: Sem permiss\xE3o\r\n *       404:\r\n *         description: Campanha n\xE3o encontrada\r\n */\r\nrouter.post('/campaigns/:id/send', authenticate, authorize('ADMIN'), NewsletterController.sendCampaignToSubscribers);\r\n\r\nexport default router;"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "53c495ef79c3f1fbb2e28569369f583bdf76dd28"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_fbqzt4lpu = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_fbqzt4lpu();
+cov_fbqzt4lpu().s[0]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const express_1 =
+/* istanbul ignore next */
+(cov_fbqzt4lpu().s[1]++, require("express"));
+const auth_1 =
+/* istanbul ignore next */
+(cov_fbqzt4lpu().s[2]++, require("../middlewares/auth"));
+const newsletterController_1 =
+/* istanbul ignore next */
+(cov_fbqzt4lpu().s[3]++, require("../controllers/newsletterController"));
+const router =
+/* istanbul ignore next */
+(cov_fbqzt4lpu().s[4]++, (0, express_1.Router)());
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     Newsletter:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: string
+ *         email:
+ *           type: string
+ *         name:
+ *           type: string
+ *         isActive:
+ *           type: boolean
+ *         preferences:
+ *           type: object
+ *           properties:
+ *             frequency:
+ *               type: string
+ *               enum: [DAILY, WEEKLY, MONTHLY]
+ *             categories:
+ *               type: array
+ *               items:
+ *                 type: string
+ *             topics:
+ *               type: array
+ *               items:
+ *                 type: string
+ *         source:
+ *           type: string
+ *         ipAddress:
+ *           type: string
+ *         userAgent:
+ *           type: string
+ *         confirmedAt:
+ *           type: string
+ *           format: date-time
+ *         unsubscribedAt:
+ *           type: string
+ *           format: date-time
+ *         createdAt:
+ *           type: string
+ *           format: date-time
+ *         updatedAt:
+ *           type: string
+ *           format: date-time
+ *     NewsletterSubscription:
+ *       type: object
+ *       required:
+ *         - email
+ *       properties:
+ *         email:
+ *           type: string
+ *           format: email
+ *           description: Email para inscrição
+ *         name:
+ *           type: string
+ *           description: Nome do assinante (opcional)
+ *         preferences:
+ *           type: object
+ *           properties:
+ *             frequency:
+ *               type: string
+ *               enum: [DAILY, WEEKLY, MONTHLY]
+ *               default: WEEKLY
+ *               description: Frequência de envio
+ *             categories:
+ *               type: array
+ *               items:
+ *                 type: string
+ *               description: Categorias de interesse
+ *             topics:
+ *               type: array
+ *               items:
+ *                 type: string
+ *               description: Tópicos de interesse
+ *         source:
+ *           type: string
+ *           description: Origem da inscrição (opcional)
+ *     NewsletterCampaign:
+ *       type: object
+ *       properties:
+ *         id:
+ *           type: string
+ *         title:
+ *           type: string
+ *         subject:
+ *           type: string
+ *         content:
+ *           type: string
+ *         htmlContent:
+ *           type: string
+ *         status:
+ *           type: string
+ *           enum: [DRAFT, SCHEDULED, SENDING, SENT, CANCELLED]
+ *         scheduledAt:
+ *           type: string
+ *           format: date-time
+ *         sentAt:
+ *           type: string
+ *           format: date-time
+ *         recipientCount:
+ *           type: integer
+ *         openCount:
+ *           type: integer
+ *         clickCount:
+ *           type: integer
+ *         unsubscribeCount:
+ *           type: integer
+ *         bounceCount:
+ *           type: integer
+ *         createdBy:
+ *           type: string
+ *         createdAt:
+ *           type: string
+ *           format: date-time
+ *         updatedAt:
+ *           type: string
+ *           format: date-time
+ */
+/**
+ * @swagger
+ * /api/v1/newsletter/subscribe:
+ *   post:
+ *     summary: Inscrever-se na newsletter
+ *     tags: [Newsletter]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/NewsletterSubscription'
+ *     responses:
+ *       201:
+ *         description: Inscrição realizada com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 message:
+ *                   type: string
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     confirmationRequired:
+ *                       type: boolean
+ *                     subscriptionId:
+ *                       type: string
+ *       400:
+ *         description: Dados inválidos
+ *       409:
+ *         description: Email já inscrito
+ *       429:
+ *         description: Muitas tentativas - tente novamente mais tarde
+ */
+/* istanbul ignore next */
+cov_fbqzt4lpu().s[5]++;
+router.post('/subscribe', newsletterController_1.NewsletterController.subscribeValidation, newsletterController_1.NewsletterController.subscribe);
+/**
+ * @swagger
+ * /api/v1/newsletter/confirm/{token}:
+ *   get:
+ *     summary: Confirmar inscrição na newsletter
+ *     tags: [Newsletter]
+ *     parameters:
+ *       - in: path
+ *         name: token
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Token de confirmação
+ *     responses:
+ *       200:
+ *         description: Inscrição confirmada com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 message:
+ *                   type: string
+ *       400:
+ *         description: Token inválido ou expirado
+ *       404:
+ *         description: Inscrição não encontrada
+ */
+/* istanbul ignore next */
+cov_fbqzt4lpu().s[6]++;
+router.get('/confirm/:token', newsletterController_1.NewsletterController.confirmSubscription);
+/**
+ * @swagger
+ * /api/v1/newsletter/unsubscribe/{token}:
+ *   get:
+ *     summary: Cancelar inscrição na newsletter
+ *     tags: [Newsletter]
+ *     parameters:
+ *       - in: path
+ *         name: token
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Token de cancelamento
+ *     responses:
+ *       200:
+ *         description: Inscrição cancelada com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 message:
+ *                   type: string
+ *       400:
+ *         description: Token inválido
+ *       404:
+ *         description: Inscrição não encontrada
+ */
+/* istanbul ignore next */
+cov_fbqzt4lpu().s[7]++;
+router.get('/unsubscribe/:token', newsletterController_1.NewsletterController.unsubscribe);
+/**
+ * @swagger
+ * /api/v1/newsletter/preferences/{token}:
+ *   get:
+ *     summary: Obter preferências do assinante
+ *     tags: [Newsletter]
+ *     parameters:
+ *       - in: path
+ *         name: token
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Token do assinante
+ *     responses:
+ *       200:
+ *         description: Preferências do assinante
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   $ref: '#/components/schemas/Newsletter'
+ *       400:
+ *         description: Token inválido
+ *       404:
+ *         description: Assinante não encontrado
+ */
+/* istanbul ignore next */
+cov_fbqzt4lpu().s[8]++;
+router.get('/preferences/:token', newsletterController_1.NewsletterController.getPreferences);
+/**
+ * @swagger
+ * /api/v1/newsletter/preferences/{token}:
+ *   put:
+ *     summary: Atualizar preferências do assinante
+ *     tags: [Newsletter]
+ *     parameters:
+ *       - in: path
+ *         name: token
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: Token do assinante
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *                 description: Nome do assinante
+ *               preferences:
+ *                 type: object
+ *                 properties:
+ *                   frequency:
+ *                     type: string
+ *                     enum: [DAILY, WEEKLY, MONTHLY]
+ *                   categories:
+ *                     type: array
+ *                     items:
+ *                       type: string
+ *                   topics:
+ *                     type: array
+ *                     items:
+ *                       type: string
+ *     responses:
+ *       200:
+ *         description: Preferências atualizadas com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 message:
+ *                   type: string
+ *                 data:
+ *                   $ref: '#/components/schemas/Newsletter'
+ *       400:
+ *         description: Dados inválidos ou token inválido
+ *       404:
+ *         description: Assinante não encontrado
+ */
+/* istanbul ignore next */
+cov_fbqzt4lpu().s[9]++;
+router.put('/preferences/:token', newsletterController_1.NewsletterController.updatePreferences);
+// Rotas administrativas
+/**
+ * @swagger
+ * /api/v1/newsletter/subscribers:
+ *   get:
+ *     summary: Listar assinantes (Admin)
+ *     tags: [Newsletter]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           default: 1
+ *         description: Número da página
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           maximum: 100
+ *           default: 20
+ *         description: Itens por página
+ *       - in: query
+ *         name: status
+ *         schema:
+ *           type: string
+ *           enum: [active, inactive, unconfirmed]
+ *         description: Filtrar por status
+ *       - in: query
+ *         name: search
+ *         schema:
+ *           type: string
+ *         description: Buscar por email ou nome
+ *       - in: query
+ *         name: dateFrom
+ *         schema:
+ *           type: string
+ *           format: date
+ *         description: Data inicial (YYYY-MM-DD)
+ *       - in: query
+ *         name: dateTo
+ *         schema:
+ *           type: string
+ *           format: date
+ *         description: Data final (YYYY-MM-DD)
+ *       - in: query
+ *         name: sortBy
+ *         schema:
+ *           type: string
+ *           enum: [createdAt, email, name, confirmedAt]
+ *           default: createdAt
+ *         description: Campo para ordenação
+ *       - in: query
+ *         name: sortOrder
+ *         schema:
+ *           type: string
+ *           enum: [asc, desc]
+ *           default: desc
+ *         description: Ordem da classificação
+ *     responses:
+ *       200:
+ *         description: Lista de assinantes
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     subscribers:
+ *                       type: array
+ *                       items:
+ *                         $ref: '#/components/schemas/Newsletter'
+ *                     pagination:
+ *                       type: object
+ *                       properties:
+ *                         page:
+ *                           type: integer
+ *                         limit:
+ *                           type: integer
+ *                         total:
+ *                           type: integer
+ *                         pages:
+ *                           type: integer
+ *                     stats:
+ *                       type: object
+ *                       properties:
+ *                         total:
+ *                           type: integer
+ *                         active:
+ *                           type: integer
+ *                         inactive:
+ *                           type: integer
+ *                         unconfirmed:
+ *                           type: integer
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ */
+/* istanbul ignore next */
+cov_fbqzt4lpu().s[10]++;
+router.get('/subscribers', auth_1.authenticate, (0, auth_1.authorize)('ADMIN', 'EDITOR'), newsletterController_1.NewsletterController.getSubscribers);
+/**
+ * @swagger
+ * /api/v1/newsletter/campaigns:
+ *   get:
+ *     summary: Listar campanhas (Admin)
+ *     tags: [Newsletter]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: page
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           default: 1
+ *         description: Número da página
+ *       - in: query
+ *         name: limit
+ *         schema:
+ *           type: integer
+ *           minimum: 1
+ *           maximum: 50
+ *           default: 10
+ *         description: Itens por página
+ *       - in: query
+ *         name: status
+ *         schema:
+ *           type: string
+ *           enum: [DRAFT, SCHEDULED, SENDING, SENT, CANCELLED]
+ *         description: Filtrar por status
+ *     responses:
+ *       200:
+ *         description: Lista de campanhas
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     campaigns:
+ *                       type: array
+ *                       items:
+ *                         $ref: '#/components/schemas/NewsletterCampaign'
+ *                     pagination:
+ *                       type: object
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ */
+/* istanbul ignore next */
+cov_fbqzt4lpu().s[11]++;
+router.get('/campaigns', auth_1.authenticate, (0, auth_1.authorize)('ADMIN', 'EDITOR'), newsletterController_1.NewsletterController.getCampaigns);
+/**
+ * @swagger
+ * /api/v1/newsletter/campaigns:
+ *   post:
+ *     summary: Criar nova campanha (Admin)
+ *     tags: [Newsletter]
+ *     security:
+ *       - bearerAuth: []
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *               - title
+ *               - subject
+ *               - content
+ *             properties:
+ *               title:
+ *                 type: string
+ *                 minLength: 3
+ *                 description: Título da campanha
+ *               subject:
+ *                 type: string
+ *                 minLength: 5
+ *                 description: Assunto do email
+ *               content:
+ *                 type: string
+ *                 minLength: 10
+ *                 description: Conteúdo da campanha
+ *               htmlContent:
+ *                 type: string
+ *                 description: Conteúdo HTML (opcional)
+ *               scheduledAt:
+ *                 type: string
+ *                 format: date-time
+ *                 description: Data de agendamento (opcional)
+ *     responses:
+ *       201:
+ *         description: Campanha criada com sucesso
+ *       400:
+ *         description: Dados inválidos
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ */
+/* istanbul ignore next */
+cov_fbqzt4lpu().s[12]++;
+router.post('/campaigns', auth_1.authenticate, (0, auth_1.authorize)('ADMIN', 'EDITOR'), newsletterController_1.NewsletterController.campaignValidation, newsletterController_1.NewsletterController.createCampaign);
+/**
+ * @swagger
+ * /api/v1/newsletter/campaigns/{id}/send:
+ *   post:
+ *     summary: Enviar campanha (Admin)
+ *     tags: [Newsletter]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID da campanha
+ *     responses:
+ *       200:
+ *         description: Campanha enviada com sucesso
+ *       400:
+ *         description: Campanha não pode ser enviada
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ *       404:
+ *         description: Campanha não encontrada
+ */
+/* istanbul ignore next */
+cov_fbqzt4lpu().s[13]++;
+router.post('/campaigns/:id/send', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), newsletterController_1.NewsletterController.sendCampaignToSubscribers);
+/* istanbul ignore next */
+cov_fbqzt4lpu().s[14]++;
+exports.default = router;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJleHByZXNzXzEiLCJjb3ZfZmJxenQ0bHB1IiwicyIsInJlcXVpcmUiLCJhdXRoXzEiLCJuZXdzbGV0dGVyQ29udHJvbGxlcl8xIiwicm91dGVyIiwiUm91dGVyIiwicG9zdCIsIk5ld3NsZXR0ZXJDb250cm9sbGVyIiwic3Vic2NyaWJlVmFsaWRhdGlvbiIsInN1YnNjcmliZSIsImdldCIsImNvbmZpcm1TdWJzY3JpcHRpb24iLCJ1bnN1YnNjcmliZSIsImdldFByZWZlcmVuY2VzIiwicHV0IiwidXBkYXRlUHJlZmVyZW5jZXMiLCJhdXRoZW50aWNhdGUiLCJhdXRob3JpemUiLCJnZXRTdWJzY3JpYmVycyIsImdldENhbXBhaWducyIsImNhbXBhaWduVmFsaWRhdGlvbiIsImNyZWF0ZUNhbXBhaWduIiwic2VuZENhbXBhaWduVG9TdWJzY3JpYmVycyIsImV4cG9ydHMiLCJkZWZhdWx0Il0sInNvdXJjZXMiOlsiRDpcXGRldlxcY29udGFiaWxcXGNvbnRhYmlsLXNpdGVcXGJhY2tlbmRcXHNyY1xccm91dGVzXFxuZXdzbGV0dGVyUm91dGVzLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IFJvdXRlciB9IGZyb20gJ2V4cHJlc3MnO1xyXG5pbXBvcnQgeyBhdXRoZW50aWNhdGUsIGF1dGhvcml6ZSB9IGZyb20gJy4uL21pZGRsZXdhcmVzL2F1dGgnO1xyXG5pbXBvcnQgeyBOZXdzbGV0dGVyQ29udHJvbGxlciB9IGZyb20gJy4uL2NvbnRyb2xsZXJzL25ld3NsZXR0ZXJDb250cm9sbGVyJztcclxuY29uc3Qgcm91dGVyID0gUm91dGVyKCk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogY29tcG9uZW50czpcclxuICogICBzY2hlbWFzOlxyXG4gKiAgICAgTmV3c2xldHRlcjpcclxuICogICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgaWQ6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBlbWFpbDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIG5hbWU6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBpc0FjdGl2ZTpcclxuICogICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICBwcmVmZXJlbmNlczpcclxuICogICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgZnJlcXVlbmN5OlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgIGVudW06IFtEQUlMWSwgV0VFS0xZLCBNT05USExZXVxyXG4gKiAgICAgICAgICAgICBjYXRlZ29yaWVzOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IGFycmF5XHJcbiAqICAgICAgICAgICAgICAgaXRlbXM6XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgdG9waWNzOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IGFycmF5XHJcbiAqICAgICAgICAgICAgICAgaXRlbXM6XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBzb3VyY2U6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBpcEFkZHJlc3M6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICB1c2VyQWdlbnQ6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBjb25maXJtZWRBdDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZm9ybWF0OiBkYXRlLXRpbWVcclxuICogICAgICAgICB1bnN1YnNjcmliZWRBdDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZm9ybWF0OiBkYXRlLXRpbWVcclxuICogICAgICAgICBjcmVhdGVkQXQ6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGZvcm1hdDogZGF0ZS10aW1lXHJcbiAqICAgICAgICAgdXBkYXRlZEF0OlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBmb3JtYXQ6IGRhdGUtdGltZVxyXG4gKiAgICAgTmV3c2xldHRlclN1YnNjcmlwdGlvbjpcclxuICogICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgIHJlcXVpcmVkOlxyXG4gKiAgICAgICAgIC0gZW1haWxcclxuICogICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICBlbWFpbDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZm9ybWF0OiBlbWFpbFxyXG4gKiAgICAgICAgICAgZGVzY3JpcHRpb246IEVtYWlsIHBhcmEgaW5zY3Jpw6fDo29cclxuICogICAgICAgICBuYW1lOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogTm9tZSBkbyBhc3NpbmFudGUgKG9wY2lvbmFsKVxyXG4gKiAgICAgICAgIHByZWZlcmVuY2VzOlxyXG4gKiAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICBmcmVxdWVuY3k6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgZW51bTogW0RBSUxZLCBXRUVLTFksIE1PTlRITFldXHJcbiAqICAgICAgICAgICAgICAgZGVmYXVsdDogV0VFS0xZXHJcbiAqICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IEZyZXF1w6puY2lhIGRlIGVudmlvXHJcbiAqICAgICAgICAgICAgIGNhdGVnb3JpZXM6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogYXJyYXlcclxuICogICAgICAgICAgICAgICBpdGVtczpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBDYXRlZ29yaWFzIGRlIGludGVyZXNzZVxyXG4gKiAgICAgICAgICAgICB0b3BpY3M6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogYXJyYXlcclxuICogICAgICAgICAgICAgICBpdGVtczpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBUw7NwaWNvcyBkZSBpbnRlcmVzc2VcclxuICogICAgICAgICBzb3VyY2U6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBPcmlnZW0gZGEgaW5zY3Jpw6fDo28gKG9wY2lvbmFsKVxyXG4gKiAgICAgTmV3c2xldHRlckNhbXBhaWduOlxyXG4gKiAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICBpZDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIHRpdGxlOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgc3ViamVjdDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBodG1sQ29udGVudDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIHN0YXR1czpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZW51bTogW0RSQUZULCBTQ0hFRFVMRUQsIFNFTkRJTkcsIFNFTlQsIENBTkNFTExFRF1cclxuICogICAgICAgICBzY2hlZHVsZWRBdDpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZm9ybWF0OiBkYXRlLXRpbWVcclxuICogICAgICAgICBzZW50QXQ6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGZvcm1hdDogZGF0ZS10aW1lXHJcbiAqICAgICAgICAgcmVjaXBpZW50Q291bnQ6XHJcbiAqICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgb3BlbkNvdW50OlxyXG4gKiAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgIGNsaWNrQ291bnQ6XHJcbiAqICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgdW5zdWJzY3JpYmVDb3VudDpcclxuICogICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICBib3VuY2VDb3VudDpcclxuICogICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICBjcmVhdGVkQnk6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICBjcmVhdGVkQXQ6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGZvcm1hdDogZGF0ZS10aW1lXHJcbiAqICAgICAgICAgdXBkYXRlZEF0OlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBmb3JtYXQ6IGRhdGUtdGltZVxyXG4gKi9cclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL25ld3NsZXR0ZXIvc3Vic2NyaWJlOlxyXG4gKiAgIHBvc3Q6XHJcbiAqICAgICBzdW1tYXJ5OiBJbnNjcmV2ZXItc2UgbmEgbmV3c2xldHRlclxyXG4gKiAgICAgdGFnczogW05ld3NsZXR0ZXJdXHJcbiAqICAgICByZXF1ZXN0Qm9keTpcclxuICogICAgICAgcmVxdWlyZWQ6IHRydWVcclxuICogICAgICAgY29udGVudDpcclxuICogICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAkcmVmOiAnIy9jb21wb25lbnRzL3NjaGVtYXMvTmV3c2xldHRlclN1YnNjcmlwdGlvbidcclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAxOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBJbnNjcmnDp8OjbyByZWFsaXphZGEgY29tIHN1Y2Vzc29cclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICBzdWNjZXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBtZXNzYWdlOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgIGRhdGE6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgIGNvbmZpcm1hdGlvblJlcXVpcmVkOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgICAgIHN1YnNjcmlwdGlvbklkOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgIDQwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRGFkb3MgaW52w6FsaWRvc1xyXG4gKiAgICAgICA0MDk6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEVtYWlsIGrDoSBpbnNjcml0b1xyXG4gKiAgICAgICA0Mjk6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IE11aXRhcyB0ZW50YXRpdmFzIC0gdGVudGUgbm92YW1lbnRlIG1haXMgdGFyZGVcclxuICovXHJcbnJvdXRlci5wb3N0KCcvc3Vic2NyaWJlJywgTmV3c2xldHRlckNvbnRyb2xsZXIuc3Vic2NyaWJlVmFsaWRhdGlvbiwgTmV3c2xldHRlckNvbnRyb2xsZXIuc3Vic2NyaWJlKTtcclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL25ld3NsZXR0ZXIvY29uZmlybS97dG9rZW59OlxyXG4gKiAgIGdldDpcclxuICogICAgIHN1bW1hcnk6IENvbmZpcm1hciBpbnNjcmnDp8OjbyBuYSBuZXdzbGV0dGVyXHJcbiAqICAgICB0YWdzOiBbTmV3c2xldHRlcl1cclxuICogICAgIHBhcmFtZXRlcnM6XHJcbiAqICAgICAgIC0gaW46IHBhdGhcclxuICogICAgICAgICBuYW1lOiB0b2tlblxyXG4gKiAgICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGRlIGNvbmZpcm1hw6fDo29cclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBJbnNjcmnDp8OjbyBjb25maXJtYWRhIGNvbSBzdWNlc3NvXHJcbiAqICAgICAgICAgY29udGVudDpcclxuICogICAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgc3VjY2VzczpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgbWVzc2FnZTpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgIDQwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gaW52w6FsaWRvIG91IGV4cGlyYWRvXHJcbiAqICAgICAgIDQwNDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogSW5zY3Jpw6fDo28gbsOjbyBlbmNvbnRyYWRhXHJcbiAqL1xyXG5yb3V0ZXIuZ2V0KCcvY29uZmlybS86dG9rZW4nLCBOZXdzbGV0dGVyQ29udHJvbGxlci5jb25maXJtU3Vic2NyaXB0aW9uKTtcclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL25ld3NsZXR0ZXIvdW5zdWJzY3JpYmUve3Rva2VufTpcclxuICogICBnZXQ6XHJcbiAqICAgICBzdW1tYXJ5OiBDYW5jZWxhciBpbnNjcmnDp8OjbyBuYSBuZXdzbGV0dGVyXHJcbiAqICAgICB0YWdzOiBbTmV3c2xldHRlcl1cclxuICogICAgIHBhcmFtZXRlcnM6XHJcbiAqICAgICAgIC0gaW46IHBhdGhcclxuICogICAgICAgICBuYW1lOiB0b2tlblxyXG4gKiAgICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGRlIGNhbmNlbGFtZW50b1xyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEluc2NyacOnw6NvIGNhbmNlbGFkYSBjb20gc3VjZXNzb1xyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgIHN1Y2Nlc3M6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgIG1lc3NhZ2U6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICA0MDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGludsOhbGlkb1xyXG4gKiAgICAgICA0MDQ6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEluc2NyacOnw6NvIG7Do28gZW5jb250cmFkYVxyXG4gKi9cclxucm91dGVyLmdldCgnL3Vuc3Vic2NyaWJlLzp0b2tlbicsIE5ld3NsZXR0ZXJDb250cm9sbGVyLnVuc3Vic2NyaWJlKTtcclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL25ld3NsZXR0ZXIvcHJlZmVyZW5jZXMve3Rva2VufTpcclxuICogICBnZXQ6XHJcbiAqICAgICBzdW1tYXJ5OiBPYnRlciBwcmVmZXLDqm5jaWFzIGRvIGFzc2luYW50ZVxyXG4gKiAgICAgdGFnczogW05ld3NsZXR0ZXJdXHJcbiAqICAgICBwYXJhbWV0ZXJzOlxyXG4gKiAgICAgICAtIGluOiBwYXRoXHJcbiAqICAgICAgICAgbmFtZTogdG9rZW5cclxuICogICAgICAgICByZXF1aXJlZDogdHJ1ZVxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBUb2tlbiBkbyBhc3NpbmFudGVcclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBQcmVmZXLDqm5jaWFzIGRvIGFzc2luYW50ZVxyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgIHN1Y2Nlc3M6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgIGRhdGE6XHJcbiAqICAgICAgICAgICAgICAgICAgICRyZWY6ICcjL2NvbXBvbmVudHMvc2NoZW1hcy9OZXdzbGV0dGVyJ1xyXG4gKiAgICAgICA0MDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGludsOhbGlkb1xyXG4gKiAgICAgICA0MDQ6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEFzc2luYW50ZSBuw6NvIGVuY29udHJhZG9cclxuICovXHJcbnJvdXRlci5nZXQoJy9wcmVmZXJlbmNlcy86dG9rZW4nLCBOZXdzbGV0dGVyQ29udHJvbGxlci5nZXRQcmVmZXJlbmNlcyk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS9uZXdzbGV0dGVyL3ByZWZlcmVuY2VzL3t0b2tlbn06XHJcbiAqICAgcHV0OlxyXG4gKiAgICAgc3VtbWFyeTogQXR1YWxpemFyIHByZWZlcsOqbmNpYXMgZG8gYXNzaW5hbnRlXHJcbiAqICAgICB0YWdzOiBbTmV3c2xldHRlcl1cclxuICogICAgIHBhcmFtZXRlcnM6XHJcbiAqICAgICAgIC0gaW46IHBhdGhcclxuICogICAgICAgICBuYW1lOiB0b2tlblxyXG4gKiAgICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGRvIGFzc2luYW50ZVxyXG4gKiAgICAgcmVxdWVzdEJvZHk6XHJcbiAqICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgbmFtZTpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IE5vbWUgZG8gYXNzaW5hbnRlXHJcbiAqICAgICAgICAgICAgICAgcHJlZmVyZW5jZXM6XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICAgIGZyZXF1ZW5jeTpcclxuICogICAgICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgICAgICBlbnVtOiBbREFJTFksIFdFRUtMWSwgTU9OVEhMWV1cclxuICogICAgICAgICAgICAgICAgICAgY2F0ZWdvcmllczpcclxuICogICAgICAgICAgICAgICAgICAgICB0eXBlOiBhcnJheVxyXG4gKiAgICAgICAgICAgICAgICAgICAgIGl0ZW1zOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICAgIHRvcGljczpcclxuICogICAgICAgICAgICAgICAgICAgICB0eXBlOiBhcnJheVxyXG4gKiAgICAgICAgICAgICAgICAgICAgIGl0ZW1zOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogUHJlZmVyw6puY2lhcyBhdHVhbGl6YWRhcyBjb20gc3VjZXNzb1xyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgIHN1Y2Nlc3M6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgIG1lc3NhZ2U6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgZGF0YTpcclxuICogICAgICAgICAgICAgICAgICAgJHJlZjogJyMvY29tcG9uZW50cy9zY2hlbWFzL05ld3NsZXR0ZXInXHJcbiAqICAgICAgIDQwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRGFkb3MgaW52w6FsaWRvcyBvdSB0b2tlbiBpbnbDoWxpZG9cclxuICogICAgICAgNDA0OlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBBc3NpbmFudGUgbsOjbyBlbmNvbnRyYWRvXHJcbiAqL1xyXG5yb3V0ZXIucHV0KCcvcHJlZmVyZW5jZXMvOnRva2VuJywgTmV3c2xldHRlckNvbnRyb2xsZXIudXBkYXRlUHJlZmVyZW5jZXMpO1xyXG5cclxuLy8gUm90YXMgYWRtaW5pc3RyYXRpdmFzXHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS9uZXdzbGV0dGVyL3N1YnNjcmliZXJzOlxyXG4gKiAgIGdldDpcclxuICogICAgIHN1bW1hcnk6IExpc3RhciBhc3NpbmFudGVzIChBZG1pbilcclxuICogICAgIHRhZ3M6IFtOZXdzbGV0dGVyXVxyXG4gKiAgICAgc2VjdXJpdHk6XHJcbiAqICAgICAgIC0gYmVhcmVyQXV0aDogW11cclxuICogICAgIHBhcmFtZXRlcnM6XHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogcGFnZVxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgIG1pbmltdW06IDFcclxuICogICAgICAgICAgIGRlZmF1bHQ6IDFcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogTsO6bWVybyBkYSBww6FnaW5hXHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogbGltaXRcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICBtaW5pbXVtOiAxXHJcbiAqICAgICAgICAgICBtYXhpbXVtOiAxMDBcclxuICogICAgICAgICAgIGRlZmF1bHQ6IDIwXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEl0ZW5zIHBvciBww6FnaW5hXHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogc3RhdHVzXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBlbnVtOiBbYWN0aXZlLCBpbmFjdGl2ZSwgdW5jb25maXJtZWRdXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEZpbHRyYXIgcG9yIHN0YXR1c1xyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IHNlYXJjaFxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBCdXNjYXIgcG9yIGVtYWlsIG91IG5vbWVcclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiBkYXRlRnJvbVxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZm9ybWF0OiBkYXRlXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IERhdGEgaW5pY2lhbCAoWVlZWS1NTS1ERClcclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiBkYXRlVG9cclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGZvcm1hdDogZGF0ZVxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBEYXRhIGZpbmFsIChZWVlZLU1NLUREKVxyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IHNvcnRCeVxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZW51bTogW2NyZWF0ZWRBdCwgZW1haWwsIG5hbWUsIGNvbmZpcm1lZEF0XVxyXG4gKiAgICAgICAgICAgZGVmYXVsdDogY3JlYXRlZEF0XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IENhbXBvIHBhcmEgb3JkZW5hw6fDo29cclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiBzb3J0T3JkZXJcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGVudW06IFthc2MsIGRlc2NdXHJcbiAqICAgICAgICAgICBkZWZhdWx0OiBkZXNjXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IE9yZGVtIGRhIGNsYXNzaWZpY2HDp8Ojb1xyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IExpc3RhIGRlIGFzc2luYW50ZXNcclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICBzdWNjZXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBkYXRhOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgICBzdWJzY3JpYmVyczpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGFycmF5XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICBpdGVtczpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgJHJlZjogJyMvY29tcG9uZW50cy9zY2hlbWFzL05ld3NsZXR0ZXInXHJcbiAqICAgICAgICAgICAgICAgICAgICAgcGFnaW5hdGlvbjpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgcGFnZTpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIGxpbWl0OlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgdG90YWw6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICBwYWdlczpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgc3RhdHM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgIHRvdGFsOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgYWN0aXZlOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGludGVnZXJcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgaW5hY3RpdmU6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgICB1bmNvbmZpcm1lZDpcclxuICogICAgICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgIDQwMTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVG9rZW4gaW52w6FsaWRvXHJcbiAqICAgICAgIDQwMzpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogU2VtIHBlcm1pc3PDo29cclxuICovXHJcbnJvdXRlci5nZXQoJy9zdWJzY3JpYmVycycsIGF1dGhlbnRpY2F0ZSwgYXV0aG9yaXplKCdBRE1JTicsICdFRElUT1InKSwgTmV3c2xldHRlckNvbnRyb2xsZXIuZ2V0U3Vic2NyaWJlcnMpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvbmV3c2xldHRlci9jYW1wYWlnbnM6XHJcbiAqICAgZ2V0OlxyXG4gKiAgICAgc3VtbWFyeTogTGlzdGFyIGNhbXBhbmhhcyAoQWRtaW4pXHJcbiAqICAgICB0YWdzOiBbTmV3c2xldHRlcl1cclxuICogICAgIHNlY3VyaXR5OlxyXG4gKiAgICAgICAtIGJlYXJlckF1dGg6IFtdXHJcbiAqICAgICBwYXJhbWV0ZXJzOlxyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IHBhZ2VcclxuICogICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICBtaW5pbXVtOiAxXHJcbiAqICAgICAgICAgICBkZWZhdWx0OiAxXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IE7Dum1lcm8gZGEgcMOhZ2luYVxyXG4gKiAgICAgICAtIGluOiBxdWVyeVxyXG4gKiAgICAgICAgIG5hbWU6IGxpbWl0XHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgbWluaW11bTogMVxyXG4gKiAgICAgICAgICAgbWF4aW11bTogNTBcclxuICogICAgICAgICAgIGRlZmF1bHQ6IDEwXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEl0ZW5zIHBvciBww6FnaW5hXHJcbiAqICAgICAgIC0gaW46IHF1ZXJ5XHJcbiAqICAgICAgICAgbmFtZTogc3RhdHVzXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBlbnVtOiBbRFJBRlQsIFNDSEVEVUxFRCwgU0VORElORywgU0VOVCwgQ0FOQ0VMTEVEXVxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBGaWx0cmFyIHBvciBzdGF0dXNcclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBMaXN0YSBkZSBjYW1wYW5oYXNcclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICBzdWNjZXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBkYXRhOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgICBjYW1wYWlnbnM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBhcnJheVxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgaXRlbXM6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICAgICRyZWY6ICcjL2NvbXBvbmVudHMvc2NoZW1hcy9OZXdzbGV0dGVyQ2FtcGFpZ24nXHJcbiAqICAgICAgICAgICAgICAgICAgICAgcGFnaW5hdGlvbjpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICA0MDE6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGludsOhbGlkb1xyXG4gKiAgICAgICA0MDM6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFNlbSBwZXJtaXNzw6NvXHJcbiAqL1xyXG5yb3V0ZXIuZ2V0KCcvY2FtcGFpZ25zJywgYXV0aGVudGljYXRlLCBhdXRob3JpemUoJ0FETUlOJywgJ0VESVRPUicpLCBOZXdzbGV0dGVyQ29udHJvbGxlci5nZXRDYW1wYWlnbnMpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvbmV3c2xldHRlci9jYW1wYWlnbnM6XHJcbiAqICAgcG9zdDpcclxuICogICAgIHN1bW1hcnk6IENyaWFyIG5vdmEgY2FtcGFuaGEgKEFkbWluKVxyXG4gKiAgICAgdGFnczogW05ld3NsZXR0ZXJdXHJcbiAqICAgICBzZWN1cml0eTpcclxuICogICAgICAgLSBiZWFyZXJBdXRoOiBbXVxyXG4gKiAgICAgcmVxdWVzdEJvZHk6XHJcbiAqICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgIHJlcXVpcmVkOlxyXG4gKiAgICAgICAgICAgICAgIC0gdGl0bGVcclxuICogICAgICAgICAgICAgICAtIHN1YmplY3RcclxuICogICAgICAgICAgICAgICAtIGNvbnRlbnRcclxuICogICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICB0aXRsZTpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgICAgbWluTGVuZ3RoOiAzXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogVMOtdHVsbyBkYSBjYW1wYW5oYVxyXG4gKiAgICAgICAgICAgICAgIHN1YmplY3Q6XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgIG1pbkxlbmd0aDogNVxyXG4gKiAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IEFzc3VudG8gZG8gZW1haWxcclxuICogICAgICAgICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICBtaW5MZW5ndGg6IDEwXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogQ29udGXDumRvIGRhIGNhbXBhbmhhXHJcbiAqICAgICAgICAgICAgICAgaHRtbENvbnRlbnQ6XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBDb250ZcO6ZG8gSFRNTCAob3BjaW9uYWwpXHJcbiAqICAgICAgICAgICAgICAgc2NoZWR1bGVkQXQ6XHJcbiAqICAgICAgICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgICAgICAgIGZvcm1hdDogZGF0ZS10aW1lXHJcbiAqICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogRGF0YSBkZSBhZ2VuZGFtZW50byAob3BjaW9uYWwpXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMTpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogQ2FtcGFuaGEgY3JpYWRhIGNvbSBzdWNlc3NvXHJcbiAqICAgICAgIDQwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRGFkb3MgaW52w6FsaWRvc1xyXG4gKiAgICAgICA0MDE6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGludsOhbGlkb1xyXG4gKiAgICAgICA0MDM6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFNlbSBwZXJtaXNzw6NvXHJcbiAqL1xyXG5yb3V0ZXIucG9zdCgnL2NhbXBhaWducycsIGF1dGhlbnRpY2F0ZSwgYXV0aG9yaXplKCdBRE1JTicsICdFRElUT1InKSwgTmV3c2xldHRlckNvbnRyb2xsZXIuY2FtcGFpZ25WYWxpZGF0aW9uLCBOZXdzbGV0dGVyQ29udHJvbGxlci5jcmVhdGVDYW1wYWlnbik7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS9uZXdzbGV0dGVyL2NhbXBhaWducy97aWR9L3NlbmQ6XHJcbiAqICAgcG9zdDpcclxuICogICAgIHN1bW1hcnk6IEVudmlhciBjYW1wYW5oYSAoQWRtaW4pXHJcbiAqICAgICB0YWdzOiBbTmV3c2xldHRlcl1cclxuICogICAgIHNlY3VyaXR5OlxyXG4gKiAgICAgICAtIGJlYXJlckF1dGg6IFtdXHJcbiAqICAgICBwYXJhbWV0ZXJzOlxyXG4gKiAgICAgICAtIGluOiBwYXRoXHJcbiAqICAgICAgICAgbmFtZTogaWRcclxuICogICAgICAgICByZXF1aXJlZDogdHJ1ZVxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBJRCBkYSBjYW1wYW5oYVxyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IENhbXBhbmhhIGVudmlhZGEgY29tIHN1Y2Vzc29cclxuICogICAgICAgNDAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBDYW1wYW5oYSBuw6NvIHBvZGUgc2VyIGVudmlhZGFcclxuICogICAgICAgNDAxOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBUb2tlbiBpbnbDoWxpZG9cclxuICogICAgICAgNDAzOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBTZW0gcGVybWlzc8Ojb1xyXG4gKiAgICAgICA0MDQ6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IENhbXBhbmhhIG7Do28gZW5jb250cmFkYVxyXG4gKi9cclxucm91dGVyLnBvc3QoJy9jYW1wYWlnbnMvOmlkL3NlbmQnLCBhdXRoZW50aWNhdGUsIGF1dGhvcml6ZSgnQURNSU4nKSwgTmV3c2xldHRlckNvbnRyb2xsZXIuc2VuZENhbXBhaWduVG9TdWJzY3JpYmVycyk7XHJcblxyXG5leHBvcnQgZGVmYXVsdCByb3V0ZXI7Il0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBLE1BQUFBLFNBQUE7QUFBQTtBQUFBLENBQUFDLGFBQUEsR0FBQUMsQ0FBQSxPQUFBQyxPQUFBO0FBQ0EsTUFBQUMsTUFBQTtBQUFBO0FBQUEsQ0FBQUgsYUFBQSxHQUFBQyxDQUFBLE9BQUFDLE9BQUE7QUFDQSxNQUFBRSxzQkFBQTtBQUFBO0FBQUEsQ0FBQUosYUFBQSxHQUFBQyxDQUFBLE9BQUFDLE9BQUE7QUFDQSxNQUFNRyxNQUFNO0FBQUE7QUFBQSxDQUFBTCxhQUFBLEdBQUFDLENBQUEsT0FBRyxJQUFBRixTQUFBLENBQUFPLE1BQU0sR0FBRTtBQUV2Qjs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQTBIQTs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQTtBQUFBTixhQUFBLEdBQUFDLENBQUE7QUFzQ0FJLE1BQU0sQ0FBQ0UsSUFBSSxDQUFDLFlBQVksRUFBRUgsc0JBQUEsQ0FBQUksb0JBQW9CLENBQUNDLG1CQUFtQixFQUFFTCxzQkFBQSxDQUFBSSxvQkFBb0IsQ0FBQ0UsU0FBUyxDQUFDO0FBRW5HOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQTtBQUFBVixhQUFBLEdBQUFDLENBQUE7QUE4QkFJLE1BQU0sQ0FBQ00sR0FBRyxDQUFDLGlCQUFpQixFQUFFUCxzQkFBQSxDQUFBSSxvQkFBb0IsQ0FBQ0ksbUJBQW1CLENBQUM7QUFFdkU7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBO0FBQUFaLGFBQUEsR0FBQUMsQ0FBQTtBQThCQUksTUFBTSxDQUFDTSxHQUFHLENBQUMscUJBQXFCLEVBQUVQLHNCQUFBLENBQUFJLG9CQUFvQixDQUFDSyxXQUFXLENBQUM7QUFFbkU7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBO0FBQUFiLGFBQUEsR0FBQUMsQ0FBQTtBQThCQUksTUFBTSxDQUFDTSxHQUFHLENBQUMscUJBQXFCLEVBQUVQLHNCQUFBLENBQUFJLG9CQUFvQixDQUFDTSxjQUFjLENBQUM7QUFFdEU7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUE7QUFBQWQsYUFBQSxHQUFBQyxDQUFBO0FBd0RBSSxNQUFNLENBQUNVLEdBQUcsQ0FBQyxxQkFBcUIsRUFBRVgsc0JBQUEsQ0FBQUksb0JBQW9CLENBQUNRLGlCQUFpQixDQUFDO0FBRXpFO0FBRUE7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBO0FBQUFoQixhQUFBLEdBQUFDLENBQUE7QUF5R0FJLE1BQU0sQ0FBQ00sR0FBRyxDQUFDLGNBQWMsRUFBRVIsTUFBQSxDQUFBYyxZQUFZLEVBQUUsSUFBQWQsTUFBQSxDQUFBZSxTQUFTLEVBQUMsT0FBTyxFQUFFLFFBQVEsQ0FBQyxFQUFFZCxzQkFBQSxDQUFBSSxvQkFBb0IsQ0FBQ1csY0FBYyxDQUFDO0FBRTNHOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7QUFBQTtBQUFBbkIsYUFBQSxHQUFBQyxDQUFBO0FBc0RBSSxNQUFNLENBQUNNLEdBQUcsQ0FBQyxZQUFZLEVBQUVSLE1BQUEsQ0FBQWMsWUFBWSxFQUFFLElBQUFkLE1BQUEsQ0FBQWUsU0FBUyxFQUFDLE9BQU8sRUFBRSxRQUFRLENBQUMsRUFBRWQsc0JBQUEsQ0FBQUksb0JBQW9CLENBQUNZLFlBQVksQ0FBQztBQUV2Rzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0FBQUE7QUFBQXBCLGFBQUEsR0FBQUMsQ0FBQTtBQWdEQUksTUFBTSxDQUFDRSxJQUFJLENBQUMsWUFBWSxFQUFFSixNQUFBLENBQUFjLFlBQVksRUFBRSxJQUFBZCxNQUFBLENBQUFlLFNBQVMsRUFBQyxPQUFPLEVBQUUsUUFBUSxDQUFDLEVBQUVkLHNCQUFBLENBQUFJLG9CQUFvQixDQUFDYSxrQkFBa0IsRUFBRWpCLHNCQUFBLENBQUFJLG9CQUFvQixDQUFDYyxjQUFjLENBQUM7QUFFbko7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztBQUFBO0FBQUF0QixhQUFBLEdBQUFDLENBQUE7QUEyQkFJLE1BQU0sQ0FBQ0UsSUFBSSxDQUFDLHFCQUFxQixFQUFFSixNQUFBLENBQUFjLFlBQVksRUFBRSxJQUFBZCxNQUFBLENBQUFlLFNBQVMsRUFBQyxPQUFPLENBQUMsRUFBRWQsc0JBQUEsQ0FBQUksb0JBQW9CLENBQUNlLHlCQUF5QixDQUFDO0FBQUM7QUFBQXZCLGFBQUEsR0FBQUMsQ0FBQTtBQUVySHVCLE9BQUEsQ0FBQUMsT0FBQSxHQUFlcEIsTUFBTSIsImlnbm9yZUxpc3QiOltdfQ==

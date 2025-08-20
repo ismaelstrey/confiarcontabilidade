@@ -5,6 +5,7 @@ import {
   articleCacheMiddleware,
   invalidateArticleCacheMiddleware
 } from '../middlewares/cache';
+import ArticleController from '../controllers/articleController';
 
 const router = Router();
 
@@ -227,14 +228,7 @@ const router = Router();
  *                         pages:
  *                           type: integer
  */
-router.get('/', publicCacheMiddleware(1800), (req, res) => {
-  // TODO: Implementar controller para listar artigos
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'GET /articles',
-  });
-});
+router.get('/', publicCacheMiddleware(1800), ArticleController.getArticles);
 
 /**
  * @swagger
@@ -264,14 +258,7 @@ router.get('/', publicCacheMiddleware(1800), (req, res) => {
  *       404:
  *         description: Artigo não encontrado
  */
-router.get('/:slug', articleCacheMiddleware(3600), (req, res) => {
-  // TODO: Implementar controller para obter artigo por slug
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'GET /articles/:slug',
-  });
-});
+router.get('/:slug', articleCacheMiddleware(3600), ArticleController.getArticle);
 
 /**
  * @swagger
@@ -308,14 +295,7 @@ router.get('/:slug', articleCacheMiddleware(3600), (req, res) => {
  *       403:
  *         description: Sem permissão
  */
-router.post('/', authenticate, authorize('ADMIN', 'EDITOR'), invalidateArticleCacheMiddleware(), (req, res) => {
-  // TODO: Implementar controller para criar artigo
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'POST /articles',
-  });
-});
+router.post('/', authenticate, authorize('ADMIN', 'EDITOR'), invalidateArticleCacheMiddleware(), ArticleController.createArticle);
 
 /**
  * @swagger
@@ -361,14 +341,7 @@ router.post('/', authenticate, authorize('ADMIN', 'EDITOR'), invalidateArticleCa
  *       404:
  *         description: Artigo não encontrado
  */
-router.put('/:id', authenticate, authorize('ADMIN', 'EDITOR'), invalidateArticleCacheMiddleware(), (req, res) => {
-  // TODO: Implementar controller para atualizar artigo
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'PUT /articles/:id',
-  });
-});
+router.put('/:id', authenticate, authorize('ADMIN', 'EDITOR'), invalidateArticleCacheMiddleware(), ArticleController.updateArticle);
 
 /**
  * @swagger
@@ -404,14 +377,7 @@ router.put('/:id', authenticate, authorize('ADMIN', 'EDITOR'), invalidateArticle
  *       404:
  *         description: Artigo não encontrado
  */
-router.delete('/:id', authenticate, authorize('ADMIN', 'EDITOR'), invalidateArticleCacheMiddleware(), (req, res) => {
-  // TODO: Implementar controller para excluir artigo
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'DELETE /articles/:id',
-  });
-});
+router.delete('/:id', authenticate, authorize('ADMIN', 'EDITOR'), invalidateArticleCacheMiddleware(), ArticleController.deleteArticle);
 
 /**
  * @swagger
@@ -448,14 +414,7 @@ router.delete('/:id', authenticate, authorize('ADMIN', 'EDITOR'), invalidateArti
  *       404:
  *         description: Artigo não encontrado
  */
-router.post('/:id/like', (req, res) => {
-  // TODO: Implementar controller para curtir artigo
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'POST /articles/:id/like',
-  });
-});
+router.post('/:id/like', ArticleController.likeArticle);
 
 /**
  * @swagger
@@ -491,14 +450,7 @@ router.post('/:id/like', (req, res) => {
  *       404:
  *         description: Artigo não encontrado
  */
-router.get('/:id/comments', publicCacheMiddleware(600), (req, res) => {
-  // TODO: Implementar controller para listar comentários
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'GET /articles/:id/comments',
-  });
-});
+router.get('/:id/comments', publicCacheMiddleware(600), ArticleController.getArticleComments);
 
 /**
  * @swagger
@@ -547,13 +499,6 @@ router.get('/:id/comments', publicCacheMiddleware(600), (req, res) => {
  *       404:
  *         description: Artigo não encontrado
  */
-router.post('/:id/comments', (req, res) => {
-  // TODO: Implementar controller para adicionar comentário
-  res.status(501).json({
-    success: false,
-    message: 'Endpoint não implementado ainda',
-    endpoint: 'POST /articles/:id/comments',
-  });
-});
+router.post('/:id/comments', ArticleController.createComment);
 
 export default router;

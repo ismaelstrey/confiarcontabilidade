@@ -1,0 +1,320 @@
+e4dfc0fe000f1506ef7ef6f1406665f5
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_1 = require("../middlewares/auth");
+const cacheExampleController_1 = require("../controllers/cacheExampleController");
+const cache_1 = require("../middlewares/cache");
+const router = (0, express_1.Router)();
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     CacheResponse:
+ *       type: object
+ *       properties:
+ *         success:
+ *           type: boolean
+ *         data:
+ *           type: object
+ *         cached:
+ *           type: boolean
+ *         message:
+ *           type: string
+ *     CacheManagement:
+ *       type: object
+ *       properties:
+ *         pattern:
+ *           type: string
+ *           description: Padrao para limpeza de cache
+ *         key:
+ *           type: string
+ *           description: Chave específica para operações de cache
+ */
+/**
+ * @swagger
+ * /api/v1/cache/example/{id}:
+ *   get:
+ *     summary: Exemplo de uso de cache manual
+ *     description: Demonstra como usar cache diretamente no controller
+ *     tags: [Cache Examples]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID do item a ser buscado
+ *     responses:
+ *       200:
+ *         description: Dados obtidos com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/CacheResponse'
+ *       500:
+ *         description: Erro interno do servidor
+ */
+router.get('/example/:id', cacheExampleController_1.CacheExampleController.getDataWithCache);
+/**
+ * @swagger
+ * /api/v1/cache/example/{id}:
+ *   put:
+ *     summary: Exemplo de atualização com invalidação de cache
+ *     description: Demonstra como invalidar cache após operações de escrita
+ *     tags: [Cache Examples]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID do item a ser atualizado
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               name:
+ *                 type: string
+ *               description:
+ *                 type: string
+ *     responses:
+ *       200:
+ *         description: Dados atualizados com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/CacheResponse'
+ *       401:
+ *         description: Token inválido
+ *       500:
+ *         description: Erro interno do servidor
+ */
+router.put('/example/:id', auth_1.authenticate, cacheExampleController_1.CacheExampleController.updateDataAndInvalidateCache);
+/**
+ * @swagger
+ * /api/v1/cache/dynamic/{type}/{id}:
+ *   get:
+ *     summary: Exemplo de cache com TTL dinâmico
+ *     description: Demonstra como definir TTL baseado no tipo de dados
+ *     tags: [Cache Examples]
+ *     parameters:
+ *       - in: path
+ *         name: type
+ *         required: true
+ *         schema:
+ *           type: string
+ *           enum: [static, dynamic, realtime]
+ *         description: Tipo de dados (define o TTL)
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID do item
+ *     responses:
+ *       200:
+ *         description: Dados obtidos com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               allOf:
+ *                 - $ref: '#/components/schemas/CacheResponse'
+ *                 - type: object
+ *                   properties:
+ *                     ttl:
+ *                       type: integer
+ *                       description: Tempo de vida do cache em segundos
+ *       500:
+ *         description: Erro interno do servidor
+ */
+router.get('/dynamic/:type/:id', cacheExampleController_1.CacheExampleController.getDataWithDynamicTTL);
+/**
+ * @swagger
+ * /api/v1/cache/conditional/{id}:
+ *   get:
+ *     summary: Exemplo de cache condicional
+ *     description: Demonstra como cachear baseado em condições específicas
+ *     tags: [Cache Examples]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID do item
+ *       - in: query
+ *         name: useCache
+ *         schema:
+ *           type: string
+ *           enum: [true, false]
+ *           default: true
+ *         description: Se deve usar cache ou não
+ *       - in: header
+ *         name: Cache-Control
+ *         schema:
+ *           type: string
+ *         description: Controle de cache HTTP
+ *     responses:
+ *       200:
+ *         description: Dados obtidos com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               allOf:
+ *                 - $ref: '#/components/schemas/CacheResponse'
+ *                 - type: object
+ *                   properties:
+ *                     cacheUsed:
+ *                       type: boolean
+ *                       description: Se o cache foi utilizado
+ *       401:
+ *         description: Token inválido
+ *       500:
+ *         description: Erro interno do servidor
+ */
+router.get('/conditional/:id', auth_1.authenticate, cacheExampleController_1.CacheExampleController.getDataWithConditionalCache);
+/**
+ * @swagger
+ * /api/v1/cache/manage/{action}:
+ *   post:
+ *     summary: Gerenciar cache
+ *     description: Permite limpar cache, verificar status, etc.
+ *     tags: [Cache Management]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: action
+ *         required: true
+ *         schema:
+ *           type: string
+ *           enum: [clear, status, check]
+ *         description: Ação a ser executada
+ *     requestBody:
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/CacheManagement'
+ *     responses:
+ *       200:
+ *         description: Operação executada com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 message:
+ *                   type: string
+ *                 connected:
+ *                   type: boolean
+ *                   description: Status da conexão Redis (apenas para action=status)
+ *                 exists:
+ *                   type: boolean
+ *                   description: Se a chave existe (apenas para action=check)
+ *                 ttl:
+ *                   type: integer
+ *                   description: TTL da chave em segundos (apenas para action=check)
+ *       400:
+ *         description: Parâmetros inválidos
+ *       401:
+ *         description: Token inválido
+ *       403:
+ *         description: Sem permissão
+ *       500:
+ *         description: Erro interno do servidor
+ */
+router.post('/manage/:action', auth_1.authenticate, (0, auth_1.authorize)('ADMIN'), cacheExampleController_1.CacheExampleController.manageCacheEndpoint);
+/**
+ * @swagger
+ * /api/v1/cache/middleware-example:
+ *   get:
+ *     summary: Exemplo de uso do middleware de cache
+ *     description: Demonstra como o middleware de cache funciona automaticamente
+ *     tags: [Cache Examples]
+ *     responses:
+ *       200:
+ *         description: Dados obtidos com sucesso (pode vir do cache)
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     message:
+ *                       type: string
+ *                     timestamp:
+ *                       type: string
+ *                     cached:
+ *                       type: boolean
+ *                 message:
+ *                   type: string
+ */
+router.get('/middleware-example', (0, cache_1.publicCacheMiddleware)(300), (req, res) => {
+    // Este endpoint será automaticamente cacheado pelo middleware
+    res.json({
+        success: true,
+        data: {
+            message: 'Este endpoint usa middleware de cache automático',
+            timestamp: new Date().toISOString(),
+            cached: false // Será true quando vier do cache
+        },
+        message: 'Dados obtidos com sucesso'
+    });
+});
+/**
+ * @swagger
+ * /api/v1/cache/no-cache-example:
+ *   get:
+ *     summary: Exemplo sem cache
+ *     description: Endpoint que nunca usa cache para comparação
+ *     tags: [Cache Examples]
+ *     responses:
+ *       200:
+ *         description: Dados sempre frescos
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 success:
+ *                   type: boolean
+ *                 data:
+ *                   type: object
+ *                   properties:
+ *                     message:
+ *                       type: string
+ *                     timestamp:
+ *                       type: string
+ *                     cached:
+ *                       type: boolean
+ *                 message:
+ *                   type: string
+ */
+router.get('/no-cache-example', (req, res) => {
+    // Este endpoint nunca usa cache
+    res.json({
+        success: true,
+        data: {
+            message: 'Este endpoint nunca usa cache',
+            timestamp: new Date().toISOString(),
+            cached: false
+        },
+        message: 'Dados sempre frescos'
+    });
+});
+exports.default = router;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJmaWxlIjoiRDpcXGRldlxcY29udGFiaWxcXGNvbnRhYmlsLXNpdGVcXGJhY2tlbmRcXHNyY1xccm91dGVzXFxjYWNoZVJvdXRlcy50cyIsIm1hcHBpbmdzIjoiOztBQUFBLHFDQUFpQztBQUNqQyw4Q0FBOEQ7QUFDOUQsa0ZBQStFO0FBQy9FLGdEQUE2RDtBQUU3RCxNQUFNLE1BQU0sR0FBRyxJQUFBLGdCQUFNLEdBQUUsQ0FBQztBQUV4Qjs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0dBd0JHO0FBRUg7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0dBdUJHO0FBQ0gsTUFBTSxDQUFDLEdBQUcsQ0FBQyxjQUFjLEVBQUUsK0NBQXNCLENBQUMsZ0JBQWdCLENBQUMsQ0FBQztBQUVwRTs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7R0FzQ0c7QUFDSCxNQUFNLENBQUMsR0FBRyxDQUFDLGNBQWMsRUFBRSxtQkFBWSxFQUFFLCtDQUFzQixDQUFDLDRCQUE0QixDQUFDLENBQUM7QUFFOUY7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztHQW9DRztBQUNILE1BQU0sQ0FBQyxHQUFHLENBQUMsb0JBQW9CLEVBQUUsK0NBQXNCLENBQUMscUJBQXFCLENBQUMsQ0FBQztBQUUvRTs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7O0dBNkNHO0FBQ0gsTUFBTSxDQUFDLEdBQUcsQ0FBQyxrQkFBa0IsRUFBRSxtQkFBWSxFQUFFLCtDQUFzQixDQUFDLDJCQUEyQixDQUFDLENBQUM7QUFFakc7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztHQW1ERztBQUNILE1BQU0sQ0FBQyxJQUFJLENBQUMsaUJBQWlCLEVBQUUsbUJBQVksRUFBRSxJQUFBLGdCQUFTLEVBQUMsT0FBTyxDQUFDLEVBQUUsK0NBQXNCLENBQUMsbUJBQW1CLENBQUMsQ0FBQztBQUU3Rzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7OztHQTRCRztBQUNILE1BQU0sQ0FBQyxHQUFHLENBQUMscUJBQXFCLEVBQUUsSUFBQSw2QkFBcUIsRUFBQyxHQUFHLENBQUMsRUFBRSxDQUFDLEdBQUcsRUFBRSxHQUFHLEVBQUUsRUFBRTtJQUN6RSw4REFBOEQ7SUFDOUQsR0FBRyxDQUFDLElBQUksQ0FBQztRQUNQLE9BQU8sRUFBRSxJQUFJO1FBQ2IsSUFBSSxFQUFFO1lBQ0osT0FBTyxFQUFFLGtEQUFrRDtZQUMzRCxTQUFTLEVBQUUsSUFBSSxJQUFJLEVBQUUsQ0FBQyxXQUFXLEVBQUU7WUFDbkMsTUFBTSxFQUFFLEtBQUssQ0FBQyxpQ0FBaUM7U0FDaEQ7UUFDRCxPQUFPLEVBQUUsMkJBQTJCO0tBQ3JDLENBQUMsQ0FBQztBQUNMLENBQUMsQ0FBQyxDQUFDO0FBRUg7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7R0E0Qkc7QUFDSCxNQUFNLENBQUMsR0FBRyxDQUFDLG1CQUFtQixFQUFFLENBQUMsR0FBRyxFQUFFLEdBQUcsRUFBRSxFQUFFO0lBQzNDLGdDQUFnQztJQUNoQyxHQUFHLENBQUMsSUFBSSxDQUFDO1FBQ1AsT0FBTyxFQUFFLElBQUk7UUFDYixJQUFJLEVBQUU7WUFDSixPQUFPLEVBQUUsK0JBQStCO1lBQ3hDLFNBQVMsRUFBRSxJQUFJLElBQUksRUFBRSxDQUFDLFdBQVcsRUFBRTtZQUNuQyxNQUFNLEVBQUUsS0FBSztTQUNkO1FBQ0QsT0FBTyxFQUFFLHNCQUFzQjtLQUNoQyxDQUFDLENBQUM7QUFDTCxDQUFDLENBQUMsQ0FBQztBQUVILGtCQUFlLE1BQU0sQ0FBQyIsIm5hbWVzIjpbXSwic291cmNlcyI6WyJEOlxcZGV2XFxjb250YWJpbFxcY29udGFiaWwtc2l0ZVxcYmFja2VuZFxcc3JjXFxyb3V0ZXNcXGNhY2hlUm91dGVzLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IFJvdXRlciB9IGZyb20gJ2V4cHJlc3MnO1xyXG5pbXBvcnQgeyBhdXRoZW50aWNhdGUsIGF1dGhvcml6ZSB9IGZyb20gJy4uL21pZGRsZXdhcmVzL2F1dGgnO1xyXG5pbXBvcnQgeyBDYWNoZUV4YW1wbGVDb250cm9sbGVyIH0gZnJvbSAnLi4vY29udHJvbGxlcnMvY2FjaGVFeGFtcGxlQ29udHJvbGxlcic7XHJcbmltcG9ydCB7IHB1YmxpY0NhY2hlTWlkZGxld2FyZSB9IGZyb20gJy4uL21pZGRsZXdhcmVzL2NhY2hlJztcclxuXHJcbmNvbnN0IHJvdXRlciA9IFJvdXRlcigpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIGNvbXBvbmVudHM6XHJcbiAqICAgc2NoZW1hczpcclxuICogICAgIENhY2hlUmVzcG9uc2U6XHJcbiAqICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgIHN1Y2Nlc3M6XHJcbiAqICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgZGF0YTpcclxuICogICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgIGNhY2hlZDpcclxuICogICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICBtZXNzYWdlOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICBDYWNoZU1hbmFnZW1lbnQ6XHJcbiAqICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgIHBhdHRlcm46XHJcbiAqICAgICAgICAgICB0eXBlOiBzdHJpbmdcclxuICogICAgICAgICAgIGRlc2NyaXB0aW9uOiBQYWRyYW8gcGFyYSBsaW1wZXphIGRlIGNhY2hlXHJcbiAqICAgICAgICAga2V5OlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBkZXNjcmlwdGlvbjogQ2hhdmUgZXNwZWPDrWZpY2EgcGFyYSBvcGVyYcOnw7VlcyBkZSBjYWNoZVxyXG4gKi9cclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL2NhY2hlL2V4YW1wbGUve2lkfTpcclxuICogICBnZXQ6XHJcbiAqICAgICBzdW1tYXJ5OiBFeGVtcGxvIGRlIHVzbyBkZSBjYWNoZSBtYW51YWxcclxuICogICAgIGRlc2NyaXB0aW9uOiBEZW1vbnN0cmEgY29tbyB1c2FyIGNhY2hlIGRpcmV0YW1lbnRlIG5vIGNvbnRyb2xsZXJcclxuICogICAgIHRhZ3M6IFtDYWNoZSBFeGFtcGxlc11cclxuICogICAgIHBhcmFtZXRlcnM6XHJcbiAqICAgICAgIC0gaW46IHBhdGhcclxuICogICAgICAgICBuYW1lOiBpZFxyXG4gKiAgICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IElEIGRvIGl0ZW0gYSBzZXIgYnVzY2Fkb1xyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IERhZG9zIG9idGlkb3MgY29tIHN1Y2Vzc29cclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgICRyZWY6ICcjL2NvbXBvbmVudHMvc2NoZW1hcy9DYWNoZVJlc3BvbnNlJ1xyXG4gKiAgICAgICA1MDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEVycm8gaW50ZXJubyBkbyBzZXJ2aWRvclxyXG4gKi9cclxucm91dGVyLmdldCgnL2V4YW1wbGUvOmlkJywgQ2FjaGVFeGFtcGxlQ29udHJvbGxlci5nZXREYXRhV2l0aENhY2hlKTtcclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL2NhY2hlL2V4YW1wbGUve2lkfTpcclxuICogICBwdXQ6XHJcbiAqICAgICBzdW1tYXJ5OiBFeGVtcGxvIGRlIGF0dWFsaXphw6fDo28gY29tIGludmFsaWRhw6fDo28gZGUgY2FjaGVcclxuICogICAgIGRlc2NyaXB0aW9uOiBEZW1vbnN0cmEgY29tbyBpbnZhbGlkYXIgY2FjaGUgYXDDs3Mgb3BlcmHDp8O1ZXMgZGUgZXNjcml0YVxyXG4gKiAgICAgdGFnczogW0NhY2hlIEV4YW1wbGVzXVxyXG4gKiAgICAgc2VjdXJpdHk6XHJcbiAqICAgICAgIC0gYmVhcmVyQXV0aDogW11cclxuICogICAgIHBhcmFtZXRlcnM6XHJcbiAqICAgICAgIC0gaW46IHBhdGhcclxuICogICAgICAgICBuYW1lOiBpZFxyXG4gKiAgICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IElEIGRvIGl0ZW0gYSBzZXIgYXR1YWxpemFkb1xyXG4gKiAgICAgcmVxdWVzdEJvZHk6XHJcbiAqICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgdHlwZTogb2JqZWN0XHJcbiAqICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgbmFtZTpcclxuICogICAgICAgICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOlxyXG4gKiAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRGFkb3MgYXR1YWxpemFkb3MgY29tIHN1Y2Vzc29cclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgICRyZWY6ICcjL2NvbXBvbmVudHMvc2NoZW1hcy9DYWNoZVJlc3BvbnNlJ1xyXG4gKiAgICAgICA0MDE6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGludsOhbGlkb1xyXG4gKiAgICAgICA1MDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEVycm8gaW50ZXJubyBkbyBzZXJ2aWRvclxyXG4gKi9cclxucm91dGVyLnB1dCgnL2V4YW1wbGUvOmlkJywgYXV0aGVudGljYXRlLCBDYWNoZUV4YW1wbGVDb250cm9sbGVyLnVwZGF0ZURhdGFBbmRJbnZhbGlkYXRlQ2FjaGUpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvY2FjaGUvZHluYW1pYy97dHlwZX0ve2lkfTpcclxuICogICBnZXQ6XHJcbiAqICAgICBzdW1tYXJ5OiBFeGVtcGxvIGRlIGNhY2hlIGNvbSBUVEwgZGluw6JtaWNvXHJcbiAqICAgICBkZXNjcmlwdGlvbjogRGVtb25zdHJhIGNvbW8gZGVmaW5pciBUVEwgYmFzZWFkbyBubyB0aXBvIGRlIGRhZG9zXHJcbiAqICAgICB0YWdzOiBbQ2FjaGUgRXhhbXBsZXNdXHJcbiAqICAgICBwYXJhbWV0ZXJzOlxyXG4gKiAgICAgICAtIGluOiBwYXRoXHJcbiAqICAgICAgICAgbmFtZTogdHlwZVxyXG4gKiAgICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICBlbnVtOiBbc3RhdGljLCBkeW5hbWljLCByZWFsdGltZV1cclxuICogICAgICAgICBkZXNjcmlwdGlvbjogVGlwbyBkZSBkYWRvcyAoZGVmaW5lIG8gVFRMKVxyXG4gKiAgICAgICAtIGluOiBwYXRoXHJcbiAqICAgICAgICAgbmFtZTogaWRcclxuICogICAgICAgICByZXF1aXJlZDogdHJ1ZVxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBJRCBkbyBpdGVtXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRGFkb3Mgb2J0aWRvcyBjb20gc3VjZXNzb1xyXG4gKiAgICAgICAgIGNvbnRlbnQ6XHJcbiAqICAgICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgICBzY2hlbWE6XHJcbiAqICAgICAgICAgICAgICAgYWxsT2Y6XHJcbiAqICAgICAgICAgICAgICAgICAtICRyZWY6ICcjL2NvbXBvbmVudHMvc2NoZW1hcy9DYWNoZVJlc3BvbnNlJ1xyXG4gKiAgICAgICAgICAgICAgICAgLSB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgICB0dGw6XHJcbiAqICAgICAgICAgICAgICAgICAgICAgICB0eXBlOiBpbnRlZ2VyXHJcbiAqICAgICAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogVGVtcG8gZGUgdmlkYSBkbyBjYWNoZSBlbSBzZWd1bmRvc1xyXG4gKiAgICAgICA1MDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IEVycm8gaW50ZXJubyBkbyBzZXJ2aWRvclxyXG4gKi9cclxucm91dGVyLmdldCgnL2R5bmFtaWMvOnR5cGUvOmlkJywgQ2FjaGVFeGFtcGxlQ29udHJvbGxlci5nZXREYXRhV2l0aER5bmFtaWNUVEwpO1xyXG5cclxuLyoqXHJcbiAqIEBzd2FnZ2VyXHJcbiAqIC9hcGkvdjEvY2FjaGUvY29uZGl0aW9uYWwve2lkfTpcclxuICogICBnZXQ6XHJcbiAqICAgICBzdW1tYXJ5OiBFeGVtcGxvIGRlIGNhY2hlIGNvbmRpY2lvbmFsXHJcbiAqICAgICBkZXNjcmlwdGlvbjogRGVtb25zdHJhIGNvbW8gY2FjaGVhciBiYXNlYWRvIGVtIGNvbmRpw6fDtWVzIGVzcGVjw61maWNhc1xyXG4gKiAgICAgdGFnczogW0NhY2hlIEV4YW1wbGVzXVxyXG4gKiAgICAgc2VjdXJpdHk6XHJcbiAqICAgICAgIC0gYmVhcmVyQXV0aDogW11cclxuICogICAgIHBhcmFtZXRlcnM6XHJcbiAqICAgICAgIC0gaW46IHBhdGhcclxuICogICAgICAgICBuYW1lOiBpZFxyXG4gKiAgICAgICAgIHJlcXVpcmVkOiB0cnVlXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IElEIGRvIGl0ZW1cclxuICogICAgICAgLSBpbjogcXVlcnlcclxuICogICAgICAgICBuYW1lOiB1c2VDYWNoZVxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZW51bTogW3RydWUsIGZhbHNlXVxyXG4gKiAgICAgICAgICAgZGVmYXVsdDogdHJ1ZVxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBTZSBkZXZlIHVzYXIgY2FjaGUgb3UgbsOjb1xyXG4gKiAgICAgICAtIGluOiBoZWFkZXJcclxuICogICAgICAgICBuYW1lOiBDYWNoZS1Db250cm9sXHJcbiAqICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IENvbnRyb2xlIGRlIGNhY2hlIEhUVFBcclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBEYWRvcyBvYnRpZG9zIGNvbSBzdWNlc3NvXHJcbiAqICAgICAgICAgY29udGVudDpcclxuICogICAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgICBhbGxPZjpcclxuICogICAgICAgICAgICAgICAgIC0gJHJlZjogJyMvY29tcG9uZW50cy9zY2hlbWFzL0NhY2hlUmVzcG9uc2UnXHJcbiAqICAgICAgICAgICAgICAgICAtIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgIGNhY2hlVXNlZDpcclxuICogICAgICAgICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiBTZSBvIGNhY2hlIGZvaSB1dGlsaXphZG9cclxuICogICAgICAgNDAxOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBUb2tlbiBpbnbDoWxpZG9cclxuICogICAgICAgNTAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBFcnJvIGludGVybm8gZG8gc2Vydmlkb3JcclxuICovXHJcbnJvdXRlci5nZXQoJy9jb25kaXRpb25hbC86aWQnLCBhdXRoZW50aWNhdGUsIENhY2hlRXhhbXBsZUNvbnRyb2xsZXIuZ2V0RGF0YVdpdGhDb25kaXRpb25hbENhY2hlKTtcclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL2NhY2hlL21hbmFnZS97YWN0aW9ufTpcclxuICogICBwb3N0OlxyXG4gKiAgICAgc3VtbWFyeTogR2VyZW5jaWFyIGNhY2hlXHJcbiAqICAgICBkZXNjcmlwdGlvbjogUGVybWl0ZSBsaW1wYXIgY2FjaGUsIHZlcmlmaWNhciBzdGF0dXMsIGV0Yy5cclxuICogICAgIHRhZ3M6IFtDYWNoZSBNYW5hZ2VtZW50XVxyXG4gKiAgICAgc2VjdXJpdHk6XHJcbiAqICAgICAgIC0gYmVhcmVyQXV0aDogW11cclxuICogICAgIHBhcmFtZXRlcnM6XHJcbiAqICAgICAgIC0gaW46IHBhdGhcclxuICogICAgICAgICBuYW1lOiBhY3Rpb25cclxuICogICAgICAgICByZXF1aXJlZDogdHJ1ZVxyXG4gKiAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgIHR5cGU6IHN0cmluZ1xyXG4gKiAgICAgICAgICAgZW51bTogW2NsZWFyLCBzdGF0dXMsIGNoZWNrXVxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBBw6fDo28gYSBzZXIgZXhlY3V0YWRhXHJcbiAqICAgICByZXF1ZXN0Qm9keTpcclxuICogICAgICAgY29udGVudDpcclxuICogICAgICAgICBhcHBsaWNhdGlvbi9qc29uOlxyXG4gKiAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAkcmVmOiAnIy9jb21wb25lbnRzL3NjaGVtYXMvQ2FjaGVNYW5hZ2VtZW50J1xyXG4gKiAgICAgcmVzcG9uc2VzOlxyXG4gKiAgICAgICAyMDA6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IE9wZXJhw6fDo28gZXhlY3V0YWRhIGNvbSBzdWNlc3NvXHJcbiAqICAgICAgICAgY29udGVudDpcclxuICogICAgICAgICAgIGFwcGxpY2F0aW9uL2pzb246XHJcbiAqICAgICAgICAgICAgIHNjaGVtYTpcclxuICogICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICBwcm9wZXJ0aWVzOlxyXG4gKiAgICAgICAgICAgICAgICAgc3VjY2VzczpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgbWVzc2FnZTpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICBjb25uZWN0ZWQ6XHJcbiAqICAgICAgICAgICAgICAgICAgIHR5cGU6IGJvb2xlYW5cclxuICogICAgICAgICAgICAgICAgICAgZGVzY3JpcHRpb246IFN0YXR1cyBkYSBjb25leMOjbyBSZWRpcyAoYXBlbmFzIHBhcmEgYWN0aW9uPXN0YXR1cylcclxuICogICAgICAgICAgICAgICAgIGV4aXN0czpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogU2UgYSBjaGF2ZSBleGlzdGUgKGFwZW5hcyBwYXJhIGFjdGlvbj1jaGVjaylcclxuICogICAgICAgICAgICAgICAgIHR0bDpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogaW50ZWdlclxyXG4gKiAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogVFRMIGRhIGNoYXZlIGVtIHNlZ3VuZG9zIChhcGVuYXMgcGFyYSBhY3Rpb249Y2hlY2spXHJcbiAqICAgICAgIDQwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogUGFyw6JtZXRyb3MgaW52w6FsaWRvc1xyXG4gKiAgICAgICA0MDE6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFRva2VuIGludsOhbGlkb1xyXG4gKiAgICAgICA0MDM6XHJcbiAqICAgICAgICAgZGVzY3JpcHRpb246IFNlbSBwZXJtaXNzw6NvXHJcbiAqICAgICAgIDUwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRXJybyBpbnRlcm5vIGRvIHNlcnZpZG9yXHJcbiAqL1xyXG5yb3V0ZXIucG9zdCgnL21hbmFnZS86YWN0aW9uJywgYXV0aGVudGljYXRlLCBhdXRob3JpemUoJ0FETUlOJyksIENhY2hlRXhhbXBsZUNvbnRyb2xsZXIubWFuYWdlQ2FjaGVFbmRwb2ludCk7XHJcblxyXG4vKipcclxuICogQHN3YWdnZXJcclxuICogL2FwaS92MS9jYWNoZS9taWRkbGV3YXJlLWV4YW1wbGU6XHJcbiAqICAgZ2V0OlxyXG4gKiAgICAgc3VtbWFyeTogRXhlbXBsbyBkZSB1c28gZG8gbWlkZGxld2FyZSBkZSBjYWNoZVxyXG4gKiAgICAgZGVzY3JpcHRpb246IERlbW9uc3RyYSBjb21vIG8gbWlkZGxld2FyZSBkZSBjYWNoZSBmdW5jaW9uYSBhdXRvbWF0aWNhbWVudGVcclxuICogICAgIHRhZ3M6IFtDYWNoZSBFeGFtcGxlc11cclxuICogICAgIHJlc3BvbnNlczpcclxuICogICAgICAgMjAwOlxyXG4gKiAgICAgICAgIGRlc2NyaXB0aW9uOiBEYWRvcyBvYnRpZG9zIGNvbSBzdWNlc3NvIChwb2RlIHZpciBkbyBjYWNoZSlcclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICBzdWNjZXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBkYXRhOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgICBtZXNzYWdlOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICAgICAgdGltZXN0YW1wOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICAgICAgY2FjaGVkOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgbWVzc2FnZTpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqL1xyXG5yb3V0ZXIuZ2V0KCcvbWlkZGxld2FyZS1leGFtcGxlJywgcHVibGljQ2FjaGVNaWRkbGV3YXJlKDMwMCksIChyZXEsIHJlcykgPT4ge1xyXG4gIC8vIEVzdGUgZW5kcG9pbnQgc2Vyw6EgYXV0b21hdGljYW1lbnRlIGNhY2hlYWRvIHBlbG8gbWlkZGxld2FyZVxyXG4gIHJlcy5qc29uKHtcclxuICAgIHN1Y2Nlc3M6IHRydWUsXHJcbiAgICBkYXRhOiB7XHJcbiAgICAgIG1lc3NhZ2U6ICdFc3RlIGVuZHBvaW50IHVzYSBtaWRkbGV3YXJlIGRlIGNhY2hlIGF1dG9tw6F0aWNvJyxcclxuICAgICAgdGltZXN0YW1wOiBuZXcgRGF0ZSgpLnRvSVNPU3RyaW5nKCksXHJcbiAgICAgIGNhY2hlZDogZmFsc2UgLy8gU2Vyw6EgdHJ1ZSBxdWFuZG8gdmllciBkbyBjYWNoZVxyXG4gICAgfSxcclxuICAgIG1lc3NhZ2U6ICdEYWRvcyBvYnRpZG9zIGNvbSBzdWNlc3NvJ1xyXG4gIH0pO1xyXG59KTtcclxuXHJcbi8qKlxyXG4gKiBAc3dhZ2dlclxyXG4gKiAvYXBpL3YxL2NhY2hlL25vLWNhY2hlLWV4YW1wbGU6XHJcbiAqICAgZ2V0OlxyXG4gKiAgICAgc3VtbWFyeTogRXhlbXBsbyBzZW0gY2FjaGVcclxuICogICAgIGRlc2NyaXB0aW9uOiBFbmRwb2ludCBxdWUgbnVuY2EgdXNhIGNhY2hlIHBhcmEgY29tcGFyYcOnw6NvXHJcbiAqICAgICB0YWdzOiBbQ2FjaGUgRXhhbXBsZXNdXHJcbiAqICAgICByZXNwb25zZXM6XHJcbiAqICAgICAgIDIwMDpcclxuICogICAgICAgICBkZXNjcmlwdGlvbjogRGFkb3Mgc2VtcHJlIGZyZXNjb3NcclxuICogICAgICAgICBjb250ZW50OlxyXG4gKiAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjpcclxuICogICAgICAgICAgICAgc2NoZW1hOlxyXG4gKiAgICAgICAgICAgICAgIHR5cGU6IG9iamVjdFxyXG4gKiAgICAgICAgICAgICAgIHByb3BlcnRpZXM6XHJcbiAqICAgICAgICAgICAgICAgICBzdWNjZXNzOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBib29sZWFuXHJcbiAqICAgICAgICAgICAgICAgICBkYXRhOlxyXG4gKiAgICAgICAgICAgICAgICAgICB0eXBlOiBvYmplY3RcclxuICogICAgICAgICAgICAgICAgICAgcHJvcGVydGllczpcclxuICogICAgICAgICAgICAgICAgICAgICBtZXNzYWdlOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICAgICAgdGltZXN0YW1wOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqICAgICAgICAgICAgICAgICAgICAgY2FjaGVkOlxyXG4gKiAgICAgICAgICAgICAgICAgICAgICAgdHlwZTogYm9vbGVhblxyXG4gKiAgICAgICAgICAgICAgICAgbWVzc2FnZTpcclxuICogICAgICAgICAgICAgICAgICAgdHlwZTogc3RyaW5nXHJcbiAqL1xyXG5yb3V0ZXIuZ2V0KCcvbm8tY2FjaGUtZXhhbXBsZScsIChyZXEsIHJlcykgPT4ge1xyXG4gIC8vIEVzdGUgZW5kcG9pbnQgbnVuY2EgdXNhIGNhY2hlXHJcbiAgcmVzLmpzb24oe1xyXG4gICAgc3VjY2VzczogdHJ1ZSxcclxuICAgIGRhdGE6IHtcclxuICAgICAgbWVzc2FnZTogJ0VzdGUgZW5kcG9pbnQgbnVuY2EgdXNhIGNhY2hlJyxcclxuICAgICAgdGltZXN0YW1wOiBuZXcgRGF0ZSgpLnRvSVNPU3RyaW5nKCksXHJcbiAgICAgIGNhY2hlZDogZmFsc2VcclxuICAgIH0sXHJcbiAgICBtZXNzYWdlOiAnRGFkb3Mgc2VtcHJlIGZyZXNjb3MnXHJcbiAgfSk7XHJcbn0pO1xyXG5cclxuZXhwb3J0IGRlZmF1bHQgcm91dGVyOyJdLCJ2ZXJzaW9uIjozfQ==

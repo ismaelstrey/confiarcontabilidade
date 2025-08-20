@@ -1,11 +1,9 @@
-import { PrismaClient } from '@prisma/client';
+import { cacheService } from '../services/cacheService';
+import { prisma } from '../lib/prisma';
 import dotenv from 'dotenv';
 
-// Carrega variáveis de ambiente do arquivo .env.test
+// Carregar variáveis de ambiente de teste
 dotenv.config({ path: '.env.test' });
-
-// Configuração global do Prisma para testes
-const prisma = new PrismaClient();
 
 // Limpa o banco de dados antes de cada teste (apenas para testes de integração)
 beforeEach(async () => {

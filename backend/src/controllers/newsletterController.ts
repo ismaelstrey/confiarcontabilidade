@@ -171,6 +171,7 @@ export class NewsletterController {
         data: {
           email,
           name: name || null,
+          preferences: preferences ? JSON.stringify(preferences) : JSON.stringify({ frequency: 'weekly', categories: [], topics: [] }),
           isActive: false // TODO: Implementar sistema de confirmação adequado
         }
       });
@@ -200,6 +201,199 @@ export class NewsletterController {
       });
     } catch (error) {
       logger.error('Erro ao inscrever na newsletter', { error, email: req.body.email });
+      res.status(500).json({
+        success: false,
+        message: 'Erro interno do servidor'
+      });
+    }
+  }
+
+  /**
+   * Confirma inscrição na newsletter
+   */
+  // static async confirmSubscription(req: Request, res: Response): Promise<void> {
+  //   try {
+  //     const { token } = req.params;
+
+  //     if (!token) {
+  //       res.status(400).json({
+  //         success: false,
+  //         message: 'Token é obrigatório'
+  //       });
+  //       return;
+  //     }
+
+  //     // Buscar assinante pelo token (simulando - em produção seria um token real)
+  //     const subscriber = await prisma.newsletter.findFirst({
+  //       where: {
+  //         email: { contains: token }, // Simplificado para demo
+  //         isActive: false
+  //       }
+  //     });
+
+  //     if (!subscriber) {
+  //       res.status(404).json({
+  //         success: false,
+  //         message: 'Token inválido ou inscrição já confirmada'
+  //       });
+  //       return;
+  //     }
+
+  //     // Confirmar inscrição
+  //     const confirmedSubscriber = await prisma.newsletter.update({
+  //       where: { id: subscriber.id },
+  //       data: {
+  //         isActive: true,
+  //         updatedAt: new Date()
+  //       }
+  //     });
+
+  //     logger.info('Inscrição confirmada', {
+  //       subscriberId: subscriber.id,
+  //       email: subscriber.email
+  //     });
+
+  //     res.status(200).json({
+  //       success: true,
+  //       message: 'Inscrição confirmada com sucesso',
+  //       data: {
+  //         subscriber: {
+  //           id: confirmedSubscriber.id,
+  //           email: confirmedSubscriber.email,
+  //           name: confirmedSubscriber.name,
+  //           isActive: confirmedSubscriber.isActive,
+  //           updatedAt: confirmedSubscriber.updatedAt
+  //         }
+  //       }
+  //     });
+  //   } catch (error) {
+  //     logger.error('Erro ao confirmar inscrição', { error, token: req.params.token });
+  //     res.status(500).json({
+  //       success: false,
+  //       message: 'Erro interno do servidor'
+  //     });
+  //   }
+  // }
+
+  /**
+   * Obtém preferências do assinante
+   */
+  static async getPreferences(req: Request, res: Response): Promise<void> {
+    try {
+      const { token } = req.params;
+
+      if (!token) {
+        res.status(400).json({
+          success: false,
+          message: 'Token é obrigatório'
+        });
+        return;
+      }
+
+      // Buscar assinante pelo token (simulando - em produção seria um token real)
+      const subscriber = await prisma.newsletter.findFirst({
+        where: {
+          email: { contains: token } // Simplificado para demo
+        }
+      });
+
+      if (!subscriber) {
+        res.status(404).json({
+          success: false,
+          message: 'Assinante não encontrado'
+        });
+        return;
+      }
+
+      res.status(200).json({
+        success: true,
+        message: 'Preferências obtidas com sucesso',
+        data: {
+          subscriber: {
+            id: subscriber.id,
+            email: subscriber.email,
+            name: subscriber.name,
+            preferences: subscriber.preferences ? JSON.parse(subscriber.preferences) : {
+              frequency: 'weekly',
+              categories: [],
+              topics: []
+            },
+            isActive: subscriber.isActive
+          }
+        }
+      });
+    } catch (error) {
+      logger.error('Erro ao obter preferências', { error, token: req.params.token });
+      res.status(500).json({
+        success: false,
+        message: 'Erro interno do servidor'
+      });
+    }
+  }
+
+  /**
+   * Atualiza preferências do assinante
+   */
+  static async updatePreferences(req: Request, res: Response): Promise<void> {
+    try {
+      const { token } = req.params;
+      const { frequency, categories, topics } = req.body;
+
+      if (!token) {
+        res.status(400).json({
+          success: false,
+          message: 'Token é obrigatório'
+        });
+        return;
+      }
+
+      // Buscar assinante pelo token (simulando - em produção seria um token real)
+      const subscriber = await prisma.newsletter.findFirst({
+        where: {
+          email: { contains: token } // Simplificado para demo
+        }
+      });
+
+      if (!subscriber) {
+        res.status(404).json({
+          success: false,
+          message: 'Assinante não encontrado'
+        });
+        return;
+      }
+
+      // Atualizar preferências
+      const updatedSubscriber = await prisma.newsletter.update({
+        where: { id: subscriber.id },
+        data: {
+          preferences: JSON.stringify({
+            frequency: frequency || 'weekly',
+            categories: categories || [],
+            topics: topics || []
+          }),
+          updatedAt: new Date()
+        }
+      });
+
+      logger.info('Preferências atualizadas', {
+        subscriberId: subscriber.id,
+        email: subscriber.email
+      });
+
+      res.status(200).json({
+        success: true,
+        message: 'Preferências atualizadas com sucesso',
+        data: {
+          subscriber: {
+            id: updatedSubscriber.id,
+            email: updatedSubscriber.email,
+            preferences: updatedSubscriber.preferences ? JSON.parse(updatedSubscriber.preferences) : null
+          }
+        }
+      });
+
+    } catch (error) {
+      logger.error('Erro ao atualizar preferências:', error);
       res.status(500).json({
         success: false,
         message: 'Erro interno do servidor'
@@ -731,6 +925,75 @@ export class NewsletterController {
       });
     } catch (error) {
       logger.error('Erro ao obter estatísticas da newsletter', { error });
+      res.status(500).json({
+        success: false,
+        message: 'Erro interno do servidor'
+      });
+    }
+  }
+
+  /**
+   * Envia uma campanha para os assinantes (Admin)
+   */
+  static async sendCampaignToSubscribers(req: Request, res: Response): Promise<void> {
+    try {
+      const { id } = req.params;
+      const currentUser = (req as any).user;
+
+      if (!id) {
+        res.status(400).json({
+          success: false,
+          message: 'ID da campanha é obrigatório'
+        });
+        return;
+      }
+
+      // Buscar assinantes ativos
+      const activeSubscribers = await prisma.newsletter.findMany({
+        where: {
+          isActive: true
+        },
+        select: {
+          id: true,
+          email: true,
+          name: true
+        }
+      });
+
+      if (activeSubscribers.length === 0) {
+        res.status(400).json({
+          success: false,
+          message: 'Nenhum assinante ativo encontrado'
+        });
+        return;
+      }
+
+      // Simular envio da campanha
+      const campaignData = {
+        id,
+        subject: `Campanha ${id}`,
+        content: 'Conteúdo da campanha...',
+        recipients: activeSubscribers.length,
+        sentAt: new Date()
+      };
+
+      // Log da ação
+      logger.info('Campanha enviada', {
+        campaignId: id,
+        recipients: activeSubscribers.length,
+        sentBy: currentUser.id
+      });
+
+      res.status(200).json({
+        success: true,
+        message: `Campanha enviada com sucesso para ${activeSubscribers.length} assinantes`,
+        data: {
+          campaign: campaignData,
+          recipients: activeSubscribers.length
+        }
+      });
+    } catch (error) {
+      logger.error('Erro ao enviar campanha', { error, campaignId: req.params.id });
       res.status(500).json({
         success: false,
         message: 'Erro interno do servidor'

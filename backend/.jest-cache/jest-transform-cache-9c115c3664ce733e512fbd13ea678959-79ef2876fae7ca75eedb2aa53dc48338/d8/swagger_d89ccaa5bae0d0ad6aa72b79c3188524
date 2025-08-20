@@ -1,0 +1,658 @@
+e3e4fb9eb8bd76ad11769819b1e4b2ba
+"use strict";
+
+/* istanbul ignore next */
+function cov_2gzuu2fc2a() {
+  var path = "D:\\dev\\contabil\\contabil-site\\backend\\src\\docs\\swagger.ts";
+  var hash = "7836b390e6b54bd3de70bcc0d737265f63d16993";
+  var global = new Function("return this")();
+  var gcv = "__coverage__";
+  var coverageData = {
+    path: "D:\\dev\\contabil\\contabil-site\\backend\\src\\docs\\swagger.ts",
+    statementMap: {
+      "0": {
+        start: {
+          line: 2,
+          column: 22
+        },
+        end: {
+          line: 4,
+          column: 1
+        }
+      },
+      "1": {
+        start: {
+          line: 3,
+          column: 4
+        },
+        end: {
+          line: 3,
+          column: 62
+        }
+      },
+      "2": {
+        start: {
+          line: 5,
+          column: 0
+        },
+        end: {
+          line: 5,
+          column: 62
+        }
+      },
+      "3": {
+        start: {
+          line: 6,
+          column: 0
+        },
+        end: {
+          line: 6,
+          column: 46
+        }
+      },
+      "4": {
+        start: {
+          line: 7,
+          column: 24
+        },
+        end: {
+          line: 7,
+          column: 65
+        }
+      },
+      "5": {
+        start: {
+          line: 8,
+          column: 29
+        },
+        end: {
+          line: 8,
+          column: 75
+        }
+      },
+      "6": {
+        start: {
+          line: 10,
+          column: 16
+        },
+        end: {
+          line: 129,
+          column: 1
+        }
+      },
+      "7": {
+        start: {
+          line: 131,
+          column: 14
+        },
+        end: {
+          line: 131,
+          column: 51
+        }
+      },
+      "8": {
+        start: {
+          line: 132,
+          column: 0
+        },
+        end: {
+          line: 132,
+          column: 22
+        }
+      },
+      "9": {
+        start: {
+          line: 137,
+          column: 21
+        },
+        end: {
+          line: 165,
+          column: 1
+        }
+      },
+      "10": {
+        start: {
+          line: 139,
+          column: 4
+        },
+        end: {
+          line: 156,
+          column: 8
+        }
+      },
+      "11": {
+        start: {
+          line: 158,
+          column: 4
+        },
+        end: {
+          line: 161,
+          column: 7
+        }
+      },
+      "12": {
+        start: {
+          line: 159,
+          column: 8
+        },
+        end: {
+          line: 159,
+          column: 58
+        }
+      },
+      "13": {
+        start: {
+          line: 160,
+          column: 8
+        },
+        end: {
+          line: 160,
+          column: 24
+        }
+      },
+      "14": {
+        start: {
+          line: 162,
+          column: 4
+        },
+        end: {
+          line: 162,
+          column: 55
+        }
+      },
+      "15": {
+        start: {
+          line: 163,
+          column: 4
+        },
+        end: {
+          line: 163,
+          column: 60
+        }
+      },
+      "16": {
+        start: {
+          line: 164,
+          column: 4
+        },
+        end: {
+          line: 164,
+          column: 71
+        }
+      },
+      "17": {
+        start: {
+          line: 166,
+          column: 0
+        },
+        end: {
+          line: 166,
+          column: 36
+        }
+      },
+      "18": {
+        start: {
+          line: 167,
+          column: 0
+        },
+        end: {
+          line: 167,
+          column: 39
+        }
+      }
+    },
+    fnMap: {
+      "0": {
+        name: "(anonymous_0)",
+        decl: {
+          start: {
+            line: 2,
+            column: 56
+          },
+          end: {
+            line: 2,
+            column: 57
+          }
+        },
+        loc: {
+          start: {
+            line: 2,
+            column: 71
+          },
+          end: {
+            line: 4,
+            column: 1
+          }
+        },
+        line: 2
+      },
+      "1": {
+        name: "(anonymous_1)",
+        decl: {
+          start: {
+            line: 137,
+            column: 21
+          },
+          end: {
+            line: 137,
+            column: 22
+          }
+        },
+        loc: {
+          start: {
+            line: 137,
+            column: 30
+          },
+          end: {
+            line: 165,
+            column: 1
+          }
+        },
+        line: 137
+      },
+      "2": {
+        name: "(anonymous_2)",
+        decl: {
+          start: {
+            line: 158,
+            column: 30
+          },
+          end: {
+            line: 158,
+            column: 31
+          }
+        },
+        loc: {
+          start: {
+            line: 158,
+            column: 44
+          },
+          end: {
+            line: 161,
+            column: 5
+          }
+        },
+        line: 158
+      }
+    },
+    branchMap: {
+      "0": {
+        loc: {
+          start: {
+            line: 2,
+            column: 22
+          },
+          end: {
+            line: 4,
+            column: 1
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 2,
+            column: 23
+          },
+          end: {
+            line: 2,
+            column: 27
+          }
+        }, {
+          start: {
+            line: 2,
+            column: 31
+          },
+          end: {
+            line: 2,
+            column: 51
+          }
+        }, {
+          start: {
+            line: 2,
+            column: 56
+          },
+          end: {
+            line: 4,
+            column: 1
+          }
+        }],
+        line: 2
+      },
+      "1": {
+        loc: {
+          start: {
+            line: 3,
+            column: 11
+          },
+          end: {
+            line: 3,
+            column: 61
+          }
+        },
+        type: "cond-expr",
+        locations: [{
+          start: {
+            line: 3,
+            column: 37
+          },
+          end: {
+            line: 3,
+            column: 40
+          }
+        }, {
+          start: {
+            line: 3,
+            column: 43
+          },
+          end: {
+            line: 3,
+            column: 61
+          }
+        }],
+        line: 3
+      },
+      "2": {
+        loc: {
+          start: {
+            line: 3,
+            column: 12
+          },
+          end: {
+            line: 3,
+            column: 33
+          }
+        },
+        type: "binary-expr",
+        locations: [{
+          start: {
+            line: 3,
+            column: 12
+          },
+          end: {
+            line: 3,
+            column: 15
+          }
+        }, {
+          start: {
+            line: 3,
+            column: 19
+          },
+          end: {
+            line: 3,
+            column: 33
+          }
+        }],
+        line: 3
+      }
+    },
+    s: {
+      "0": 0,
+      "1": 0,
+      "2": 0,
+      "3": 0,
+      "4": 0,
+      "5": 0,
+      "6": 0,
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0,
+      "15": 0,
+      "16": 0,
+      "17": 0,
+      "18": 0
+    },
+    f: {
+      "0": 0,
+      "1": 0,
+      "2": 0
+    },
+    b: {
+      "0": [0, 0, 0],
+      "1": [0, 0],
+      "2": [0, 0]
+    },
+    inputSourceMap: {
+      file: "D:\\dev\\contabil\\contabil-site\\backend\\src\\docs\\swagger.ts",
+      mappings: "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",
+      names: [],
+      sources: ["D:\\dev\\contabil\\contabil-site\\backend\\src\\docs\\swagger.ts"],
+      sourcesContent: ["import swaggerJsdoc from 'swagger-jsdoc';\r\nimport swaggerUi from 'swagger-ui-express';\r\nimport { Express } from 'express';\r\n\r\n// Configura\xE7\xE3o b\xE1sica do Swagger\r\nconst options: swaggerJsdoc.Options = {\r\n  definition: {\r\n    openapi: '3.0.0',\r\n    info: {\r\n      title: 'API Contabilidade Igrejinha',\r\n      version: '1.0.0',\r\n      description: 'Documenta\xE7\xE3o da API do sistema Contabilidade Igrejinha - Sistema especializado em organiza\xE7\xF5es religiosas',\r\n      contact: {\r\n        name: 'Suporte Contabilidade Igrejinha',\r\n        email: 'suporte@contabilidadeigrejinha.com.br',\r\n        url: 'https://contabilidadeigrejinha.com.br',\r\n      },\r\n      license: {\r\n        name: 'MIT',\r\n        url: 'https://opensource.org/licenses/MIT',\r\n      },\r\n    },\r\n    servers: [\r\n      {\r\n        url: 'http://localhost:3001/api',\r\n        description: 'Servidor de Desenvolvimento',\r\n      },\r\n      {\r\n        url: 'http://localhost:3002/api',\r\n        description: 'Servidor de Desenvolvimento (Alternativo)',\r\n      },\r\n      {\r\n        url: 'https://api.contabilidadeigrejinha.com.br/api',\r\n        description: 'Servidor de Produ\xE7\xE3o',\r\n      },\r\n    ],\r\n    components: {\r\n      securitySchemes: {\r\n        bearerAuth: {\r\n          type: 'http',\r\n          scheme: 'bearer',\r\n          bearerFormat: 'JWT',\r\n          description: 'Token JWT para autentica\xE7\xE3o. Formato: Bearer {token}',\r\n        },\r\n      },\r\n      schemas: {\r\n        Error: {\r\n          type: 'object',\r\n          properties: {\r\n            status: {\r\n              type: 'string',\r\n              example: 'error',\r\n            },\r\n            message: {\r\n              type: 'string',\r\n              example: 'Ocorreu um erro ao processar a solicita\xE7\xE3o',\r\n            },\r\n            errors: {\r\n              type: 'array',\r\n              items: {\r\n                type: 'string',\r\n              },\r\n              example: [\"Campo 'email' \xE9 obrigat\xF3rio\", \"Senha deve ter pelo menos 8 caracteres\"],\r\n            },\r\n          },\r\n        },\r\n        ApiResponse: {\r\n          type: 'object',\r\n          properties: {\r\n            status: {\r\n              type: 'string',\r\n              enum: ['success', 'error'],\r\n              example: 'success',\r\n            },\r\n            message: {\r\n              type: 'string',\r\n              example: 'Opera\xE7\xE3o realizada com sucesso',\r\n            },\r\n            data: {\r\n              type: 'object',\r\n            },\r\n          },\r\n        },\r\n        Pagination: {\r\n          type: 'object',\r\n          properties: {\r\n            page: {\r\n              type: 'integer',\r\n              example: 1,\r\n            },\r\n            limit: {\r\n              type: 'integer',\r\n              example: 10,\r\n            },\r\n            totalItems: {\r\n              type: 'integer',\r\n              example: 100,\r\n            },\r\n            totalPages: {\r\n              type: 'integer',\r\n              example: 10,\r\n            },\r\n            hasNext: {\r\n              type: 'boolean',\r\n              example: true,\r\n            },\r\n            hasPrev: {\r\n              type: 'boolean',\r\n              example: false,\r\n            },\r\n          },\r\n        },\r\n      },\r\n    },\r\n    security: [\r\n      {\r\n        bearerAuth: [],\r\n      },\r\n    ],\r\n  },\r\n  apis: [\r\n    './src/routes/*.ts',\r\n    './src/docs/schemas/*.ts',\r\n  ],\r\n};\r\n\r\n// Gera a especifica\xE7\xE3o do Swagger\r\nconst specs = swaggerJsdoc(options);\r\n\r\n/**\r\n * Configura o Swagger na aplica\xE7\xE3o Express\r\n * @param app Inst\xE2ncia do Express\r\n */\r\nexport const setupSwagger = (app: Express): void => {\r\n  // Rota para a documenta\xE7\xE3o do Swagger\r\n  app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs, {\r\n    explorer: true,\r\n    customCss: `\r\n      .swagger-ui .topbar { display: none }\r\n      .swagger-ui .info .title { color: #2c3e50; }\r\n      .swagger-ui .scheme-container { background: #f8f9fa; padding: 10px; border-radius: 5px; }\r\n    `,\r\n    customSiteTitle: 'API Contabilidade Igrejinha - Documenta\xE7\xE3o',\r\n    customfavIcon: '/favicon.ico',\r\n    swaggerOptions: {\r\n      persistAuthorization: true,\r\n      displayRequestDuration: true,\r\n      docExpansion: 'none',\r\n      filter: true,\r\n      showExtensions: true,\r\n      showCommonExtensions: true,\r\n    },\r\n  }));\r\n  \r\n  // Rota para a especifica\xE7\xE3o OpenAPI em formato JSON\r\n  app.get('/api-docs.json', (req, res) => {\r\n    res.setHeader('Content-Type', 'application/json');\r\n    res.send(specs);\r\n  });\r\n  \r\n  console.log('\uD83D\uDCDA Swagger configurado com sucesso!');\r\n  console.log('\uD83D\uDCD6 Documenta\xE7\xE3o dispon\xEDvel em: /api-docs');\r\n  console.log('\uD83D\uDCC4 Especifica\xE7\xE3o JSON dispon\xEDvel em: /api-docs.json');\r\n};\r\n\r\nexport { specs };\r\nexport default setupSwagger;"],
+      version: 3
+    },
+    _coverageSchema: "1a1c01bbd47fc00a2c39e90264f33305004495a9",
+    hash: "7836b390e6b54bd3de70bcc0d737265f63d16993"
+  };
+  var coverage = global[gcv] || (global[gcv] = {});
+  if (!coverage[path] || coverage[path].hash !== hash) {
+    coverage[path] = coverageData;
+  }
+  var actualCoverage = coverage[path];
+  {
+    // @ts-ignore
+    cov_2gzuu2fc2a = function () {
+      return actualCoverage;
+    };
+  }
+  return actualCoverage;
+}
+cov_2gzuu2fc2a();
+var __importDefault =
+/* istanbul ignore next */
+(cov_2gzuu2fc2a().s[0]++,
+/* istanbul ignore next */
+(cov_2gzuu2fc2a().b[0][0]++, this) &&
+/* istanbul ignore next */
+(cov_2gzuu2fc2a().b[0][1]++, this.__importDefault) ||
+/* istanbul ignore next */
+(cov_2gzuu2fc2a().b[0][2]++, function (mod) {
+  /* istanbul ignore next */
+  cov_2gzuu2fc2a().f[0]++;
+  cov_2gzuu2fc2a().s[1]++;
+  return /* istanbul ignore next */(cov_2gzuu2fc2a().b[2][0]++, mod) &&
+  /* istanbul ignore next */
+  (cov_2gzuu2fc2a().b[2][1]++, mod.__esModule) ?
+  /* istanbul ignore next */
+  (cov_2gzuu2fc2a().b[1][0]++, mod) :
+  /* istanbul ignore next */
+  (cov_2gzuu2fc2a().b[1][1]++, {
+    "default": mod
+  });
+}));
+/* istanbul ignore next */
+cov_2gzuu2fc2a().s[2]++;
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+/* istanbul ignore next */
+cov_2gzuu2fc2a().s[3]++;
+exports.specs = exports.setupSwagger = void 0;
+const swagger_jsdoc_1 =
+/* istanbul ignore next */
+(cov_2gzuu2fc2a().s[4]++, __importDefault(require("swagger-jsdoc")));
+const swagger_ui_express_1 =
+/* istanbul ignore next */
+(cov_2gzuu2fc2a().s[5]++, __importDefault(require("swagger-ui-express")));
+// Configuração básica do Swagger
+const options =
+/* istanbul ignore next */
+(cov_2gzuu2fc2a().s[6]++, {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'API Contabilidade Igrejinha',
+      version: '1.0.0',
+      description: 'Documentação da API do sistema Contabilidade Igrejinha - Sistema especializado em organizações religiosas',
+      contact: {
+        name: 'Suporte Contabilidade Igrejinha',
+        email: 'suporte@contabilidadeigrejinha.com.br',
+        url: 'https://contabilidadeigrejinha.com.br'
+      },
+      license: {
+        name: 'MIT',
+        url: 'https://opensource.org/licenses/MIT'
+      }
+    },
+    servers: [{
+      url: 'http://localhost:3001/api',
+      description: 'Servidor de Desenvolvimento'
+    }, {
+      url: 'http://localhost:3002/api',
+      description: 'Servidor de Desenvolvimento (Alternativo)'
+    }, {
+      url: 'https://api.contabilidadeigrejinha.com.br/api',
+      description: 'Servidor de Produção'
+    }],
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+          description: 'Token JWT para autenticação. Formato: Bearer {token}'
+        }
+      },
+      schemas: {
+        Error: {
+          type: 'object',
+          properties: {
+            status: {
+              type: 'string',
+              example: 'error'
+            },
+            message: {
+              type: 'string',
+              example: 'Ocorreu um erro ao processar a solicitação'
+            },
+            errors: {
+              type: 'array',
+              items: {
+                type: 'string'
+              },
+              example: ["Campo 'email' é obrigatório", "Senha deve ter pelo menos 8 caracteres"]
+            }
+          }
+        },
+        ApiResponse: {
+          type: 'object',
+          properties: {
+            status: {
+              type: 'string',
+              enum: ['success', 'error'],
+              example: 'success'
+            },
+            message: {
+              type: 'string',
+              example: 'Operação realizada com sucesso'
+            },
+            data: {
+              type: 'object'
+            }
+          }
+        },
+        Pagination: {
+          type: 'object',
+          properties: {
+            page: {
+              type: 'integer',
+              example: 1
+            },
+            limit: {
+              type: 'integer',
+              example: 10
+            },
+            totalItems: {
+              type: 'integer',
+              example: 100
+            },
+            totalPages: {
+              type: 'integer',
+              example: 10
+            },
+            hasNext: {
+              type: 'boolean',
+              example: true
+            },
+            hasPrev: {
+              type: 'boolean',
+              example: false
+            }
+          }
+        }
+      }
+    },
+    security: [{
+      bearerAuth: []
+    }]
+  },
+  apis: ['./src/routes/*.ts', './src/docs/schemas/*.ts']
+});
+// Gera a especificação do Swagger
+const specs =
+/* istanbul ignore next */
+(cov_2gzuu2fc2a().s[7]++, (0, swagger_jsdoc_1.default)(options));
+/* istanbul ignore next */
+cov_2gzuu2fc2a().s[8]++;
+exports.specs = specs;
+/**
+ * Configura o Swagger na aplicação Express
+ * @param app Instância do Express
+ */
+/* istanbul ignore next */
+cov_2gzuu2fc2a().s[9]++;
+const setupSwagger = app => {
+  /* istanbul ignore next */
+  cov_2gzuu2fc2a().f[1]++;
+  cov_2gzuu2fc2a().s[10]++;
+  // Rota para a documentação do Swagger
+  app.use('/api-docs', swagger_ui_express_1.default.serve, swagger_ui_express_1.default.setup(specs, {
+    explorer: true,
+    customCss: `
+      .swagger-ui .topbar { display: none }
+      .swagger-ui .info .title { color: #2c3e50; }
+      .swagger-ui .scheme-container { background: #f8f9fa; padding: 10px; border-radius: 5px; }
+    `,
+    customSiteTitle: 'API Contabilidade Igrejinha - Documentação',
+    customfavIcon: '/favicon.ico',
+    swaggerOptions: {
+      persistAuthorization: true,
+      displayRequestDuration: true,
+      docExpansion: 'none',
+      filter: true,
+      showExtensions: true,
+      showCommonExtensions: true
+    }
+  }));
+  // Rota para a especificação OpenAPI em formato JSON
+  /* istanbul ignore next */
+  cov_2gzuu2fc2a().s[11]++;
+  app.get('/api-docs.json', (req, res) => {
+    /* istanbul ignore next */
+    cov_2gzuu2fc2a().f[2]++;
+    cov_2gzuu2fc2a().s[12]++;
+    res.setHeader('Content-Type', 'application/json');
+    /* istanbul ignore next */
+    cov_2gzuu2fc2a().s[13]++;
+    res.send(specs);
+  });
+  /* istanbul ignore next */
+  cov_2gzuu2fc2a().s[14]++;
+  console.log('📚 Swagger configurado com sucesso!');
+  /* istanbul ignore next */
+  cov_2gzuu2fc2a().s[15]++;
+  console.log('📖 Documentação disponível em: /api-docs');
+  /* istanbul ignore next */
+  cov_2gzuu2fc2a().s[16]++;
+  console.log('📄 Especificação JSON disponível em: /api-docs.json');
+};
+/* istanbul ignore next */
+cov_2gzuu2fc2a().s[17]++;
+exports.setupSwagger = setupSwagger;
+/* istanbul ignore next */
+cov_2gzuu2fc2a().s[18]++;
+exports.default = exports.setupSwagger;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6WyJjb3ZfMmd6dXUyZmMyYSIsImFjdHVhbENvdmVyYWdlIiwic3dhZ2dlcl9qc2RvY18xIiwicyIsIl9faW1wb3J0RGVmYXVsdCIsInJlcXVpcmUiLCJzd2FnZ2VyX3VpX2V4cHJlc3NfMSIsIm9wdGlvbnMiLCJkZWZpbml0aW9uIiwib3BlbmFwaSIsImluZm8iLCJ0aXRsZSIsInZlcnNpb24iLCJkZXNjcmlwdGlvbiIsImNvbnRhY3QiLCJuYW1lIiwiZW1haWwiLCJ1cmwiLCJsaWNlbnNlIiwic2VydmVycyIsImNvbXBvbmVudHMiLCJzZWN1cml0eVNjaGVtZXMiLCJiZWFyZXJBdXRoIiwidHlwZSIsInNjaGVtZSIsImJlYXJlckZvcm1hdCIsInNjaGVtYXMiLCJFcnJvciIsInByb3BlcnRpZXMiLCJzdGF0dXMiLCJleGFtcGxlIiwibWVzc2FnZSIsImVycm9ycyIsIml0ZW1zIiwiQXBpUmVzcG9uc2UiLCJlbnVtIiwiZGF0YSIsIlBhZ2luYXRpb24iLCJwYWdlIiwibGltaXQiLCJ0b3RhbEl0ZW1zIiwidG90YWxQYWdlcyIsImhhc05leHQiLCJoYXNQcmV2Iiwic2VjdXJpdHkiLCJhcGlzIiwic3BlY3MiLCJkZWZhdWx0IiwiZXhwb3J0cyIsInNldHVwU3dhZ2dlciIsImFwcCIsImYiLCJ1c2UiLCJzZXJ2ZSIsInNldHVwIiwiZXhwbG9yZXIiLCJjdXN0b21Dc3MiLCJjdXN0b21TaXRlVGl0bGUiLCJjdXN0b21mYXZJY29uIiwic3dhZ2dlck9wdGlvbnMiLCJwZXJzaXN0QXV0aG9yaXphdGlvbiIsImRpc3BsYXlSZXF1ZXN0RHVyYXRpb24iLCJkb2NFeHBhbnNpb24iLCJmaWx0ZXIiLCJzaG93RXh0ZW5zaW9ucyIsInNob3dDb21tb25FeHRlbnNpb25zIiwiZ2V0IiwicmVxIiwicmVzIiwic2V0SGVhZGVyIiwic2VuZCIsImNvbnNvbGUiLCJsb2ciXSwic291cmNlcyI6WyJEOlxcZGV2XFxjb250YWJpbFxcY29udGFiaWwtc2l0ZVxcYmFja2VuZFxcc3JjXFxkb2NzXFxzd2FnZ2VyLnRzIl0sInNvdXJjZXNDb250ZW50IjpbImltcG9ydCBzd2FnZ2VySnNkb2MgZnJvbSAnc3dhZ2dlci1qc2RvYyc7XHJcbmltcG9ydCBzd2FnZ2VyVWkgZnJvbSAnc3dhZ2dlci11aS1leHByZXNzJztcclxuaW1wb3J0IHsgRXhwcmVzcyB9IGZyb20gJ2V4cHJlc3MnO1xyXG5cclxuLy8gQ29uZmlndXJhw6fDo28gYsOhc2ljYSBkbyBTd2FnZ2VyXHJcbmNvbnN0IG9wdGlvbnM6IHN3YWdnZXJKc2RvYy5PcHRpb25zID0ge1xyXG4gIGRlZmluaXRpb246IHtcclxuICAgIG9wZW5hcGk6ICczLjAuMCcsXHJcbiAgICBpbmZvOiB7XHJcbiAgICAgIHRpdGxlOiAnQVBJIENvbnRhYmlsaWRhZGUgSWdyZWppbmhhJyxcclxuICAgICAgdmVyc2lvbjogJzEuMC4wJyxcclxuICAgICAgZGVzY3JpcHRpb246ICdEb2N1bWVudGHDp8OjbyBkYSBBUEkgZG8gc2lzdGVtYSBDb250YWJpbGlkYWRlIElncmVqaW5oYSAtIFNpc3RlbWEgZXNwZWNpYWxpemFkbyBlbSBvcmdhbml6YcOnw7VlcyByZWxpZ2lvc2FzJyxcclxuICAgICAgY29udGFjdDoge1xyXG4gICAgICAgIG5hbWU6ICdTdXBvcnRlIENvbnRhYmlsaWRhZGUgSWdyZWppbmhhJyxcclxuICAgICAgICBlbWFpbDogJ3N1cG9ydGVAY29udGFiaWxpZGFkZWlncmVqaW5oYS5jb20uYnInLFxyXG4gICAgICAgIHVybDogJ2h0dHBzOi8vY29udGFiaWxpZGFkZWlncmVqaW5oYS5jb20uYnInLFxyXG4gICAgICB9LFxyXG4gICAgICBsaWNlbnNlOiB7XHJcbiAgICAgICAgbmFtZTogJ01JVCcsXHJcbiAgICAgICAgdXJsOiAnaHR0cHM6Ly9vcGVuc291cmNlLm9yZy9saWNlbnNlcy9NSVQnLFxyXG4gICAgICB9LFxyXG4gICAgfSxcclxuICAgIHNlcnZlcnM6IFtcclxuICAgICAge1xyXG4gICAgICAgIHVybDogJ2h0dHA6Ly9sb2NhbGhvc3Q6MzAwMS9hcGknLFxyXG4gICAgICAgIGRlc2NyaXB0aW9uOiAnU2Vydmlkb3IgZGUgRGVzZW52b2x2aW1lbnRvJyxcclxuICAgICAgfSxcclxuICAgICAge1xyXG4gICAgICAgIHVybDogJ2h0dHA6Ly9sb2NhbGhvc3Q6MzAwMi9hcGknLFxyXG4gICAgICAgIGRlc2NyaXB0aW9uOiAnU2Vydmlkb3IgZGUgRGVzZW52b2x2aW1lbnRvIChBbHRlcm5hdGl2byknLFxyXG4gICAgICB9LFxyXG4gICAgICB7XHJcbiAgICAgICAgdXJsOiAnaHR0cHM6Ly9hcGkuY29udGFiaWxpZGFkZWlncmVqaW5oYS5jb20uYnIvYXBpJyxcclxuICAgICAgICBkZXNjcmlwdGlvbjogJ1NlcnZpZG9yIGRlIFByb2R1w6fDo28nLFxyXG4gICAgICB9LFxyXG4gICAgXSxcclxuICAgIGNvbXBvbmVudHM6IHtcclxuICAgICAgc2VjdXJpdHlTY2hlbWVzOiB7XHJcbiAgICAgICAgYmVhcmVyQXV0aDoge1xyXG4gICAgICAgICAgdHlwZTogJ2h0dHAnLFxyXG4gICAgICAgICAgc2NoZW1lOiAnYmVhcmVyJyxcclxuICAgICAgICAgIGJlYXJlckZvcm1hdDogJ0pXVCcsXHJcbiAgICAgICAgICBkZXNjcmlwdGlvbjogJ1Rva2VuIEpXVCBwYXJhIGF1dGVudGljYcOnw6NvLiBGb3JtYXRvOiBCZWFyZXIge3Rva2VufScsXHJcbiAgICAgICAgfSxcclxuICAgICAgfSxcclxuICAgICAgc2NoZW1hczoge1xyXG4gICAgICAgIEVycm9yOiB7XHJcbiAgICAgICAgICB0eXBlOiAnb2JqZWN0JyxcclxuICAgICAgICAgIHByb3BlcnRpZXM6IHtcclxuICAgICAgICAgICAgc3RhdHVzOiB7XHJcbiAgICAgICAgICAgICAgdHlwZTogJ3N0cmluZycsXHJcbiAgICAgICAgICAgICAgZXhhbXBsZTogJ2Vycm9yJyxcclxuICAgICAgICAgICAgfSxcclxuICAgICAgICAgICAgbWVzc2FnZToge1xyXG4gICAgICAgICAgICAgIHR5cGU6ICdzdHJpbmcnLFxyXG4gICAgICAgICAgICAgIGV4YW1wbGU6ICdPY29ycmV1IHVtIGVycm8gYW8gcHJvY2Vzc2FyIGEgc29saWNpdGHDp8OjbycsXHJcbiAgICAgICAgICAgIH0sXHJcbiAgICAgICAgICAgIGVycm9yczoge1xyXG4gICAgICAgICAgICAgIHR5cGU6ICdhcnJheScsXHJcbiAgICAgICAgICAgICAgaXRlbXM6IHtcclxuICAgICAgICAgICAgICAgIHR5cGU6ICdzdHJpbmcnLFxyXG4gICAgICAgICAgICAgIH0sXHJcbiAgICAgICAgICAgICAgZXhhbXBsZTogW1wiQ2FtcG8gJ2VtYWlsJyDDqSBvYnJpZ2F0w7NyaW9cIiwgXCJTZW5oYSBkZXZlIHRlciBwZWxvIG1lbm9zIDggY2FyYWN0ZXJlc1wiXSxcclxuICAgICAgICAgICAgfSxcclxuICAgICAgICAgIH0sXHJcbiAgICAgICAgfSxcclxuICAgICAgICBBcGlSZXNwb25zZToge1xyXG4gICAgICAgICAgdHlwZTogJ29iamVjdCcsXHJcbiAgICAgICAgICBwcm9wZXJ0aWVzOiB7XHJcbiAgICAgICAgICAgIHN0YXR1czoge1xyXG4gICAgICAgICAgICAgIHR5cGU6ICdzdHJpbmcnLFxyXG4gICAgICAgICAgICAgIGVudW06IFsnc3VjY2VzcycsICdlcnJvciddLFxyXG4gICAgICAgICAgICAgIGV4YW1wbGU6ICdzdWNjZXNzJyxcclxuICAgICAgICAgICAgfSxcclxuICAgICAgICAgICAgbWVzc2FnZToge1xyXG4gICAgICAgICAgICAgIHR5cGU6ICdzdHJpbmcnLFxyXG4gICAgICAgICAgICAgIGV4YW1wbGU6ICdPcGVyYcOnw6NvIHJlYWxpemFkYSBjb20gc3VjZXNzbycsXHJcbiAgICAgICAgICAgIH0sXHJcbiAgICAgICAgICAgIGRhdGE6IHtcclxuICAgICAgICAgICAgICB0eXBlOiAnb2JqZWN0JyxcclxuICAgICAgICAgICAgfSxcclxuICAgICAgICAgIH0sXHJcbiAgICAgICAgfSxcclxuICAgICAgICBQYWdpbmF0aW9uOiB7XHJcbiAgICAgICAgICB0eXBlOiAnb2JqZWN0JyxcclxuICAgICAgICAgIHByb3BlcnRpZXM6IHtcclxuICAgICAgICAgICAgcGFnZToge1xyXG4gICAgICAgICAgICAgIHR5cGU6ICdpbnRlZ2VyJyxcclxuICAgICAgICAgICAgICBleGFtcGxlOiAxLFxyXG4gICAgICAgICAgICB9LFxyXG4gICAgICAgICAgICBsaW1pdDoge1xyXG4gICAgICAgICAgICAgIHR5cGU6ICdpbnRlZ2VyJyxcclxuICAgICAgICAgICAgICBleGFtcGxlOiAxMCxcclxuICAgICAgICAgICAgfSxcclxuICAgICAgICAgICAgdG90YWxJdGVtczoge1xyXG4gICAgICAgICAgICAgIHR5cGU6ICdpbnRlZ2VyJyxcclxuICAgICAgICAgICAgICBleGFtcGxlOiAxMDAsXHJcbiAgICAgICAgICAgIH0sXHJcbiAgICAgICAgICAgIHRvdGFsUGFnZXM6IHtcclxuICAgICAgICAgICAgICB0eXBlOiAnaW50ZWdlcicsXHJcbiAgICAgICAgICAgICAgZXhhbXBsZTogMTAsXHJcbiAgICAgICAgICAgIH0sXHJcbiAgICAgICAgICAgIGhhc05leHQ6IHtcclxuICAgICAgICAgICAgICB0eXBlOiAnYm9vbGVhbicsXHJcbiAgICAgICAgICAgICAgZXhhbXBsZTogdHJ1ZSxcclxuICAgICAgICAgICAgfSxcclxuICAgICAgICAgICAgaGFzUHJldjoge1xyXG4gICAgICAgICAgICAgIHR5cGU6ICdib29sZWFuJyxcclxuICAgICAgICAgICAgICBleGFtcGxlOiBmYWxzZSxcclxuICAgICAgICAgICAgfSxcclxuICAgICAgICAgIH0sXHJcbiAgICAgICAgfSxcclxuICAgICAgfSxcclxuICAgIH0sXHJcbiAgICBzZWN1cml0eTogW1xyXG4gICAgICB7XHJcbiAgICAgICAgYmVhcmVyQXV0aDogW10sXHJcbiAgICAgIH0sXHJcbiAgICBdLFxyXG4gIH0sXHJcbiAgYXBpczogW1xyXG4gICAgJy4vc3JjL3JvdXRlcy8qLnRzJyxcclxuICAgICcuL3NyYy9kb2NzL3NjaGVtYXMvKi50cycsXHJcbiAgXSxcclxufTtcclxuXHJcbi8vIEdlcmEgYSBlc3BlY2lmaWNhw6fDo28gZG8gU3dhZ2dlclxyXG5jb25zdCBzcGVjcyA9IHN3YWdnZXJKc2RvYyhvcHRpb25zKTtcclxuXHJcbi8qKlxyXG4gKiBDb25maWd1cmEgbyBTd2FnZ2VyIG5hIGFwbGljYcOnw6NvIEV4cHJlc3NcclxuICogQHBhcmFtIGFwcCBJbnN0w6JuY2lhIGRvIEV4cHJlc3NcclxuICovXHJcbmV4cG9ydCBjb25zdCBzZXR1cFN3YWdnZXIgPSAoYXBwOiBFeHByZXNzKTogdm9pZCA9PiB7XHJcbiAgLy8gUm90YSBwYXJhIGEgZG9jdW1lbnRhw6fDo28gZG8gU3dhZ2dlclxyXG4gIGFwcC51c2UoJy9hcGktZG9jcycsIHN3YWdnZXJVaS5zZXJ2ZSwgc3dhZ2dlclVpLnNldHVwKHNwZWNzLCB7XHJcbiAgICBleHBsb3JlcjogdHJ1ZSxcclxuICAgIGN1c3RvbUNzczogYFxyXG4gICAgICAuc3dhZ2dlci11aSAudG9wYmFyIHsgZGlzcGxheTogbm9uZSB9XHJcbiAgICAgIC5zd2FnZ2VyLXVpIC5pbmZvIC50aXRsZSB7IGNvbG9yOiAjMmMzZTUwOyB9XHJcbiAgICAgIC5zd2FnZ2VyLXVpIC5zY2hlbWUtY29udGFpbmVyIHsgYmFja2dyb3VuZDogI2Y4ZjlmYTsgcGFkZGluZzogMTBweDsgYm9yZGVyLXJhZGl1czogNXB4OyB9XHJcbiAgICBgLFxyXG4gICAgY3VzdG9tU2l0ZVRpdGxlOiAnQVBJIENvbnRhYmlsaWRhZGUgSWdyZWppbmhhIC0gRG9jdW1lbnRhw6fDo28nLFxyXG4gICAgY3VzdG9tZmF2SWNvbjogJy9mYXZpY29uLmljbycsXHJcbiAgICBzd2FnZ2VyT3B0aW9uczoge1xyXG4gICAgICBwZXJzaXN0QXV0aG9yaXphdGlvbjogdHJ1ZSxcclxuICAgICAgZGlzcGxheVJlcXVlc3REdXJhdGlvbjogdHJ1ZSxcclxuICAgICAgZG9jRXhwYW5zaW9uOiAnbm9uZScsXHJcbiAgICAgIGZpbHRlcjogdHJ1ZSxcclxuICAgICAgc2hvd0V4dGVuc2lvbnM6IHRydWUsXHJcbiAgICAgIHNob3dDb21tb25FeHRlbnNpb25zOiB0cnVlLFxyXG4gICAgfSxcclxuICB9KSk7XHJcbiAgXHJcbiAgLy8gUm90YSBwYXJhIGEgZXNwZWNpZmljYcOnw6NvIE9wZW5BUEkgZW0gZm9ybWF0byBKU09OXHJcbiAgYXBwLmdldCgnL2FwaS1kb2NzLmpzb24nLCAocmVxLCByZXMpID0+IHtcclxuICAgIHJlcy5zZXRIZWFkZXIoJ0NvbnRlbnQtVHlwZScsICdhcHBsaWNhdGlvbi9qc29uJyk7XHJcbiAgICByZXMuc2VuZChzcGVjcyk7XHJcbiAgfSk7XHJcbiAgXHJcbiAgY29uc29sZS5sb2coJ/Cfk5ogU3dhZ2dlciBjb25maWd1cmFkbyBjb20gc3VjZXNzbyEnKTtcclxuICBjb25zb2xlLmxvZygn8J+TliBEb2N1bWVudGHDp8OjbyBkaXNwb27DrXZlbCBlbTogL2FwaS1kb2NzJyk7XHJcbiAgY29uc29sZS5sb2coJ/Cfk4QgRXNwZWNpZmljYcOnw6NvIEpTT04gZGlzcG9uw612ZWwgZW06IC9hcGktZG9jcy5qc29uJyk7XHJcbn07XHJcblxyXG5leHBvcnQgeyBzcGVjcyB9O1xyXG5leHBvcnQgZGVmYXVsdCBzZXR1cFN3YWdnZXI7Il0sIm1hcHBpbmdzIjoiOzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7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

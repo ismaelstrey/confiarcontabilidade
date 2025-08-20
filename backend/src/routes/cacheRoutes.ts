@@ -25,7 +25,7 @@ const router = Router();
  *       properties:
  *         pattern:
  *           type: string
- *           description: Padrão para limpeza de cache (ex: 'user:*')
+ *           description: Padrao para limpeza de cache
  *         key:
  *           type: string
  *           description: Chave específica para operações de cache

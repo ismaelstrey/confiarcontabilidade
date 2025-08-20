@@ -11,6 +11,7 @@ import { Analytics } from "@/components/analytics/Analytics";
 import { PerformanceMonitor } from "@/components/performance/PerformanceMonitor";
 import ErrorBoundary from "@/components/error/ErrorBoundary";
 import { PWAManager } from "@/components/pwa/PWAManager";
+import { AuthProvider } from "@/contexts/AuthContext";
 import { siteConfig } from "@/lib/config";
 import "./globals.css";
 
@@ -115,19 +116,21 @@ export default function RootLayout({
         <meta name="msapplication-TileColor" content="#1e40af" />
         <meta name="msapplication-config" content="/browserconfig.xml" />
       </head><body className="min-h-screen bg-background font-sans antialiased">
-        <ToastProvider>
-          <ErrorBoundary>
-            <div className="relative flex min-h-screen flex-col">
-              <Header />
-              <main className="flex-1">{children}</main>
-              <Footer />
-              <WhatsAppButton />
-            </div>
-          </ErrorBoundary>
-          <Analytics />
-          <PerformanceMonitor />
-          <PWAManager />
-        </ToastProvider>
+        <AuthProvider>
+          <ToastProvider>
+            <ErrorBoundary>
+              <div className="relative flex min-h-screen flex-col">
+                <Header />
+                <main className="flex-1">{children}</main>
+                <Footer />
+                <WhatsAppButton />
+              </div>
+            </ErrorBoundary>
+            <Analytics />
+            <PerformanceMonitor />
+            <PWAManager />
+          </ToastProvider>
+        </AuthProvider>
       </body>
     </html>
   );

@@ -1,3 +1,21 @@
+// Tipos para usuário
+export interface User {
+  id: string
+  name: string
+  email: string
+  role: 'ADMIN' | 'EDITOR' | 'USER'
+  avatar?: string
+  phone?: string
+  bio?: string
+  website?: string
+  location?: string
+  isActive: boolean
+  emailVerified: boolean
+  lastLoginAt?: string
+  createdAt: string
+  updatedAt: string
+}
+
 // Tipos para navegação
 export interface NavItem {
   title: string

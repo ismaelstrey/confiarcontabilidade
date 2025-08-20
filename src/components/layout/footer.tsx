@@ -21,6 +21,7 @@ import { Button } from '@/components/ui/button'
 import { Container } from '@/components/ui/container'
 import { Badge } from '@/components/ui/badge'
 import { siteConfig, mainNav, services } from '@/lib/config'
+import NewsletterForm from '@/components/forms/NewsletterForm'
 
 export function Footer() {
   const currentYear = new Date().getFullYear()
@@ -156,15 +157,26 @@ export function Footer() {
                 </ul>
               </div>
 
-              {/* Services */}
+              {/* Newsletter */}
               <div>
-                <h4 className="text-lg font-semibold mb-6">Serviços</h4>
-                <ul className="space-y-3">
-                  {services.slice(0, 6).map((service) => (
+                <h4 className="text-lg font-semibold mb-6">Newsletter</h4>
+                <p className="text-gray-300 mb-4 text-sm">
+                  Receba dicas exclusivas de contabilidade e gestão empresarial diretamente no seu e-mail.
+                </p>
+                <NewsletterForm 
+                  variant="compact"
+                  placeholder="Seu e-mail"
+                  buttonText="Inscrever"
+                  className="mb-4"
+                />
+                
+                <h5 className="text-md font-semibold mb-3 mt-6">Principais Serviços</h5>
+                <ul className="space-y-2">
+                  {services.slice(0, 4).map((service) => (
                     <li key={service.id}>
                       <Link
                         href={`/servicos#${service.id}`}
-                        className="text-gray-300 hover:text-white transition-colors duration-200"
+                        className="text-gray-300 hover:text-white transition-colors duration-200 text-sm"
                       >
                         {service.title}
                       </Link>

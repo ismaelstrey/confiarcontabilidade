@@ -1,0 +1,247 @@
+// Schema para backend com Bun
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+// Modelo de usuários
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String
+  password  String
+  role      String   @default("USER")
+  avatar    String?
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  uploads   Upload[]
+  articles  Article[]
+  likes     ArticleLike[]
+  comments  Comment[]
+  profile   Profile?
+
+  @@map("users")
+}
+
+// Modelo de refresh tokens
+model RefreshToken {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@map("refresh_tokens")
+}
+
+// SQLite não suporta enums, usando String com validação no código
+
+// Modelo de uploads
+model Upload {
+  id           String     @id @default(cuid())
+  originalName String
+  filename     String
+  mimetype     String
+  size         Int
+  path         String
+  type        String // IMAGE, DOCUMENT, OTHER @default(IMAGE)
+  url          String?
+  uploadedBy   String?
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+  userId       String
+  user         User       @relation(fields: [userId], references: [id])
+
+  @@map("uploads")
+}
+
+// Modelo de categorias
+model Category {
+  id          String            @id @default(cuid())
+  name        String            @unique
+  slug        String            @unique
+  description String?
+  color       String?
+  createdAt   DateTime          @default(now())
+  updatedAt   DateTime          @updatedAt
+  isActive    Boolean           @default(true)
+  articles    ArticleCategory[]
+
+  @@map("categories")
+}
+
+// Modelo de tags
+model Tag {
+  id        String       @id @default(cuid())
+  name      String       @unique
+  slug      String       @unique
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+  articles  ArticleTag[]
+
+  @@map("tags")
+}
+
+// Relacionamento Artigo-Categoria (Many-to-Many)
+model ArticleCategory {
+  articleId  String
+  categoryId String
+  createdAt  DateTime @default(now())
+  article    Article  @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@id([articleId, categoryId])
+  @@map("article_categories")
+}
+
+// Relacionamento Artigo-Tag (Many-to-Many)
+model ArticleTag {
+  articleId String
+  tagId     String
+  createdAt DateTime @default(now())
+  article   Article  @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  tag       Tag      @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([articleId, tagId])
+  @@map("article_tags")
+}
+
+// Modelo de artigos
+model Article {
+  id            String            @id @default(cuid())
+  title         String
+  slug          String            @unique
+  content       String
+  excerpt       String?
+  status        String            @default("DRAFT")
+  published     Boolean           @default(false)
+  publishedAt   DateTime?
+  views         Int               @default(0)
+  authorId      String
+  featuredImage String?
+  readingTime   Int               @default(0)
+  viewCount     Int               @default(0)
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+  author        User              @relation(fields: [authorId], references: [id])
+  categories    ArticleCategory[]
+  tags          ArticleTag[]
+  comments      ArticleComment[]
+  likes         ArticleLike[]
+  userComments  Comment[]         @relation("ArticleComments")
+
+  @@map("articles")
+}
+
+// Modelo de comentários de artigos
+model ArticleComment {
+  id          String   @id @default(cuid())
+  content     String
+  authorName  String
+  authorEmail String
+  isApproved  Boolean  @default(false)
+  articleId   String
+  tags        String? // JSON string para armazenar tags
+  approved    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  article     Article  @relation(fields: [articleId], references: [id], onDelete: Cascade)
+
+  @@map("article_comments")
+}
+
+// Modelo de contatos
+model Contact {
+  id          String    @id @default(cuid())
+  name        String
+  email       String
+  phone       String?
+  subject     String
+  message     String
+  status      String    @default("PENDING")
+  priority    String    @default("MEDIUM")
+  response    String?
+  respondedAt DateTime?
+  respondedBy String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@map("contacts")
+}
+
+// Modelo de newsletter
+model Newsletter {
+  id          String   @id @default(cuid())
+  email       String   @unique
+  name        String?
+  isActive    Boolean  @default(false)
+  preferences String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("newsletters")
+}
+
+// Modelo de histórico de cálculos
+model CalculationHistory {
+  id         String   @id @default(cuid())
+  income     Float
+  deductions Float
+  taxYear    Int
+  dependents Int      @default(0)
+  result     String
+  ipAddress  String
+  userAgent  String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  @@map("calculation_history")
+}
+
+// Modelo de curtidas de artigos
+model ArticleLike {
+  userId    String
+  articleId String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  article   Article  @relation(fields: [articleId], references: [id], onDelete: Cascade)
+
+  @@id([userId, articleId])
+  @@map("article_likes")
+}
+
+// Modelo de comentários
+model Comment {
+  id         String   @id @default(cuid())
+  content    String
+  articleId  String
+  authorId   String
+  isApproved Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  article    Article  @relation("ArticleComments", fields: [articleId], references: [id], onDelete: Cascade)
+  author     User     @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  @@map("comments")
+}
+
+// Modelo de perfil de usuário
+model Profile {
+  id        String   @id @default(cuid())
+  bio       String?
+  phone     String?
+  address   String?
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("profiles")
+}

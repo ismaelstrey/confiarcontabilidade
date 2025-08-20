@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useContacts } from '@/hooks/useContacts'
 import {
   Calculator,
   Building,
@@ -118,6 +119,7 @@ export default function OrcamentoPage() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [errors, setErrors] = useState<Record<string, string>>({})
+  const { createContact, isLoading } = useContacts()
 
   const totalSteps = 3
 
@@ -180,11 +182,46 @@ export default function OrcamentoPage() {
 
     setIsSubmitting(true)
     
-    // Simula envio do formulário
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    
-    setIsSubmitting(false)
-    setIsSubmitted(true)
+    try {
+      // Monta a mensagem com todos os dados do orçamento
+      const servicosSelecionados = formData.servicos.map(id => 
+        servicosDisponiveis.find(s => s.id === id)?.nome
+      ).filter(Boolean).join(', ')
+      
+      const mensagem = `SOLICITAÇÃO DE ORÇAMENTO\n\n` +
+        `EMPRESA:\n` +
+        `Nome: ${formData.nomeEmpresa}\n` +
+        `CNPJ: ${formData.cnpj}\n` +
+        `Tipo: ${formData.tipoEmpresa}\n` +
+        `Porte: ${formData.porte}\n` +
+        `Segmento: ${formData.segmento}\n` +
+        `Faturamento Mensal: ${formData.faturamentoMensal}\n` +
+        `Número de Funcionários: ${formData.numeroFuncionarios}\n\n` +
+        `SERVIÇOS SOLICITADOS:\n${servicosSelecionados}\n\n` +
+        `REGIME TRIBUTÁRIO: ${formData.regimeTributario}\n` +
+        `URGENTE: ${formData.necessidadeUrgente ? 'Sim' : 'Não'}\n\n` +
+        `CONTATO:\n` +
+        `Cargo: ${formData.cargo}\n` +
+        `Melhor Horário: ${formData.melhorHorario}\n` +
+        `Como Conheceu: ${formData.comoConheceu}\n\n` +
+        `OBSERVAÇÕES:\n${formData.observacoes || 'Nenhuma'}`
+      
+      await createContact({
+        name: formData.nomeContato,
+        email: formData.email,
+        phone: formData.telefone,
+        company: formData.nomeEmpresa,
+        service: 'Solicitação de Orçamento',
+        message: mensagem
+      })
+      
+      setIsSubmitted(true)
+    } catch (error) {
+      console.error('Erro ao enviar orçamento:', error)
+      // Aqui você pode adicionar uma notificação de erro
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const getStepTitle = (step: number) => {
@@ -697,10 +734,10 @@ export default function OrcamentoPage() {
                       ) : (
                         <Button
                           onClick={handleSubmit}
-                          disabled={isSubmitting}
+                          disabled={isLoading || isSubmitting}
                           className="flex items-center bg-green-600 hover:bg-green-700"
                         >
-                          {isSubmitting ? (
+                          {(isLoading || isSubmitting) ? (
                             <motion.div
                               animate={{ rotate: 360 }}
                               transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
@@ -711,7 +748,7 @@ export default function OrcamentoPage() {
                           ) : (
                             <CheckCircle className="h-4 w-4 mr-2" />
                           )}
-                          {isSubmitting ? 'Enviando...' : 'Solicitar Orçamento'}
+                          {(isLoading || isSubmitting) ? 'Enviando...' : 'Solicitar Orçamento'}
                         </Button>
                       )}
                     </div>

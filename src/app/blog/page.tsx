@@ -1,10 +1,10 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { 
-  Calendar, 
-  User, 
-  Clock, 
+import {
+  Calendar,
+  User,
+  Clock,
   ArrowRight,
   Search,
   Tag,
@@ -13,15 +13,18 @@ import {
   Calculator,
   Shield,
   Building,
-  Users
+  Users,
+  Loader2
 } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { useArticles } from '@/hooks/useArticles';
+import NewsletterForm from '@/components/forms/NewsletterForm';
 
-const fadeInUp  = {
+const fadeInUp = {
   hidden: { opacity: 0, y: 60 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     y: 0,
     transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }
   }
@@ -124,16 +127,21 @@ const blogPosts = [
 export default function BlogPage() {
   const [selectedCategory, setSelectedCategory] = useState('Todos');
   const [searchTerm, setSearchTerm] = useState('');
+  const { articles, isLoading, error, fetchArticles } = useArticles();
 
-  const filteredPosts = blogPosts.filter(post => {
+  useEffect(() => {
+    fetchArticles();
+  }, []);
+
+  const filteredPosts = articles?.filter(post => {
     const matchesCategory = selectedCategory === 'Todos' || post.category === selectedCategory;
     const matchesSearch = post.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         post.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase()));
+      post.excerpt.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (post.tags && post.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase())));
     return matchesCategory && matchesSearch;
-  });
+  }) || [];
 
-  const featuredPosts = blogPosts.filter(post => post.featured);
+  const featuredPosts = articles?.filter(post => post.featured) || [];
 
   const formatDate = (dateString: string) => {
     const date = new Date(dateString);
@@ -143,6 +151,43 @@ export default function BlogPage() {
       year: 'numeric'
     });
   };
+
+  // Loading state
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="text-center">
+          <Loader2 className="w-8 h-8 animate-spin text-primary-600 mx-auto mb-4" />
+          <p className="text-gray-600">Carregando artigos...</p>
+        </div>
+      </div>
+    );
+  }
+
+  // Error state
+  if (error) {
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="text-center max-w-md mx-auto px-4">
+          <div className="bg-red-50 border border-red-200 rounded-lg p-6">
+            <div className="text-red-600 mb-2">
+              <svg className="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <h3 className="text-lg font-semibold text-red-800 mb-2">Erro ao carregar artigos</h3>
+            <p className="text-red-700 mb-4">{error}</p>
+            <button
+              onClick={() => fetchArticles()}
+              className="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors"
+            >
+              Tentar novamente
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -165,21 +210,21 @@ export default function BlogPage() {
             variants={staggerContainer}
             className="text-center max-w-4xl mx-auto"
           >
-            <motion.h1 
-              variants={fadeInUp  as any}
+            <motion.h1
+              variants={fadeInUp as any}
               className="text-5xl md:text-6xl font-bold text-gray-900 mb-6"
             >
               Blog <span className="text-primary-600">ContabilPro</span>
             </motion.h1>
-            <motion.p 
-              variants={fadeInUp  as any}
+            <motion.p
+              variants={fadeInUp as any}
               className="text-xl text-gray-600 leading-relaxed mb-8"
             >
               Insights e dicas sobre contabilidade e gestão empresarial
             </motion.p>
-            
+
             {/* Search Bar */}
-            <motion.div variants={fadeInUp  as any} className="max-w-md mx-auto">
+            <motion.div variants={fadeInUp as any} className="max-w-md mx-auto">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
                 <input
@@ -204,7 +249,7 @@ export default function BlogPage() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.div variants={fadeInUp  as any} className="flex flex-wrap justify-center gap-4 mb-8">
+            <motion.div variants={fadeInUp as any} className="flex flex-wrap justify-center gap-4 mb-8">
               {categories.map((category) => {
                 const IconComponent = category.icon;
                 const isActive = selectedCategory === category.name;
@@ -214,14 +259,13 @@ export default function BlogPage() {
                   success: isActive ? 'bg-success-600 text-white' : 'bg-success-100 text-success-700 hover:bg-success-200',
                   warning: isActive ? 'bg-warning-600 text-white' : 'bg-warning-100 text-warning-700 hover:bg-warning-200'
                 };
-                
+
                 return (
                   <button
                     key={category.name}
                     onClick={() => setSelectedCategory(category.name)}
-                    className={`flex items-center px-4 py-2 rounded-full font-semibold transition-colors duration-300 ${
-                      colorClasses[category.color as keyof typeof colorClasses]
-                    }`}
+                    className={`flex items-center px-4 py-2 rounded-full font-semibold transition-colors duration-300 ${colorClasses[category.color as keyof typeof colorClasses]
+                      }`}
                   >
                     <IconComponent className="w-4 h-4 mr-2" />
                     {category.name} ({category.count})
@@ -243,18 +287,18 @@ export default function BlogPage() {
               viewport={{ once: true, margin: "-100px" }}
               variants={staggerContainer}
             >
-              <motion.h2 
-                variants={fadeInUp  as any}
+              <motion.h2
+                variants={fadeInUp as any}
                 className="text-3xl font-bold text-center text-gray-900 mb-12"
               >
                 Artigos em Destaque
               </motion.h2>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 {featuredPosts.map((post, index) => (
                   <motion.article
                     key={post.id}
-                    variants={fadeInUp  as any}
+                    variants={fadeInUp as any}
                     whileHover={{ y: -5, transition: { duration: 0.2 } }}
                     className="bg-white rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 overflow-hidden group"
                   >
@@ -269,14 +313,14 @@ export default function BlogPage() {
                         {post.category}
                       </div>
                     </div>
-                    
+
                     {/* Content */}
                     <div className="p-6">
                       <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-primary-600 transition-colors duration-300">
                         {post.title}
                       </h3>
                       <p className="text-gray-600 mb-4 line-clamp-3">{post.excerpt}</p>
-                      
+
                       {/* Meta */}
                       <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
                         <div className="flex items-center space-x-4">
@@ -286,7 +330,7 @@ export default function BlogPage() {
                           </div>
                           <div className="flex items-center">
                             <Calendar className="w-4 h-4 mr-1" />
-                            {formatDate(post.date)}
+                            {formatDate(post.createdAt)}
                           </div>
                           <div className="flex items-center">
                             <Clock className="w-4 h-4 mr-1" />
@@ -294,11 +338,11 @@ export default function BlogPage() {
                           </div>
                         </div>
                       </div>
-                      
+
                       {/* Tags */}
                       <div className="flex flex-wrap gap-2 mb-4">
                         {post.tags.slice(0, 3).map((tag, tagIndex) => (
-                          <span 
+                          <span
                             key={tagIndex}
                             className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full"
                           >
@@ -306,9 +350,9 @@ export default function BlogPage() {
                           </span>
                         ))}
                       </div>
-                      
+
                       {/* Read More */}
-                      <Link 
+                      <Link
                         href={`/blog/${post.id}`}
                         className="inline-flex items-center text-primary-600 hover:text-primary-700 font-semibold group"
                       >
@@ -333,7 +377,7 @@ export default function BlogPage() {
             viewport={{ once: true, margin: "-100px" }}
             variants={staggerContainer}
           >
-            <motion.div variants={fadeInUp  as any} className="flex items-center justify-between mb-12">
+            <motion.div variants={fadeInUp as any} className="flex items-center justify-between mb-12">
               <h2 className="text-3xl font-bold text-gray-900">
                 {selectedCategory === 'Todos' ? 'Todos os Artigos' : selectedCategory}
               </h2>
@@ -341,9 +385,9 @@ export default function BlogPage() {
                 {filteredPosts.length} artigo{filteredPosts.length !== 1 ? 's' : ''} encontrado{filteredPosts.length !== 1 ? 's' : ''}
               </div>
             </motion.div>
-            
+
             {filteredPosts.length === 0 ? (
-              <motion.div variants={fadeInUp  as any} className="text-center py-12">
+              <motion.div variants={fadeInUp as any} className="text-center py-12">
                 <Search className="w-16 h-16 text-gray-300 mx-auto mb-4" />
                 <h3 className="text-xl font-semibold text-gray-600 mb-2">Nenhum artigo encontrado</h3>
                 <p className="text-gray-500">Tente ajustar os filtros ou termo de pesquisa.</p>
@@ -353,7 +397,7 @@ export default function BlogPage() {
                 {filteredPosts.map((post, index) => (
                   <motion.article
                     key={post.id}
-                    variants={fadeInUp  as any}
+                    variants={fadeInUp as any}
                     whileHover={{ y: -5, transition: { duration: 0.2 } }}
                     className="bg-white rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-all duration-300 overflow-hidden group"
                   >
@@ -367,14 +411,14 @@ export default function BlogPage() {
                         {post.category}
                       </div>
                     </div>
-                    
+
                     {/* Content */}
                     <div className="p-5">
                       <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-primary-600 transition-colors duration-300 line-clamp-2">
                         {post.title}
                       </h3>
                       <p className="text-gray-600 text-sm mb-4 line-clamp-2">{post.excerpt}</p>
-                      
+
                       {/* Meta */}
                       <div className="flex items-center justify-between text-xs text-gray-500 mb-3">
                         <div className="flex items-center">
@@ -386,11 +430,11 @@ export default function BlogPage() {
                           {post.readTime}
                         </div>
                       </div>
-                      
+
                       {/* Tags */}
                       <div className="flex flex-wrap gap-1 mb-4">
                         {post.tags.slice(0, 2).map((tag, tagIndex) => (
-                          <span 
+                          <span
                             key={tagIndex}
                             className="text-xs bg-gray-100 text-gray-600 px-2 py-1 rounded-full"
                           >
@@ -398,9 +442,9 @@ export default function BlogPage() {
                           </span>
                         ))}
                       </div>
-                      
+
                       {/* Read More */}
-                      <Link 
+                      <Link
                         href={`/blog/${post.id}`}
                         className="inline-flex items-center text-primary-600 hover:text-primary-700 font-semibold text-sm group"
                       >
@@ -412,10 +456,10 @@ export default function BlogPage() {
                 ))}
               </div>
             )}
-            
+
             {/* Pagination */}
             {filteredPosts.length > 6 && (
-              <motion.div variants={fadeInUp  as any} className="flex justify-center mt-12">
+              <motion.div variants={fadeInUp as any} className="flex justify-center mt-12">
                 <div className="flex items-center space-x-2">
                   <button className="px-4 py-2 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors duration-300">
                     Anterior
@@ -449,29 +493,26 @@ export default function BlogPage() {
             variants={staggerContainer}
             className="text-center max-w-2xl mx-auto"
           >
-            <motion.h2 
-              variants={fadeInUp  as any}
+            <motion.h2
+              variants={fadeInUp as any}
               className="text-3xl font-bold text-white mb-4"
             >
               Receba nossos artigos por email
             </motion.h2>
-            <motion.p 
-              variants={fadeInUp  as any}
+            <motion.p
+              variants={fadeInUp as any}
               className="text-primary-100 mb-8"
             >
               Cadastre-se em nossa newsletter e receba semanalmente conteúdos exclusivos sobre contabilidade e gestão empresarial.
             </motion.p>
-            
-            <motion.div variants={fadeInUp  as any} className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
+
+            <motion.div variants={fadeInUp as any} className="max-w-md mx-auto">
+              <NewsletterForm
+                variant="inline"
                 placeholder="Seu melhor email"
-                className="flex-1 px-4 py-3 rounded-lg border-0 focus:ring-2 focus:ring-white/20 transition-all duration-300"
+                buttonText="Inscrever-se"
+                className="flex gap-4"
               />
-              <button className="bg-white text-primary-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300 flex items-center justify-center">
-                Inscrever-se
-                <ArrowRight className="w-4 h-4 ml-2" />
-              </button>
             </motion.div>
           </motion.div>
         </div>

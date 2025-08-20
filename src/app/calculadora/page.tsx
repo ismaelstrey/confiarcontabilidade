@@ -23,6 +23,7 @@ import { Label } from '@/components/ui/label'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Badge } from '@/components/ui/badge'
 import { Container } from '@/components/ui/container'
+import { useCalculator } from '@/hooks/useCalculator'
 
 interface CalculationResult {
   total: number
@@ -32,8 +33,7 @@ interface CalculationResult {
 
 export default function CalculadoraPage() {
   const [activeTab, setActiveTab] = useState('simples-nacional')
-  const [results, setResults] = useState<CalculationResult | null>(null)
-  const [isCalculating, setIsCalculating] = useState(false)
+  const { calculateTax, isLoading, error, result, clearResult } = useCalculator()
 
   // Simples Nacional Calculator
   const [simplesData, setSimplesData] = useState({
@@ -66,106 +66,54 @@ export default function CalculadoraPage() {
   ]
 
   const calculateSimples = async () => {
-    setIsCalculating(true)
-    await new Promise(resolve => setTimeout(resolve, 1000)) // Simula cálculo
-    
     const faturamento = parseFloat(simplesData.faturamento) || 0
     const anexoSelecionado = anexosSimples.find(a => a.value === simplesData.anexo)
-    const aliquota = anexoSelecionado?.aliquota || 0
     
-    const impostoTotal = (faturamento * aliquota) / 100
-    const irpj = impostoTotal * 0.25
-    const csll = impostoTotal * 0.15
-    const pis = impostoTotal * 0.10
-    const cofins = impostoTotal * 0.30
-    const inss = impostoTotal * 0.20
+    if (!faturamento || !anexoSelecionado) {
+      return
+    }
     
-    setResults({
-      total: impostoTotal,
-      breakdown: [
-        { label: 'IRPJ', value: irpj, percentage: 25 },
-        { label: 'CSLL', value: csll, percentage: 15 },
-        { label: 'PIS', value: pis, percentage: 10 },
-        { label: 'COFINS', value: cofins, percentage: 30 },
-        { label: 'INSS', value: inss, percentage: 20 }
-      ],
-      recommendations: [
-        'Mantenha o faturamento dentro do limite do Simples Nacional',
-        'Considere o planejamento tributário para otimizar a carga fiscal',
-        'Acompanhe mensalmente o faturamento acumulado'
-      ]
+    await calculateTax({
+      revenue: faturamento,
+      businessType: 'SIMPLES_NACIONAL',
+      employees: 0,
+      anexo: simplesData.anexo
     })
-    setIsCalculating(false)
   }
 
   const calculateFolha = async () => {
-    setIsCalculating(true)
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    
     const salario = parseFloat(folhaData.salario) || 0
     const dependentes = parseInt(folhaData.dependentes) || 0
-    const valeRefeicao = parseFloat(folhaData.valeRefeicao) || 0
     
-    const inss = Math.min(salario * 0.11, 751.99)
-    const irrf = Math.max((salario - inss - (dependentes * 189.59)) * 0.075 - 142.80, 0)
-    const fgts = salario * 0.08
-    const valeTransporte = folhaData.valeTransporte ? salario * 0.06 : 0
+    if (!salario) {
+      return
+    }
     
-    const totalDescontos = inss + irrf + valeTransporte
-    const salarioLiquido = salario - totalDescontos + valeRefeicao
-    
-    setResults({
-      total: salarioLiquido,
-      breakdown: [
-        { label: 'Salário Bruto', value: salario },
-        { label: 'INSS', value: -inss },
-        { label: 'IRRF', value: -irrf },
-        { label: 'Vale Transporte', value: -valeTransporte },
-        { label: 'Vale Refeição', value: valeRefeicao },
-        { label: 'FGTS (Empresa)', value: fgts }
-      ],
-      recommendations: [
-        'Verifique os limites de desconto do vale transporte',
-        'Considere benefícios fiscais para otimizar a folha',
-        'Mantenha documentação atualizada dos funcionários'
-      ]
+    await calculateTax({
+      revenue: salario,
+      businessType: 'FOLHA_PAGAMENTO',
+      employees: 1,
+      dependentes,
+      valeTransporte: folhaData.valeTransporte,
+      valeRefeicao: parseFloat(folhaData.valeRefeicao) || 0
     })
-    setIsCalculating(false)
   }
 
   const calculateLucro = async () => {
-    setIsCalculating(true)
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    
     const faturamento = parseFloat(lucroData.faturamento) || 0
     const despesas = parseFloat(lucroData.despesas) || 0
     
-    const lucroPresumido = faturamento * 0.32 // 32% para serviços
-    const irpj = lucroPresumido * 0.15
-    const csll = lucroPresumido * 0.09
-    const pis = faturamento * 0.0065
-    const cofins = faturamento * 0.03
+    if (!faturamento) {
+      return
+    }
     
-    const totalImpostos = irpj + csll + pis + cofins
-    const lucroLiquido = faturamento - totalImpostos - despesas
-    
-    setResults({
-      total: lucroLiquido,
-      breakdown: [
-        { label: 'Faturamento', value: faturamento },
-        { label: 'IRPJ', value: -irpj },
-        { label: 'CSLL', value: -csll },
-        { label: 'PIS', value: -pis },
-        { label: 'COFINS', value: -cofins },
-        { label: 'Despesas', value: -despesas }
-      ],
-      recommendations: [
-        'Compare com o Simples Nacional para verificar vantagens',
-        'Mantenha controle rigoroso das despesas dedutíveis',
-        'Considere investimentos para reduzir a base de cálculo'
-      ]
+    await calculateTax({
+      revenue: faturamento,
+      businessType: 'LUCRO_PRESUMIDO',
+      employees: 0,
+      atividade: lucroData.atividade,
+      despesas
     })
-    setIsCalculating(false)
   }
 
   const calculators = [
@@ -253,7 +201,7 @@ export default function CalculadoraPage() {
                   }`}
                   onClick={() => {
                     setActiveTab(calc.id)
-                    setResults(null)
+                    clearResult()
                   }}
                 >
                   <CardHeader className="text-center">
@@ -331,20 +279,20 @@ export default function CalculadoraPage() {
                           <Button 
                             onClick={calculateSimples} 
                             className="w-full" 
-                            disabled={!simplesData.faturamento || !simplesData.anexo || isCalculating}
+                            disabled={!simplesData.faturamento || !simplesData.anexo || isLoading}
                           >
-                            {isCalculating ? (
+                            {isLoading ? (
                               <motion.div
                                 animate={{ rotate: 360 }}
                                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                                 className="h-4 w-4 mr-2"
                               >
-                                <Calculator className="h-4 w-4" />
+                                <Building className="h-4 w-4" />
                               </motion.div>
                             ) : (
-                              <Calculator className="h-4 w-4 mr-2" />
+                              <Building className="h-4 w-4 mr-2" />
                             )}
-                            {isCalculating ? 'Calculando...' : 'Calcular Impostos'}
+                            {isLoading ? 'Calculando...' : 'Calcular Impostos'}
                           </Button>
                         </motion.div>
                       )}
@@ -400,9 +348,9 @@ export default function CalculadoraPage() {
                           <Button 
                             onClick={calculateFolha} 
                             className="w-full" 
-                            disabled={!folhaData.salario || isCalculating}
+                            disabled={!folhaData.salario || isLoading}
                           >
-                            {isCalculating ? (
+                            {isLoading ? (
                               <motion.div
                                 animate={{ rotate: 360 }}
                                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
@@ -413,7 +361,7 @@ export default function CalculadoraPage() {
                             ) : (
                               <Users className="h-4 w-4 mr-2" />
                             )}
-                            {isCalculating ? 'Calculando...' : 'Calcular Folha'}
+                            {isLoading ? 'Calculando...' : 'Calcular Folha'}
                           </Button>
                         </motion.div>
                       )}
@@ -462,9 +410,9 @@ export default function CalculadoraPage() {
                           <Button 
                             onClick={calculateLucro} 
                             className="w-full" 
-                            disabled={!lucroData.faturamento || !lucroData.atividade || isCalculating}
+                            disabled={!lucroData.faturamento || !lucroData.atividade || isLoading}
                           >
-                            {isCalculating ? (
+                            {isLoading ? (
                               <motion.div
                                 animate={{ rotate: 360 }}
                                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
@@ -475,7 +423,7 @@ export default function CalculadoraPage() {
                             ) : (
                               <TrendingUp className="h-4 w-4 mr-2" />
                             )}
-                            {isCalculating ? 'Calculando...' : 'Calcular Impostos'}
+                            {isLoading ? 'Calculando...' : 'Calcular Impostos'}
                           </Button>
                         </motion.div>
                       )}
@@ -500,8 +448,20 @@ export default function CalculadoraPage() {
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
+                    {error && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="mb-4 p-4 bg-red-50 border border-red-200 rounded-lg"
+                      >
+                        <div className="flex items-center text-red-800">
+                          <AlertCircle className="h-5 w-5 mr-2" />
+                          <span className="text-sm font-medium">Erro no cálculo: {error}</span>
+                        </div>
+                      </motion.div>
+                    )}
                     <AnimatePresence>
-                      {results ? (
+                      {result ? (
                         <motion.div
                           initial={{ opacity: 0, scale: 0.9 }}
                           animate={{ opacity: 1, scale: 1 }}
@@ -517,7 +477,7 @@ export default function CalculadoraPage() {
                               {new Intl.NumberFormat('pt-BR', {
                                 style: 'currency',
                                 currency: 'BRL'
-                              }).format(results.total)}
+                              }).format(result.total)}
                             </p>
                           </div>
 
@@ -525,7 +485,7 @@ export default function CalculadoraPage() {
 
                           <div className="space-y-3">
                             <h4 className="font-semibold text-gray-900">Detalhamento:</h4>
-                            {results.breakdown.map((item, index) => (
+                            {result.breakdown?.map((item, index) => (
                               <motion.div
                                 key={index}
                                 initial={{ opacity: 0, x: -10 }}
@@ -553,7 +513,7 @@ export default function CalculadoraPage() {
                             ))}
                           </div>
 
-                          {results.recommendations && (
+                          {result.recommendations && (
                             <>
                               <div className="border-t border-gray-200 my-4" />
                               <div className="space-y-2">
@@ -561,7 +521,7 @@ export default function CalculadoraPage() {
                                   <Info className="h-4 w-4 mr-2 text-blue-600" />
                                   Recomendações:
                                 </h4>
-                                {results.recommendations.map((rec, index) => (
+                                {result.recommendations.map((rec, index) => (
                                   <motion.div
                                     key={index}
                                     initial={{ opacity: 0, y: 10 }}

@@ -111,6 +111,10 @@ RUN pnpm install --frozen-lockfile
 # Gerar cliente Prisma
 RUN pnpm prisma generate
 
+# Executar seed
+
+
+
 # Copiar script de inicialização
 COPY scripts/docker-init.sh /usr/local/bin/docker-init.sh
 RUN chmod +x /usr/local/bin/docker-init.sh

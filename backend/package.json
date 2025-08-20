@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "Backend API para sistema de contabilidade especializado em organizações religiosas",
   "main": "dist/server.js",
+  "postinstall": "prisma generate && tsx src/prisma/seed.ts",
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
@@ -71,7 +75,7 @@
     "@types/jest": "^29.5.14",
     "@types/jsonwebtoken": "^9.0.7",
     "@types/multer": "^1.4.12",
-    "@types/node": "^22.8.6",
+    "@types/node": "^24.3.0",
     "@types/nodemailer": "^7.0.0",
     "@types/pdfkit": "^0.13.5",
     "@types/supertest": "^6.0.2",
@@ -87,8 +91,9 @@
     "prisma": "^5.22.0",
     "supertest": "^7.0.0",
     "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
     "tsx": "^4.19.2",
-    "typescript": "^5.6.3"
+    "typescript": "^5.9.2"
   },
   "engines": {
     "node": ">=18.0.0",
@@ -96,7 +101,13 @@
   },
   "pnpm": {
     "onlyBuiltDependencies": [
-      "bcrypt"
+      "@prisma/client",
+      "@prisma/engines",
+      "@scarf/scarf",
+      "bcrypt",
+      "esbuild",
+      "prisma",
+      "sharp"
     ]
   }
 }

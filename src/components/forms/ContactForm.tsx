@@ -12,6 +12,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { useContacts } from '@/hooks/useContacts';
 // import { useToast } from '@/components/ui/toast';
 
 const contactSchema = z.object({
@@ -42,8 +43,8 @@ interface ContactFormProps {
 }
 
 export function ContactForm({className}:{className?:string}) {
-  const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const { createContact, isLoading } = useContacts();
   // const { toast } = useToast();
 
   const {
@@ -70,20 +71,15 @@ export function ContactForm({className}:{className?:string}) {
   ];
 
   const onSubmit = async (data: ContactFormData) => {
-    setIsSubmitting(true);
-    
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
+      await createContact({
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        company: data.company || '',
+        service: data.service,
+        message: data.message
       });
-      
-      if (!response.ok) {
-        throw new Error('Erro ao enviar mensagem');
-      }
       
       setIsSuccess(true);
       reset();
@@ -95,14 +91,13 @@ export function ContactForm({className}:{className?:string}) {
       //   duration: 5000
       // });
     } catch (error) {
+      console.error('Erro ao enviar contato:', error);
       // toast({
       //   type: 'error',
       //   title: 'Erro ao enviar mensagem',
       //   description: 'Tente novamente ou entre em contato via WhatsApp.',
       //   duration: 5000
       // });
-    } finally {
-      setIsSubmitting(false);
     }
   };
 
@@ -352,10 +347,10 @@ export function ContactForm({className}:{className?:string}) {
         variant="primary"
         size="lg"
         fullWidth
-        disabled={isSubmitting}
+        disabled={isLoading}
         className="relative"
       >
-        {isSubmitting ? (
+        {isLoading ? (
           <>
             <Loader2 className="w-5 h-5 mr-2 animate-spin" />
             Enviando...

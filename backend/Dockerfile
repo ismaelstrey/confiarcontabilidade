@@ -39,7 +39,10 @@ FROM node:18-alpine AS runtime
 RUN apk add --no-cache \
     dumb-init \
     curl \
-    tzdata
+    tzdata \
+    openssl \
+    openssl-dev \
+    ca-certificates
 
 # Criar usuário não-root
 RUN addgroup -g 1001 -S nodejs
@@ -88,7 +91,12 @@ RUN npm install -g pnpm
 RUN apk add --no-cache \
     git \
     curl \
-    tzdata
+    tzdata \
+    openssl \
+    openssl-dev \
+    ca-certificates \
+    postgresql-client \
+    redis
 
 # Definir diretório de trabalho
 WORKDIR /app
@@ -103,6 +111,10 @@ RUN pnpm install --frozen-lockfile
 # Gerar cliente Prisma
 RUN pnpm prisma generate
 
+# Copiar script de inicialização
+COPY scripts/docker-init.sh /usr/local/bin/docker-init.sh
+RUN chmod +x /usr/local/bin/docker-init.sh
+
 # Criar diretórios necessários
 RUN mkdir -p uploads logs temp
 
@@ -115,7 +127,7 @@ ENV PORT=3001
 ENV API_VERSION=v1
 
 # Comando para desenvolvimento (com hot reload)
-CMD ["pnpm", "dev"]
+CMD ["/usr/local/bin/docker-init.sh", "pnpm", "dev"]
 
 # ==============================================
 # INSTRUÇÕES DE USO:

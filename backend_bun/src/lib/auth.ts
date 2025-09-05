@@ -1,5 +1,5 @@
 import { sign, verify } from 'hono/jwt';
-import type { JWTPayload } from 'hono/jwt';
+import { JWTPayload } from 'hono/utils/jwt/types';
 
 /**
  * Interface para dados do usuário no token
@@ -35,7 +35,7 @@ const JWT_CONFIG = {
 const parseExpirationTime = (time: string): number => {
   const unit = time.slice(-1);
   const value = parseInt(time.slice(0, -1));
-  
+
   switch (unit) {
     case 's': return value;
     case 'm': return value * 60;
@@ -51,7 +51,7 @@ const parseExpirationTime = (time: string): number => {
 export const generateAccessToken = async (payload: TokenPayload): Promise<string> => {
   const expirationTime = parseExpirationTime(JWT_CONFIG.expiresIn);
   const now = Math.floor(Date.now() / 1000);
-  
+
   const jwtPayload: JWTPayload = {
     ...payload,
     iat: now,
@@ -67,7 +67,7 @@ export const generateAccessToken = async (payload: TokenPayload): Promise<string
 export const generateRefreshToken = async (payload: TokenPayload): Promise<string> => {
   const expirationTime = parseExpirationTime(JWT_CONFIG.refreshExpiresIn);
   const now = Math.floor(Date.now() / 1000);
-  
+
   const jwtPayload: JWTPayload = {
     ...payload,
     type: 'refresh',
@@ -100,7 +100,7 @@ export const generateTokenPair = async (payload: TokenPayload): Promise<TokenRes
 export const verifyAccessToken = async (token: string): Promise<TokenPayload> => {
   try {
     const payload = await verify(token, JWT_CONFIG.secret) as JWTPayload & TokenPayload;
-    
+
     if (!payload.userId || !payload.email || !payload.role) {
       throw new Error('Token payload inválido');
     }
@@ -121,7 +121,7 @@ export const verifyAccessToken = async (token: string): Promise<TokenPayload> =>
 export const verifyRefreshToken = async (token: string): Promise<TokenPayload> => {
   try {
     const payload = await verify(token, JWT_CONFIG.refreshSecret) as JWTPayload & TokenPayload & { type?: string };
-    
+
     if (payload.type !== 'refresh') {
       throw new Error('Tipo de token inválido');
     }
@@ -163,11 +163,11 @@ export const verifyPassword = async (password: string, hash: string): Promise<bo
 export const generateRandomToken = (length: number = 32): string => {
   const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   let result = '';
-  
+
   for (let i = 0; i < length; i++) {
     result += chars.charAt(Math.floor(Math.random() * chars.length));
   }
-  
+
   return result;
 };
 
@@ -178,7 +178,7 @@ export const extractTokenFromHeader = (authHeader: string | undefined): string |
   if (!authHeader || !authHeader.startsWith('Bearer ')) {
     return null;
   }
-  
+
   return authHeader.substring(7);
 };
 
@@ -190,15 +190,15 @@ export const isTokenNearExpiry = (token: string, thresholdMinutes: number = 5): 
     // Decodificar sem verificar assinatura para obter exp
     const parts = token.split('.');
     if (parts.length !== 3) return true;
-    
+
     const payload = JSON.parse(atob(parts[1]));
     const exp = payload.exp;
-    
+
     if (!exp) return true;
-    
+
     const now = Math.floor(Date.now() / 1000);
     const threshold = thresholdMinutes * 60;
-    
+
     return (exp - now) <= threshold;
   } catch (error) {
     return true;

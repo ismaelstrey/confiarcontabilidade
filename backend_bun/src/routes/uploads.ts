@@ -1,9 +1,10 @@
-import { Hono } from 'hono';
+import { Hono, Context } from 'hono';
 import { zValidator } from '@hono/zod-validator';
 import { z } from 'zod';
 import { prisma } from '../lib/prisma';
 import { authMiddleware, authorize } from '../middlewares/auth';
 import { createError, asyncHandler } from '../middlewares/errorHandler';
+import { rateLimiters } from '../middlewares/advancedRateLimit';
 import { writeFile, mkdir } from 'fs/promises';
 import { existsSync } from 'fs';
 import path from 'path';
@@ -81,14 +82,15 @@ async function ensureUploadDir() {
  * Upload de arquivo
  */
 uploads.post('/',
+  rateLimiters.upload,
   authMiddleware,
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: Context) => {
     const user = c.get('user');
-    
+
     // Obter arquivo do form data
     const formData = await c.req.formData();
     const file = formData.get('file') as File;
-    
+
     if (!file) {
       throw createError('Nenhum arquivo foi enviado', 400, 'NO_FILE_PROVIDED');
     }
@@ -121,7 +123,8 @@ uploads.post('/',
           size: file.size,
           path: relativePath,
           type: getFileType(file.type),
-          uploadedById: user.id
+          userId: user.id,
+          mimetype: file.type,
         },
         select: {
           id: true,
@@ -132,7 +135,7 @@ uploads.post('/',
           path: true,
           type: true,
           createdAt: true,
-          uploadedBy: {
+          user: {
             select: {
               id: true,
               name: true
@@ -160,21 +163,21 @@ uploads.post('/',
 uploads.get('/',
   authMiddleware,
   zValidator('query', querySchema),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const user = c.get('user');
     const { page = 1, limit = 10, type, search, sortBy, sortOrder } = c.req.valid('query');
     const skip = (page - 1) * limit;
 
     // Construir filtros
     const where: any = {};
-    
+
     // Se não for admin/moderador, mostrar apenas próprios uploads
     if (user.role !== 'ADMIN' && user.role !== 'MODERATOR') {
       where.uploadedById = user.id;
     }
-    
+
     if (type) where.type = type;
-    
+
     if (search) {
       where.OR = [
         { originalName: { contains: search, mode: 'insensitive' } },
@@ -196,7 +199,7 @@ uploads.get('/',
           type: true,
           createdAt: true,
           updatedAt: true,
-          uploadedBy: {
+          user: {
             select: {
               id: true,
               name: true
@@ -231,7 +234,7 @@ uploads.get('/',
  */
 uploads.get('/:id',
   authMiddleware,
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const user = c.get('user');
     const id = c.req.param('id');
 
@@ -247,7 +250,7 @@ uploads.get('/:id',
         type: true,
         createdAt: true,
         updatedAt: true,
-        uploadedBy: {
+        user: {
           select: {
             id: true,
             name: true
@@ -261,7 +264,7 @@ uploads.get('/:id',
     }
 
     // Verificar permissões
-    if (user.role !== 'ADMIN' && user.role !== 'MODERATOR' && user.id !== upload.uploadedBy.id) {
+    if (user.role !== 'ADMIN' && user.role !== 'MODERATOR' && user.id !== upload.user.id) {
       throw createError('Sem permissão para acessar este arquivo', 403, 'FORBIDDEN');
     }
 
@@ -278,7 +281,7 @@ uploads.get('/:id',
  */
 uploads.delete('/:id',
   authMiddleware,
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const user = c.get('user');
     const id = c.req.param('id');
 
@@ -288,7 +291,7 @@ uploads.delete('/:id',
         id: true,
         filename: true,
         path: true,
-        uploadedById: true
+        userId: true
       }
     });
 
@@ -297,7 +300,7 @@ uploads.delete('/:id',
     }
 
     // Verificar permissões
-    if (user.role !== 'ADMIN' && user.role !== 'MODERATOR' && user.id !== upload.uploadedById) {
+    if (user.role !== 'ADMIN' && user.role !== 'MODERATOR' && user.id !== upload.userId) {
       throw createError('Sem permissão para deletar este arquivo', 403, 'FORBIDDEN');
     }
 
@@ -334,9 +337,9 @@ uploads.delete('/:id',
  * Servir arquivo estático
  */
 uploads.get('/serve/:filename',
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const filename = c.req.param('filename');
-    
+
     // Verificar se arquivo existe no banco
     const upload = await prisma.upload.findFirst({
       where: { filename },
@@ -354,11 +357,11 @@ uploads.get('/serve/:filename',
     }
 
     const filePath = path.join(process.cwd(), upload.path);
-    
+
     try {
       const file = Bun.file(filePath);
       const exists = await file.exists();
-      
+
       if (!exists) {
         throw createError('Arquivo físico não encontrado', 404, 'PHYSICAL_FILE_NOT_FOUND');
       }
@@ -367,7 +370,7 @@ uploads.get('/serve/:filename',
       c.header('Content-Type', upload.mimeType);
       c.header('Content-Disposition', `inline; filename="${upload.originalName}"`);
       c.header('Cache-Control', 'public, max-age=31536000'); // Cache por 1 ano
-      
+
       return c.body(await file.arrayBuffer());
     } catch (error) {
       console.error('Erro ao servir arquivo:', error);
@@ -383,7 +386,7 @@ uploads.get('/serve/:filename',
 uploads.get('/stats',
   authMiddleware,
   authorize('ADMIN', 'MODERATOR'),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const [totalUploads, totalSize, typeStats, recentUploads] = await Promise.all([
       // Total de uploads
       prisma.upload.count(),

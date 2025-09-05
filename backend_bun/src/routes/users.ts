@@ -1,12 +1,19 @@
-import { Hono } from 'hono';
+import { Hono, Context } from 'hono';
 import { zValidator } from '@hono/zod-validator';
 import { z } from 'zod';
 import { prisma } from '../lib/prisma';
 import { hashPassword } from '../lib/auth';
 import { authMiddleware, authorize, authorizeOwnerOrAdmin } from '../middlewares/auth';
 import { createError, asyncHandler } from '../middlewares/errorHandler';
+import { rateLimiters, createUserRateLimit } from '../middlewares/advancedRateLimit';
 
 const users = new Hono();
+
+// Rotas protegidas (requerem autenticação) com rate limiting baseado no usuário
+users.use('/profile/*', createUserRateLimit({ maxRequests: 50, windowMs: 15 * 60 * 1000 }));
+users.use('/profile/*', authMiddleware);
+users.use('/:id/*', createUserRateLimit({ maxRequests: 30, windowMs: 15 * 60 * 1000 }));
+users.use('/:id/*', authMiddleware, authorizeOwnerOrAdmin);
 
 // Schemas de validação
 const updateProfileSchema = z.object({
@@ -45,7 +52,7 @@ const querySchema = z.object({
  */
 users.get('/profile',
   authMiddleware,
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const user = c.get('user');
 
     const profile = await prisma.user.findUnique({
@@ -87,17 +94,17 @@ users.get('/profile',
 users.put('/profile',
   authMiddleware,
   zValidator('json', updateProfileSchema),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const user = c.get('user');
     const { name, avatar, bio, phone, address } = c.req.valid('json');
 
     // Atualizar dados do usuário
-    const updateData: any = {};
+    const updateData: { name?: string; avatar?: string } = {};
     if (name) updateData.name = name;
     if (avatar) updateData.avatar = avatar;
 
     // Atualizar perfil
-    const profileData: any = {};
+    const profileData: { bio?: string; phone?: string; address?: string } = {};
     if (bio !== undefined) profileData.bio = bio;
     if (phone !== undefined) profileData.phone = phone;
     if (address !== undefined) profileData.address = address;
@@ -145,7 +152,7 @@ users.put('/profile',
  */
 users.delete('/delete-account',
   authMiddleware,
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const user = c.get('user');
 
     // Não permitir que admin delete sua própria conta se for o único admin
@@ -178,22 +185,29 @@ users.get('/',
   authMiddleware,
   authorize('ADMIN'),
   zValidator('query', querySchema),
-  asyncHandler(async (c) => {
-    const { page = 1, limit = 10, search, role, isActive } = c.req.valid('query');
-    const skip = (page - 1) * limit;
+  asyncHandler(async (c: any) => {
+    const { page = 1, limit = 10, search, role, isActive } = await c.req.valid('query');
+    const skip = (Number(page) - 1) * Number(limit);
 
     // Construir filtros
-    const where: any = {};
-    
+    const where: {
+      OR?: Array<{
+        name?: { contains: string; mode: 'insensitive' };
+        email?: { contains: string; mode: 'insensitive' };
+      }>;
+      role?: string;
+      isActive?: boolean;
+    } = {};
+
     if (search) {
       where.OR = [
         { name: { contains: search, mode: 'insensitive' } },
         { email: { contains: search, mode: 'insensitive' } }
       ];
     }
-    
+
     if (role) where.role = role;
-    if (isActive !== undefined) where.isActive = isActive;
+    if (typeof isActive === 'boolean') where.isActive = isActive;
 
     // Buscar usuários
     const [users, total] = await Promise.all([
@@ -210,7 +224,7 @@ users.get('/',
           updatedAt: true
         },
         skip,
-        take: limit,
+        take: Number(limit),
         orderBy: { createdAt: 'desc' }
       }),
       prisma.user.count({ where })
@@ -224,7 +238,7 @@ users.get('/',
           page,
           limit,
           total,
-          pages: Math.ceil(total / limit)
+          pages: Math.ceil(total / Number(limit))
         }
       }
     });
@@ -239,8 +253,8 @@ users.post('/',
   authMiddleware,
   authorize('ADMIN'),
   zValidator('json', createUserSchema),
-  asyncHandler(async (c) => {
-    const { name, email, password, role } = c.req.valid('json');
+  asyncHandler(async (c: any) => {
+    const { name, email, password, role } = await c.req.valid('json');
 
     // Verificar se email já existe
     const existingUser = await prisma.user.findUnique({
@@ -287,7 +301,7 @@ users.post('/',
 users.get('/:id',
   authMiddleware,
   authorizeOwnerOrAdmin,
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const id = c.req.param('id');
 
     const user = await prisma.user.findUnique({
@@ -330,9 +344,9 @@ users.put('/:id',
   authMiddleware,
   authorize('ADMIN'),
   zValidator('json', updateUserSchema),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const id = c.req.param('id');
-    const updateData = c.req.valid('json');
+    const updateData = await c.req.valid('json');
 
     // Verificar se usuário existe
     const existingUser = await prisma.user.findUnique({
@@ -384,7 +398,7 @@ users.put('/:id',
 users.delete('/:id',
   authMiddleware,
   authorize('ADMIN'),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const id = c.req.param('id');
     const currentUser = c.get('user');
 

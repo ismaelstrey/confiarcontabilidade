@@ -10,13 +10,7 @@ const globalForPrisma = globalThis as unknown as {
 /**
  * Instância do Prisma Client com configurações otimizadas
  */
-export const prisma = globalForPrisma.prisma ??
-  new PrismaClient({
-    log: process.env.NODE_ENV === 'development' 
-      ? ['query', 'error', 'warn'] 
-      : ['error'],
-    errorFormat: 'pretty',
-  });
+export const prisma = globalForPrisma.prisma ?? new PrismaClient();
 
 // Evitar múltiplas instâncias em desenvolvimento
 if (process.env.NODE_ENV !== 'production') {
@@ -70,23 +64,27 @@ export const executeTransaction = async <T>(
   maxRetries: number = 3
 ): Promise<T> => {
   let lastError: Error;
-  
+
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
-      return await prisma.$transaction(fn);
+      return await prisma.$transaction(async (tx) => fn(tx as PrismaClient));
     } catch (error: any) {
       lastError = error;
       console.warn(`❌ Tentativa ${attempt} de transação falhou:`, error.message);
-      
+      if (error.code === 'P2002') {
+        console.warn('⚠️ Violação de unicidade detectada, tentando novamente...');
+        continue;
+      }
+
       if (attempt === maxRetries) {
         break;
       }
-      
+
       // Aguardar antes de tentar novamente
       await new Promise(resolve => setTimeout(resolve, attempt * 1000));
     }
   }
-  
+
   throw lastError!;
 };
 
@@ -106,22 +104,34 @@ export const clearQueryCache = async (): Promise<void> => {
 };
 
 /**
+ * Interface para estatísticas do banco
+ */
+interface DatabaseStats {
+  schemaname: string;
+  tablename: string;
+  attname: string;
+  n_distinct: number;
+  correlation: number;
+}
+
+/**
  * Estatísticas de performance do banco
  */
-export const getDatabaseStats = async () => {
+export const getDatabaseStats = async (): Promise<DatabaseStats[] | null> => {
   try {
-    const stats = await prisma.$queryRaw`
+    // Para SQLite, vamos usar uma query mais simples
+    const stats = await prisma.$queryRaw<DatabaseStats[]>`
       SELECT 
-        schemaname,
-        tablename,
-        attname,
-        n_distinct,
-        correlation
-      FROM pg_stats 
-      WHERE schemaname = 'public'
+        'main' as schemaname,
+        name as tablename,
+        name as attname,
+        0 as n_distinct,
+        0.0 as correlation
+      FROM sqlite_master 
+      WHERE type = 'table'
       LIMIT 10
     `;
-    
+
     return stats;
   } catch (error) {
     console.error('❌ Erro ao obter estatísticas do banco:', error);

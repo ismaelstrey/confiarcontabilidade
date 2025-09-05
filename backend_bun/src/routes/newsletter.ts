@@ -4,6 +4,7 @@ import { z } from 'zod';
 import { prisma } from '../lib/prisma';
 import { authMiddleware, authorize } from '../middlewares/auth';
 import { createError, asyncHandler } from '../middlewares/errorHandler';
+import { rateLimiters } from '../middlewares/advancedRateLimit';
 
 const newsletter = new Hono();
 
@@ -36,8 +37,9 @@ const updateSubscriberSchema = z.object({
  * Inscrever-se na newsletter
  */
 newsletter.post('/subscribe',
+  rateLimiters.contact,
   zValidator('json', subscribeSchema),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const { email, name } = c.req.valid('json');
 
     // Verificar se email já está inscrito
@@ -107,7 +109,7 @@ newsletter.post('/subscribe',
  */
 newsletter.post('/unsubscribe',
   zValidator('json', unsubscribeSchema),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const { email } = c.req.valid('json');
 
     const subscriber = await prisma.newsletter.findUnique({
@@ -149,20 +151,20 @@ newsletter.get('/subscribers',
   authMiddleware,
   authorize('ADMIN', 'MODERATOR'),
   zValidator('query', querySchema),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const { page = 1, limit = 10, search, isActive, sortBy, sortOrder } = c.req.valid('query');
     const skip = (page - 1) * limit;
 
     // Construir filtros
     const where: any = {};
-    
+
     if (search) {
       where.OR = [
         { email: { contains: search, mode: 'insensitive' } },
         { name: { contains: search, mode: 'insensitive' } }
       ];
     }
-    
+
     if (isActive !== undefined) where.isActive = isActive;
 
     // Buscar inscritos
@@ -206,7 +208,7 @@ newsletter.get('/subscribers',
 newsletter.get('/subscribers/:id',
   authMiddleware,
   authorize('ADMIN', 'MODERATOR'),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const id = c.req.param('id');
 
     const subscriber = await prisma.newsletter.findUnique({
@@ -240,7 +242,7 @@ newsletter.put('/subscribers/:id',
   authMiddleware,
   authorize('ADMIN', 'MODERATOR'),
   zValidator('json', updateSubscriberSchema),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const id = c.req.param('id');
     const updateData = c.req.valid('json');
 
@@ -280,7 +282,7 @@ newsletter.put('/subscribers/:id',
 newsletter.delete('/subscribers/:id',
   authMiddleware,
   authorize('ADMIN'),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const id = c.req.param('id');
 
     const subscriber = await prisma.newsletter.findUnique({
@@ -309,7 +311,7 @@ newsletter.delete('/subscribers/:id',
 newsletter.get('/stats',
   authMiddleware,
   authorize('ADMIN', 'MODERATOR'),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const [totalSubscribers, activeSubscribers, inactiveSubscribers, recentSubscribers] = await Promise.all([
       // Total de inscritos
       prisma.newsletter.count(),
@@ -376,7 +378,7 @@ newsletter.post('/bulk-action',
     action: z.enum(['activate', 'deactivate', 'delete']),
     subscriberIds: z.array(z.string()).min(1, 'Pelo menos um inscrito deve ser selecionado')
   })),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const { action, subscriberIds } = c.req.valid('json');
 
     // Verificar se todos os IDs existem
@@ -444,7 +446,7 @@ newsletter.post('/bulk-action',
       message,
       data: {
         action,
-        affectedCount: result.count
+        affectedCount: result?.count || 0
       }
     });
   })

@@ -232,7 +232,7 @@ export function ContactForm({className}:{className?:string}) {
           id="phone"
           {...register('phone')}
           onChange={handlePhoneChange}
-          placeholder="(11) 99999-9999"
+          placeholder="(51) 99999-9999"
           className={errors.phone ? 'border-red-500' : ''}
           maxLength={15}
         />
@@ -376,7 +376,7 @@ export function ContactForm({className}:{className?:string}) {
           >
             <a href="tel:+5511999999999">
               <Phone className="w-4 h-4 mr-2" />
-              (11) 99999-9999
+              (51) 99916-0766
             </a>
           </Button>
           <Button
@@ -384,7 +384,7 @@ export function ContactForm({className}:{className?:string}) {
             size="sm"
             asChild
           >
-            <a href="mailto:contato@contabilpro.com.br">
+            <a href="mailto:contato@contabilidadeigrejinha.com.br">
               <Mail className="w-4 h-4 mr-2" />
               Email
             </a>
@@ -394,7 +394,7 @@ export function ContactForm({className}:{className?:string}) {
             size="sm"
             asChild
           >
-            <a href="https://wa.me/5511999999999" target="_blank" rel="noopener noreferrer">
+            <a href="https://wa.me/5551999160766" target="_blank" rel="noopener noreferrer">
               <MessageCircle className="w-4 h-4 mr-2" />
               WhatsApp
             </a>

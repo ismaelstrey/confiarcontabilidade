@@ -3,6 +3,7 @@ import { Hono } from 'hono';
 import { prettyJSON } from 'hono/pretty-json';
 import { secureHeaders } from 'hono/secure-headers';
 import { timing } from 'hono/timing';
+import { rateLimiters } from './middlewares/advancedRateLimit';
 
 // Importar rotas
 import authRoutes from './routes/auth';
@@ -13,6 +14,7 @@ import calculatorRoutes from './routes/calculator';
 import newsletterRoutes from './routes/newsletter';
 import uploadRoutes from './routes/uploads';
 import adminRoutes from './routes/admin';
+import { docsRoutes } from './routes/docs';
 
 // Importar middlewares customizados
 import {
@@ -38,6 +40,9 @@ app.use('*', timing());
 app.use('*', prettyJSON());
 app.use('*', secureHeaders());
 
+// Rate limiting global para todas as rotas da API
+app.use('/api/*', rateLimiters.general);
+
 // CORS customizado baseado no ambiente
 app.use('*', async (c, next) => {
   const origin = c.req.header('origin');
@@ -62,7 +67,7 @@ app.use('*', async (c, next) => {
 
   // Responder a requisições OPTIONS (preflight)
   if (method === 'OPTIONS') {
-    return c.text('', 204);
+    return c.text('', { status: 200 });
   }
 
   await next();
@@ -123,6 +128,9 @@ api.route('/admin', adminRoutes);
 // Montar API com versionamento
 app.route(`/api/${server.apiVersion}`, api);
 
+// Documentação da API
+app.route('/api/docs', docsRoutes);
+
 // Rota raiz
 app.get('/', (c) => {
   return c.json({
@@ -162,13 +170,13 @@ console.log(`🔒 CORS Origins: ${corsConfig.origins.join(', ')}`);
 // Graceful shutdown
 process.on('SIGINT', () => {
   console.log('\n🛑 Encerrando servidor...');
-  server.stop();
+  bunServer.stop();
   process.exit(0);
 });
 
 process.on('SIGTERM', () => {
   console.log('\n🛑 Encerrando servidor...');
-  server.stop();
+  bunServer.stop();
   process.exit(0);
 });
 

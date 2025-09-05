@@ -4,6 +4,7 @@ import { z } from 'zod';
 import { prisma } from '../lib/prisma';
 import { authMiddleware, authorize, optionalAuth } from '../middlewares/auth';
 import { createError, asyncHandler } from '../middlewares/errorHandler';
+import { rateLimiters } from '../middlewares/advancedRateLimit';
 
 const articles = new Hono();
 
@@ -49,16 +50,17 @@ const querySchema = z.object({
  * Listar artigos com filtros e paginação
  */
 articles.get('/',
+  rateLimiters.publicApi,
   optionalAuth,
   zValidator('query', querySchema),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const user = c.get('user');
     const { page = 1, limit = 10, search, category, tag, author, published, sortBy, sortOrder } = c.req.valid('query');
     const skip = (page - 1) * limit;
 
     // Construir filtros
     const where: any = {};
-    
+
     // Se não for admin/moderador, mostrar apenas artigos publicados
     if (!user || (user.role !== 'ADMIN' && user.role !== 'MODERATOR')) {
       where.published = true;
@@ -193,7 +195,7 @@ articles.post('/',
   authMiddleware,
   authorize('ADMIN', 'MODERATOR'),
   zValidator('json', createArticleSchema),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const user = c.get('user');
     const { title, content, excerpt, featuredImage, published, categoryIds, tagIds } = c.req.valid('json');
 
@@ -226,12 +228,12 @@ articles.post('/',
         published,
         authorId: user.id,
         categories: categoryIds ? {
-          create: categoryIds.map(categoryId => ({
+          create: categoryIds.map((categoryId: string) => ({
             categoryId
           }))
         } : undefined,
         tags: tagIds ? {
-          create: tagIds.map(tagId => ({
+          create: tagIds.map((tagId: string) => ({
             tagId
           }))
         } : undefined
@@ -293,8 +295,9 @@ articles.post('/',
  * Obter artigo por slug
  */
 articles.get('/:slug',
+  rateLimiters.publicApi,
   optionalAuth,
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const user = c.get('user');
     const slug = c.req.param('slug');
 
@@ -340,25 +343,21 @@ articles.get('/:slug',
           }
         },
         comments: {
-          where: { published: true },
+          where: { approved: true },
           select: {
             id: true,
             content: true,
             createdAt: true,
-            author: {
-              select: {
-                id: true,
-                name: true,
-                avatar: true
-              }
-            }
+            authorName: true,
+            authorEmail: true
+
           },
           orderBy: { createdAt: 'desc' }
         },
         _count: {
           select: {
             likes: true,
-            comments: { where: { published: true } }
+            comments: { where: { approved: true } }
           }
         }
       }
@@ -408,7 +407,7 @@ articles.get('/:slug',
 articles.put('/:slug',
   authMiddleware,
   zValidator('json', updateArticleSchema),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const user = c.get('user');
     const slug = c.req.param('slug');
     const updateData = c.req.valid('json');
@@ -459,7 +458,7 @@ articles.put('/:slug',
     if (categoryIds) {
       finalUpdateData.categories = {
         deleteMany: {},
-        create: categoryIds.map(categoryId => ({ categoryId }))
+        create: categoryIds.map((categoryId: string) => ({ categoryId }))
       };
     }
 
@@ -467,7 +466,7 @@ articles.put('/:slug',
     if (tagIds) {
       finalUpdateData.tags = {
         deleteMany: {},
-        create: tagIds.map(tagId => ({ tagId }))
+        create: tagIds.map((tagId: string) => ({ tagId }))
       };
     }
 
@@ -532,7 +531,7 @@ articles.put('/:slug',
  */
 articles.delete('/:slug',
   authMiddleware,
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const user = c.get('user');
     const slug = c.req.param('slug');
 
@@ -567,7 +566,7 @@ articles.delete('/:slug',
  */
 articles.post('/:slug/like',
   authMiddleware,
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const user = c.get('user');
     const slug = c.req.param('slug');
 
@@ -596,7 +595,12 @@ articles.post('/:slug/like',
     if (existingLike) {
       // Remover curtida
       await prisma.articleLike.delete({
-        where: { id: existingLike.id }
+        where: {
+          userId_articleId: {
+            userId: user.id,
+            articleId: article.id
+          }
+        }
       });
       isLiked = false;
     } else {
@@ -632,7 +636,7 @@ articles.post('/:slug/like',
 articles.post('/:slug/comments',
   authMiddleware,
   zValidator('json', commentSchema),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const user = c.get('user');
     const slug = c.req.param('slug');
     const { content } = c.req.valid('json');
@@ -649,21 +653,16 @@ articles.post('/:slug/comments',
     const comment = await prisma.articleComment.create({
       data: {
         content,
-        authorId: user.id,
+        authorId: user.id || '',
         articleId: article.id,
-        published: true // Auto-aprovar por enquanto
+        isApproved: true, // Auto-aprovar por enquanto
+        authorEmail: user.email || '',
+        authorName: user.name || '',
       },
       select: {
         id: true,
         content: true,
         createdAt: true,
-        author: {
-          select: {
-            id: true,
-            name: true,
-            avatar: true
-          }
-        }
       }
     });
 

@@ -20,7 +20,7 @@ model User {
   isActive  Boolean  @default(true)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
+  articleComment ArticleComment[]
   uploads   Upload[]
   articles  Article[]
   likes     ArticleLike[]
@@ -28,6 +28,7 @@ model User {
   profile   Profile?
 
   @@map("users")
+ 
 }
 
 // Modelo de refresh tokens
@@ -52,6 +53,7 @@ model Upload {
   size         Int
   path         String
   type        String // IMAGE, DOCUMENT, OTHER @default(IMAGE)
+  mimeType     String?
   url          String?
   uploadedBy   String?
   createdAt    DateTime   @default(now())
@@ -82,6 +84,7 @@ model Tag {
   id        String       @id @default(cuid())
   name      String       @unique
   slug      String       @unique
+  description String?
   createdAt DateTime     @default(now())
   updatedAt DateTime     @updatedAt
   articles  ArticleTag[]
@@ -149,12 +152,15 @@ model ArticleComment {
   isApproved  Boolean  @default(false)
   articleId   String
   tags        String? // JSON string para armazenar tags
+  userId      String?
+  authorId String?
   approved    Boolean  @default(false)
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   article     Article  @relation(fields: [articleId], references: [id], onDelete: Cascade)
 
   @@map("article_comments")
+  User User[]
 }
 
 // Modelo de contatos

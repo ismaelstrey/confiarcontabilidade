@@ -119,12 +119,12 @@ Ambas as páginas incluem metadados otimizados:
 ## 📞 Informações de Contato
 
 ### Para questões sobre privacidade:
-- **DPO:** dpo@contabilidade.com.br
-- **Telefone:** (11) 9999-9999
+- **DPO:** contato@contabilidadeigrejinha.com.br
+- **Telefone:** (51) 99916-0766
 
 ### Para questões sobre termos:
-- **Geral:** contato@contabilidade.com.br
-- **Telefone:** (11) 9999-9999
+- **Geral:** contato@contabilidadeigrejinha.com.br
+- **Telefone:** (51) 99916-0766
 
 ## 🔄 Manutenção e Atualizações
 

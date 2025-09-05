@@ -24,7 +24,6 @@ export const errorHandler: ErrorHandler = (err: Error | CustomError, c: Context)
 
   // Erro customizado com status code
   if ('statusCode' in err && err.statusCode) {
-
     return c.json({
       success: false,
       message: err.message,

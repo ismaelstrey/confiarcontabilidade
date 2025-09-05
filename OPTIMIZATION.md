@@ -148,7 +148,7 @@ NEXT_PUBLIC_CLARITY_ID=xxxxxxxxx
 NEXT_PUBLIC_VAPID_PUBLIC_KEY=your_vapid_public_key
 
 # Site
-NEXT_PUBLIC_SITE_URL=https://contabilpro.com.br
+NEXT_PUBLIC_SITE_URL=https://contabilidadeigrejinha.com.br
 ```
 
 ## 📈 Métricas de Performance

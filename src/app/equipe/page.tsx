@@ -48,8 +48,8 @@ const teamMembers = [
     education: ['Ciências Contábeis - USP', 'MBA Gestão Empresarial - FGV', 'Pós-graduação em Direito Tributário'],
     certifications: ['CRC Ativo', 'Certificação CVM', 'CNAI - Auditor Independente'],
     linkedin: 'https://linkedin.com/in/joao-silva',
-    email: 'joao.silva@contabilpro.com.br',
-    phone: '(11) 3456-7890'
+    email: 'joao.silva@contabilidadeigrejinha.com.br',
+    phone: '(51) 3456-7890'
   },
   {
     id: 2,
@@ -63,8 +63,8 @@ const teamMembers = [
     education: ['Ciências Contábeis - PUC-SP', 'Mestrado em Controladoria - FEA-USP'],
     certifications: ['CRC Ativo', 'CIA - Certified Internal Auditor', 'Certificação IFRS'],
     linkedin: 'https://linkedin.com/in/maria-santos',
-    email: 'maria.santos@contabilpro.com.br',
-    phone: '(11) 3456-7891'
+    email: 'maria.santos@contabilidadeigrejinha.com.br',
+    phone: '(51) 3456-7891'
   },
   {
     id: 3,
@@ -78,8 +78,8 @@ const teamMembers = [
     education: ['Ciências Contábeis - Mackenzie', 'Pós-graduação em Controladoria'],
     certifications: ['CRC Ativo', 'Perito Contábil'],
     linkedin: 'https://linkedin.com/in/carlos-oliveira',
-    email: 'carlos.oliveira@contabilpro.com.br',
-    phone: '(11) 3456-7892'
+    email: 'carlos.oliveira@contabilidadeigrejinha.com.br',
+    phone: '(51) 3456-7892'
   },
   {
     id: 4,
@@ -93,8 +93,8 @@ const teamMembers = [
     education: ['Ciências Contábeis - UNINOVE', 'Pós-graduação em Direito Empresarial'],
     certifications: ['CRC Ativo', 'Junta Comercial - Habilitada'],
     linkedin: 'https://linkedin.com/in/ana-costa',
-    email: 'ana.costa@contabilpro.com.br',
-    phone: '(11) 3456-7893'
+    email: 'ana.costa@contabilidadeigrejinha.com.br',
+    phone: '(51) 3456-7893'
   },
   {
     id: 5,
@@ -108,8 +108,8 @@ const teamMembers = [
     education: ['Ciências Contábeis - FECAP'],
     certifications: ['CRC Ativo'],
     linkedin: 'https://linkedin.com/in/pedro-lima',
-    email: 'pedro.lima@contabilpro.com.br',
-    phone: '(11) 3456-7894'
+    email: 'pedro.lima@contabilidadeigrejinha.com.br',
+    phone: '(51) 3456-7894'
   },
   {
     id: 6,
@@ -123,8 +123,8 @@ const teamMembers = [
     education: ['Ciências Contábeis - FAAP', 'Direito Tributário - PUC-SP'],
     certifications: ['CRC Ativo', 'OAB/SP', 'Especialista em Direito Tributário'],
     linkedin: 'https://linkedin.com/in/lucia-ferreira',
-    email: 'lucia.ferreira@contabilpro.com.br',
-    phone: '(11) 3456-7895'
+    email: 'lucia.ferreira@contabilidadeigrejinha.com.br',
+    phone: '(51) 3456-7895'
   },
   {
     id: 7,
@@ -138,8 +138,8 @@ const teamMembers = [
     education: ['Ciências Contábeis - FMU', 'MBA em Gestão Tributária - FGV'],
     certifications: ['CRC Ativo', 'Certificação em Gestão Tributária'],
     linkedin: 'https://linkedin.com/in/roberto-alves',
-    email: 'roberto.alves@contabilpro.com.br',
-    phone: '(11) 3456-7896'
+    email: 'roberto.alves@contabilidadeigrejinha.com.br',
+    phone: '(51) 3456-7896'
   },
   {
     id: 8,
@@ -153,8 +153,8 @@ const teamMembers = [
     education: ['Técnico em Contabilidade - ETEC', 'Cursando Ciências Contábeis'],
     certifications: ['Técnica em Contabilidade Registrada'],
     linkedin: 'https://linkedin.com/in/fernanda-silva',
-    email: 'fernanda.silva@contabilpro.com.br',
-    phone: '(11) 3456-7897'
+    email: 'fernanda.silva@contabilidadeigrejinha.com.br',
+    phone: '(51) 3456-7897'
   }
 ];
 

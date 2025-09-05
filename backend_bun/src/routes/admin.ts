@@ -4,8 +4,12 @@ import { z } from 'zod';
 import { prisma } from '../lib/prisma';
 import { authMiddleware, authorize } from '../middlewares/auth';
 import { createError, asyncHandler } from '../middlewares/errorHandler';
+import { rateLimiters, conditionalRateLimit, isAdmin } from '../middlewares/advancedRateLimit';
 
 const admin = new Hono();
+
+// Aplicar middlewares de autenticação, autorização e rate limiting para todas as rotas
+admin.use('*', conditionalRateLimit((c) => !isAdmin(c), rateLimiters.admin));
 
 // Schemas de validação
 const createCategorySchema = z.object({
@@ -43,7 +47,7 @@ const querySchema = z.object({
 admin.get('/dashboard',
   authMiddleware,
   authorize('ADMIN', 'MODERATOR'),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const [userStats, articleStats, contactStats, newsletterStats, uploadStats] = await Promise.all([
       // Estatísticas de usuários
       Promise.all([
@@ -65,7 +69,7 @@ admin.get('/dashboard',
         prisma.article.count({ where: { published: true } }),
         prisma.article.count({ where: { published: false } }),
         prisma.articleLike.count(),
-        prisma.articleComment.count({ where: { published: true } })
+        prisma.articleComment.count({ where: { isApproved: true } })
       ]),
       // Estatísticas de contatos
       Promise.all([
@@ -152,13 +156,13 @@ admin.get('/categories',
   authMiddleware,
   authorize('ADMIN', 'MODERATOR'),
   zValidator('query', querySchema),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const { page = 1, limit = 10, search, sortBy, sortOrder } = c.req.valid('query');
     const skip = (page - 1) * limit;
 
     // Construir filtros
     const where: any = {};
-    
+
     if (search) {
       where.OR = [
         { name: { contains: search, mode: 'insensitive' } },
@@ -216,7 +220,7 @@ admin.post('/categories',
   authMiddleware,
   authorize('ADMIN', 'MODERATOR'),
   zValidator('json', createCategorySchema),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const { name, description } = c.req.valid('json');
 
     // Criar slug a partir do nome
@@ -268,7 +272,7 @@ admin.put('/categories/:id',
   authMiddleware,
   authorize('ADMIN', 'MODERATOR'),
   zValidator('json', updateCategorySchema),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const id = c.req.param('id');
     const updateData = c.req.valid('json');
 
@@ -331,7 +335,7 @@ admin.put('/categories/:id',
 admin.delete('/categories/:id',
   authMiddleware,
   authorize('ADMIN'),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const id = c.req.param('id');
 
     // Verificar se categoria existe
@@ -374,13 +378,13 @@ admin.get('/tags',
   authMiddleware,
   authorize('ADMIN', 'MODERATOR'),
   zValidator('query', querySchema),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const { page = 1, limit = 10, search, sortBy, sortOrder } = c.req.valid('query');
     const skip = (page - 1) * limit;
 
     // Construir filtros
     const where: any = {};
-    
+
     if (search) {
       where.OR = [
         { name: { contains: search, mode: 'insensitive' } },
@@ -396,7 +400,6 @@ admin.get('/tags',
           id: true,
           name: true,
           slug: true,
-          description: true,
           createdAt: true,
           updatedAt: true,
           _count: {
@@ -438,7 +441,7 @@ admin.post('/tags',
   authMiddleware,
   authorize('ADMIN', 'MODERATOR'),
   zValidator('json', createTagSchema),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const { name, description } = c.req.valid('json');
 
     // Criar slug a partir do nome
@@ -490,7 +493,7 @@ admin.put('/tags/:id',
   authMiddleware,
   authorize('ADMIN', 'MODERATOR'),
   zValidator('json', updateTagSchema),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const id = c.req.param('id');
     const updateData = c.req.valid('json');
 
@@ -553,7 +556,7 @@ admin.put('/tags/:id',
 admin.delete('/tags/:id',
   authMiddleware,
   authorize('ADMIN'),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const id = c.req.param('id');
 
     // Verificar se tag existe
@@ -595,7 +598,7 @@ admin.delete('/tags/:id',
 admin.get('/system-info',
   authMiddleware,
   authorize('ADMIN'),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const systemInfo = {
       runtime: 'Bun',
       version: Bun.version,

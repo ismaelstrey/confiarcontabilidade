@@ -356,11 +356,11 @@ export default function TermosPage() {
               <div className="prose prose-lg text-gray-700">
                 <p>Para dúvidas sobre estes termos, entre em contato:</p>
                 <div className="bg-blue-50 p-6 rounded-lg mt-4">
-                  <p><strong>Contabilidade Empresarial</strong></p>
-                  <p>E-mail: <strong>contato@contabilidade.com.br</strong></p>
-                  <p>Telefone: <strong>(11) 9999-9999</strong></p>
-                  <p>Endereço: <strong>Rua das Empresas, 123 - São Paulo/SP</strong></p>
-                  <p>CNPJ: <strong>00.000.000/0001-00</strong></p>
+                  <p><strong>Contabilidade Igrejinha</strong></p>
+                  <p>E-mail: <strong>contato@contabilidadeigrejinha.com.br</strong></p>
+                  <p>Telefone: <strong>(51) 9 9916-0766</strong></p>
+                  <p>Endereço: <strong>Estrada Geraldo Meneger, 12 - Voluntária Baixa, Igrejinha/RS</strong></p>
+                  <p>CNPJ: <strong>55.324.886/0001-10</strong></p>
                 </div>
               </div>
             </div>

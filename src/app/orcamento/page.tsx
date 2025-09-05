@@ -658,7 +658,7 @@ export default function OrcamentoPage() {
                               <Label htmlFor="telefone">Telefone/WhatsApp *</Label>
                               <Input
                                 id="telefone"
-                                placeholder="(11) 99999-9999"
+                                placeholder="(51) 99999-9999"
                                 value={formData.telefone}
                                 onChange={(e) => updateFormData('telefone', e.target.value)}
                                 className={errors.telefone ? 'border-red-500' : ''}

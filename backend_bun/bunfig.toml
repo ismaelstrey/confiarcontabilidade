@@ -1,0 +1,27 @@
+# Configuração do Bun para testes
+
+[test]
+# Configurações específicas para testes
+preload = ["./src/tests/setup.ts"]
+timeout = 30000
+
+# Configurar ambiente de teste
+[test.env]
+NODE_ENV = "test"
+DATABASE_URL = "file:./test.db"
+JWT_SECRET = "test-jwt-secret-key-for-testing-only"
+JWT_REFRESH_SECRET = "test-refresh-secret-key-for-testing-only"
+JWT_EXPIRES_IN = "1h"
+JWT_REFRESH_EXPIRES_IN = "7d"
+PORT = "3335"
+HOST = "localhost"
+CORS_ORIGINS = "http://localhost:3000,http://localhost:3001"
+
+# Configurações de performance
+[install]
+registry = "https://registry.npmjs.org/"
+cache = true
+
+# Configurações de desenvolvimento
+[run]
+shell = "system"

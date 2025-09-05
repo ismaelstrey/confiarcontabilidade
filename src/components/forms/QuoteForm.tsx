@@ -200,7 +200,7 @@ export function QuoteForm() {
                 {...register('telefone')}
                 type="tel"
                 className="pl-10"
-                placeholder="(11) 99999-9999"
+                placeholder="(51) 99999-9999"
               />
             </div>
             {errors.telefone && (

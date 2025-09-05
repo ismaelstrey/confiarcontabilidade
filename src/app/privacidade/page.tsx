@@ -161,7 +161,7 @@ export default function PrivacidadePage() {
                 </ul>
                 <p>
                   Para exercer seus direitos, entre em contato conosco através do e-mail: 
-                  <strong>privacidade@contabilidade.com.br</strong>
+                  <strong>contato@contabilidadeigrejinha.com.br</strong>
                 </p>
               </div>
             </div>
@@ -216,9 +216,9 @@ export default function PrivacidadePage() {
                 <p>Para questões sobre esta política ou seus dados pessoais:</p>
                 <div className="bg-blue-50 p-6 rounded-lg mt-4">
                   <p><strong>Encarregado de Proteção de Dados (DPO):</strong></p>
-                  <p>E-mail: <strong>dpo@contabilidade.com.br</strong></p>
-                  <p>Telefone: <strong>(11) 9999-9999</strong></p>
-                  <p>Endereço: <strong>Rua das Empresas, 123 - São Paulo/SP</strong></p>
+                  <p>E-mail: <strong>dpo@contabilidadeigrejinha.com.br</strong></p>
+                  <p>Telefone: <strong>(51) 9 9916-0766</strong></p>
+                  <p>Endereço: <strong>Estrada Geraldo Meneger, 12 - Voluntária Baixa, Igrejinha/RS</strong></p>
                 </div>
               </div>
             </div>

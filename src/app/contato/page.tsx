@@ -49,13 +49,13 @@ const contactInfo = [
   {
     icon: Phone,
     title: 'Telefones',
-    content: '(11) 3456-7890\n(11) 99999-8888 (WhatsApp)',
+    content: '(51) 3456-7890\n(51) 99916-0766 (WhatsApp)',
     color: 'accent'
   },
   {
     icon: Mail,
     title: 'Email',
-    content: 'contato@contabilpro.com.br\norcamento@contabilpro.com.br',
+    content: 'contato@contabilidadeigrejinha.com.br\norcamento@contabilidadeigrejinha.com.br',
     color: 'success'
   },
   {
@@ -222,7 +222,7 @@ export default function ContatoPage() {
                   </div>
                   <div>
                     <h4 className="text-lg font-bold text-gray-900">WhatsApp Business</h4>
-                    <p className="text-green-600 font-semibold">(11) 99999-8888</p>
+                    <p className="text-green-600 font-semibold">(51) 99916-0766</p>
                   </div>
                 </div>
                 <p className="text-gray-600 mb-4">

@@ -81,19 +81,19 @@ export default function OfflinePage() {
               <div className="flex justify-between">
                 <span className="text-green-700 dark:text-green-300">WhatsApp:</span>
                 <a 
-                  href="https://wa.me/5511999999999" 
+                  href="https://wa.me/5551999160766" 
                   className="text-green-600 dark:text-green-400 hover:underline"
                 >
-                  (11) 99999-9999
+                  (51) 9 9916-0766
                 </a>
               </div>
               <div className="flex justify-between">
                 <span className="text-green-700 dark:text-green-300">Email:</span>
                 <a 
-                  href="mailto:contato@contabilpro.com.br" 
+                  href="mailto:contato@contabilidadeigrejinha.com.br" 
                   className="text-green-600 dark:text-green-400 hover:underline"
                 >
-                  contato@contabilpro.com.br
+                  contato@contabilidadeigrejinha.com.br
                 </a>
               </div>
             </div>

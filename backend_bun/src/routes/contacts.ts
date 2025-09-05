@@ -4,6 +4,7 @@ import { z } from 'zod';
 import { prisma } from '../lib/prisma';
 import { authMiddleware, authorize } from '../middlewares/auth';
 import { createError, asyncHandler } from '../middlewares/errorHandler';
+import { rateLimiters } from '../middlewares/advancedRateLimit';
 
 const contacts = new Hono();
 
@@ -37,8 +38,9 @@ const querySchema = z.object({
  * Criar nova mensagem de contato
  */
 contacts.post('/',
+  rateLimiters.contact,
   zValidator('json', createContactSchema),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const { name, email, phone, subject, message } = c.req.valid('json');
 
     const contact = await prisma.contact.create({
@@ -77,13 +79,13 @@ contacts.get('/',
   authMiddleware,
   authorize('ADMIN', 'MODERATOR'),
   zValidator('query', querySchema),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const { page = 1, limit = 10, search, status, priority, sortBy, sortOrder } = c.req.valid('query');
     const skip = (page - 1) * limit;
 
     // Construir filtros
     const where: any = {};
-    
+
     if (search) {
       where.OR = [
         { name: { contains: search, mode: 'insensitive' } },
@@ -92,7 +94,7 @@ contacts.get('/',
         { message: { contains: search, mode: 'insensitive' } }
       ];
     }
-    
+
     if (status) where.status = status;
     if (priority) where.priority = priority;
 
@@ -142,7 +144,7 @@ contacts.get('/',
 contacts.get('/:id',
   authMiddleware,
   authorize('ADMIN', 'MODERATOR'),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const id = c.req.param('id');
 
     const contact = await prisma.contact.findUnique({
@@ -181,7 +183,7 @@ contacts.put('/:id',
   authMiddleware,
   authorize('ADMIN', 'MODERATOR'),
   zValidator('json', updateContactSchema),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const id = c.req.param('id');
     const updateData = c.req.valid('json');
 
@@ -226,7 +228,7 @@ contacts.put('/:id',
 contacts.delete('/:id',
   authMiddleware,
   authorize('ADMIN'),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const id = c.req.param('id');
 
     const contact = await prisma.contact.findUnique({
@@ -255,7 +257,7 @@ contacts.delete('/:id',
 contacts.get('/stats',
   authMiddleware,
   authorize('ADMIN', 'MODERATOR'),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const [statusStats, priorityStats, totalContacts, recentContacts] = await Promise.all([
       // Estatísticas por status
       prisma.contact.groupBy({

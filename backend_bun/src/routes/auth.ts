@@ -2,14 +2,15 @@ import { Hono } from 'hono';
 import { zValidator } from '@hono/zod-validator';
 import { z } from 'zod';
 import { prisma } from '../lib/prisma';
-import { 
-  generateTokenPair, 
-  hashPassword, 
-  verifyPassword, 
-  verifyRefreshToken 
+import {
+  generateTokenPair,
+  hashPassword,
+  verifyPassword,
+  verifyRefreshToken
 } from '../lib/auth';
 import { authMiddleware } from '../middlewares/auth';
 import { createError, asyncHandler } from '../middlewares/errorHandler';
+import { rateLimiters, createEndpointRateLimit } from '../middlewares/advancedRateLimit';
 
 const auth = new Hono();
 
@@ -39,9 +40,10 @@ const changePasswordSchema = z.object({
  * POST /auth/register
  * Registrar novo usuário
  */
-auth.post('/register', 
+auth.post('/register',
+  rateLimiters.register,
   zValidator('json', registerSchema),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const { name, email, password, role } = c.req.valid('json');
 
     // Verificar se usuário já existe
@@ -97,8 +99,9 @@ auth.post('/register',
  * Fazer login
  */
 auth.post('/login',
+  rateLimiters.auth,
   zValidator('json', loginSchema),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const { email, password } = c.req.valid('json');
 
     // Buscar usuário
@@ -116,7 +119,7 @@ auth.post('/login',
 
     // Verificar senha
     const isValidPassword = await verifyPassword(password, user.password);
-    
+
     if (!isValidPassword) {
       throw createError('Credenciais inválidas', 401, 'INVALID_CREDENTIALS');
     }
@@ -148,7 +151,7 @@ auth.post('/login',
  */
 auth.post('/refresh-token',
   zValidator('json', refreshTokenSchema),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const { refreshToken } = c.req.valid('json');
 
     // Verificar refresh token
@@ -190,7 +193,7 @@ auth.post('/refresh-token',
  */
 auth.get('/me',
   authMiddleware,
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const user = c.get('user');
 
     // Buscar dados completos do usuário
@@ -233,7 +236,7 @@ auth.get('/me',
 auth.post('/change-password',
   authMiddleware,
   zValidator('json', changePasswordSchema),
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     const user = c.get('user');
     const { currentPassword, newPassword } = c.req.valid('json');
 
@@ -248,7 +251,7 @@ auth.post('/change-password',
 
     // Verificar senha atual
     const isValidPassword = await verifyPassword(currentPassword, fullUser.password);
-    
+
     if (!isValidPassword) {
       throw createError('Senha atual incorreta', 400, 'INVALID_CURRENT_PASSWORD');
     }
@@ -275,7 +278,7 @@ auth.post('/change-password',
  */
 auth.post('/logout',
   authMiddleware,
-  asyncHandler(async (c) => {
+  asyncHandler(async (c: any) => {
     // Em uma implementação real, você poderia adicionar o token a uma blacklist
     // Por enquanto, apenas retornamos sucesso
     return c.json({

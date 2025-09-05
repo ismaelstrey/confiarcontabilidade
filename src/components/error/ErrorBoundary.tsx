@@ -186,10 +186,10 @@ class ErrorBoundary extends Component<Props, State> {
                 Se o problema persistir, entre em contato conosco:
               </p>
               <a
-                href="mailto:suporte@contabilpro.com.br"
+                href="mailto:contato@contabilidadeigrejinha.com.br"
                 className="text-sm text-blue-600 dark:text-blue-400 hover:underline"
               >
-                suporte@contabilpro.com.br
+                contato@contabilidadeigrejinha.com.br
               </a>
             </div>
           </div>

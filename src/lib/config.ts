@@ -1,34 +1,34 @@
 import { SiteConfig } from '@/types'
 
 export const siteConfig: SiteConfig = {
-  name: 'Confiar Contabilidade',
+  name: 'Contabilidade Igrejinha',
   description: 'Soluções completas em contabilidade para empresas de todos os portes. Abertura de empresa, contabilidade mensal, planejamento tributário e consultoria especializada.',
-  url: 'https://confiarcontabilidade.com.br',
+  url: 'https://contabilidadeigrejinha.com.br',
   ogImage: '/images/og-image.jpg',
   contact:{
-    whatsapp:"(51)9 98175-4701"
+    whatsapp:"(51) 9 9916-0766"
   },
   links: {
-    whatsapp: 'https://wa.me/5551981754701?text=Olá! Gostaria de saber mais sobre os serviços de contabilidade.',
-    email: 'contato@confiarcontabilidade.com.br',
-    phone: '(51) 9 98175-4701',
-    address: 'Rua da Independência, 131 - Centro, Igrejinha - RS',
+    whatsapp: 'https://wa.me/5551999160766?text=Olá! Gostaria de saber mais sobre os serviços de contabilidade.',
+    email: 'contato@contabilidadeigrejinha.com.br',
+    phone: '(51) 9 9916-0766',
+    address: 'Estrada Geraldo Meneger, 12 - Voluntária Baixa, Igrejinha - RS',
     social: {
-      facebook: 'https://facebook.com/contabilpro',
-      instagram: 'https://instagram.com/contabilpro',
-      linkedin: 'https://linkedin.com/company/contabilpro',
-      youtube: 'https://youtube.com/@contabilpro'
+      facebook: 'https://facebook.com/contabilidadeigrejinha',
+      instagram: 'https://instagram.com/contabilidadeigrejinha',
+      linkedin: 'https://linkedin.com/company/contabilidadeigrejinha',
+      youtube: 'https://youtube.com/@contabilidadeigrejinha'
     }
   },
   business: {
-    cnpj: '45.128.693/0001-30',
-    crc: 'CRC-SP 123456/O-7',
-    email: 'contato@confiarcontabilidade.com.br',
+    cnpj: '55.324.886/0001-10',
+    crc: 'CRC-RS 123456/O-7',
+    email: 'contato@contabilidadeigrejinha.com.br',
     address: {
-      street: 'Rua da Independência, 131 - Centro, Igrejinha - RS',
+      street: 'Estrada Geraldo Meneger, 12 - Voluntária Baixa, Igrejinha - RS',
       city: 'Igrejinha',
       state: 'RS',
-      zip: '95650-000'
+      zip: '38400-000'
     }
   }
 }

@@ -9,43 +9,43 @@ import { z } from 'zod';
 const envSchema = z.object({
   // Servidor
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
-  PORT: z.string().transform(Number).default(4000),
+  PORT: z.string().transform(Number).default('4000'),
   API_VERSION: z.string().default('v1'),
-  
+
   // Banco de dados
   DATABASE_URL: z.string().min(1, 'DATABASE_URL é obrigatória'),
-  
+
   // JWT
   JWT_SECRET: z.string().min(32, 'JWT_SECRET deve ter pelo menos 32 caracteres'),
   JWT_EXPIRES_IN: z.string().default('7d'),
   JWT_REFRESH_EXPIRES_IN: z.string().default('30d'),
-  
+
   // CORS
   CORS_ORIGIN: z.string().optional(),
-  
+
   // Rate Limiting
-  RATE_LIMIT_WINDOW_MS: z.string().transform(Number).default(900000), // 15 minutos
-  RATE_LIMIT_MAX_REQUESTS: z.string().transform(Number).default(100),
-  
+  RATE_LIMIT_WINDOW_MS: z.string().transform(Number).default('900000'), // 15 minutos
+  RATE_LIMIT_MAX_REQUESTS: z.string().transform(Number).default('100'),
+
   // Upload
-  MAX_FILE_SIZE: z.string().transform(Number).default(5242880), // 5MB
+  MAX_FILE_SIZE: z.string().transform(Number).default('5242880'), // 5MB
   UPLOAD_DIR: z.string().default('uploads'),
-  
+
   // Email (opcional)
   SMTP_HOST: z.string().optional(),
   SMTP_PORT: z.string().transform(Number).optional(),
   SMTP_USER: z.string().optional(),
   SMTP_PASS: z.string().optional(),
-  
+
   // Logging
   LOG_LEVEL: z.enum(['debug', 'info', 'warn', 'error']).default('info'),
-  LOG_TO_FILE: z.string().transform(val => val === 'true').default(true),
-  LOG_TO_CONSOLE: z.string().transform(val => val === 'true').default(true),
-  
+  LOG_TO_FILE: z.string().transform(val => val === 'true').default('true'),
+  LOG_TO_CONSOLE: z.string().transform(val => val === 'true').default('true'),
+
   // Segurança
-  BCRYPT_ROUNDS: z.string().transform(Number).default(12),
+  BCRYPT_ROUNDS: z.string().transform(Number).default('12'),
   SESSION_SECRET: z.string().min(32, 'SESSION_SECRET deve ter pelo menos 32 caracteres').optional(),
-  
+
   // Cache (Redis - opcional)
   REDIS_URL: z.string().optional(),
   REDIS_TTL: z.string().optional().transform(val => val ? Number(val) : 3600), // 1 hora
@@ -105,19 +105,19 @@ export const appConfig = {
     isTest: config.NODE_ENV === 'test',
     apiVersion: config.API_VERSION,
   },
-  
+
   // Banco de dados
   database: {
     url: config.DATABASE_URL,
   },
-  
+
   // JWT
   jwt: {
     secret: config.JWT_SECRET,
     expiresIn: config.JWT_EXPIRES_IN,
     refreshExpiresIn: config.JWT_REFRESH_EXPIRES_IN,
   },
-  
+
   // CORS
   cors: {
     origins: config.CORS_ORIGIN ? config.CORS_ORIGIN.split(',') : [
@@ -139,13 +139,13 @@ export const appConfig = {
       'X-File-Name'
     ],
   },
-  
+
   // Rate Limiting
   rateLimit: {
     windowMs: config.RATE_LIMIT_WINDOW_MS,
     maxRequests: config.RATE_LIMIT_MAX_REQUESTS,
   },
-  
+
   // Upload
   upload: {
     maxFileSize: config.MAX_FILE_SIZE,
@@ -162,7 +162,7 @@ export const appConfig = {
       'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
     ],
   },
-  
+
   // Email
   email: {
     smtp: {
@@ -173,7 +173,7 @@ export const appConfig = {
     },
     enabled: !!(config.SMTP_HOST && config.SMTP_USER && config.SMTP_PASS),
   },
-  
+
   // Logging
   logging: {
     level: config.LOG_LEVEL,
@@ -181,13 +181,13 @@ export const appConfig = {
     toConsole: config.LOG_TO_CONSOLE,
     directory: 'logs',
   },
-  
+
   // Segurança
   security: {
     bcryptRounds: config.BCRYPT_ROUNDS,
     sessionSecret: config.SESSION_SECRET,
   },
-  
+
   // Cache
   cache: {
     redis: {
@@ -204,9 +204,9 @@ if (appConfig.server.isProduction) {
     { key: 'JWT_SECRET', value: config.JWT_SECRET },
     { key: 'DATABASE_URL', value: config.DATABASE_URL },
   ];
-  
+
   const missingConfigs = criticalConfigs.filter(({ value }) => !value);
-  
+
   if (missingConfigs.length > 0) {
     console.error('❌ Configurações críticas ausentes em produção:');
     missingConfigs.forEach(({ key }) => {
